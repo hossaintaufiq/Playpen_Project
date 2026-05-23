@@ -11,7 +11,7 @@ import Admission from "./pages/Admission";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Admin from "./pages/Admin";
-import AdminLogin from "./pages/AdminLogin";
+// import AdminLogin from "./pages/AdminLogin";
 import Faculty from "./pages/Faculty";
 import Campus from "./pages/Campus";
 import Administration from "./pages/Administration";
@@ -44,7 +44,7 @@ const App = () => (
             <Route path="/admission" element={<Admission />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
+            {/* <Route path="/admin/login" element={<AdminLogin />} /> */}
             <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -30,7 +30,8 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   const handleLogout = async () => {
     await signOut();
-    navigate('/admin/login');
+    // navigate('/admin/login'); // login disabled for now
+    navigate('/');
   };
 
   return (

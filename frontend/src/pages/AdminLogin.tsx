@@ -1,3 +1,5 @@
+// Admin login page — route disabled in App.tsx; Portal goes straight to /admin for now.
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
