@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Youtube, Heart, MessageCircle, Share2 } from 'lucide-react';
 

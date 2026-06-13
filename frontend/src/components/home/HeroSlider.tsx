@@ -1,8 +1,10 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -117,7 +119,7 @@ export const HeroSlider = () => {
                     transition={{ delay: 0.6 }}
                     className="flex flex-wrap gap-4"
                   >
-                    <Link to={slide.link}>
+                    <Link href={slide.link}>
                       <Button variant="hero" size="xl">
                         {slide.cta}
                       </Button>

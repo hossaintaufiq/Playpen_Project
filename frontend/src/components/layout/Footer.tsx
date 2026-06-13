@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+"use client";
+
+import Link from 'next/link';
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -62,7 +64,7 @@ export const Footer = () => {
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link 
-                    to={link.path}
+                    href={link.path}
                     className="text-primary-foreground/80 hover:text-secondary transition-colors flex items-center gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
@@ -80,7 +82,7 @@ export const Footer = () => {
               {programLinks.map((link) => (
                 <li key={link.label}>
                   <Link 
-                    to={link.path}
+                    href={link.path}
                     className="text-primary-foreground/80 hover:text-secondary transition-colors flex items-center gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
@@ -134,9 +136,9 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/70">
             <p>© 2024 Playpen School. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-secondary transition-colors">Terms of Service</Link>
-              <Link to="/faq" className="hover:text-secondary transition-colors">FAQ</Link>
+              <Link href="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-secondary transition-colors">Terms of Service</Link>
+              <Link href="/faq" className="hover:text-secondary transition-colors">FAQ</Link>
             </div>
           </div>
         </div>

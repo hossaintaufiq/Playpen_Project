@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -33,7 +36,7 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +49,7 @@ export const Header = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
-  }, [location]);
+  }, [pathname]);
 
   return (
     <>
@@ -87,7 +90,7 @@ export const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full hero-gradient flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-xl font-serif">P</span>
               </div>
@@ -107,9 +110,9 @@ export const Header = () => {
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <Link 
-                    to={item.path}
+                    href={item.path}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-1 ${
-                      location.pathname === item.path 
+                      pathname === item.path 
                         ? 'text-primary bg-primary/10' 
                         : 'text-foreground hover:text-primary hover:bg-primary/5'
                     }`}
@@ -131,7 +134,7 @@ export const Header = () => {
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
-                            to={child.path}
+                            href={child.path}
                             className="block px-4 py-3 text-sm hover:bg-primary/5 hover:text-primary transition-colors border-b border-border last:border-0"
                           >
                             {child.label}
@@ -146,12 +149,12 @@ export const Header = () => {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link to="/admission">
+              <Link href="/admission">
                 <Button variant="hero" size="lg">
                   Apply Now
                 </Button>
               </Link>
-              <Link to="/admin">
+              <Link href="/admin">
                 <Button variant="outline" size="lg">
                   Portal
                 </Button>
@@ -182,7 +185,7 @@ export const Header = () => {
                   {navItems.map((item) => (
                     <div key={item.label}>
                       <Link 
-                        to={item.path}
+                        href={item.path}
                         className="block px-4 py-3 rounded-lg font-medium hover:bg-primary/5 hover:text-primary transition-colors"
                       >
                         {item.label}
@@ -192,7 +195,7 @@ export const Header = () => {
                           {item.children.map((child) => (
                             <Link
                               key={child.label}
-                              to={child.path}
+                              href={child.path}
                               className="block py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
                             >
                               {child.label}
@@ -204,10 +207,10 @@ export const Header = () => {
                   ))}
                 </nav>
                 <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border">
-                  <Link to="/admission">
+                  <Link href="/admission">
                     <Button variant="hero" className="w-full">Apply Now</Button>
                   </Link>
-                  <Link to="/admin">
+                  <Link href="/admin">
                     <Button variant="outline" className="w-full">Portal</Button>
                   </Link>
                 </div>

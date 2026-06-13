@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GraduationCap, Users, Award, BookOpen } from 'lucide-react';

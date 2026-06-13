@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Palette, BookOpen, Rocket, Brain, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const programs = [
@@ -129,7 +131,7 @@ export const ProgramsSection = () => {
 
               {/* Link */}
               <Link 
-                to="/academics" 
+                href="/academics" 
                 className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
               >
                 Learn More
@@ -146,7 +148,7 @@ export const ProgramsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Link to="/admission">
+          <Link href="/admission">
             <Button variant="hero" size="xl">
               Enroll Your Child Today
               <ArrowRight className="w-5 h-5 ml-2" />

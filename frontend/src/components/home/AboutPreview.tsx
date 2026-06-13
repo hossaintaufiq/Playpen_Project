@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const features = [
@@ -78,13 +80,13 @@ export const AboutPreview = () => {
             </ul>
 
             <div className="flex flex-wrap gap-4">
-              <Link to="/about">
+              <Link href="/about">
                 <Button variant="hero" size="lg">
                   Learn More About Us
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link to="/contact">
+              <Link href="/contact">
                 <Button variant="outline" size="lg">
                   Schedule a Visit
                 </Button>

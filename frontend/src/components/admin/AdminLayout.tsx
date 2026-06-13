@@ -1,5 +1,8 @@
+"use client";
+
 import { ReactNode, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import {
   LayoutDashboard, Users, GraduationCap, Calendar, FileText,
@@ -24,14 +27,14 @@ interface AdminLayoutProps {
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { user, signOut } = useAuth();
 
   const handleLogout = async () => {
     await signOut();
     // navigate('/admin/login'); // login disabled for now
-    navigate('/');
+    router.push('/');
   };
 
   return (
@@ -49,9 +52,9 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           {sidebarItems.map((item) => (
             <Link
               key={item.path}
-              to={item.path}
+              href={item.path}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg mb-1 transition-colors ${
-                location.pathname === item.path
+                pathname === item.path
                   ? 'bg-primary-foreground/20 text-primary-foreground'
                   : 'text-primary-foreground/70 hover:bg-primary-foreground/10 hover:text-primary-foreground'
               }`}

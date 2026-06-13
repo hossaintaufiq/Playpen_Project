@@ -1,6 +1,8 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 const news = [
@@ -60,7 +62,7 @@ export const NewsSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Link to="/news">
+            <Link href="/news">
               <Button variant="outline" size="lg">
                 View All News
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -104,7 +106,7 @@ export const NewsSection = () => {
                   {item.excerpt}
                 </p>
                 <Link 
-                  to={`/news/${item.id}`}
+                  href={`/news/${item.id}`}
                   className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
                 >
                   Read More
