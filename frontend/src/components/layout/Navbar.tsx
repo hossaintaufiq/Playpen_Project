@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { portalNavItems } from "@/lib/portal-nav";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -12,8 +13,123 @@ const navItems = [
   { label: "Admissions", href: "/admissions" },
   { label: "Student Life", href: "/student-life" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Portal", href: "/portal" },
-];
+] as const;
+
+function isNavActive(pathname: string, href: string) {
+  return href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function PortalNavDropdown({
+  pathname,
+  onNavigate,
+  variant,
+}: {
+  pathname: string;
+  onNavigate?: () => void;
+  variant: "desktop" | "mobile";
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const portalActive = pathname.startsWith("/portal");
+
+  useEffect(() => {
+    if (variant !== "desktop") return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [variant]);
+
+  if (variant === "mobile") {
+    return (
+      <div className="rounded-lg">
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium ${
+            portalActive ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
+          }`}
+          aria-expanded={open}
+        >
+          Portal
+          <ChevronDown
+            className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        {open && (
+          <div className="mt-1 space-y-1 border-l border-white/15 pl-3">
+            {portalNavItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={onNavigate}
+                className={`block rounded-lg px-4 py-2.5 text-sm ${
+                  pathname === item.href
+                    ? "bg-white/15 text-white"
+                    : "text-white/75 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
+          portalActive
+            ? "bg-white/15 text-white"
+            : "text-white/85 hover:bg-white/10 hover:text-white"
+        }`}
+        aria-expanded={open}
+        aria-haspopup="true"
+      >
+        Portal
+        <ChevronDown
+          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-full z-50 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-white/10 bg-[#5a0000] py-1 shadow-lg">
+          {portalNavItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 text-sm transition ${
+                pathname === item.href
+                  ? "bg-white/15 text-white"
+                  : "text-white/85 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Navbar() {
   const pathname = usePathname();
@@ -54,10 +170,7 @@ export function Navbar() {
 
           <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
             {navItems.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const active = isNavActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
@@ -72,6 +185,7 @@ export function Navbar() {
                 </Link>
               );
             })}
+            <PortalNavDropdown pathname={pathname} variant="desktop" />
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -103,10 +217,7 @@ export function Navbar() {
             <nav className="playpen-bg-dark border-t border-white/10 px-4 py-3 sm:px-6">
               <div className="flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto">
                 {navItems.map((item) => {
-                  const active =
-                    item.href === "/"
-                      ? pathname === "/"
-                      : pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  const active = isNavActive(pathname, item.href);
                   return (
                     <Link
                       key={item.href}
@@ -120,6 +231,11 @@ export function Navbar() {
                     </Link>
                   );
                 })}
+                <PortalNavDropdown
+                  pathname={pathname}
+                  variant="mobile"
+                  onNavigate={() => setOpen(false)}
+                />
                 <Link
                   href="/admissions"
                   onClick={() => setOpen(false)}
