@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, GraduationCap, Menu, Shield, X } from "lucide-react";
 import { portalNavItems } from "@/lib/portal-nav";
 
 const navItems = [
@@ -32,7 +32,29 @@ function PortalNavDropdown({
 }) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const portalActive = pathname.startsWith("/portal");
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const openMenu = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => setOpen(false), 220);
+  };
+
+  useEffect(() => {
+    return () => clearCloseTimer();
+  }, []);
 
   useEffect(() => {
     if (variant !== "desktop") return;
@@ -60,25 +82,32 @@ function PortalNavDropdown({
         >
           Portal
           <ChevronDown
-            className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+            className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           />
         </button>
         {open && (
           <div className="mt-1 space-y-1 border-l border-white/15 pl-3">
-            {portalNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={onNavigate}
-                className={`block rounded-lg px-4 py-2.5 text-sm ${
-                  pathname === item.href
-                    ? "bg-white/15 text-white"
-                    : "text-white/75 hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {portalNavItems.map((item) => {
+              const Icon = item.href.includes("admin") ? Shield : GraduationCap;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onNavigate}
+                  className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm ${
+                    pathname === item.href
+                      ? "bg-white/15 text-white"
+                      : "text-white/75 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <Icon className="h-4 w-4 shrink-0 opacity-80" />
+                  <span>
+                    <span className="block font-medium">{item.label}</span>
+                    <span className="block text-xs text-white/55">{item.description}</span>
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
@@ -89,14 +118,14 @@ function PortalNavDropdown({
     <div
       ref={containerRef}
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
     >
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
-          portalActive
+          portalActive || open
             ? "bg-white/15 text-white"
             : "text-white/85 hover:bg-white/10 hover:text-white"
         }`}
@@ -105,28 +134,62 @@ function PortalNavDropdown({
       >
         Portal
         <ChevronDown
-          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         />
       </button>
 
-      {open && (
-        <div className="absolute left-0 top-full z-50 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-white/10 bg-[#5a0000] py-1 shadow-lg">
-          {portalNavItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`block px-4 py-2.5 text-sm transition ${
-                pathname === item.href
-                  ? "bg-white/15 text-white"
-                  : "text-white/85 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+      <div
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 transition-all duration-200 ease-out ${
+          open
+            ? "visible translate-y-0 opacity-100"
+            : "pointer-events-none invisible -translate-y-1 opacity-0"
+        }`}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        <div className="w-[15.5rem] overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_20px_50px_-16px_rgba(0,0,0,0.45)] ring-1 ring-black/5">
+          <div className="border-b border-border/60 bg-muted/40 px-4 py-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/70">
+              Portal Access
+            </p>
+            <p className="mt-0.5 text-xs text-muted-foreground">Sign in to your account</p>
+          </div>
+
+          <div className="p-1.5">
+            {portalNavItems.map((item) => {
+              const Icon = item.href.includes("admin") ? Shield : GraduationCap;
+              const active = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`flex items-start gap-3 rounded-xl px-3 py-3 transition ${
+                    active
+                      ? "bg-primary/8 text-primary"
+                      : "text-foreground hover:bg-muted/60"
+                  }`}
+                >
+                  <span
+                    className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${
+                      active ? "bg-primary text-white" : "bg-primary/10 text-primary"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" strokeWidth={1.75} />
+                  </span>
+                  <span className="min-w-0 pt-0.5">
+                    <span className="block text-sm font-semibold leading-tight">{item.label}</span>
+                    <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
+                      {item.description}
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
