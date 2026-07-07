@@ -43,22 +43,22 @@ export function Footer() {
       <FooterWave />
       <div className="playpen-bg-dark w-full text-white">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-4">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-6 lg:gap-8">
+            <div>
               <p className="font-serif text-2xl font-bold sm:text-3xl">{schoolContact.name}</p>
               <p className="mt-1 text-xs uppercase tracking-widest text-white/60">
                 {schoolContact.tagline}
               </p>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/75 sm:text-base">
+              <p className="mt-4 text-sm leading-relaxed text-white/75 sm:text-base">
                 {schoolContact.description}
               </p>
             </div>
 
-            <div className="lg:col-span-3">
+            <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-white/60 sm:text-sm">
                 Quick Links
               </p>
-              <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 sm:grid-cols-1">
+              <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 md:grid-cols-1">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -72,14 +72,14 @@ export function Footer() {
               </ul>
             </div>
 
-            <div className="sm:col-span-2 lg:col-span-5">
+            <div className="sm:col-span-2 md:col-span-1">
               <p className="text-xs font-semibold uppercase tracking-wider text-white/60 sm:text-sm">
                 Contact Us
               </p>
-              <ul className="mt-4 space-y-4">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 <li className="flex gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/50 sm:h-5 sm:w-5" />
-                  <address className="not-italic text-sm leading-relaxed text-white/80 sm:text-base">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                  <address className="not-italic text-sm leading-relaxed text-white/80">
                     {schoolContact.address.line1}
                     <br />
                     {schoolContact.address.line2}
@@ -88,8 +88,8 @@ export function Footer() {
                   </address>
                 </li>
                 <li className="flex gap-3">
-                  <Smartphone className="mt-0.5 h-4 w-4 shrink-0 text-white/50 sm:h-5 sm:w-5" />
-                  <div className="text-sm sm:text-base">
+                  <Smartphone className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                  <div className="text-sm">
                     <p className="text-xs font-medium uppercase tracking-wide text-white/50">Mobile</p>
                     <a
                       href={schoolContact.mobileHref}
@@ -100,8 +100,8 @@ export function Footer() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/50 sm:h-5 sm:w-5" />
-                  <div className="text-sm sm:text-base">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                  <div className="text-sm">
                     <p className="text-xs font-medium uppercase tracking-wide text-white/50">Telephone</p>
                     <a
                       href={schoolContact.phoneHref}
@@ -112,8 +112,8 @@ export function Footer() {
                   </div>
                 </li>
                 <li className="flex gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/50 sm:h-5 sm:w-5" />
-                  <div className="text-sm sm:text-base">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/50" />
+                  <div className="min-w-0 text-sm">
                     <p className="text-xs font-medium uppercase tracking-wide text-white/50">Email</p>
                     <a
                       href={schoolContact.emailHref}
@@ -124,6 +124,33 @@ export function Footer() {
                   </div>
                 </li>
               </ul>
+            </div>
+
+            <div className="hidden md:block">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/60 sm:text-sm">
+                Our Location
+              </p>
+              <div className="mt-4 overflow-hidden rounded-xl ring-1 ring-white/15">
+                <div className="relative aspect-square w-full bg-white/5">
+                  <iframe
+                    src={schoolContact.mapsEmbedUrl}
+                    title="Playpen School location on Google Maps"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                </div>
+              </div>
+              <a
+                href={schoolContact.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 transition hover:text-white"
+              >
+                <MapPin className="h-3.5 w-3.5" />
+                Open in Google Maps
+              </a>
             </div>
           </div>
 
