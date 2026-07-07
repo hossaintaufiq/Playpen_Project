@@ -3,70 +3,783 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 >>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1  7 0 R /F2 8 0 R >> >> /Contents 4 0 R >>
 endobj
 4 0 obj
-<< /Length 954 >>
+<< /Length 4568 >>
 stream
+286 748 40 40 re
+S
 BT
-/F1 18 Tf
-50 740 Td
-(A' Level Admission Form) Tj
-0 -28 Td
-/F1 11 Tf
-(Playpen School — Admission Form) Tj
+/F2 8 Tf
+0 0 0 rg
+292 772 Td
+(PLAYPEN) Tj
 ET
 BT
-/F1 11 Tf
-50 680 Td
-(Applicant Information) Tj
-0 -18 Td
-(Full name: _______________________________________) Tj
-0 -18 Td
-(Date of birth: _____________________________________) Tj
-0 -18 Td
-(O' Level school: __________________________________) Tj
-0 -18 Td
-(O' Level year: ____________________________________) Tj
-0 -18 Td
-(Subjects & grades: ________________________________) Tj
-0 -18 Td
-(Preferred A' Level subjects: ______________________) Tj
-0 -18 Td
-() Tj
-0 -18 Td
-(Parent / Guardian) Tj
-0 -18 Td
-(Name: ____________________________________________) Tj
-0 -18 Td
-(Phone: ___________________________________________) Tj
-0 -18 Td
-(Email: ___________________________________________) Tj
-0 -18 Td
-(Address: _________________________________________) Tj
-0 -18 Td
-() Tj
-0 -18 Td
-(Submit with academic documents to the Admissions Office.) Tj
+/F2 14 Tf
+0 0 0 rg
+150 728 Td
+(PLAYPEN) Tj
 ET
+BT
+/F2 11 Tf
+0 0 0 rg
+95 708 Td
+(ADVANCED SUBSIDIARY \(AS\) LEVEL) Tj
+ET
+BT
+/F2 11 Tf
+0 0 0 rg
+220 692 Td
+(ADMISSION FORM) Tj
+ET
+BT
+/F2 10 Tf
+0 0 0 rg
+205 676 Td
+(SESSION: 2025 - 2026) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+40 656 Td
+(All information below should be written clearly in BLOCK LETTERS. Please complete and return the form with all documents attached.) Tj
+ET
+BT
+/F2 9 Tf
+0 0 0 rg
+40 632 Td
+(PERSONAL DETAILS) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 634 Td
+(Student's Name \(as in Passport\):) Tj
+ET
+40 606 532 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 612 Td
+(Date of Birth \(as in Passport\):) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 612 Td
+(Gender:) Tj
+ET
+40 584 268 22 re
+S
+312 584 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 590 Td
+(E-mail Address:) Tj
+ET
+40 562 532 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 568 Td
+(Land Phone:) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 568 Td
+(Mobile Phone:) Tj
+ET
+40 540 268 22 re
+S
+312 540 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 546 Td
+(Nationality:) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 546 Td
+(Religion:) Tj
+ET
+40 518 268 22 re
+S
+312 518 260 22 re
+S
+BT
+/F2 9 Tf
+0 0 0 rg
+40 520 Td
+(PARENTS' DETAILS) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+140 506 Td
+(Father) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+390 506 Td
+(Mother) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+44 500 Td
+(Name:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 500 Td
+(Name:) Tj
+ET
+40 478 268 16 re
+S
+312 478 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 482 Td
+(Educational Qualification:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 482 Td
+(Educational Qualification:) Tj
+ET
+40 460 268 16 re
+S
+312 460 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 464 Td
+(Current Occupation:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 464 Td
+(Current Occupation:) Tj
+ET
+40 442 268 16 re
+S
+312 442 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 446 Td
+(Designation:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 446 Td
+(Designation:) Tj
+ET
+40 424 268 16 re
+S
+312 424 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 428 Td
+(Office Address:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 428 Td
+(Office Address:) Tj
+ET
+40 406 268 16 re
+S
+312 406 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 410 Td
+(E-mail Address:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 410 Td
+(E-mail Address:) Tj
+ET
+40 388 268 16 re
+S
+312 388 260 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 392 Td
+(Contact No:) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+316 392 Td
+(Contact No:) Tj
+ET
+40 370 268 16 re
+S
+312 370 260 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 374 Td
+(Residence Address:) Tj
+ET
+40 350 532 18 re
+S
+BT
+/F2 9 Tf
+0 0 0 rg
+40 344 Td
+(EMERGENCY CONTACT) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 334 Td
+(Name:) Tj
+ET
+40 312 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 316 Td
+(Relationship with Applicant:) Tj
+ET
+40 294 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 298 Td
+(Address:) Tj
+ET
+40 276 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 280 Td
+(Contact No.:) Tj
+ET
+40 258 532 16 re
+S
+BT
+/F2 9 Tf
+0 0 0 rg
+40 248 Td
+(ADDITIONAL INFORMATION) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 236 Td
+(Single Parent \(Yes / No\):) Tj
+ET
+40 214 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 218 Td
+(Health Issue of Student:) Tj
+ET
+40 196 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 200 Td
+(Siblings \(None / Brother\(s\) / Sister\(s\)\):) Tj
+ET
+40 178 532 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+44 180 Td
+(Details of siblings/cousins at PLAYPEN) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+180 180 Td
+(Name) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+330 180 Td
+(Relationship) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+470 180 Td
+(Class) Tj
+ET
+40 162 532 14 re
+S
+40 148 532 14 re
+S
+BT
+/F2 9 Tf
+0 0 0 rg
+40 134 Td
+(ACADEMIC PERFORMANCE) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 124 Td
+(Last Educational Institution attended:) Tj
+ET
+40 102 532 16 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 106 Td
+(Year of O' Level Exam:) Tj
+ET
+40 84 532 16 re
+S
+BT
+/F2 7 Tf
+0 0 0 rg
+40 82 Td
+(O' LEVEL RESULTS \(Mention subjects only if results are not yet published\)) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+50 70 Td
+(Sl#) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+80 70 Td
+(Subject) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+210 70 Td
+(Grade) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+320 70 Td
+(Sl#) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+350 70 Td
+(Subject) Tj
+ET
+BT
+/F2 7 Tf
+0 0 0 rg
+480 70 Td
+(Grade) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+55 60 Td
+(1) Tj
+ET
+40 46 268 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+325 60 Td
+(6) Tj
+ET
+312 46 260 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+55 46 Td
+(2) Tj
+ET
+40 32 268 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+325 46 Td
+(7) Tj
+ET
+312 32 260 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+55 32 Td
+(3) Tj
+ET
+40 18 268 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+325 32 Td
+(8) Tj
+ET
+312 18 260 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+55 18 Td
+(4) Tj
+ET
+40 4 268 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+325 18 Td
+(9) Tj
+ET
+312 4 260 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+55 4 Td
+(5) Tj
+ET
+40 -10 268 12 re
+S
+BT
+/F1 7 Tf
+0 0 0 rg
+325 4 Td
+(10) Tj
+ET
+312 -10 260 12 re
+S
 endstream
 endobj
 5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1  7 0 R /F2 8 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 3479 >>
+stream
+BT
+/F2 9 Tf
+0 0 0 rg
+40 760 Td
+(Tick your Choice of Subjects for A' Levels at PLAYPEN \(minimum 3\):) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+44 742 Td
+([ ] English Language) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+316 742 Td
+([ ] Economics) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+44 726 Td
+([ ] Physics) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+316 726 Td
+([ ] Computer Science) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+44 710 Td
+([ ] Chemistry    OR    [ ] Business) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+316 710 Td
+([ ] Biology    OR    [ ] Accounting) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+44 694 Td
+([ ] Further Mathematics    OR    [ ] Psychology) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+316 694 Td
+([ ] Environmental Management) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+44 678 Td
+([ ] Pure Mathematics \(P1\) and Mechanics M) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+40 658 Td
+(N.B.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 646 Td
+(\(i\) At A2 Level, students will be required to take both P3 and S1 together.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 634 Td
+(\(ii\) The subjects chosen cannot be dropped or changed after one month.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 622 Td
+(\(iii\) A minimum of 10 students must opt for a subject for classes to be conducted.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 610 Td
+(\(iv\) All subjects selected for A' Levels must have been appeared for at O' Levels too.) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 600 Td
+(Total Number of Subjects:) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 600 Td
+(Hobbies:) Tj
+ET
+40 572 268 22 re
+S
+312 572 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 576 Td
+(Other Achievements:) Tj
+ET
+40 546 532 24 re
+S
+BT
+/F2 9 Tf
+0 0 0 rg
+40 540 Td
+(UNDERTAKING:) Tj
+ET
+BT
+/F1 8 Tf
+0 0 0 rg
+40 526 Td
+(We declare that the information provided in this Admission Form and all of its attachments are true, correct and complete.) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+44 512 Td
+(Father's Full Name \(USE BLOCK LETTERS\)) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 512 Td
+(Father's Signature) Tj
+ET
+40 484 268 22 re
+S
+312 484 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 488 Td
+(Mother's Full Name \(USE BLOCK LETTERS\)) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 488 Td
+(Mother's Signature) Tj
+ET
+40 460 268 22 re
+S
+312 460 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+44 464 Td
+(Student's Full Name \(USE BLOCK LETTERS\)) Tj
+ET
+BT
+/F2 8 Tf
+0 0 0 rg
+316 464 Td
+(Student's Signature) Tj
+ET
+40 436 268 22 re
+S
+312 436 260 22 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+40 430 Td
+(Please submit this Form along with the following documents:) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 418 Td
+(1. 2 copies of recent Passport Size Photographs of the Student in School Uniform.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 406 Td
+(2. Copy of Passport.) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 394 Td
+(3. Copy of last Report Card and Mock Results from Previous school \(in case of New Student\).) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+44 382 Td
+(4. Copy of O level Statement of Result, when it is published.) Tj
+ET
+40 292 532 78 re
+S
+BT
+/F2 8 Tf
+0 0 0 rg
+220 352 Td
+(FOR OFFICE USE ONLY) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+48 336 Td
+(a\) ______ Recommended for Admission in A' Level) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+48 324 Td
+(b\) ______ Recommended for Waiting List) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+48 312 Td
+(c\) ______ Not Recommended \(reason mentioned below\)) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+48 300 Td
+(d\) Comments: ________________________________________________) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+90 90 Td
+(HOUSE # 545/A, ROAD # 19, BLOCK - J, BASHUNDHARA R/A, DHAKA - 1229, BANGLADESH) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+170 78 Td
+(Contact Number: 01755693623, 01755515885) Tj
+ET
+BT
+/F1 7 Tf
+0 0 0 rg
+130 66 Td
+(E-mail: info@playpen.edu.bd    Website: www.playpen.edu.bd) Tj
+ET
+endstream
+endobj
+7 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
 xref
-0 6
+0 9
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000115 00000 n 
-0000000241 00000 n 
-0000001246 00000 n 
+0000000121 00000 n 
+0000000258 00000 n 
+0000004878 00000 n 
+0000005015 00000 n 
+0000008546 00000 n 
+0000008616 00000 n 
 trailer
-<< /Size 6 /Root 1 0 R >>
+<< /Size 9 /Root 1 0 R >>
 startxref
-1316
+8691
 %%EOF

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { validateALevelApplication } from "@/lib/a-level-admission";
+import { validatePGClassApplication } from "@/lib/pg-class-admission";
 import { createId } from "@/lib/cms/id";
 import { admissionFormConfigs, type AdmissionFormType } from "@/lib/admission-forms";
 
@@ -40,9 +42,17 @@ export async function POST(request: Request) {
 
   const config = admissionFormConfigs[formType];
   const values = body.values ?? {};
-  const missing = config.fields
-    .filter((field) => field.required && !values[field.name]?.trim())
-    .map((field) => field.label);
+
+  let missing: string[] = [];
+  if (config.customForm && formType === "a-level") {
+    missing = validateALevelApplication(values);
+  } else if (config.customForm && formType === "pg-class-ix") {
+    missing = validatePGClassApplication(values);
+  } else {
+    missing = config.fields
+      .filter((field) => field.required && !values[field.name]?.trim())
+      .map((field) => field.label);
+  }
 
   if (missing.length > 0) {
     return NextResponse.json(

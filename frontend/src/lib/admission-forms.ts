@@ -17,74 +17,32 @@ export type AdmissionFormConfig = {
   description: string;
   pdfFileName: string;
   pdfPath: string;
+  customForm?: boolean;
   fields: AdmissionFormField[];
 };
 
 export const admissionFormConfigs: Record<AdmissionFormType, AdmissionFormConfig> = {
   "pg-class-ix": {
     id: "pg-class-ix",
-    title: "PG – Class IX",
-    subtitle: "Admission application",
+    title: "Playgroup – Class X",
+    subtitle: "Early years to senior school",
     description:
-      "For Playgroup through Class IX applicants. Complete the form online or download the PDF to submit at the admissions office.",
-    pdfFileName: "playpen-pg-class-ix-admission-form.pdf",
-    pdfPath: "/forms/playpen-pg-class-ix-admission-form.pdf",
-    fields: [
-      { name: "pupilName", label: "Pupil's full name", type: "text", required: true, colSpan: 2 },
-      { name: "dateOfBirth", label: "Date of birth", type: "date", required: true },
-      { name: "gender", label: "Gender", type: "select", required: true, options: ["Male", "Female", "Other"] },
-      {
-        name: "classApplying",
-        label: "Class applying for",
-        type: "select",
-        required: true,
-        options: ["Playgroup", "Nursery", "KG", "Class I", "Class II", "Class III", "Class IV", "Class V", "Class VI", "Class VII", "Class VIII", "Class IX"],
-      },
-      { name: "previousSchool", label: "Previous school (if any)", type: "text", colSpan: 2 },
-      { name: "guardianName", label: "Parent / guardian name", type: "text", required: true, colSpan: 2 },
-      { name: "relationship", label: "Relationship to pupil", type: "text", required: true },
-      { name: "phone", label: "Contact phone", type: "tel", required: true },
-      { name: "email", label: "Email address", type: "email", required: true, colSpan: 2 },
-      { name: "address", label: "Residential address", type: "textarea", required: true, colSpan: 2 },
-      { name: "notes", label: "Additional information", type: "textarea", colSpan: 2 },
-    ],
+      "Official Playpen admission form for Playgroup through Class X. Includes personal, family, emergency, and sibling details.",
+    pdfFileName: "playpen-pg-class-x-admission-form.pdf",
+    pdfPath: "/forms/playpen-pg-class-x-admission-form.pdf",
+    customForm: true,
+    fields: [],
   },
   "a-level": {
     id: "a-level",
     title: "A' Level",
-    subtitle: "Admission application",
+    subtitle: "Advanced Subsidiary (AS) Level",
     description:
-      "For A' Level applicants. Complete the form online or download the PDF to submit with required academic documents.",
+      "Official Playpen A' Level admission form for Session 2025–2026. Complete online or download the printable PDF with all sections matching the school form.",
     pdfFileName: "playpen-a-level-admission-form.pdf",
     pdfPath: "/forms/playpen-a-level-admission-form.pdf",
-    fields: [
-      { name: "pupilName", label: "Applicant's full name", type: "text", required: true, colSpan: 2 },
-      { name: "dateOfBirth", label: "Date of birth", type: "date", required: true },
-      { name: "gender", label: "Gender", type: "select", required: true, options: ["Male", "Female", "Other"] },
-      { name: "oLevelSchool", label: "O' Level school", type: "text", required: true, colSpan: 2 },
-      { name: "oLevelYear", label: "O' Level completion year", type: "number", required: true },
-      {
-        name: "subjects",
-        label: "O' Level subjects & grades",
-        type: "textarea",
-        required: true,
-        placeholder: "e.g. Mathematics – A, Physics – B, ...",
-        colSpan: 2,
-      },
-      {
-        name: "aLevelSubjects",
-        label: "Preferred A' Level subjects",
-        type: "textarea",
-        required: true,
-        placeholder: "e.g. Mathematics, Physics, Chemistry",
-        colSpan: 2,
-      },
-      { name: "guardianName", label: "Parent / guardian name", type: "text", required: true, colSpan: 2 },
-      { name: "phone", label: "Contact phone", type: "tel", required: true },
-      { name: "email", label: "Email address", type: "email", required: true },
-      { name: "address", label: "Residential address", type: "textarea", required: true, colSpan: 2 },
-      { name: "notes", label: "Additional information", type: "textarea", colSpan: 2 },
-    ],
+    customForm: true,
+    fields: [],
   },
 };
 
