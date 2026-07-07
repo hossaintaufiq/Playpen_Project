@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { MissionSection } from "@/components/home/MissionSection";
+import { CommunityHubSection } from "@/components/home/CommunityHubSection";
 import { GraduationCap, BookOpen, Users, Award } from "lucide-react";
 
 const highlights = [
@@ -24,13 +25,6 @@ const highlights = [
     title: "Proven Excellence",
     text: "Decades of outstanding results and a legacy of achievement.",
   },
-];
-
-const stats = [
-  { value: "5000+", label: "Students" },
-  { value: "200+", label: "Teachers" },
-  { value: "48+", label: "Years" },
-  { value: "50+", label: "Awards" },
 ];
 
 export default function Home() {
@@ -70,22 +64,6 @@ export default function Home() {
         <div className="h-12 bg-gradient-to-b from-transparent to-background sm:h-16" />
       </section>
 
-      <section className="bg-background py-10 sm:py-14 md:py-16">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:gap-6 sm:px-6 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl border border-border bg-white p-4 text-center shadow-sm sm:rounded-2xl sm:p-6"
-            >
-              <p className="playpen-text font-serif text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <MissionSection />
 
       <section className="bg-muted py-12 sm:py-16 md:py-20">
@@ -117,22 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="playpen-bg bg-primary px-4 py-12 text-center sm:px-6 sm:py-16 md:py-20">
-        <div className="mx-auto max-w-2xl">
-          <h2 className="font-serif text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-            Begin Your Child&apos;s Journey Today
-          </h2>
-          <p className="mt-3 text-sm text-white/80 sm:mt-4 sm:text-base">
-            Admissions are open for the upcoming academic year. Join the Playpen family.
-          </p>
-          <Link
-            href="/admissions"
-            className="playpen-text mt-6 inline-flex w-full justify-center rounded-lg bg-white px-8 py-3 text-sm font-semibold text-primary transition hover:bg-white/90 sm:mt-8 sm:w-auto"
-          >
-            Start Application
-          </Link>
-        </div>
-      </section>
+      <CommunityHubSection />
     </SiteLayout>
   );
 }

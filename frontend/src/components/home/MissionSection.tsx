@@ -27,25 +27,8 @@ export function MissionSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         {/* Section header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="flex items-center justify-center gap-3 sm:gap-4">
-            <span className="hidden h-px w-10 bg-gradient-to-r from-transparent to-primary/40 sm:block sm:w-16" />
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm sm:text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Values &amp; Culture
-            </span>
-            <span className="hidden h-px w-10 bg-gradient-to-l from-transparent to-primary/40 sm:block sm:w-16" />
-          </div>
-
-          <h2 className="mt-5 font-serif text-2xl font-bold tracking-wide text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
-            VALUES AND CULTURE
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-5 sm:text-base md:text-lg">
-            To realize the full potential, children need to be given a well-balanced programme
-            in a creative learning environment.
-          </p>
-        </div>
+        
+          
 
         {/* Mission headline */}
         <div className="mx-auto mt-10 max-w-4xl text-center sm:mt-12">
