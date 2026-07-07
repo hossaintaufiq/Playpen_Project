@@ -12,16 +12,57 @@ import {
   Search,
   X,
 } from "lucide-react";
-import {
-  galleryCategories,
-  galleryEvents,
-  getAllGalleryImages,
-  getOverviewPhotos,
-  type GalleryCategory,
-  type GalleryEvent,
-  type GalleryImage,
-} from "@/lib/gallery-data";
+import { galleryEvents as staticGalleryEvents } from "@/lib/gallery-data";
+import type { GalleryEvent } from "@/lib/gallery-data";
 import { GalleryOverview, GalleryPhotoList } from "@/components/gallery/GalleryViews";
+
+function getAllGalleryImages(events: GalleryEvent[]) {
+  return events.flatMap((event) =>
+    event.images.map((image) => ({
+      ...image,
+      eventId: event.id,
+      eventTitle: event.title,
+      category: event.category,
+      date: event.date,
+      year: event.year,
+    }))
+  );
+}
+
+function getOverviewPhotos(events: GalleryEvent[], limit = 8) {
+  return events.slice(0, limit).map((event) => ({
+    id: `overview-${event.id}`,
+    src: event.coverImage,
+    alt: event.title,
+    caption: event.title,
+    eventTitle: event.title,
+    category: event.category,
+    date: event.date,
+    year: event.year,
+    eventId: event.id,
+  }));
+}
+
+type GalleryCategory =
+  | "All"
+  | "Events"
+  | "Sports"
+  | "Academics"
+  | "Arts"
+  | "Celebrations"
+  | "Campus";
+
+const galleryCategories: GalleryCategory[] = [
+  "All",
+  "Events",
+  "Sports",
+  "Academics",
+  "Arts",
+  "Celebrations",
+  "Campus",
+];
+
+type GalleryImage = GalleryEvent["images"][number];
 
 type ViewMode = "events" | "photos";
 
@@ -44,7 +85,12 @@ function matchesSearch(event: GalleryEvent, query: string) {
   );
 }
 
-export function GallerySection() {
+export function GallerySection({
+  initialEvents,
+}: {
+  initialEvents?: GalleryEvent[];
+}) {
+  const galleryEvents = initialEvents ?? staticGalleryEvents;
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<GalleryCategory>("All");
   const [view, setView] = useState<ViewMode>("events");
@@ -56,10 +102,10 @@ export function GallerySection() {
       const categoryMatch = category === "All" || event.category === category;
       return categoryMatch && matchesSearch(event, search);
     });
-  }, [category, search]);
+  }, [category, search, galleryEvents]);
 
   const filteredPhotos = useMemo(() => {
-    const all = getAllGalleryImages();
+    const all = getAllGalleryImages(galleryEvents);
     return all.filter((photo) => {
       const categoryMatch = category === "All" || photo.category === category;
       const q = search.trim().toLowerCase();
@@ -72,11 +118,11 @@ export function GallerySection() {
         photo.date.toLowerCase().includes(q);
       return categoryMatch && searchMatch;
     });
-  }, [category, search]);
+  }, [category, search, galleryEvents]);
 
   const overviewPhotos = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return getOverviewPhotos().filter((photo) => {
+    return getOverviewPhotos(galleryEvents).filter((photo) => {
       if (!q) return true;
       return (
         photo.eventTitle.toLowerCase().includes(q) ||

@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { ArrowRight, Bell, CalendarDays, GraduationCap } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import type { Notice, SchoolEvent } from "@/lib/cms/types";
+import { defaultCMSData } from "@/lib/cms/defaults";
 
-const notices = [
-  { title: "First Semester Examination", href: "/about" },
-  { title: "About Mobile Phones", href: "/about" },
-];
-
-const events = [
-  { month: "Sep", day: "20", title: "Parents-Teachers Meeting-1" },
-  { month: "Nov", day: "15", title: "Parents-Teachers Meeting-2" },
-];
+type CommunityHubSectionProps = {
+  notices?: Notice[];
+  events?: SchoolEvent[];
+};
 
 function CardTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -53,7 +50,10 @@ function AlumniCollage() {
   );
 }
 
-export function CommunityHubSection() {
+export function CommunityHubSection({
+  notices = defaultCMSData.notices,
+  events = defaultCMSData.schoolEvents,
+}: CommunityHubSectionProps) {
   return (
     <section className="relative overflow-hidden bg-background pb-16 pt-8 sm:pb-20 sm:pt-10 md:pb-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(128,0,0,0.03),transparent_60%)]" />
@@ -71,7 +71,7 @@ export function CommunityHubSection() {
 
             <ul className="mt-6 flex-1 space-y-2">
               {notices.map((notice) => (
-                <li key={notice.title}>
+                <li key={notice.id}>
                   <Link
                     href={notice.href}
                     className="flex items-start gap-3 rounded-xl p-2.5 transition hover:bg-muted/40"
@@ -102,7 +102,7 @@ export function CommunityHubSection() {
             <ul className="mt-6 flex-1 space-y-2">
               {events.map((event) => (
                 <li
-                  key={event.title}
+                  key={event.id}
                   className="flex items-center gap-3 rounded-xl p-2.5 transition hover:bg-muted/40"
                 >
                   <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-xl bg-accent/90 text-white">
@@ -148,7 +148,7 @@ export function CommunityHubSection() {
                   Register Now
                 </Link>
                 <Link
-                  href="/about"
+                  href="/about/playpen-alumni-association"
                   className="playpen-text inline-flex items-center justify-center gap-1.5 text-sm font-semibold transition hover:gap-2.5 sm:justify-start"
                 >
                   Learn more

@@ -3,24 +3,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const heroImages = [
-  { src: "/images/schools/elementary.jpg", alt: "Playpen elementary students learning" },
-  { src: "/images/schools/junior.jpg", alt: "Playpen junior school campus" },
-  { src: "/images/schools/middle.jpg", alt: "Playpen middle school activities" },
-  { src: "/images/schools/senior.jpg", alt: "Playpen senior school students" },
-  { src: "/images/marquee/eca.jpg", alt: "Playpen extra curricular activities" },
-] as const;
+import type { HeroSlide } from "@/lib/cms/types";
+import { defaultCMSData } from "@/lib/cms/defaults";
 
 const SLIDE_INTERVAL_MS = 5500;
 
-export function HeroSection() {
+const fallbackSlides = defaultCMSData.heroSlides.map((slide) => ({
+  src: slide.src,
+  alt: slide.alt,
+}));
+
+type HeroSectionProps = {
+  slides?: Pick<HeroSlide, "src" | "alt">[];
+};
+
+export function HeroSection({ slides }: HeroSectionProps) {
+  const heroImages = slides?.length ? slides : fallbackSlides;
   const [activeIndex, setActiveIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
     setReduceMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [heroImages.length]);
 
   useEffect(() => {
     if (reduceMotion || heroImages.length <= 1) return;
@@ -30,7 +38,7 @@ export function HeroSection() {
     }, SLIDE_INTERVAL_MS);
 
     return () => window.clearInterval(interval);
-  }, [reduceMotion]);
+  }, [reduceMotion, heroImages.length]);
 
   return (
     <section className="relative min-h-[calc(100dvh-100px)] overflow-hidden">
@@ -40,7 +48,7 @@ export function HeroSection() {
 
           return (
             <div
-              key={image.src}
+              key={`${image.src}-${index}`}
               className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
                 isActive ? "opacity-100" : "opacity-0"
               }`}
@@ -95,7 +103,7 @@ export function HeroSection() {
           <div className="mt-10 flex items-center gap-2.5 sm:mt-12">
             {heroImages.map((image, index) => (
               <button
-                key={image.src}
+                key={`${image.src}-dot-${index}`}
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-label={`Show slide ${index + 1}`}

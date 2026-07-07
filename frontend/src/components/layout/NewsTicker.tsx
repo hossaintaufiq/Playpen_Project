@@ -1,28 +1,32 @@
 import Link from "next/link";
+import type { NewsTicker as NewsTickerData } from "@/lib/cms/types";
+import { defaultCMSData } from "@/lib/cms/defaults";
 
-const phones = [
-  { display: "+8801755693623", href: "tel:+8801755693623" },
-  { display: "+8801755515885", href: "tel:+8801755515885" },
-  { display: "+8809678434241", href: "tel:+8809678434241" },
-];
+function formatPhoneHref(phone: string) {
+  const digits = phone.replace(/[^\d+]/g, "");
+  return `tel:${digits}`;
+}
 
-function TickerContent() {
+function TickerContent({ ticker }: { ticker: NewsTickerData }) {
   return (
     <p className="inline-flex items-center gap-0 whitespace-nowrap text-[11px] font-medium uppercase tracking-wide text-white/95 sm:text-xs sm:tracking-wider">
-      <span>PLAYPEN OFFERS ADMISSION FOR THE ACADEMIC YEAR (JULY 2025 – JUNE 2026) FOR A&apos; LEVEL. KINDLY CONTACT @ </span>
-      {phones.map((phone, index) => (
-        <span key={phone.href} className="inline-flex items-center">
+      <span>
+        PLAYPEN OFFERS ADMISSION FOR THE ACADEMIC YEAR ({ticker.academicYear}) FOR{" "}
+        {ticker.level}. KINDLY CONTACT @{" "}
+      </span>
+      {ticker.phones.map((phone, index) => (
+        <span key={phone} className="inline-flex items-center">
           <a
-            href={phone.href}
+            href={formatPhoneHref(phone)}
             className="underline decoration-white/40 underline-offset-2 transition hover:text-white hover:decoration-white"
           >
-            {phone.display}
+            {phone}
           </a>
-          {index < phones.length - 1 && <span>,&nbsp;</span>}
+          {index < ticker.phones.length - 1 && <span>,&nbsp;</span>}
         </span>
       ))}
       <span>
-        . [ During 9.00 AM–1.00 PM ]. FORMS ARE AVAILABLE IN THE ADMIN OFFICE AND{" "}
+        . [ During {ticker.hours} ]. {ticker.formsNote.replace("WEBSITE", "")}{" "}
         <Link
           href="/admissions"
           className="underline decoration-white/40 underline-offset-2 transition hover:text-white hover:decoration-white"
@@ -38,7 +42,7 @@ function TickerContent() {
   );
 }
 
-export function NewsTicker() {
+export function NewsTicker({ ticker = defaultCMSData.newsTicker }: { ticker?: NewsTickerData }) {
   return (
     <div
       className="playpen-bg-dark border-t border-white/10"
@@ -61,8 +65,8 @@ export function NewsTicker() {
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#5a0000] to-transparent sm:w-12" />
 
           <div className="news-ticker pointer-events-auto flex w-max items-center">
-            <TickerContent />
-            <TickerContent />
+            <TickerContent ticker={ticker} />
+            <TickerContent ticker={ticker} />
           </div>
         </div>
       </div>

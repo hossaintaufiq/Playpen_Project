@@ -1,8 +1,11 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/ui/PageHero";
 import { GallerySection } from "@/components/gallery/GallerySection";
+import { getCMSData, getPublishedCMS } from "@/lib/cms/store";
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const cms = getPublishedCMS(await getCMSData());
+
   return (
     <SiteLayout>
       <PageHero
@@ -11,7 +14,7 @@ export default function GalleryPage() {
         image="/images/marquee/eca.jpg"
         imageAlt="Playpen gallery"
       />
-      <GallerySection />
+      <GallerySection initialEvents={cms.galleryEvents} />
     </SiteLayout>
   );
 }

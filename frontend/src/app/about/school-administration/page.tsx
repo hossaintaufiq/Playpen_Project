@@ -1,6 +1,8 @@
 import { AboutPageShell } from "@/components/about/AboutPageShell";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { TeachersGrid } from "@/components/about/TeachersGrid";
 import { schoolContact } from "@/lib/contact";
+import { getCMSData, getPublishedCMS } from "@/lib/cms/store";
 
 const leadership = [
   {
@@ -25,7 +27,9 @@ const leadership = [
   },
 ];
 
-export default function SchoolAdministrationPage() {
+export default async function SchoolAdministrationPage() {
+  const cms = getPublishedCMS(await getCMSData());
+
   return (
     <AboutPageShell
       section="/about/school-administration"
@@ -57,6 +61,8 @@ export default function SchoolAdministrationPage() {
             </article>
           ))}
         </div>
+
+        <TeachersGrid teachers={cms.teachers} />
 
         <div className="mt-10 space-y-6 sm:mt-12">
           <AboutContentSection title="Governance & Communication">

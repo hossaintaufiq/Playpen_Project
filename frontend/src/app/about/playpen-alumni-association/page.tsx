@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { ArrowRight, GraduationCap, Users, Globe2 } from "lucide-react";
+import { GraduationCap, Users, Globe2 } from "lucide-react";
 import { AboutPageShell } from "@/components/about/AboutPageShell";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { AlumniRegistrationForm } from "@/components/about/AlumniRegistrationForm";
 
 const highlights = [
   {
@@ -67,23 +67,7 @@ export default function PlaypenAlumniAssociationPage() {
             </p>
           </AboutContentSection>
 
-          <div className="rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-6 sm:rounded-3xl sm:p-8 md:flex md:items-center md:justify-between md:gap-8">
-            <div className="md:max-w-xl">
-              <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
-                Register as an alumnus
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Let us know where you are and what you are doing — we would love to hear from you.
-              </p>
-            </div>
-            <Link
-              href="/admissions"
-              className="playpen-bg mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark md:mt-0 md:w-auto"
-            >
-              Register Now
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <AlumniRegistrationForm />
         </div>
       </section>
     </AboutPageShell>

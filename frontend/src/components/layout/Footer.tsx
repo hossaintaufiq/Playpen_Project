@@ -155,7 +155,20 @@ export function Footer() {
           </div>
 
           <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/50 sm:mt-10 sm:text-sm">
-            © {new Date().getFullYear()} Playpen School. All rights reserved.
+            <p>© {new Date().getFullYear()} Playpen School. All rights reserved.</p>
+            <div className="mx-auto my-4 h-px w-full max-w-xs bg-white/10" />
+            <p className="text-white/45">
+              Website is developed by Neptune Software Solutions (
+              <a
+                href="https://hossain-ahmmed-taufiq-portfolio.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/70 transition hover:text-white hover:underline"
+              >
+                Epic Panda 22
+              </a>
+              )
+            </p>
           </div>
         </div>
       </div>
