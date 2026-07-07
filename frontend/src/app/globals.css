@@ -27,6 +27,21 @@ body {
   color: #1c1c1c;
   font-family: "DM Sans", system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  letter-spacing: 0.01em;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 .font-serif {
@@ -44,4 +59,53 @@ body {
 
 .playpen-text {
   color: #800000;
+}
+
+@keyframes news-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.news-ticker {
+  animation: news-ticker 55s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-ticker {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0 1rem;
+    white-space: normal;
+  }
+}
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-rtl {
+  animation: marquee-rtl 45s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-rtl {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
 }

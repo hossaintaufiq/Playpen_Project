@@ -31,7 +31,7 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="playpen-bg sticky top-0 z-50 w-full shadow-md">
+    <div className="playpen-bg">
       <div className="mx-auto max-w-7xl">
         <div className="flex h-14 items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
           <Link
@@ -54,7 +54,10 @@ export function Navbar() {
 
           <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
             {navItems.map((item) => {
-              const active = pathname === item.href;
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
@@ -100,7 +103,10 @@ export function Navbar() {
             <nav className="playpen-bg-dark border-t border-white/10 px-4 py-3 sm:px-6">
               <div className="flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto">
                 {navItems.map((item) => {
-                  const active = pathname === item.href;
+                  const active =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname === item.href || pathname.startsWith(`${item.href}/`);
                   return (
                     <Link
                       key={item.href}
@@ -126,6 +132,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }

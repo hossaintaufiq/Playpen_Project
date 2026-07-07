@@ -3,12 +3,15 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NAVBAR_OFFSET = 64;
+const HEADER_OFFSET = 100;
 
 const schools = [
   {
@@ -16,44 +19,33 @@ const schools = [
     grades: "Playgroup – KG II",
     description:
       "A warm, playful start to education where young learners discover joy in learning within a safe and nurturing environment.",
-    image:
-      "https://images.unsplash.com/photo-1503454537845-455cf239af63?auto=format&fit=crop&w=1600&q=80",
+    image: "/images/schools/elementary.jpg",
   },
   {
     name: "Junior School",
     grades: "Class I – III",
     description:
       "Strong foundations in literacy, numeracy, and creativity through engaging, child-centred Cambridge learning experiences.",
-    image:
-      "https://images.unsplash.com/photo-1509062520606-59516df27ff2?auto=format&fit=crop&w=1600&q=80",
+    image: "/images/schools/junior.jpg",
   },
   {
     name: "Middle School",
     grades: "Class IV – VII",
     description:
       "A transformative stage where pupils build academic depth, independence, and the confidence to explore their passions.",
-    image:
-      "https://images.unsplash.com/photo-1427504490125-794c4f59b836?auto=format&fit=crop&w=1600&q=80",
+    image: "/images/schools/middle.jpg",
   },
   {
     name: "Senior School",
     grades: "Class VIII – XII · O & A Level",
     description:
       "Rigorous Cambridge O and A Level programmes that sharpen critical thinking and prepare students for leading universities across the globe.",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80",
+    image: "/images/schools/senior.jpg",
   },
-];
+] as const;
 
 export function SchoolLevelsSection() {
   const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    schools.forEach((school) => {
-      const img = new Image();
-      img.src = school.image;
-    });
-  }, []);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -63,16 +55,16 @@ export function SchoolLevelsSection() {
       const pinShell = root.querySelector<HTMLElement>(".schools-pin-shell");
       if (!pinShell) return;
 
-      const slides = Array.from(root.querySelectorAll<HTMLElement>(".school-slide"));
-      if (!slides.length) return;
+      const cards = Array.from(root.querySelectorAll<HTMLElement>(".school-card"));
+      if (!cards.length) return;
 
-      slides.forEach((slide, i) => {
-        gsap.set(slide, {
+      cards.forEach((card, i) => {
+        gsap.set(card, {
           autoAlpha: i === 0 ? 1 : 0,
           yPercent: i === 0 ? 0 : 100,
+          scale: 1,
           zIndex: i + 1,
           force3D: true,
-          willChange: "transform, opacity",
         });
       });
 
@@ -80,8 +72,8 @@ export function SchoolLevelsSection() {
         defaults: { ease: "power2.inOut", force3D: true, overwrite: "auto" },
         scrollTrigger: {
           trigger: pinShell,
-          start: `top ${NAVBAR_OFFSET}px`,
-          end: `+=${Math.max(1, slides.length - 1) * 115}%`,
+          start: `top ${HEADER_OFFSET}px`,
+          end: `+=${Math.max(1, cards.length - 1) * 115}%`,
           scrub: 1.85,
           pin: pinShell,
           anticipatePin: 1,
@@ -90,13 +82,13 @@ export function SchoolLevelsSection() {
         },
       });
 
-      slides.forEach((slide, i) => {
+      cards.forEach((card, i) => {
         if (i === 0) return;
 
         const label = `step-${i}`;
-        const prev = slides[i - 1];
+        const prev = cards[i - 1];
 
-        tl.set(slide, { autoAlpha: 1 }, label)
+        tl.set(card, { autoAlpha: 1 }, label)
           .to(
             prev,
             {
@@ -108,29 +100,45 @@ export function SchoolLevelsSection() {
             label
           )
           .to(
-            slide,
+            card,
             {
               yPercent: 0,
+              scale: 1,
               duration: 1.35,
               ease: "power2.inOut",
             },
             label
           )
-          .set(prev, { autoAlpha: 0 }, `${label}+=0.98`);
+          .set(prev, { autoAlpha: 0, scale: 1 }, `${label}+=0.98`);
       });
     }, root);
 
-    ScrollTrigger.refresh();
+    const refresh = () => ScrollTrigger.refresh();
+    refresh();
+    window.addEventListener("load", refresh);
+    const t = window.setTimeout(refresh, 100);
 
-    return () => ctx.revert();
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("load", refresh);
+      ctx.revert();
+    };
   }, []);
 
   return (
     <section className="relative bg-background">
+      <div className="mx-auto max-w-7xl px-4 pb-10 pt-4 sm:px-6 sm:pb-12 md:pb-14">
+        <SectionHeader
+          eyebrow="Academic Pathways"
+          title="A journey through every stage of learning"
+          description="From first steps in playgroup to Cambridge O and A Levels — each division is designed to meet children where they are, and gently guide them forward."
+        />
+      </div>
+
       <div ref={rootRef}>
         <div
           className="schools-pin-shell overflow-hidden"
-          style={{ height: `calc(100dvh - ${NAVBAR_OFFSET}px)` }}
+          style={{ height: `calc(100dvh - ${HEADER_OFFSET}px)` }}
         >
           <div className="relative h-full w-full">
             {schools.map((school, index) => (
@@ -138,16 +146,22 @@ export function SchoolLevelsSection() {
                 key={school.name}
                 className="school-slide pointer-events-none absolute inset-0 flex items-center justify-center px-4 py-4 sm:px-6 sm:py-6 lg:px-8"
               >
-                <div className="[perspective:1200px] flex h-full w-full max-w-7xl items-center justify-center">
-                  <article className="school-card playpen-bg pointer-events-auto relative h-[min(86vh,860px)] w-full overflow-hidden rounded-2xl bg-primary shadow-[0_32px_64px_-20px_rgba(128,0,0,0.45)] ring-2 ring-primary/20 [transform-style:preserve-3d] sm:rounded-3xl">
-                    <div
-                      className="absolute inset-0 scale-105 bg-cover bg-center opacity-55"
-                      style={{ backgroundImage: `url(${school.image})` }}
-                      role="img"
-                      aria-label={school.name}
+                <div className="flex h-full w-full max-w-7xl items-center justify-center [perspective:1200px]">
+                  <article
+                    className={`school-card pointer-events-auto relative h-[min(78vh,740px)] w-full overflow-hidden rounded-2xl bg-primary shadow-[0_28px_56px_-22px_rgba(128,0,0,0.35)] ring-1 ring-primary/15 will-change-transform sm:rounded-3xl ${
+                      index > 0 ? "invisible opacity-0" : ""
+                    }`}
+                  >
+                    <Image
+                      src={school.image}
+                      alt={school.name}
+                      fill
+                      priority
+                      sizes="(max-width: 1280px) 100vw, 1280px"
+                      className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000] via-[#800000]/85 to-[#800000]/55" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.12),transparent_50%)]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/88 via-[#800000]/45 to-[#800000]/20" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.08),transparent_55%)]" />
 
                     <div className="relative flex h-full flex-col justify-between p-6 sm:p-9 md:p-11">
                       <div className="flex items-start justify-between gap-4">
@@ -187,6 +201,8 @@ export function SchoolLevelsSection() {
           </div>
         </div>
       </div>
+
+      <SectionDivider variant="fade" />
     </section>
   );
 }
