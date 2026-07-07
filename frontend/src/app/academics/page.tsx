@@ -15,11 +15,14 @@ export default function AcademicsPage() {
         title="Academics"
         subtitle="Cambridge curriculum designed to inspire excellence at every level."
       />
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-        <div className="grid gap-6 sm:grid-cols-2">
+      <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           {programs.map((p) => (
-            <div key={p.name} className="rounded-2xl border border-border bg-white p-6 shadow-sm">
-              <h3 className="font-serif text-xl font-bold text-primary">{p.name}</h3>
+            <div
+              key={p.name}
+              className="rounded-xl border border-border bg-white p-5 shadow-sm sm:rounded-2xl sm:p-6"
+            >
+              <h3 className="font-serif text-lg font-bold text-primary sm:text-xl">{p.name}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.grades}</p>
             </div>
           ))}

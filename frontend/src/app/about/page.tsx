@@ -8,8 +8,8 @@ export default function AboutPage() {
         title="About Playpen"
         subtitle="48 years of excellence in education — shaping future leaders since 1977."
       />
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-        <p className="text-muted-foreground leading-relaxed">
+      <section className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+        <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
           Playpen is one of Bangladesh&apos;s leading English medium schools, offering the
           Cambridge curriculum from playgroup through A-Level. Our mission is to develop
           well-rounded individuals who excel academically and grow into responsible global citizens.

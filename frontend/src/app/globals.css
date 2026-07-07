@@ -26,6 +26,7 @@ body {
   background-color: #ffffff;
   color: #1c1c1c;
   font-family: "DM Sans", system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 .font-serif {

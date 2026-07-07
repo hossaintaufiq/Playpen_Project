@@ -31,13 +31,9 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <div className="sticky top-0 z-50 w-full px-3 pt-3 sm:px-4 md:px-6 lg:px-8">
-      <div
-        className={`playpen-bg mx-auto w-full max-w-7xl overflow-hidden shadow-lg ring-1 ring-white/15 transition-[border-radius] duration-300 ${
-          open ? "rounded-2xl" : "rounded-2xl lg:rounded-full"
-        }`}
-      >
-        <header className="flex h-14 items-center justify-between gap-3 px-3 sm:h-16 sm:px-5 md:px-6">
+    <header className="playpen-bg sticky top-0 z-50 w-full shadow-md">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex h-14 items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex min-w-0 shrink items-center gap-2 sm:gap-3"
@@ -50,20 +46,20 @@ export function Navbar() {
               <p className="truncate font-serif text-base font-bold leading-tight text-white sm:text-lg">
                 Playpen
               </p>
-              <p className="hidden truncate text-[10px] uppercase tracking-widest text-white/70 xs:block sm:text-[10px]">
+              <p className="hidden truncate text-[10px] uppercase tracking-widest text-white/70 sm:block">
                 School of Excellence
               </p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-0.5 xl:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
             {navItems.map((item) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`whitespace-nowrap rounded-full px-2.5 py-2 text-xs font-medium transition-colors lg:px-3 lg:text-sm ${
+                  className={`whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
                     active
                       ? "bg-white/15 text-white"
                       : "text-white/85 hover:bg-white/10 hover:text-white"
@@ -75,35 +71,17 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Tablet: compact links */}
-          <nav className="hidden items-center gap-0.5 md:flex xl:hidden">
-            {navItems.slice(0, 5).map((item) => {
-              const active = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`rounded-full px-2 py-1.5 text-[11px] font-medium transition-colors ${
-                    active ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
-                  }`}
-                >
-                  {item.label.split(" ")[0]}
-                </Link>
-              );
-            })}
-          </nav>
-
           <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/admissions"
-              className="playpen-text hidden rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-white/90 sm:inline-flex sm:px-4 sm:py-2 sm:text-sm"
+              className="playpen-text hidden rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-white/90 sm:inline-flex sm:px-4 sm:py-2 sm:text-sm"
             >
               Apply Now
             </Link>
 
             <button
               type="button"
-              className="inline-flex rounded-full p-2 text-white transition hover:bg-white/10 md:hidden"
+              className="inline-flex rounded-lg p-2 text-white transition hover:bg-white/10 xl:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={open}
@@ -111,17 +89,16 @@ export function Navbar() {
               {open ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
             </button>
           </div>
-        </header>
+        </div>
 
-        {/* Mobile & small tablet menu */}
         <div
-          className={`grid transition-all duration-300 ease-in-out md:hidden ${
+          className={`grid overflow-hidden transition-all duration-300 ease-in-out xl:hidden ${
             open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
           }`}
         >
-          <div className="overflow-hidden">
-            <nav className="border-t border-white/10 px-3 py-3 sm:px-5">
-              <div className="flex max-h-[70vh] flex-col gap-1 overflow-y-auto">
+          <div className="min-h-0">
+            <nav className="playpen-bg-dark border-t border-white/10 px-4 py-3 sm:px-6">
+              <div className="flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto">
                 {navItems.map((item) => {
                   const active = pathname === item.href;
                   return (
@@ -129,7 +106,7 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className={`rounded-xl px-4 py-3 text-sm font-medium ${
+                      className={`rounded-lg px-4 py-3 text-sm font-medium ${
                         active ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
                       }`}
                     >
@@ -140,7 +117,7 @@ export function Navbar() {
                 <Link
                   href="/admissions"
                   onClick={() => setOpen(false)}
-                  className="playpen-text mt-1 rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-primary"
+                  className="playpen-text mt-1 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-primary sm:hidden"
                 >
                   Apply Now
                 </Link>
@@ -149,6 +126,6 @@ export function Navbar() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
