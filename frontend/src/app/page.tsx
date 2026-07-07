@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { MissionSection } from "@/components/home/MissionSection";
+import { SchoolLevelsSection } from "@/components/home/SchoolLevelsSection";
 import { CommunityHubSection } from "@/components/home/CommunityHubSection";
 import { GraduationCap, BookOpen, Users, Award } from "lucide-react";
 
@@ -63,6 +64,8 @@ export default function Home() {
         </div>
         <div className="h-12 bg-gradient-to-b from-transparent to-background sm:h-16" />
       </section>
+
+      <SchoolLevelsSection />
 
       <MissionSection />
 
