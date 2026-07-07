@@ -25,6 +25,15 @@ export default function AdmissionsPage() {
           </p>
         </div>
 
+        <div className="mx-auto mt-10 max-w-3xl text-center">
+          <a
+            href="/admissions/apply"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
+          >
+            Apply Now
+          </a>
+        </div>
+
         <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:mt-12 sm:rounded-3xl sm:p-6">
           <p className="text-sm font-semibold text-foreground sm:text-base">Admissions Office</p>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground sm:text-base">

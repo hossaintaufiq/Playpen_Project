@@ -28,7 +28,7 @@ function TickerContent({ ticker }: { ticker: NewsTickerData }) {
       <span>
         . [ During {ticker.hours} ]. {ticker.formsNote.replace("WEBSITE", "")}{" "}
         <Link
-          href="/admissions"
+          href="/admissions/apply"
           className="underline decoration-white/40 underline-offset-2 transition hover:text-white hover:decoration-white"
         >
           WEBSITE

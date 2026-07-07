@@ -253,7 +253,7 @@ export function Navbar() {
 
           <div className="flex shrink-0 items-center gap-2">
             <Link
-              href="/admissions"
+              href="/admissions/apply"
               className="playpen-text hidden rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-white/90 sm:inline-flex sm:px-4 sm:py-2 sm:text-sm"
             >
               Apply Now
@@ -300,7 +300,7 @@ export function Navbar() {
                   onNavigate={() => setOpen(false)}
                 />
                 <Link
-                  href="/admissions"
+                  href="/admissions/apply"
                   onClick={() => setOpen(false)}
                   className="playpen-text mt-1 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-primary sm:hidden"
                 >
