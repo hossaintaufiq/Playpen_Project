@@ -12,7 +12,7 @@ export async function SiteLayout({ children }: { children: React.ReactNode }) {
         <Navbar />
         {cms.newsTicker.enabled && <NewsTicker ticker={cms.newsTicker} />}
       </header>
-      <main className="flex-1">{children}</main>
+      <main className="min-w-0 flex-1">{children}</main>
       <Footer />
     </>
   );

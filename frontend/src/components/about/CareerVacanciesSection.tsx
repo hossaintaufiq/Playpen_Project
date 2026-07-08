@@ -27,7 +27,7 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
             <p className="font-serif text-lg font-semibold text-foreground">No open positions right now</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Please check back later or email{" "}
-              <a href={`mailto:${careerEmail}`} className="font-semibold text-primary hover:underline">
+              <a href={`mailto:${careerEmail}`} className="break-all font-semibold text-primary hover:underline">
                 {careerEmail}
               </a>{" "}
               to express your interest.
@@ -86,13 +86,13 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
           <p className="mt-4 text-sm font-medium text-foreground">{careerMailNote}</p>
           <a
             href={`mailto:${careerEmail}`}
-            className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            className="mt-3 inline-flex max-w-full items-center gap-2 break-all text-sm font-semibold text-primary hover:underline"
           >
             <Mail className="h-4 w-4" />
             {careerEmail}
           </a>
 
-          <div className="mt-8 max-w-3xl">
+          <div className="mt-8 w-full min-w-0 max-w-3xl">
             <CareerApplicationForm
               vacancies={vacancies}
               selectedVacancyId={selectedVacancyId}

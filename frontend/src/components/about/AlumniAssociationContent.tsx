@@ -28,15 +28,15 @@ const highlights = [
 
 export function AlumniAssociationContent() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
-      <div className="overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.08] via-white to-accent/[0.08] px-6 py-10 text-center sm:px-10 sm:py-12">
+    <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <div className="overflow-hidden rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.08] via-white to-accent/[0.08] px-4 py-8 text-center sm:rounded-3xl sm:px-8 sm:py-10 md:px-10 md:py-12">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
           {tagoreQuote.attributionEn}
         </p>
         <p className="mt-1 text-sm text-primary/80">{tagoreQuote.attribution}</p>
-        <blockquote className="font-bengali mx-auto mt-5 max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl md:text-3xl md:leading-relaxed">
+        <blockquote className="font-bengali mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-foreground sm:text-2xl md:text-3xl md:leading-relaxed">
           {tagoreQuote.lines.map((line) => (
-            <p key={line} className="mt-2 first:mt-0">
+            <p key={line} className="mt-2 break-words first:mt-0">
               &ldquo;{line}&rdquo;
             </p>
           ))}
@@ -51,11 +51,11 @@ export function AlumniAssociationContent() {
         ))}
       </div>
 
-      <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
         {highlights.map((item) => (
           <article
             key={item.title}
-            className="rounded-2xl border border-border/60 bg-white p-6 text-center shadow-sm sm:rounded-3xl"
+            className="rounded-2xl border border-border/60 bg-white p-5 text-center shadow-sm sm:rounded-3xl sm:p-6"
           >
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white">
               <item.icon className="h-5 w-5" strokeWidth={1.75} />
@@ -66,24 +66,24 @@ export function AlumniAssociationContent() {
         ))}
       </div>
 
-      <div className="mt-12 sm:mt-14">
+      <div className="mt-12 w-full min-w-0 sm:mt-14">
         <SectionHeader
           eyebrow="Alumni Registration"
           title="Join the Playpen Alumni Association"
           description={alumniCallToAction}
         />
 
-        <div className="mx-auto mt-6 flex max-w-2xl justify-center">
+        <div className="mx-auto mt-6 flex w-full max-w-2xl justify-center px-0">
           <a
             href={`mailto:${alumniEmail}`}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/10"
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2.5 text-center text-sm font-semibold text-primary transition hover:bg-primary/10 sm:px-5"
           >
-            <Mail className="h-4 w-4" />
-            {alumniEmail}
+            <Mail className="h-4 w-4 shrink-0" />
+            <span className="break-all">{alumniEmail}</span>
           </a>
         </div>
 
-        <div className="mx-auto mt-8 max-w-3xl">
+        <div className="mx-auto mt-8 w-full min-w-0 max-w-3xl">
           <AlumniRegistrationForm />
         </div>
       </div>

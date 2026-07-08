@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Upload } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { FormFileUpload } from "@/components/ui/FormFileUpload";
 import type { JobVacancy } from "@/lib/cms/types";
 import { careerEmail } from "@/lib/career-at-playpen";
 
 const inputClass =
-  "w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
+  "w-full min-w-0 max-w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
 
 type Props = {
   vacancies: JobVacancy[];
@@ -99,14 +100,14 @@ export function CareerApplicationForm({ vacancies, selectedVacancyId, onVacancyC
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-6 sm:rounded-3xl sm:p-8"
+      className="w-full min-w-0 max-w-full rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-4 sm:rounded-3xl sm:p-6 md:p-8"
     >
       <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">Drop your CV</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         Select a posted vacancy and upload your CV (MS Word or PDF) with a passport-sized JPEG photo.
       </p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="block space-y-1.5 sm:col-span-2">
           <span className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
             Vacancy applying for *
@@ -141,41 +142,33 @@ export function CareerApplicationForm({ vacancies, selectedVacancyId, onVacancyC
           <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className={inputClass} />
         </label>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <div className="min-w-0 sm:col-span-2">
           <span className="text-xs font-semibold uppercase tracking-wide text-foreground/80">CV (MS Word or PDF) *</span>
-          <div className="flex flex-col gap-3 rounded-xl border border-dashed border-border/80 bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Upload className="h-5 w-5 shrink-0 text-primary" />
-              <span>.doc, .docx, or .pdf — max 10 MB</span>
-            </div>
-            <input
-              required
-              type="file"
+          <div className="mt-1.5">
+            <FormFileUpload
+              hint=".doc, .docx, or .pdf — max 10 MB"
               accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
-              onChange={(e) => setCv(e.target.files?.[0] ?? null)}
-              className="text-sm file:mr-3 file:rounded-full file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary"
+              onChange={setCv}
+              required
+              selectedFileName={cv?.name}
             />
           </div>
-        </label>
+        </div>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <div className="min-w-0 sm:col-span-2">
           <span className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
             Passport-sized photo (JPEG) *
           </span>
-          <div className="flex flex-col gap-3 rounded-xl border border-dashed border-border/80 bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Upload className="h-5 w-5 shrink-0 text-primary" />
-              <span>.jpg or .jpeg — max 5 MB</span>
-            </div>
-            <input
-              required
-              type="file"
+          <div className="mt-1.5">
+            <FormFileUpload
+              hint=".jpg or .jpeg — max 5 MB"
               accept="image/jpeg,.jpg,.jpeg"
-              onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
-              className="text-sm file:mr-3 file:rounded-full file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary"
+              onChange={setPhoto}
+              required
+              selectedFileName={photo?.name}
             />
           </div>
-        </label>
+        </div>
       </div>
 
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}

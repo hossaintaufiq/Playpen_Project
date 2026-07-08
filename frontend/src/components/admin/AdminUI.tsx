@@ -122,7 +122,7 @@ export function AdminField({
 }
 
 export const adminInputClass =
-  "w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none transition placeholder:text-muted-foreground/60 focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
+  "w-full min-w-0 max-w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none transition placeholder:text-muted-foreground/60 focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
 
 export function AdminPublishToggle({
   checked,

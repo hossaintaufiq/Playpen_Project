@@ -8,14 +8,14 @@ const highlightIcons = [Shield, Users, TrendingUp] as const;
 
 export function CareerAtPlaypenContent({ vacancies }: { vacancies: JobVacancy[] }) {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+    <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <SectionHeader
         eyebrow="Careers at Playpen"
         title="Build a lasting career in education"
         description={careerIntro}
       />
 
-      <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
         {careerHighlights.map((item, index) => {
           const Icon = highlightIcons[index];
           return (

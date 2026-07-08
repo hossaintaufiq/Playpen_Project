@@ -1,5 +1,5 @@
 export const formInputClass =
-  "w-full rounded-lg border border-border/80 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/10";
+  "w-full min-w-0 max-w-full rounded-lg border border-border/80 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-primary/50 focus:ring-2 focus:ring-primary/10";
 
 export const formLabelClass = "text-xs font-semibold uppercase tracking-wide text-foreground/80";
 

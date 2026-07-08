@@ -9,7 +9,7 @@ interface PageHeroProps {
 
 export function PageHero({ title, subtitle, image, imageAlt }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden px-4 py-14 text-center sm:px-6 sm:py-16 md:py-20">
+    <section className="relative overflow-hidden px-4 py-12 text-center sm:px-6 sm:py-16 md:py-20">
       {image ? (
         <>
           <Image
@@ -27,8 +27,8 @@ export function PageHero({ title, subtitle, image, imageAlt }: PageHeroProps) {
         <div className="playpen-bg absolute inset-0 bg-primary" />
       )}
 
-      <div className="relative mx-auto max-w-3xl">
-        <h1 className="font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl lg:text-5xl">
+      <div className="relative mx-auto max-w-3xl min-w-0">
+        <h1 className="break-words font-serif text-2xl font-semibold text-white sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h1>
         {subtitle && (

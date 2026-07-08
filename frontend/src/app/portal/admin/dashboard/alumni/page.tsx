@@ -84,7 +84,7 @@ export default function AdminAlumniPage() {
   if (loading || !data) return <AdminLoading />;
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       <AdminSectionHeader />
 
       <div className="mb-6 flex flex-wrap items-center gap-2">
@@ -99,7 +99,7 @@ export default function AdminAlumniPage() {
               key={item.value}
               type="button"
               onClick={() => setFilter(item.value)}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+              className={`rounded-full border px-3 py-2 text-xs font-semibold transition sm:px-4 sm:text-sm ${
                 active
                   ? "border-primary bg-primary text-white"
                   : "border-border/70 bg-white text-muted-foreground hover:border-primary/30 hover:text-foreground"
@@ -176,19 +176,19 @@ export default function AdminAlumniPage() {
                 <img
                   src={`/api/admin/alumni-photos/${request.photoPath}`}
                   alt={`${request.name} photograph`}
-                  className="mt-2 h-40 w-40 rounded-xl border border-border/60 object-cover"
+                  className="h-40 w-full max-w-[10rem] rounded-xl border border-border/60 object-cover sm:w-40"
                 />
               </div>
             )}
 
-            <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
+            <div className="mt-6 flex flex-col gap-2 border-t border-border/60 pt-4 sm:flex-row sm:flex-wrap sm:items-center">
               {request.status === "pending" && (
                 <>
                   <button
                     type="button"
                     disabled={saving}
                     onClick={() => setStatus(request.id, "approved")}
-                    className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 disabled:opacity-60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700 disabled:opacity-60 sm:w-auto"
                   >
                     <Check className="h-4 w-4" />
                     Approve — show on website
@@ -197,7 +197,7 @@ export default function AdminAlumniPage() {
                     type="button"
                     disabled={saving}
                     onClick={() => setStatus(request.id, "rejected")}
-                    className="inline-flex items-center gap-2 rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60 sm:w-auto"
                   >
                     <X className="h-4 w-4" />
                     Reject — do not show

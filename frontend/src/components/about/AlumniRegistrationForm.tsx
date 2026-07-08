@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Upload } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { FormFileUpload } from "@/components/ui/FormFileUpload";
 import { alumniEmail } from "@/lib/alumni-association";
 
 const inputClass =
-  "w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
+  "w-full min-w-0 max-w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
 
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
   return (
@@ -78,12 +79,15 @@ export function AlumniRegistrationForm() {
 
   if (success) {
     return (
-      <div className="rounded-2xl border border-green-200 bg-green-50 p-6 sm:rounded-3xl sm:p-8">
+      <div className="w-full min-w-0 rounded-2xl border border-green-200 bg-green-50 p-4 sm:rounded-3xl sm:p-8">
         <h3 className="font-serif text-xl font-semibold text-foreground">Thank you for registering</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Your alumni registration has been received and is pending review by our administration
           team. We will contact you after your details have been approved. You may also email{" "}
-          <a href={`mailto:${alumniEmail}`} className="font-semibold text-primary hover:underline">
+          <a
+            href={`mailto:${alumniEmail}`}
+            className="break-all font-semibold text-primary hover:underline"
+          >
             {alumniEmail}
           </a>{" "}
           with any additional information.
@@ -102,15 +106,15 @@ export function AlumniRegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-6 sm:rounded-3xl sm:p-8"
+      className="w-full min-w-0 max-w-full rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-4 sm:rounded-3xl sm:p-6 md:p-8"
     >
       <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
         Alumni Registration
       </h3>
       <p className="mt-2 text-sm text-muted-foreground">Fields marked with * are required.</p>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <label className="block space-y-1.5 sm:col-span-2">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="block min-w-0 space-y-1.5 sm:col-span-2">
           <FieldLabel required>Full Name</FieldLabel>
           <input
             required
@@ -121,7 +125,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <label className="block min-w-0 space-y-1.5 sm:col-span-2">
           <FieldLabel required>Home Address</FieldLabel>
           <textarea
             required
@@ -133,7 +137,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5">
+        <label className="block min-w-0 space-y-1.5">
           <FieldLabel>Email</FieldLabel>
           <input
             type="email"
@@ -144,7 +148,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5">
+        <label className="block min-w-0 space-y-1.5">
           <FieldLabel required>Contact Number</FieldLabel>
           <input
             required
@@ -156,7 +160,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5">
+        <label className="block min-w-0 space-y-1.5">
           <FieldLabel>Year of &apos;O&apos; Level Graduation</FieldLabel>
           <input
             value={oLevelYear}
@@ -166,7 +170,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5">
+        <label className="block min-w-0 space-y-1.5">
           <FieldLabel>Year of &apos;A&apos; Level Graduation</FieldLabel>
           <input
             value={aLevelYear}
@@ -176,7 +180,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <label className="block min-w-0 space-y-1.5 sm:col-span-2">
           <FieldLabel required>Present Occupation</FieldLabel>
           <input
             required
@@ -187,7 +191,7 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <label className="block min-w-0 space-y-1.5 sm:col-span-2">
           <FieldLabel>Graduation Information</FieldLabel>
           <textarea
             rows={3}
@@ -198,21 +202,17 @@ export function AlumniRegistrationForm() {
           />
         </label>
 
-        <label className="block space-y-1.5 sm:col-span-2">
+        <div className="min-w-0 sm:col-span-2">
           <FieldLabel>Photograph</FieldLabel>
-          <div className="flex flex-col gap-3 rounded-xl border border-dashed border-border/80 bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 text-sm text-muted-foreground">
-              <Upload className="h-5 w-5 shrink-0 text-primary" />
-              <span>Upload a recent photograph (JPG or PNG, max 5 MB)</span>
-            </div>
-            <input
-              type="file"
+          <div className="mt-1.5">
+            <FormFileUpload
+              hint="Upload a recent photograph (JPG or PNG, max 5 MB)"
               accept="image/jpeg,image/png,image/webp"
-              onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
-              className="text-sm file:mr-3 file:rounded-full file:border-0 file:bg-primary/10 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary"
+              onChange={setPhoto}
+              selectedFileName={photo?.name}
             />
           </div>
-        </label>
+        </div>
       </div>
 
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}

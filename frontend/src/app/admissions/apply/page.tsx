@@ -11,7 +11,7 @@ export default function AdmissionApplyPage() {
         image="/images/marquee/student-services.jpg"
         imageAlt="Playpen admissions"
       />
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         <AdmissionApplyFlow />
       </section>
     </SiteLayout>

@@ -61,7 +61,7 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto w-full min-w-0 max-w-5xl">
       <button
         type="button"
         onClick={onBack}
