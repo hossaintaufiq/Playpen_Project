@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AdminCard, AdminPageHeader } from "@/components/admin/AdminUI";
+import { AdminCard, AdminEmptyState, AdminLoading } from "@/components/admin/AdminUI";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import type { AlumniRequest } from "@/lib/cms/types";
 import { Check, Clock, Trash2, X } from "lucide-react";
@@ -80,14 +81,11 @@ export default function AdminAlumniPage() {
     await save({ alumniRequests });
   }
 
-  if (loading || !data) return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (loading || !data) return <AdminLoading />;
 
   return (
     <div>
-      <AdminPageHeader
-        title="Alumni Registrations"
-        description="Review submissions from the Playpen Alumni Association form. New registrations stay pending until you approve or reject them."
-      />
+      <AdminSectionHeader />
 
       <div className="mb-6 flex flex-wrap items-center gap-2">
         {filters.map((item) => {
@@ -133,13 +131,18 @@ export default function AdminAlumniPage() {
 
       <div className="space-y-4">
         {filteredRequests.length === 0 && (
-          <AdminCard>
-            <p className="text-sm text-muted-foreground">
-              {filter === "pending"
-                ? "No pending alumni registrations. New form submissions will appear here."
-                : `No ${filter === "all" ? "" : `${filter} `}registrations to show.`}
-            </p>
-          </AdminCard>
+          <AdminEmptyState
+            title={
+              filter === "pending"
+                ? "No pending registrations"
+                : `No ${filter === "all" ? "" : `${filter} `}registrations`
+            }
+            description={
+              filter === "pending"
+                ? "When someone fills in the alumni form on the website, it will appear here for you to review."
+                : "Try another filter above to see more registrations."
+            }
+          />
         )}
 
         {filteredRequests.map((request) => (
@@ -188,7 +191,7 @@ export default function AdminAlumniPage() {
                     className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700 disabled:opacity-60"
                   >
                     <Check className="h-4 w-4" />
-                    Approve
+                    Approve — show on website
                   </button>
                   <button
                     type="button"
@@ -197,7 +200,7 @@ export default function AdminAlumniPage() {
                     className="inline-flex items-center gap-2 rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700 disabled:opacity-60"
                   >
                     <X className="h-4 w-4" />
-                    Reject
+                    Reject — do not show
                   </button>
                 </>
               )}

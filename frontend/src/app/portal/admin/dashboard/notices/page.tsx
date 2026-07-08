@@ -1,15 +1,25 @@
 "use client";
 
-import { AdminCard, AdminField, AdminPageHeader, AdminSaveBar, adminInputClass } from "@/components/admin/AdminUI";
+import {
+  AdminAddButton,
+  AdminCard,
+  AdminDeleteButton,
+  AdminEmptyState,
+  AdminField,
+  AdminLoading,
+  AdminPublishToggle,
+  AdminSaveBar,
+  adminInputClass,
+} from "@/components/admin/AdminUI";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import { createId } from "@/lib/cms/id";
 import type { Notice } from "@/lib/cms/types";
-import { Trash2 } from "lucide-react";
 
 export default function AdminNoticesPage() {
   const { data, loading, saving, message, error, save, updateLocal } = useAdminCMS();
 
-  if (loading || !data) return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (loading || !data) return <AdminLoading />;
 
   function updateNotice(id: string, patch: Partial<Notice>) {
     updateLocal({
@@ -20,7 +30,7 @@ export default function AdminNoticesPage() {
   function addNotice() {
     const notice: Notice = {
       id: createId("notice"),
-      title: "New announcement",
+      title: "New notice",
       href: "/about",
       published: true,
       createdAt: new Date().toISOString().slice(0, 10),
@@ -30,52 +40,53 @@ export default function AdminNoticesPage() {
 
   return (
     <div>
-      <AdminPageHeader
-        title="Notices"
-        description="Manage notice and announcement items shown on the home page community section."
-      />
+      <AdminSectionHeader />
 
       <div className="space-y-4">
+        {data.notices.length === 0 && (
+          <AdminEmptyState
+            title="No notices yet"
+            description="Press the button below to add your first notice link for the home page."
+          />
+        )}
+
         {data.notices.map((notice) => (
           <AdminCard key={notice.id}>
             <div className="grid gap-4 md:grid-cols-2">
-              <AdminField label="Title">
+              <AdminField label="Notice title" hint="Short, clear text visitors will read">
                 <input
                   className={adminInputClass}
                   value={notice.title}
                   onChange={(e) => updateNotice(notice.id, { title: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Link URL">
+              <AdminField label="Page link" hint="e.g. /about or /admissions">
                 <input
                   className={adminInputClass}
                   value={notice.href}
                   onChange={(e) => updateNotice(notice.id, { href: e.target.value })}
                 />
               </AdminField>
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
+              <div className="md:col-span-2">
+                <AdminPublishToggle
                   checked={notice.published}
-                  onChange={(e) => updateNotice(notice.id, { published: e.target.checked })}
+                  onChange={(published) => updateNotice(notice.id, { published })}
+                  hint="Only published notices appear on the website."
                 />
-                Published
-              </label>
+              </div>
             </div>
-            <button
-              type="button"
+            <AdminDeleteButton
               onClick={() => updateLocal({ notices: data.notices.filter((n) => n.id !== notice.id) })}
-              className="mt-4 inline-flex items-center gap-2 text-sm text-red-600 hover:underline"
             >
-              <Trash2 className="h-4 w-4" /> Delete
-            </button>
+              Remove this notice
+            </AdminDeleteButton>
           </AdminCard>
         ))}
       </div>
 
-      <button type="button" onClick={addNotice} className="mt-4 rounded-full border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary">
-        + Add notice
-      </button>
+      <div className="mt-4">
+        <AdminAddButton onClick={addNotice}>Add notice</AdminAddButton>
+      </div>
 
       <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ notices: data.notices })} />
     </div>

@@ -1,10 +1,20 @@
 "use client";
 
-import { AdminCard, AdminField, AdminPageHeader, AdminSaveBar, adminInputClass } from "@/components/admin/AdminUI";
+import {
+  AdminAddButton,
+  AdminCard,
+  AdminDeleteButton,
+  AdminEmptyState,
+  AdminField,
+  AdminLoading,
+  AdminPublishToggle,
+  AdminSaveBar,
+  adminInputClass,
+} from "@/components/admin/AdminUI";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import { createId } from "@/lib/cms/id";
 import type { AchievementCategory, StudentAchievement } from "@/lib/cms/types";
-import { Trash2 } from "lucide-react";
 
 const categories: { value: AchievementCategory; label: string }[] = [
   { value: "academic", label: "Academic" },
@@ -28,7 +38,7 @@ function textToResults(value: string) {
 export default function AdminAchievementsPage() {
   const { data, loading, saving, message, error, save, updateLocal } = useAdminCMS();
 
-  if (loading || !data) return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (loading || !data) return <AdminLoading />;
 
   function updateAchievement(id: string, patch: Partial<StudentAchievement>) {
     updateLocal({
@@ -63,22 +73,20 @@ export default function AdminAchievementsPage() {
 
   return (
     <div>
-      <AdminPageHeader
-        title="Student Achievements"
-        description="Manage competition results and awards shown on the Achievements of Playpen Students page. Only published entries appear on the website."
-      />
+      <AdminSectionHeader />
 
       <div className="space-y-4">
         {sorted.length === 0 && (
-          <AdminCard>
-            <p className="text-sm text-muted-foreground">No achievements yet. Add one to get started.</p>
-          </AdminCard>
+          <AdminEmptyState
+            title="No achievements yet"
+            description="Add student competition results and awards to showcase on the website."
+          />
         )}
 
         {sorted.map((achievement) => (
           <AdminCard key={achievement.id}>
             <div className="grid gap-4 md:grid-cols-2">
-              <AdminField label="Event title">
+              <AdminField label="Event name">
                 <input
                   className={adminInputClass}
                   value={achievement.title}
@@ -109,7 +117,7 @@ export default function AdminAchievementsPage() {
                   onChange={(e) => updateAchievement(achievement.id, { organizer: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Venue / Place">
+              <AdminField label="Venue / place">
                 <input
                   className={adminInputClass}
                   value={achievement.venue ?? ""}
@@ -139,7 +147,7 @@ export default function AdminAchievementsPage() {
                   }
                 />
               </AdminField>
-              <AdminField label="Display order">
+              <AdminField label="Display order" hint="Lower numbers appear first">
                 <input
                   type="number"
                   className={adminInputClass}
@@ -149,7 +157,7 @@ export default function AdminAchievementsPage() {
                   }
                 />
               </AdminField>
-              <AdminField label="Image path (optional)">
+              <AdminField label="Photo path (optional)" hint="/images/marquee/achievements.jpg">
                 <input
                   className={adminInputClass}
                   placeholder="/images/marquee/achievements.jpg"
@@ -157,19 +165,13 @@ export default function AdminAchievementsPage() {
                   onChange={(e) => updateAchievement(achievement.id, { image: e.target.value })}
                 />
               </AdminField>
-              <div className="flex items-end">
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={achievement.published}
-                    onChange={(e) =>
-                      updateAchievement(achievement.id, { published: e.target.checked })
-                    }
-                  />
-                  Published (visible on website)
-                </label>
+              <div className="md:col-span-2">
+                <AdminPublishToggle
+                  checked={achievement.published}
+                  onChange={(published) => updateAchievement(achievement.id, { published })}
+                />
               </div>
-              <AdminField label="Results (one per line)">
+              <AdminField label="Results" hint="Write one student result per line">
                 <textarea
                   className={adminInputClass}
                   rows={6}
@@ -180,8 +182,7 @@ export default function AdminAchievementsPage() {
                 />
               </AdminField>
             </div>
-            <button
-              type="button"
+            <AdminDeleteButton
               onClick={() =>
                 updateLocal({
                   studentAchievements: data.studentAchievements.filter(
@@ -189,21 +190,16 @@ export default function AdminAchievementsPage() {
                   ),
                 })
               }
-              className="mt-4 inline-flex items-center gap-2 text-sm text-red-600 hover:underline"
             >
-              <Trash2 className="h-4 w-4" /> Delete achievement
-            </button>
+              Remove this achievement
+            </AdminDeleteButton>
           </AdminCard>
         ))}
       </div>
 
-      <button
-        type="button"
-        onClick={addAchievement}
-        className="mt-4 rounded-full border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary"
-      >
-        + Add achievement
-      </button>
+      <div className="mt-4">
+        <AdminAddButton onClick={addAchievement}>Add achievement</AdminAddButton>
+      </div>
 
       <AdminSaveBar
         saving={saving}

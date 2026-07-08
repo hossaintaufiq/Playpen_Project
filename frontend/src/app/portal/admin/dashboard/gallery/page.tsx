@@ -1,7 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { AdminCard, AdminField, AdminPageHeader, AdminSaveBar, adminInputClass } from "@/components/admin/AdminUI";
+import {
+  AdminAddButton,
+  AdminCard,
+  AdminDeleteButton,
+  AdminEmptyState,
+  AdminField,
+  AdminLoading,
+  AdminSaveBar,
+  adminInputClass,
+} from "@/components/admin/AdminUI";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import { createId } from "@/lib/cms/id";
 import type { GalleryEvent, GalleryImage } from "@/lib/gallery-data";
@@ -12,7 +22,7 @@ export default function AdminGalleryPage() {
   const { data, loading, saving, message, error, save, updateLocal } = useAdminCMS();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  if (loading || !data) return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (loading || !data) return <AdminLoading />;
 
   function updateEvent(id: string, patch: Partial<GalleryEvent>) {
     updateLocal({
@@ -68,12 +78,16 @@ export default function AdminGalleryPage() {
 
   return (
     <div>
-      <AdminPageHeader
-        title="Gallery"
-        description="Manage gallery events, categories, cover images, and photo collections."
-      />
+      <AdminSectionHeader />
 
       <div className="space-y-4">
+        {data.galleryEvents.length === 0 && (
+          <AdminEmptyState
+            title="No photo albums yet"
+            description="Create an album for each school event or occasion, then add photos inside it."
+          />
+        )}
+
         {data.galleryEvents.map((event) => (
           <AdminCard key={event.id}>
             <button
@@ -85,7 +99,9 @@ export default function AdminGalleryPage() {
                 <p className="font-semibold text-foreground">{event.title}</p>
                 <p className="text-xs text-muted-foreground">{event.category} · {event.images.length} photos</p>
               </div>
-              <span className="text-sm text-primary">{expandedId === event.id ? "Hide" : "Edit"}</span>
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+                {expandedId === event.id ? "Close" : "Open to edit"}
+              </span>
             </button>
 
             {expandedId === event.id && (
@@ -140,22 +156,20 @@ export default function AdminGalleryPage() {
                   </button>
                 </div>
 
-                <button
-                  type="button"
+                <AdminDeleteButton
                   onClick={() => updateLocal({ galleryEvents: data.galleryEvents.filter((e) => e.id !== event.id) })}
-                  className="inline-flex items-center gap-2 text-sm text-red-600 hover:underline"
                 >
-                  <Trash2 className="h-4 w-4" /> Delete event
-                </button>
+                  Remove this album
+                </AdminDeleteButton>
               </div>
             )}
           </AdminCard>
         ))}
       </div>
 
-      <button type="button" onClick={addEvent} className="mt-4 rounded-full border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary">
-        + Add gallery event
-      </button>
+      <div className="mt-4">
+        <AdminAddButton onClick={addEvent}>Add photo album</AdminAddButton>
+      </div>
 
       <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ galleryEvents: data.galleryEvents })} />
     </div>

@@ -1,15 +1,25 @@
 "use client";
 
-import { AdminCard, AdminField, AdminPageHeader, AdminSaveBar, adminInputClass } from "@/components/admin/AdminUI";
+import {
+  AdminAddButton,
+  AdminCard,
+  AdminDeleteButton,
+  AdminEmptyState,
+  AdminField,
+  AdminLoading,
+  AdminPublishToggle,
+  AdminSaveBar,
+  adminInputClass,
+} from "@/components/admin/AdminUI";
+import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import { createId } from "@/lib/cms/id";
 import type { SchoolEvent } from "@/lib/cms/types";
-import { Trash2 } from "lucide-react";
 
 export default function AdminEventsPage() {
   const { data, loading, saving, message, error, save, updateLocal } = useAdminCMS();
 
-  if (loading || !data) return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (loading || !data) return <AdminLoading />;
 
   function updateEvent(id: string, patch: Partial<SchoolEvent>) {
     updateLocal({
@@ -30,66 +40,66 @@ export default function AdminEventsPage() {
 
   return (
     <div>
-      <AdminPageHeader
-        title="School Events"
-        description="Create and manage upcoming events displayed on the home page."
-      />
+      <AdminSectionHeader />
 
       <div className="space-y-4">
+        {data.schoolEvents.length === 0 && (
+          <AdminEmptyState
+            title="No events yet"
+            description="Add your first school event to show it on the home page."
+          />
+        )}
+
         {data.schoolEvents.map((event) => (
           <AdminCard key={event.id}>
             <div className="grid gap-4 md:grid-cols-2">
-              <AdminField label="Event title">
+              <AdminField label="Event name">
                 <input
                   className={adminInputClass}
                   value={event.title}
                   onChange={(e) => updateEvent(event.id, { title: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Description (optional)">
+              <AdminField label="Extra details (optional)">
                 <input
                   className={adminInputClass}
                   value={event.description ?? ""}
                   onChange={(e) => updateEvent(event.id, { description: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Month">
+              <AdminField label="Month" hint="e.g. Jan, Feb, Mar">
                 <input
                   className={adminInputClass}
                   value={event.month}
                   onChange={(e) => updateEvent(event.id, { month: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Day">
+              <AdminField label="Day" hint="e.g. 15">
                 <input
                   className={adminInputClass}
                   value={event.day}
                   onChange={(e) => updateEvent(event.id, { day: e.target.value })}
                 />
               </AdminField>
-              <label className="flex items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
+              <div className="md:col-span-2">
+                <AdminPublishToggle
                   checked={event.published}
-                  onChange={(e) => updateEvent(event.id, { published: e.target.checked })}
+                  onChange={(published) => updateEvent(event.id, { published })}
                 />
-                Published
-              </label>
+              </div>
             </div>
-            <button
-              type="button"
+            <AdminDeleteButton
               onClick={() => updateLocal({ schoolEvents: data.schoolEvents.filter((e) => e.id !== event.id) })}
-              className="mt-4 inline-flex items-center gap-2 text-sm text-red-600 hover:underline"
             >
-              <Trash2 className="h-4 w-4" /> Delete
-            </button>
+              Remove this event
+            </AdminDeleteButton>
           </AdminCard>
         ))}
       </div>
 
-      <button type="button" onClick={addEvent} className="mt-4 rounded-full border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary">
-        + Add event
-      </button>
+      <div className="mt-4">
+        <AdminAddButton onClick={addEvent}>Add event</AdminAddButton>
+      </div>
 
       <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ schoolEvents: data.schoolEvents })} />
     </div>

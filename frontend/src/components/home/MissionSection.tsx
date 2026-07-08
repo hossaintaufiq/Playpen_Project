@@ -42,8 +42,8 @@ export function MissionSection() {
           </p>
         </blockquote>
 
-        <div className="mt-12 grid items-stretch gap-6 sm:mt-14 lg:grid-cols-2 lg:gap-8">
-          <div className="flex h-full min-h-[280px] flex-col rounded-2xl border border-border/50 bg-white p-5 shadow-[0_2px_20px_-8px_rgba(0,0,0,0.08)] sm:min-h-[320px] sm:rounded-3xl sm:p-6 lg:p-7">
+        <div className="mt-12 grid items-stretch gap-6 sm:mt-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+          <div className="flex h-full min-h-[340px] flex-col rounded-2xl border border-border/50 bg-white p-5 shadow-[0_2px_20px_-8px_rgba(0,0,0,0.08)] sm:min-h-[400px] sm:rounded-3xl sm:p-6 lg:min-h-[440px] lg:p-7">
             <div className="mb-5 flex items-center justify-between gap-3 border-b border-border/50 pb-4">
               <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 Our Story
