@@ -16,7 +16,10 @@ function normalizeCMSData(raw: Partial<CMSData>): CMSData {
     galleryEvents: raw.galleryEvents ?? defaultCMSData.galleryEvents,
     teachers: raw.teachers ?? defaultCMSData.teachers,
     vacancies: raw.vacancies ?? defaultCMSData.vacancies,
-    alumniRequests: raw.alumniRequests ?? defaultCMSData.alumniRequests,
+    alumniRequests: (raw.alumniRequests ?? defaultCMSData.alumniRequests).map((request) => ({
+      ...request,
+      status: request.status ?? "pending",
+    })),
     updatedAt: raw.updatedAt ?? defaultCMSData.updatedAt,
   };
 }

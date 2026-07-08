@@ -81,8 +81,8 @@ export function AlumniRegistrationForm() {
       <div className="rounded-2xl border border-green-200 bg-green-50 p-6 sm:rounded-3xl sm:p-8">
         <h3 className="font-serif text-xl font-semibold text-foreground">Thank you for registering</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Your alumni registration has been received. Our team will review your details and be in
-          touch soon. You may also email{" "}
+          Your alumni registration has been received and is pending review by our administration
+          team. We will contact you after your details have been approved. You may also email{" "}
           <a href={`mailto:${alumniEmail}`} className="font-semibold text-primary hover:underline">
             {alumniEmail}
           </a>{" "}

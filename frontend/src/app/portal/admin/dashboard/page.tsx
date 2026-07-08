@@ -19,7 +19,7 @@ export default function AdminDashboardPage() {
     { label: "Gallery events", value: data.galleryEvents.length },
     { label: "Teachers", value: data.teachers.filter((t) => t.published).length },
     { label: "Open vacancies", value: data.vacancies.filter((v) => v.published).length },
-    { label: "Alumni requests", value: data.alumniRequests.filter((a) => a.status === "pending").length },
+    { label: "Pending alumni", value: data.alumniRequests.filter((a) => a.status === "pending").length },
   ];
 
   return (
