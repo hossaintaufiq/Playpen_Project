@@ -18,28 +18,28 @@ const schools = [
     name: "Elementary School",
     grades: "Playgroup – KG II",
     description:
-      "A warm, playful start to education where young learners discover joy in learning within a safe and nurturing environment.",
+      "From Elementary through Senior levels, Playpen follows the Cambridge Curriculum—building moral, mental, and physical growth from the earliest years. Functional English, fine motor skills, and social development are nurtured as teachers guide young learners with care and patience.",
     image: "/images/schools/elementary.jpg",
   },
   {
     name: "Junior School",
     grades: "Class I – III",
     description:
-      "Strong foundations in literacy, numeracy, and creativity through engaging, child-centred Cambridge learning experiences.",
+      "The Junior Curriculum lets students learn at their own pace—building good behaviour, communication skills, and social etiquette without pressure. A strong English foundation supports Mathematics, Science, Bangla, and more, equipping pupils for the stages ahead.",
     image: "/images/schools/junior.jpg",
   },
   {
     name: "Middle School",
     grades: "Class IV – VII",
     description:
-      "A transformative stage where pupils build academic depth, independence, and the confidence to explore their passions.",
+      "In Classes IV–VII, pupils explore core subjects through dynamic lessons, technology, and hands-on learning. Qualified teachers tailor curriculum to each student—encouraging individual learning styles, creative thinking, and a zest for academics.",
     image: "/images/schools/middle.jpg",
   },
   {
     name: "Senior School",
     grades: "Class VIII – XII · O & A Level",
     description:
-      "Rigorous Cambridge O and A Level programmes that sharpen critical thinking and prepare students for leading universities across the globe.",
+      "Senior School prepares students for Cambridge O, AS, and A Level examinations—internationally recognised qualifications that open doors to leading universities worldwide. Playpen balances knowledge, understanding, and skills to build curiosity, passion for learning, and a strong foundation for higher education.",
     image: "/images/schools/senior.jpg",
   },
 ] as const;
