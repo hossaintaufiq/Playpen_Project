@@ -1,4 +1,5 @@
 import { galleryEvents } from "@/lib/gallery-data";
+import { vacancyAreas } from "@/lib/career-at-playpen";
 import type { CMSData } from "./types";
 
 export const defaultCMSData: CMSData = {
@@ -45,6 +46,13 @@ export const defaultCMSData: CMSData = {
       published: true,
     },
   ],
+  vacancies: vacancyAreas.map((vacancy, index) => ({
+    id: `vacancy-${index + 1}`,
+    title: vacancy.title,
+    description: vacancy.description,
+    published: true,
+    createdAt: new Date().toISOString().slice(0, 10),
+  })),
   alumniRequests: [],
   updatedAt: new Date().toISOString(),
 };

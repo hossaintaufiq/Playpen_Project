@@ -46,12 +46,28 @@ export type Teacher = {
   published: boolean;
 };
 
+export type JobVacancy = {
+  id: string;
+  title: string;
+  description: string;
+  published: boolean;
+  createdAt: string;
+};
+
 export type AlumniRequest = {
   id: string;
   name: string;
-  email: string;
-  phone?: string;
-  batch: string;
+  homeAddress: string;
+  email?: string;
+  phone: string;
+  oLevelYear?: string;
+  aLevelYear?: string;
+  occupation: string;
+  graduationInfo?: string;
+  photoPath?: string;
+  /** @deprecated Legacy field kept for older submissions */
+  batch?: string;
+  /** @deprecated Legacy field kept for older submissions */
   message?: string;
   status: "pending" | "approved" | "rejected";
   createdAt: string;
@@ -64,6 +80,7 @@ export type CMSData = {
   schoolEvents: SchoolEvent[];
   galleryEvents: GalleryEvent[];
   teachers: Teacher[];
+  vacancies: JobVacancy[];
   alumniRequests: AlumniRequest[];
   updatedAt: string;
 };

@@ -21,10 +21,12 @@ export default function AdminAlumniPage() {
     const request: AlumniRequest = {
       id: createId("alumni"),
       name: "Alumni name",
+      homeAddress: "Present address",
+      phone: "01700000000",
+      occupation: "Occupation",
       email: "alumni@example.com",
-      batch: "2010",
       status: "pending",
-      createdAt: new Date().toISOString().slice(0, 10),
+      createdAt: new Date().toISOString(),
     };
     updateLocal({ alumniRequests: [request, ...data!.alumniRequests] });
   }
@@ -33,7 +35,7 @@ export default function AdminAlumniPage() {
     <div>
       <AdminPageHeader
         title="Alumni Requests"
-        description="Review, approve, add, or remove alumni registration requests."
+        description="Review, approve, add, or remove alumni registration submissions."
       />
 
       <div className="space-y-4">
@@ -46,17 +48,29 @@ export default function AdminAlumniPage() {
         {data.alumniRequests.map((request) => (
           <AdminCard key={request.id}>
             <div className="grid gap-4 md:grid-cols-2">
-              <AdminField label="Name">
+              <AdminField label="Full name">
                 <input className={adminInputClass} value={request.name} onChange={(e) => updateRequest(request.id, { name: e.target.value })} />
               </AdminField>
+              <AdminField label="Contact number">
+                <input className={adminInputClass} value={request.phone} onChange={(e) => updateRequest(request.id, { phone: e.target.value })} />
+              </AdminField>
               <AdminField label="Email">
-                <input className={adminInputClass} value={request.email} onChange={(e) => updateRequest(request.id, { email: e.target.value })} />
+                <input className={adminInputClass} value={request.email ?? ""} onChange={(e) => updateRequest(request.id, { email: e.target.value })} />
               </AdminField>
-              <AdminField label="Phone">
-                <input className={adminInputClass} value={request.phone ?? ""} onChange={(e) => updateRequest(request.id, { phone: e.target.value })} />
+              <AdminField label="Present occupation">
+                <input className={adminInputClass} value={request.occupation ?? ""} onChange={(e) => updateRequest(request.id, { occupation: e.target.value })} />
               </AdminField>
-              <AdminField label="Batch / Year">
-                <input className={adminInputClass} value={request.batch} onChange={(e) => updateRequest(request.id, { batch: e.target.value })} />
+              <AdminField label="O' Level year">
+                <input className={adminInputClass} value={request.oLevelYear ?? ""} onChange={(e) => updateRequest(request.id, { oLevelYear: e.target.value })} />
+              </AdminField>
+              <AdminField label="A' Level year">
+                <input className={adminInputClass} value={request.aLevelYear ?? request.batch ?? ""} onChange={(e) => updateRequest(request.id, { aLevelYear: e.target.value })} />
+              </AdminField>
+              <AdminField label="Home address">
+                <textarea className={adminInputClass} rows={2} value={request.homeAddress ?? ""} onChange={(e) => updateRequest(request.id, { homeAddress: e.target.value })} />
+              </AdminField>
+              <AdminField label="Graduation information">
+                <textarea className={adminInputClass} rows={2} value={request.graduationInfo ?? request.message ?? ""} onChange={(e) => updateRequest(request.id, { graduationInfo: e.target.value })} />
               </AdminField>
               <AdminField label="Status">
                 <select
@@ -69,9 +83,11 @@ export default function AdminAlumniPage() {
                   <option value="rejected">Rejected</option>
                 </select>
               </AdminField>
-              <AdminField label="Message">
-                <textarea className={adminInputClass} rows={3} value={request.message ?? ""} onChange={(e) => updateRequest(request.id, { message: e.target.value })} />
-              </AdminField>
+              {request.photoPath && (
+                <AdminField label="Photograph">
+                  <p className="text-sm text-muted-foreground">{request.photoPath}</p>
+                </AdminField>
+              )}
             </div>
             <button
               type="button"

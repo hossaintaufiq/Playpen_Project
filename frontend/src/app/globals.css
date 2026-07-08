@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
 /* Playpen brand — maroon #800000 */
@@ -59,6 +59,10 @@ main {
 
 .playpen-text {
   color: #800000;
+}
+
+.font-bengali {
+  font-family: "Noto Serif Bengali", "Noto Sans Bengali", serif;
 }
 
 @keyframes news-ticker {
