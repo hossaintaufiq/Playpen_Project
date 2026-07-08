@@ -16,6 +16,7 @@ function normalizeCMSData(raw: Partial<CMSData>): CMSData {
     galleryEvents: raw.galleryEvents ?? defaultCMSData.galleryEvents,
     teachers: raw.teachers ?? defaultCMSData.teachers,
     vacancies: raw.vacancies ?? defaultCMSData.vacancies,
+    studentAchievements: raw.studentAchievements ?? defaultCMSData.studentAchievements,
     alumniRequests: (raw.alumniRequests ?? defaultCMSData.alumniRequests).map((request) => ({
       ...request,
       status: request.status ?? "pending",
@@ -49,6 +50,9 @@ export function getPublishedCMS(data: CMSData): CMSData {
     schoolEvents: data.schoolEvents.filter((event) => event.published),
     teachers: data.teachers.filter((teacher) => teacher.published),
     vacancies: data.vacancies.filter((vacancy) => vacancy.published),
+    studentAchievements: data.studentAchievements
+      .filter((achievement) => achievement.published)
+      .sort((a, b) => a.order - b.order),
     alumniRequests: data.alumniRequests,
   };
 }

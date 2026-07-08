@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   LogOut,
   Megaphone,
+  Trophy,
   Users,
 } from "lucide-react";
 import { adminNavItems } from "@/lib/admin-nav";
@@ -22,6 +23,7 @@ const icons = {
   gallery: Images,
   users: Users,
   briefcase: Briefcase,
+  trophy: Trophy,
   graduation: GraduationCap,
 } as const;
 

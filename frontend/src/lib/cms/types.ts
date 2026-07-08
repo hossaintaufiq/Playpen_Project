@@ -54,6 +54,24 @@ export type JobVacancy = {
   createdAt: string;
 };
 
+export type AchievementCategory = "academic" | "science" | "sports" | "arts" | "other";
+
+export type StudentAchievement = {
+  id: string;
+  title: string;
+  organizer?: string;
+  venue?: string;
+  date?: string;
+  year?: string;
+  participatedBy?: string;
+  results: string[];
+  image?: string;
+  category: AchievementCategory;
+  published: boolean;
+  order: number;
+  createdAt: string;
+};
+
 export type AlumniRequest = {
   id: string;
   name: string;
@@ -81,6 +99,7 @@ export type CMSData = {
   galleryEvents: GalleryEvent[];
   teachers: Teacher[];
   vacancies: JobVacancy[];
+  studentAchievements: StudentAchievement[];
   alumniRequests: AlumniRequest[];
   updatedAt: string;
 };

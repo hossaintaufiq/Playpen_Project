@@ -7,5 +7,6 @@ export const adminNavItems = [
   { label: "Gallery", href: "/portal/admin/dashboard/gallery", icon: "gallery" },
   { label: "Teachers", href: "/portal/admin/dashboard/teachers", icon: "users" },
   { label: "Vacancies", href: "/portal/admin/dashboard/vacancies", icon: "briefcase" },
+  { label: "Achievements", href: "/portal/admin/dashboard/achievements", icon: "trophy" },
   { label: "Alumni", href: "/portal/admin/dashboard/alumni", icon: "graduation" },
 ] as const;

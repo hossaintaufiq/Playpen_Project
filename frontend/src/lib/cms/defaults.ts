@@ -1,5 +1,6 @@
 import { galleryEvents } from "@/lib/gallery-data";
 import { vacancyAreas } from "@/lib/career-at-playpen";
+import { defaultStudentAchievements } from "@/lib/student-achievements-defaults";
 import type { CMSData } from "./types";
 
 export const defaultCMSData: CMSData = {
@@ -53,6 +54,7 @@ export const defaultCMSData: CMSData = {
     published: true,
     createdAt: new Date().toISOString().slice(0, 10),
   })),
+  studentAchievements: defaultStudentAchievements,
   alumniRequests: [],
   updatedAt: new Date().toISOString(),
 };

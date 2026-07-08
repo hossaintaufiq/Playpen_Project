@@ -1,71 +1,44 @@
-import { HeartHandshake, BookMarked, Accessibility, MessageCircle } from "lucide-react";
-import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { FileText, GraduationCap, ScrollText } from "lucide-react";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import {
+  studentSupportIntro,
+  universityApplicationDocuments,
+} from "@/lib/student-support";
 
-const services = [
-  {
-    icon: BookMarked,
-    title: "Academic Guidance",
-    text: "Support for study skills, homework routines, and navigating the Cambridge curriculum.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Pastoral Care",
-    text: "A caring approach that helps pupils feel secure, valued, and ready to learn.",
-  },
-  {
-    icon: Accessibility,
-    title: "Individual Needs",
-    text: "Attention to pupils who may need additional support to access learning effectively.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Parent Partnership",
-    text: "Regular communication with families to address concerns and celebrate progress.",
-  },
-];
+const documentIcons = [FileText, ScrollText, GraduationCap] as const;
 
 export default function StudentSupportPage() {
   return (
     <AcademicsPageShell
       section="/academics/student-support"
       title="Student Support"
-      subtitle="Comprehensive care and guidance so every pupil can learn with confidence."
+      subtitle="Guidance and documentation for senior students applying to local and international colleges and universities."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            We assure you of the best possible care and education for your child. Our student
-            support services work alongside classroom teaching to help pupils thrive academically
-            and personally.
+          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
+            {studentSupportIntro}
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
-                <item.icon className="h-5 w-5" strokeWidth={1.75} />
-              </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-10 sm:mt-12">
-          <AboutContentSection title="How We Help">
-            <p>
-              Class teachers, division heads, and support staff collaborate to identify pupils
-              who may benefit from additional guidance. Parents are encouraged to reach out
-              early if they have concerns about their child&apos;s learning or wellbeing.
-            </p>
-          </AboutContentSection>
+        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-3">
+          {universityApplicationDocuments.map((item, index) => {
+            const Icon = documentIcons[index];
+            return (
+              <article
+                key={item.title}
+                className="rounded-2xl border border-border/50 bg-white p-6 text-center shadow-sm sm:rounded-3xl"
+              >
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+                  <Icon className="h-6 w-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-5 font-serif text-lg font-semibold uppercase tracking-wide text-foreground sm:text-xl">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+              </article>
+            );
+          })}
         </div>
       </section>
     </AcademicsPageShell>
