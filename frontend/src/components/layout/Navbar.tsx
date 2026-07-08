@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, GraduationCap, Menu, Shield, X } from "lucide-react";
 import { portalNavItems } from "@/lib/portal-nav";
+import { siteLogo } from "@/lib/brand";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -218,8 +220,15 @@ export function Navbar() {
             className="flex min-w-0 shrink items-center gap-2 sm:gap-3"
             onClick={() => setOpen(false)}
           >
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25 sm:h-10 sm:w-10">
-              <span className="font-serif text-base font-bold text-white sm:text-lg">P</span>
+            <div className="relative h-10 w-10 shrink-0 sm:h-11 sm:w-11">
+              <Image
+                src={siteLogo.src}
+                alt={siteLogo.alt}
+                fill
+                className="object-contain"
+                sizes="44px"
+                priority
+              />
             </div>
             <div className="min-w-0">
               <p className="truncate font-serif text-base font-bold leading-tight text-white sm:text-lg">
