@@ -31,7 +31,9 @@ export default function AdminNoticesPage() {
     const notice: Notice = {
       id: createId("notice"),
       title: "New notice",
-      href: "/about",
+      description: "Short preview text shown on the notice card.",
+      content: "Full notice details shown when families click Read more.",
+      href: "/notices",
       published: true,
       createdAt: new Date().toISOString().slice(0, 10),
     };
@@ -60,13 +62,39 @@ export default function AdminNoticesPage() {
                   onChange={(e) => updateNotice(notice.id, { title: e.target.value })}
                 />
               </AdminField>
-              <AdminField label="Page link" hint="e.g. /about or /admissions">
+              <AdminField label="Page link" hint="e.g. /notices, /admissions, or /about">
                 <input
                   className={adminInputClass}
                   value={notice.href}
                   onChange={(e) => updateNotice(notice.id, { href: e.target.value })}
                 />
               </AdminField>
+              <div className="md:col-span-2">
+                <AdminField
+                  label="Short description"
+                  hint="Preview text on the notice card (2 lines)"
+                >
+                  <textarea
+                    className={adminInputClass}
+                    rows={2}
+                    value={notice.description ?? ""}
+                    onChange={(e) => updateNotice(notice.id, { description: e.target.value })}
+                  />
+                </AdminField>
+              </div>
+              <div className="md:col-span-2">
+                <AdminField
+                  label="Full notice details"
+                  hint="Shown in the detail window when visitors click Read more"
+                >
+                  <textarea
+                    className={adminInputClass}
+                    rows={5}
+                    value={notice.content ?? ""}
+                    onChange={(e) => updateNotice(notice.id, { content: e.target.value })}
+                  />
+                </AdminField>
+              </div>
               <div className="md:col-span-2">
                 <AdminPublishToggle
                   checked={notice.published}

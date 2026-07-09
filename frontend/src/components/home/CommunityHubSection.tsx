@@ -88,10 +88,10 @@ export function CommunityHubSection({
             </ul>
 
             <Link
-              href="/about"
+              href="/notices"
               className="playpen-text mt-6 inline-flex items-center gap-1.5 text-sm font-semibold transition hover:gap-2.5"
             >
-              View more notices
+              View all notices
               <ArrowRight className="h-4 w-4" />
             </Link>
           </article>

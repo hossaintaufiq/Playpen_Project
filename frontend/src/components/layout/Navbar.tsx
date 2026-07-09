@@ -14,6 +14,7 @@ const navItems = [
   { label: "Academics", href: "/academics" },
   { label: "Admissions", href: "/admissions" },
   { label: "Student Life", href: "/student-life" },
+  { label: "Notices", href: "/notices" },
   { label: "Gallery", href: "/gallery" },
 ] as const;
 

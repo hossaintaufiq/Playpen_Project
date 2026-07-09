@@ -20,6 +20,8 @@ export type NewsTicker = {
 export type Notice = {
   id: string;
   title: string;
+  description?: string;
+  content?: string;
   href: string;
   published: boolean;
   createdAt: string;

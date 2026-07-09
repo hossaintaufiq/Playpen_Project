@@ -20,8 +20,26 @@ export const defaultCMSData: CMSData = {
     formsNote: "FORMS ARE AVAILABLE IN THE ADMIN OFFICE AND WEBSITE.",
   },
   notices: [
-    { id: "notice-1", title: "First Semester Examination", href: "/about", published: true, createdAt: "2024-08-01" },
-    { id: "notice-2", title: "About Mobile Phones", href: "/about", published: true, createdAt: "2024-08-15" },
+    {
+      id: "notice-1",
+      title: "First Semester Examination",
+      description: "Examination schedules and guidelines for the first semester are now available for all divisions.",
+      content:
+        "The first semester examination timetable has been published for all divisions. Students should review subject-wise schedules, reporting times, and examination rules shared by their class teachers.\n\nFor full examination policy and promotion requirements, please visit the Academics section.",
+      href: "/academics/examinations",
+      published: true,
+      createdAt: "2024-08-01",
+    },
+    {
+      id: "notice-2",
+      title: "About Mobile Phones",
+      description: "Please review the updated school policy on mobile phone use on campus and during school hours.",
+      content:
+        "Playpen maintains a strict policy on mobile phones and prohibited devices to protect learning and student wellbeing. Phones must not be used during school hours unless authorised by staff.\n\nParents are requested to read the full Code of Conduct and ensure children follow school rules.",
+      href: "/admissions/code-of-conduct",
+      published: true,
+      createdAt: "2024-08-15",
+    },
   ],
   schoolEvents: [
     { id: "event-1", title: "Parents-Teachers Meeting-1", month: "Sep", day: "20", published: true },

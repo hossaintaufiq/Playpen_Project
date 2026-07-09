@@ -65,10 +65,11 @@ export const adminNavItems: AdminNavItem[] = [
     group: "home",
     description:
       "Edit the scrolling message bar that runs below the menu on every page — great for urgent news or the academic year.",
-    whereOnSite: "Every page — scrolling bar under the menu",
+    whereOnSite: "Every page — scrolling bar & Notices page",
     steps: [
       "Turn the ticker ON or OFF to show or hide the bar.",
       "Type your message in the text boxes.",
+      "The announcement also appears on the Notices & Announcements page.",
       "Press Save changes when finished.",
     ],
   },
@@ -78,12 +79,12 @@ export const adminNavItems: AdminNavItem[] = [
     icon: "bell",
     group: "home",
     description:
-      "Add short notice links shown in the home page community section — like quick links to important pages.",
-    whereOnSite: "Home page — community section",
+      "Add school notices with a title, short description, and link. Published notices appear on the Notices & Announcements page and home page.",
+    whereOnSite: "Notices page & home page community section",
     steps: [
       "Press + Add notice to create a new item.",
-      "Write a clear title and paste the page link (e.g. /about).",
-      "Tick Published so visitors can see it.",
+      "Write a title, short preview, and full details for the Read more window.",
+      "Add a related page link (e.g. /admissions) and tick Published.",
       "Press Save changes at the bottom.",
     ],
   },

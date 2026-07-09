@@ -11,7 +11,11 @@ function normalizeCMSData(raw: Partial<CMSData>): CMSData {
     ...raw,
     heroSlides: raw.heroSlides ?? defaultCMSData.heroSlides,
     newsTicker: raw.newsTicker ?? defaultCMSData.newsTicker,
-    notices: raw.notices ?? defaultCMSData.notices,
+    notices: (raw.notices ?? defaultCMSData.notices).map((notice) => ({
+      ...notice,
+      description: notice.description ?? "",
+      content: notice.content ?? notice.description ?? "",
+    })),
     schoolEvents: raw.schoolEvents ?? defaultCMSData.schoolEvents,
     galleryEvents: raw.galleryEvents ?? defaultCMSData.galleryEvents,
     teachers: raw.teachers ?? defaultCMSData.teachers,
