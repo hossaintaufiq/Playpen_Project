@@ -11,10 +11,11 @@ const SLIDE_INTERVAL_MS = 5500;
 const fallbackSlides = defaultCMSData.heroSlides.map((slide) => ({
   src: slide.src,
   alt: slide.alt,
+  description: "A trusted school community in Dhaka, dedicated to nurturing every learner with warmth, excellence, and opportunity.",
 }));
 
 type HeroSectionProps = {
-  slides?: Pick<HeroSlide, "src" | "alt">[];
+  slides?: (Pick<HeroSlide, "src" | "alt"> & { description?: string })[];
 };
 
 export function HeroSection({ slides }: HeroSectionProps) {
@@ -39,6 +40,10 @@ export function HeroSection({ slides }: HeroSectionProps) {
 
     return () => window.clearInterval(interval);
   }, [reduceMotion, heroImages.length]);
+
+  const activeDescription =
+    heroImages[activeIndex]?.description ??
+    "A trusted school community in Dhaka, dedicated to nurturing every learner with warmth, excellence, and opportunity.";
 
   return (
     <section className="relative min-h-[calc(100dvh-100px)] overflow-hidden">
@@ -69,9 +74,9 @@ export function HeroSection({ slides }: HeroSectionProps) {
         })}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#5a0000]/92 via-[#800000]/78 to-[#800000]/55" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#5a0000]/78 via-[#800000]/60 to-[#800000]/40" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.08),transparent_55%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/26 via-transparent to-transparent" />
 
       <div className="relative mx-auto flex min-h-[calc(100dvh-100px)] max-w-7xl items-center px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28">
         <div className="max-w-3xl">
@@ -81,10 +86,7 @@ export function HeroSection({ slides }: HeroSectionProps) {
           <h1 className="mt-5 font-serif text-3xl font-semibold leading-[1.18] tracking-tight text-white sm:mt-6 sm:text-4xl md:text-5xl lg:text-[3.15rem] lg:leading-[1.15]">
             We assure you of the best possible care and education for your child.
           </h1>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/78 sm:mt-6 sm:text-base md:text-lg">
-            A trusted school community in Dhaka, dedicated to nurturing every learner
-            with warmth, excellence, and opportunity.
-          </p>
+          <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/78 sm:mt-6 sm:text-base md:text-lg">{activeDescription}</p>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
               href="/admissions"
