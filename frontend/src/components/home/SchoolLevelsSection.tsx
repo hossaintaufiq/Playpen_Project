@@ -50,9 +50,6 @@ export function SchoolLevelsSection() {
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    const isSmallScreen = window.matchMedia("(max-width: 1024px)").matches;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isSmallScreen || reduceMotion) return;
 
     const ctx = gsap.context(() => {
       const pinShell = root.querySelector<HTMLElement>(".schools-pin-shell");
@@ -159,6 +156,7 @@ export function SchoolLevelsSection() {
                       src={school.image}
                       alt={school.name}
                       fill
+                      priority
                       sizes="(max-width: 1280px) 100vw, 1280px"
                       className="object-cover"
                     />
