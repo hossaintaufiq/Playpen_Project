@@ -1,6 +1,8 @@
 import { Building2, Mail, Phone, Smartphone, Users } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import type { GalleryImage } from "@/lib/gallery-data";
 import { schoolContact } from "@/lib/contact";
 import {
   administrationIntro,
@@ -41,7 +43,11 @@ function LeadershipCard({
   );
 }
 
-export function SchoolAdministrationContent() {
+export function SchoolAdministrationContent({
+  photoPreview,
+}: {
+  photoPreview?: { title: string; href: string; images: GalleryImage[] } | null;
+}) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <SectionHeader
@@ -68,6 +74,16 @@ export function SchoolAdministrationContent() {
           ))}
         </div>
       </div>
+
+      {photoPreview ? (
+        <div className="mt-10 sm:mt-12">
+          <SectionPhotoPreview
+            title={photoPreview.title}
+            href={photoPreview.href}
+            images={photoPreview.images}
+          />
+        </div>
+      ) : null}
 
       <div className="mt-12 sm:mt-14">
         <div className="mb-5 flex items-center gap-2">

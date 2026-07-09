@@ -30,22 +30,22 @@ export const schoolDivisions = [
   {
     name: "Elementary School",
     grades: "Playgroup – KG II",
-    image: "/images/schools/elementary.jpg",
+    image: "/images/schools/elementary.webp",
   },
   {
     name: "Junior School",
     grades: "Class I – III",
-    image: "/images/schools/junior.jpg",
+    image: "/images/schools/junior.webp",
   },
   {
     name: "Middle School",
     grades: "Class IV – VII",
-    image: "/images/schools/middle.jpg",
+    image: "/images/schools/middle.webp",
   },
   {
     name: "Senior School",
     grades: "Class VIII – XII",
-    image: "/images/schools/senior.jpg",
+    image: "/images/schools/senior.webp",
   },
 ] as const;
 

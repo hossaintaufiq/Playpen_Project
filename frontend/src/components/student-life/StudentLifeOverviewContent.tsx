@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
+import type { GalleryImage } from "@/lib/gallery-data";
 import {
   studentLifeMission,
   studentLifeMoments,
@@ -103,7 +105,11 @@ function SectionPreviewCard({
   );
 }
 
-export function StudentLifeOverviewContent() {
+export function StudentLifeOverviewContent({
+  photoPreview,
+}: {
+  photoPreview?: { title: string; href: string; images: GalleryImage[] } | null;
+}) {
   const featured = studentLifeSectionPreviews.find((section) => section.featured)!;
   const otherSections = studentLifeSectionPreviews.filter((section) => !section.featured);
 
@@ -177,6 +183,14 @@ export function StudentLifeOverviewContent() {
       </section>
 
       <SectionDivider variant="soft" />
+
+      {photoPreview ? (
+        <SectionPhotoPreview
+          title={photoPreview.title}
+          href={photoPreview.href}
+          images={photoPreview.images}
+        />
+      ) : null}
 
       <section className="bg-muted/30 py-14 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

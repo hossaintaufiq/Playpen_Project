@@ -29,7 +29,7 @@ function getAllGalleryImages(events: GalleryEvent[]) {
   );
 }
 
-function getOverviewPhotos(events: GalleryEvent[], limit = 8) {
+function getOverviewPhotos(events: GalleryEvent[], limit = 12) {
   return events.slice(0, limit).map((event) => ({
     id: `overview-${event.id}`,
     src: event.coverImage,
@@ -87,12 +87,16 @@ function matchesSearch(event: GalleryEvent, query: string) {
 
 export function GallerySection({
   initialEvents,
+  initialSearch = "",
+  initialCategory = "All",
 }: {
   initialEvents?: GalleryEvent[];
+  initialSearch?: string;
+  initialCategory?: GalleryCategory;
 }) {
   const galleryEvents = initialEvents ?? staticGalleryEvents;
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState<GalleryCategory>("All");
+  const [search, setSearch] = useState(initialSearch);
+  const [category, setCategory] = useState<GalleryCategory>(initialCategory);
   const [view, setView] = useState<ViewMode>("events");
   const [selectedEvent, setSelectedEvent] = useState<GalleryEvent | null>(null);
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);

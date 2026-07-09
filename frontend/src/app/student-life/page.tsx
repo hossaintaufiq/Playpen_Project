@@ -1,8 +1,15 @@
 import { StudentLifeOverviewContent } from "@/components/student-life/StudentLifeOverviewContent";
 import { SectionPageShell } from "@/components/ui/SectionPageShell";
 import { studentLifeHeroImages, studentLifeNavItems } from "@/lib/student-life-nav";
+import { getSectionPreview } from "@/lib/school-images";
 
-export default function StudentLifePage() {
+export default async function StudentLifePage() {
+  const photoPreview = await getSectionPreview(
+    "student-life/overview",
+    "Student Life Photo Highlights",
+    "student life",
+  );
+
   return (
     <SectionPageShell
       section="/student-life"
@@ -13,7 +20,7 @@ export default function StudentLifePage() {
       ariaLabel="Student life sections"
       heroImages={studentLifeHeroImages}
     >
-      <StudentLifeOverviewContent />
+      <StudentLifeOverviewContent photoPreview={photoPreview} />
     </SectionPageShell>
   );
 }

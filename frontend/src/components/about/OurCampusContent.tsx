@@ -6,7 +6,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import type { GalleryImage } from "@/lib/gallery-data";
 import { schoolContact } from "@/lib/contact";
 import {
   campusAddress,
@@ -19,7 +21,11 @@ import {
   studentCareHighlights,
 } from "@/lib/our-campus";
 
-export function OurCampusContent() {
+export function OurCampusContent({
+  photoPreview,
+}: {
+  photoPreview?: { title: string; href: string; images: GalleryImage[] } | null;
+}) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <SectionHeader
@@ -54,11 +60,21 @@ export function OurCampusContent() {
         ))}
       </div>
 
+      {photoPreview ? (
+        <div className="mt-10">
+          <SectionPhotoPreview
+            title={photoPreview.title}
+            href={photoPreview.href}
+            images={photoPreview.images}
+          />
+        </div>
+      ) : null}
+
       <div className="mt-12 grid gap-6 lg:grid-cols-5 lg:gap-8">
         <div className="relative overflow-hidden rounded-3xl lg:col-span-2">
           <div className="relative aspect-[4/5] min-h-[320px] sm:aspect-auto sm:min-h-[420px]">
             <Image
-              src="/images/schools/middle.jpg"
+              src="/school-images/about/our-campus/DSC01243.webp"
               alt="Playpen school campus building"
               fill
               className="object-cover"
@@ -185,7 +201,7 @@ export function OurCampusContent() {
           </div>
           <div className="relative min-h-[220px] bg-black/20 lg:min-h-full">
             <Image
-              src="/images/marquee/eca.jpg"
+              src="/school-images/about/our-campus/DSC01245.webp"
               alt="Playpen campus expansion"
               fill
               className="object-cover opacity-90"

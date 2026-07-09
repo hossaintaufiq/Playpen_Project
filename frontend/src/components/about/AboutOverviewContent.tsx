@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
+import type { GalleryImage } from "@/lib/gallery-data";
 import { schoolContact } from "@/lib/contact";
 import {
   aboutMission,
@@ -103,7 +105,11 @@ function SectionPreviewCard({
   );
 }
 
-export function AboutOverviewContent() {
+export function AboutOverviewContent({
+  photoPreview,
+}: {
+  photoPreview?: { title: string; href: string; images: GalleryImage[] } | null;
+}) {
   const featured = aboutSectionPreviews.find((section) => section.featured)!;
   const otherSections = aboutSectionPreviews.filter((section) => !section.featured);
 
@@ -133,7 +139,7 @@ export function AboutOverviewContent() {
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_20px_50px_-20px_rgba(128,0,0,0.25)]">
                 <Image
-                  src="/images/schools/senior.jpg"
+                  src="/images/schools/senior.webp"
                   alt="Playpen students on campus"
                   fill
                   className="object-cover"
@@ -163,6 +169,14 @@ export function AboutOverviewContent() {
       </section>
 
       <SectionDivider variant="soft" />
+
+      {photoPreview ? (
+        <SectionPhotoPreview
+          title={photoPreview.title}
+          href={photoPreview.href}
+          images={photoPreview.images}
+        />
+      ) : null}
 
       <section className="bg-muted/30 py-14 sm:py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

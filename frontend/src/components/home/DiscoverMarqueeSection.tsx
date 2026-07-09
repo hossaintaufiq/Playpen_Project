@@ -8,31 +8,31 @@ const marqueeItems = [
   {
     title: "ECA",
     subtitle: "Extra Curricular Activities",
-    image: "/images/marquee/eca.jpg",
+    image: "/school-images/site-wide/marquee/eca.webp",
     href: "/student-life",
   },
   {
     title: "Student Services",
     subtitle: "Support at every step",
-    image: "/images/marquee/student-services.jpg",
+    image: "/school-images/site-wide/marquee/student-services.webp",
     href: "/admissions",
   },
   {
     title: "Faculty Members",
     subtitle: "Dedicated educators",
-    image: "/images/marquee/faculty.jpg",
+    image: "/school-images/site-wide/marquee/faculty.webp",
     href: "/about",
   },
   {
     title: "Alumni",
     subtitle: "A legacy of success",
-    image: "/images/marquee/alumni.jpg",
+    image: "/school-images/site-wide/marquee/alumni.webp",
     href: "/about",
   },
   {
     title: "Achievements",
     subtitle: "Excellence in every field",
-    image: "/images/marquee/achievements.jpg",
+    image: "/school-images/site-wide/marquee/achievements.webp",
     href: "/academics",
   },
 ];

@@ -64,7 +64,7 @@ export const aboutSectionPreviews: AboutSectionPreview[] = [
     label: "Our Campus",
     description: "Facilities and learning environment",
     excerpt: campusIntro,
-    image: "/images/schools/middle.jpg",
+    image: "/images/schools/middle.webp",
     icon: Building2,
     highlights: [
       "Purpose-built 10-storey campus in Bashundhara",
@@ -78,7 +78,7 @@ export const aboutSectionPreviews: AboutSectionPreview[] = [
     label: "School Administration",
     description: "Leadership and governance",
     excerpt: administrationIntro,
-    image: "/images/marquee/faculty.jpg",
+    image: "/images/schools/senior.webp",
     icon: Users,
     highlights: [
       "Experienced Board of Management",
@@ -91,7 +91,7 @@ export const aboutSectionPreviews: AboutSectionPreview[] = [
     label: "Child Protection Policy",
     description: "Safeguarding every pupil",
     excerpt: childProtectionStatement,
-    image: "/images/marquee/student-services.jpg",
+    image: "/images/schools/junior.webp",
     icon: Shield,
     highlights: [
       "Local and Cambridge safeguarding standards",
@@ -104,7 +104,7 @@ export const aboutSectionPreviews: AboutSectionPreview[] = [
     label: "Playpen Alumni Association",
     description: "Our graduate community",
     excerpt: alumniIntro[0],
-    image: "/images/marquee/alumni.jpg",
+    image: "/images/schools/elementary.webp",
     icon: GraduationCap,
     highlights: [
       "Reconnect with batch mates worldwide",
@@ -117,7 +117,7 @@ export const aboutSectionPreviews: AboutSectionPreview[] = [
     label: "Career at Playpen",
     description: "Join our team",
     excerpt: careerIntro,
-    image: "/images/marquee/achievements.jpg",
+    image: "/images/schools/middle.webp",
     icon: Briefcase,
     highlights: [
       "Long-serving, dedicated faculty community",

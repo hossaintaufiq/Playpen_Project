@@ -1,8 +1,15 @@
 import { AdmissionsOverviewContent } from "@/components/admissions/AdmissionsOverviewContent";
 import { SectionPageShell } from "@/components/ui/SectionPageShell";
 import { admissionsHeroImages, admissionsNavItems } from "@/lib/admissions-nav";
+import { getSectionPreview } from "@/lib/school-images";
 
-export default function AdmissionsPage() {
+export default async function AdmissionsPage() {
+  const photoPreview = await getSectionPreview(
+    "admissions/overview",
+    "Admissions Photo Highlights",
+    "admissions",
+  );
+
   return (
     <SectionPageShell
       section="/admissions"
@@ -13,7 +20,7 @@ export default function AdmissionsPage() {
       ariaLabel="Admissions sections"
       heroImages={admissionsHeroImages}
     >
-      <AdmissionsOverviewContent />
+      <AdmissionsOverviewContent photoPreview={photoPreview} />
     </SectionPageShell>
   );
 }
