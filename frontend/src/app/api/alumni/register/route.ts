@@ -4,8 +4,9 @@ import path from "path";
 import { createId } from "@/lib/cms/id";
 import { getCMSData, saveCMSData } from "@/lib/cms/store";
 import type { AlumniRequest } from "@/lib/cms/types";
+import { getAppDataDir } from "@/lib/data-path";
 
-const UPLOAD_DIR = path.join(process.cwd(), "data", "alumni-photos");
+const UPLOAD_DIR = path.join(getAppDataDir(), "alumni-photos");
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 
 function text(value: FormDataEntryValue | null) {

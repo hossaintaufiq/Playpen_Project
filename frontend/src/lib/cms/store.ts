@@ -2,8 +2,9 @@ import { promises as fs } from "fs";
 import path from "path";
 import { defaultCMSData } from "./defaults";
 import type { CMSData } from "./types";
+import { getDataFilePath } from "@/lib/data-path";
 
-const DATA_PATH = path.join(process.cwd(), "data", "cms.json");
+const DATA_PATH = getDataFilePath("cms.json");
 
 function normalizeCMSData(raw: Partial<CMSData>): CMSData {
   return {

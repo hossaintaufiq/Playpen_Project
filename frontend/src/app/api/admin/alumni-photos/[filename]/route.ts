@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { isAdminAuthenticated } from "@/lib/cms/auth";
+import { getAppDataDir } from "@/lib/data-path";
 
-const UPLOAD_DIR = path.join(process.cwd(), "data", "alumni-photos");
+const UPLOAD_DIR = path.join(getAppDataDir(), "alumni-photos");
 
 const MIME: Record<string, string> = {
   ".jpg": "image/jpeg",

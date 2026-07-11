@@ -3,9 +3,10 @@ import { promises as fs } from "fs";
 import path from "path";
 import { createId } from "@/lib/cms/id";
 import { getCMSData, getPublishedCMS } from "@/lib/cms/store";
+import { getAppDataDir } from "@/lib/data-path";
 
-const DATA_PATH = path.join(process.cwd(), "data", "career-applications.json");
-const UPLOAD_DIR = path.join(process.cwd(), "data", "career-uploads");
+const DATA_PATH = getAppDataDir() + "/career-applications.json";
+const UPLOAD_DIR = path.join(getAppDataDir(), "career-uploads");
 const MAX_CV_BYTES = 10 * 1024 * 1024;
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 

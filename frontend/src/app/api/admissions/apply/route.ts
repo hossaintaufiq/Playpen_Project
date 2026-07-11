@@ -5,8 +5,9 @@ import { validateALevelApplication } from "@/lib/a-level-admission";
 import { validatePGClassApplication } from "@/lib/pg-class-admission";
 import { createId } from "@/lib/cms/id";
 import { admissionFormConfigs, type AdmissionFormType } from "@/lib/admission-forms";
+import { getDataFilePath } from "@/lib/data-path";
 
-const DATA_PATH = path.join(process.cwd(), "data", "admission-applications.json");
+const DATA_PATH = getDataFilePath("admission-applications.json");
 
 type ApplicationRecord = {
   id: string;
