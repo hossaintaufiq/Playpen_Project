@@ -6,7 +6,7 @@ import { getSectionPreview } from "@/lib/school-images";
 export default async function AcademicsPage() {
   const cms = getPublishedCMS(await getCMSData());
   const photoPreview = await getSectionPreview(
-    "academics/student-achievements",
+    "academics/overview",
     "Academic Photo Highlights",
     "academics",
   );

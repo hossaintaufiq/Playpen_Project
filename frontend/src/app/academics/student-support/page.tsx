@@ -1,13 +1,21 @@
 import { FileText, GraduationCap, ScrollText } from "lucide-react";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import {
   studentSupportIntro,
   universityApplicationDocuments,
 } from "@/lib/student-support";
+import { getSectionPreview } from "@/lib/school-images";
 
 const documentIcons = [FileText, ScrollText, GraduationCap] as const;
 
-export default function StudentSupportPage() {
+export default async function StudentSupportPage() {
+  const photoPreview = await getSectionPreview(
+    "academics/student-support",
+    "Student Support Photo Highlights",
+    "student support",
+  );
+
   return (
     <AcademicsPageShell
       section="/academics/student-support"
@@ -20,6 +28,16 @@ export default function StudentSupportPage() {
             {studentSupportIntro}
           </p>
         </div>
+
+        {photoPreview ? (
+          <div className="mt-10 sm:mt-12">
+            <SectionPhotoPreview
+              title={photoPreview.title}
+              href={photoPreview.href}
+              images={photoPreview.images}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-3">
           {universityApplicationDocuments.map((item, index) => {

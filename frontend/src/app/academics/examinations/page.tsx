@@ -1,16 +1,24 @@
 import { CalendarRange, ClipboardCheck, TrendingUp } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import {
   examinationSemesters,
   examinationsIntro,
   examinationsPromotionNote,
   promotionRequirements,
 } from "@/lib/examinations";
+import { getSectionPreview } from "@/lib/school-images";
 
 const promotionIcons = [ClipboardCheck, TrendingUp, CalendarRange] as const;
 
-export default function ExaminationsPage() {
+export default async function ExaminationsPage() {
+  const photoPreview = await getSectionPreview(
+    "academics/examinations",
+    "Examinations Photo Highlights",
+    "examinations",
+  );
+
   return (
     <AcademicsPageShell
       section="/academics/examinations"
@@ -23,6 +31,16 @@ export default function ExaminationsPage() {
             {examinationsIntro}
           </p>
         </div>
+
+        {photoPreview ? (
+          <div className="mt-10 sm:mt-12">
+            <SectionPhotoPreview
+              title={photoPreview.title}
+              href={photoPreview.href}
+              images={photoPreview.images}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2">
           {examinationSemesters.map((semester, index) => (

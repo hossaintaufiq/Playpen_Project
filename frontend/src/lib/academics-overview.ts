@@ -71,7 +71,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     description: "Divisions from playgroup to A-Level",
     excerpt:
       "Playpen is organised into four divisions, each led by experienced educators who understand the developmental needs of pupils at every stage.",
-    image: "/images/schools/junior.jpg",
+    image: "/images/schools/junior.webp",
     icon: School,
     highlights: schoolDivisions.map((division) => `${division.name} (${division.grades})`),
     featured: true,
@@ -81,7 +81,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Library",
     description: "Reading, research, and library classes",
     excerpt: libraryIntro,
-    image: "/images/schools/middle.jpg",
+    image: "/school-images/academics/library/library-1.webp",
     icon: Library,
     highlights: [
       "Reader's Digest, books, magazines, and newspapers",
@@ -94,7 +94,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Laboratories",
     description: "Cambridge-approved science & ICT",
     excerpt: laboratoriesIntro,
-    image: "/images/marquee/eca.jpg",
+    image: "/school-images/academics/laboratories/labs-1.webp",
     icon: FlaskConical,
     highlights: [
       "Physics, Chemistry, Biology & Computer Science",
@@ -107,7 +107,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Student Support",
     description: "University application documents",
     excerpt: studentSupportIntro,
-    image: "/images/marquee/student-services.jpg",
+    image: "/school-images/academics/student-support/support-1.webp",
     icon: HeartHandshake,
     highlights: ["Recommendation letters", "Transcripts", "Testimonials"],
   },
@@ -116,7 +116,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Examinations",
     description: "Two-semester assessment cycle",
     excerpt: examinationsIntro,
-    image: "/images/schools/senior.jpg",
+    image: "/images/schools/senior.webp",
     icon: BookOpen,
     highlights: [
       "Formal exams at the end of each semester",
@@ -130,7 +130,8 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     description: "Competitions, sports, and awards",
     excerpt:
       "Playpen students excel in national and international academic competitions, sports tournaments, science olympiads, and cultural events.",
-    image: "/images/marquee/achievements.jpg",
+    image:
+      "/school-images/academics/student-achievements/Outstanding Cambridge Learner Awards 2025/590052840_1335298195064957_3588772396145097072_n.webp",
     icon: Trophy,
     highlights: [
       "Spell Bee, Olympiads & science fairs",
@@ -143,7 +144,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Disciplinary Committee",
     description: "Conduct, fairness, and accountability",
     excerpt: disciplinaryIntro,
-    image: "/images/marquee/faculty.jpg",
+    image: "/school-images/academics/disciplinary-committee/discipline-1.webp",
     icon: Scale,
     highlights: [
       "Suspension and expulsion policy",
@@ -156,7 +157,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     label: "Identity Card",
     description: "Campus identification policy",
     excerpt: identityCardIntro,
-    image: "/images/schools/elementary.jpg",
+    image: "/school-images/academics/identity-card/idcard-1.webp",
     icon: CreditCard,
     highlights: [
       "Issued on admission",
@@ -170,7 +171,7 @@ export const academicsSectionPreviews: AcademicsSectionPreview[] = [
     description: "Student and career guidance",
     excerpt:
       "Faculty counsellors support pupils with academic, non-academic, and behavioural concerns; senior staff guide university and career pathways.",
-    image: "/images/marquee/alumni.jpg",
+    image: "/school-images/academics/counsellor/counsellor-1.webp",
     icon: Users,
     highlights: [
       "Student Counsellor on standby",

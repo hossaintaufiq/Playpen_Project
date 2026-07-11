@@ -1,14 +1,14 @@
 import type { StudentAchievement } from "@/lib/cms/types";
 
 const achievementImages = [
-  "/images/marquee/achievements.jpg",
-  "/images/marquee/eca.jpg",
-  "/images/marquee/faculty.jpg",
-  "/images/marquee/alumni.jpg",
-  "/images/marquee/student-services.jpg",
-  "/images/schools/senior.jpg",
-  "/images/schools/middle.jpg",
-  "/images/schools/junior.jpg",
+  "/school-images/academics/student-achievements/Outstanding Cambridge Learner Awards 2025/590052840_1335298195064957_3588772396145097072_n.webp",
+  "/school-images/academics/student-achievements/Outstanding Cambridge Learner Awards 2025/592646911_1335298515064925_3934264704535732687_n.webp",
+  "/school-images/academics/student-achievements/Country Winner - The British Council “Your World Video Competition 2024–2025/624685943_1383542003573909_8748851750303772648_n.webp",
+  "/school-images/academics/student-achievements/Debate Competition/DSC02538.webp",
+  "/school-images/academics/student-achievements/Poem Recitation Competition – KG II/DSC05045.webp",
+  "/school-images/academics/student-achievements/Prefect Badge Giving Ceremony 2025/1.webp",
+  "/images/schools/senior.webp",
+  "/images/schools/middle.webp",
 ] as const;
 
 function achievement(

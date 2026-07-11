@@ -3,67 +3,74 @@ export const studentLifeNavItems = [
     label: "Overview",
     href: "/student-life",
     description: "Life beyond the classroom",
-    heroImage: "/images/marquee/eca.jpg",
+    heroImage: "/school-images/student-life/overview/overview-1.webp",
   },
   {
     label: "Annual Sports",
     href: "/student-life/annual-sports",
     description: "Athletics and school sports day",
-    heroImage: "/images/schools/middle.jpg",
+    heroImage:
+      "/school-images/student-life/annual-sports/Annual Sports Day 2026  IV - IX/622733392_1384304576830985_3789226675376536432_n.webp",
   },
   {
     label: "Extra Curricular Activities",
     href: "/student-life/extra-curricular-activities",
     description: "Clubs, hobbies, and enrichment",
-    heroImage: "/images/marquee/eca.jpg",
+    heroImage: "/school-images/student-life/extra-curricular-activities/Music/DSC05743.webp",
   },
   {
     label: "Community Service",
     href: "/student-life/community-service",
     description: "Giving back to society",
-    heroImage: "/images/marquee/alumni.jpg",
+    heroImage: "/school-images/student-life/community-service/community-1.webp",
   },
   {
     label: "Cultural Programme",
     href: "/student-life/cultural-programme",
     description: "Arts, music, and celebrations",
-    heroImage: "/images/marquee/achievements.jpg",
+    heroImage:
+      "/school-images/student-life/cultural-programme/Annual Cultural Programme 2025/PXL_20251204_031051597.webp",
   },
   {
     label: "Science Fair",
     href: "/student-life/science-fair",
     description: "Innovation and discovery",
-    heroImage: "/images/schools/senior.jpg",
+    // No matching Science Fair folder/photos provided yet
+    heroImage: "",
   },
   {
     label: "Online Facility & Payment",
     href: "/student-life/online-facility-and-payment",
     description: "Digital services for families",
-    heroImage: "/images/marquee/student-services.jpg",
+    // No matching folder photos provided yet
+    heroImage: "",
   },
   {
     label: "Workshop for Students",
     href: "/student-life/workshop-for-students",
     description: "Skills and career guidance",
-    heroImage: "/images/marquee/faculty.jpg",
+    heroImage: "/school-images/student-life/workshop-for-students/workshop-1.webp",
   },
   {
     label: "Health Center",
     href: "/student-life/health-center",
     description: "On-campus medical support",
-    heroImage: "/images/schools/elementary.jpg",
+    heroImage:
+      "/school-images/student-life/health-center/Typhoid Vaccination Programme/DSC02503.webp",
   },
   {
     label: "School Bookshop",
     href: "/student-life/school-bookshop",
     description: "Books and learning materials",
-    heroImage: "/images/schools/junior.jpg",
+    // No matching folder photos provided yet
+    heroImage: "",
   },
   {
     label: "School Transportation",
     href: "/student-life/school-transportation",
     description: "Safe travel to and from school",
-    heroImage: "/images/schools/middle.jpg",
+    // No matching folder photos provided yet
+    heroImage: "",
   },
 ] as const;
 

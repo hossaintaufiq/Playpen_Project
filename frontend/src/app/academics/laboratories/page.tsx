@@ -1,15 +1,23 @@
 import { FlaskConical, Microscope, Monitor, Atom } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import {
   laboratoriesIntro,
   laboratoriesSafetyNote,
   laboratorySubjects,
 } from "@/lib/laboratories";
+import { getSectionPreview } from "@/lib/school-images";
 
 const subjectIcons = [Atom, FlaskConical, Microscope, Monitor] as const;
 
-export default function LaboratoriesPage() {
+export default async function LaboratoriesPage() {
+  const photoPreview = await getSectionPreview(
+    "academics/laboratories",
+    "Laboratories Photo Highlights",
+    "laboratories",
+  );
+
   return (
     <AcademicsPageShell
       section="/academics/laboratories"
@@ -22,6 +30,16 @@ export default function LaboratoriesPage() {
             {laboratoriesIntro}
           </p>
         </div>
+
+        {photoPreview ? (
+          <div className="mt-10 sm:mt-12">
+            <SectionPhotoPreview
+              title={photoPreview.title}
+              href={photoPreview.href}
+              images={photoPreview.images}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
           {laboratorySubjects.map((lab, index) => {

@@ -59,13 +59,17 @@ function SectionPreviewCard({
           large ? "aspect-[16/10] lg:aspect-auto lg:min-h-full lg:w-[42%]" : "aspect-[16/10]"
         }`}
       >
-        <Image
-          src={section.image}
-          alt={section.label}
-          fill
-          sizes={large ? "(max-width: 1024px) 100vw, 42vw" : "(max-width: 768px) 100vw, 33vw"}
-          className="object-cover transition duration-500 group-hover:scale-[1.04]"
-        />
+        {section.image ? (
+          <Image
+            src={section.image}
+            alt={section.label}
+            fill
+            sizes={large ? "(max-width: 1024px) 100vw, 42vw" : "(max-width: 768px) 100vw, 33vw"}
+            className="object-cover transition duration-500 group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-[#5a0000] via-primary to-[#800000]" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/70 via-[#800000]/10 to-transparent" />
         <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/95 text-primary shadow-sm">
           <Icon className="h-5 w-5" strokeWidth={1.75} />
@@ -156,12 +160,11 @@ export function StudentLifeOverviewContent({
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_20px_50px_-20px_rgba(128,0,0,0.25)]">
                 <Image
-                  src="/images/marquee/eca.jpg"
+                  src="/school-images/student-life/overview/overview-1.webp"
                   alt="Playpen students in extra-curricular activities"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/75 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
@@ -310,7 +313,7 @@ export function StudentLifeOverviewContent({
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div className="relative aspect-[16/10] overflow-hidden rounded-3xl shadow-lg lg:aspect-auto lg:min-h-[280px]">
               <Image
-                src="/images/marquee/student-services.jpg"
+                src="/school-images/student-life/overview/overview-6.webp"
                 alt="Playpen student services"
                 fill
                 className="object-cover"

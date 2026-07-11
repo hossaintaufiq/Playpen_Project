@@ -1,6 +1,7 @@
 import { AlertTriangle, Scale, Users, UserCheck } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import {
   disciplinaryCommitteeNote,
   disciplinaryExpulsionRules,
@@ -8,10 +9,17 @@ import {
   disciplinaryIntro,
   disciplinaryParentNote,
 } from "@/lib/disciplinary-committee";
+import { getSectionPreview } from "@/lib/school-images";
 
 const icons = [AlertTriangle, Scale, Users, UserCheck] as const;
 
-export default function DisciplinaryCommitteePage() {
+export default async function DisciplinaryCommitteePage() {
+  const photoPreview = await getSectionPreview(
+    "academics/disciplinary-committee",
+    "Disciplinary Committee Photo Highlights",
+    "disciplinary",
+  );
+
   return (
     <AcademicsPageShell
       section="/academics/disciplinary-committee"
@@ -24,6 +32,16 @@ export default function DisciplinaryCommitteePage() {
             {disciplinaryIntro}
           </p>
         </div>
+
+        {photoPreview ? (
+          <div className="mt-10 sm:mt-12">
+            <SectionPhotoPreview
+              title={photoPreview.title}
+              href={photoPreview.href}
+              images={photoPreview.images}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
           {disciplinaryHighlights.map((item, index) => {

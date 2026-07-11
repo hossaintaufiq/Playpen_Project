@@ -151,12 +151,11 @@ export function AcademicsOverviewContent({
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-[0_20px_50px_-20px_rgba(128,0,0,0.25)]">
                 <Image
-                  src="/images/schools/middle.jpg"
+                  src="/images/schools/middle.webp"
                   alt="Playpen students in class"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/75 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">

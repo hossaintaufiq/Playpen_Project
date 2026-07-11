@@ -99,7 +99,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Extra Curricular Activities",
     description: "Clubs, hobbies, and enrichment",
     excerpt: ecaIntro,
-    image: "/images/marquee/eca.jpg",
+    image: "/school-images/student-life/extra-curricular-activities/Music/DSC05743.webp",
     icon: Palette,
     highlights: ecaActivities.slice(0, 4),
     featured: true,
@@ -109,7 +109,8 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Annual Sports",
     description: "Athletics and school sports day",
     excerpt: annualSportsIntro,
-    image: "/images/schools/middle.jpg",
+    image:
+      "/school-images/student-life/annual-sports/Annual Sports Day 2026  IV - IX/622733392_1384304576830985_3789226675376536432_n.webp",
     icon: Trophy,
     highlights: [...annualSportsFacilities.slice(0, 4), "Inter School & Inter-Class tournaments"],
   },
@@ -118,7 +119,8 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Cultural Programme",
     description: "Arts, music, and celebrations",
     excerpt: culturalProgrammeMission,
-    image: "/images/marquee/achievements.jpg",
+    image:
+      "/school-images/student-life/cultural-programme/Annual Cultural Programme 2025/PXL_20251204_031051597.webp",
     icon: Music,
     highlights: [
       "Annual Cultural Programme & Milad",
@@ -131,7 +133,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Community Service",
     description: "Giving back to society",
     excerpt: communityServiceIntro,
-    image: "/images/marquee/alumni.jpg",
+    image: "/school-images/student-life/community-service/community-1.webp",
     icon: HeartHandshake,
     highlights: [
       "Helping the poor and needy",
@@ -144,7 +146,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Science Fair",
     description: "Innovation and discovery",
     excerpt: scienceFairExcerpt,
-    image: "/images/schools/senior.jpg",
+    image: "",
     icon: FlaskConical,
     highlights: [
       "Science, technology, and engineering projects",
@@ -157,7 +159,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Workshop for Students",
     description: "Skills and career guidance",
     excerpt: workshopIntro,
-    image: "/images/marquee/faculty.jpg",
+    image: "/school-images/student-life/workshop-for-students/workshop-1.webp",
     icon: Presentation,
     highlights: workshopTopics.slice(0, 3).map((topic) => topic.title),
   },
@@ -166,7 +168,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Online Facility & Payment",
     description: "Digital services for families",
     excerpt: onlineFacilityIntro,
-    image: "/images/marquee/student-services.jpg",
+    image: "",
     icon: CreditCard,
     highlights: [parentPortalFeatures[0], parentPortalFeatures[4], mandatoryOnlinePayment],
   },
@@ -175,7 +177,8 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "Health Center",
     description: "On-campus medical support",
     excerpt: healthCenterIntro,
-    image: "/images/schools/elementary.jpg",
+    image:
+      "/school-images/student-life/health-center/Typhoid Vaccination Programme/DSC02503.webp",
     icon: HeartPulse,
     highlights: [
       "Care for minor health needs during school hours",
@@ -188,7 +191,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "School Bookshop",
     description: "Books and learning materials",
     excerpt: bookshopIntro,
-    image: "/images/schools/junior.jpg",
+    image: "",
     icon: ShoppingBag,
     highlights: [
       "Textbooks and exercise copies on campus",
@@ -201,7 +204,7 @@ export const studentLifeSectionPreviews: StudentLifeSectionPreview[] = [
     label: "School Transportation",
     description: "Safe travel to and from school",
     excerpt: transportationIntro,
-    image: "/images/schools/middle.jpg",
+    image: "",
     icon: Bus,
     highlights: [
       "Own school bus service since March 2014",

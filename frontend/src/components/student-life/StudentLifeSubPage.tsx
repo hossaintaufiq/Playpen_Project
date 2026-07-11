@@ -1,5 +1,7 @@
 import { AboutContentSection } from "@/components/about/AboutContentSection";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import { SectionPageShell } from "@/components/ui/SectionPageShell";
+import type { GalleryImage } from "@/lib/gallery-data";
 import { studentLifeHeroImages, studentLifeNavItems } from "@/lib/student-life-nav";
 
 type Props = {
@@ -7,9 +9,16 @@ type Props = {
   title: string;
   subtitle: string;
   children: React.ReactNode;
+  photoPreview?: { title: string; href: string; images: GalleryImage[] } | null;
 };
 
-export function StudentLifeSubPage({ section, title, subtitle, children }: Props) {
+export function StudentLifeSubPage({
+  section,
+  title,
+  subtitle,
+  children,
+  photoPreview,
+}: Props) {
   return (
     <SectionPageShell
       section={section}
@@ -20,6 +29,13 @@ export function StudentLifeSubPage({ section, title, subtitle, children }: Props
       ariaLabel="Student life sections"
       heroImages={studentLifeHeroImages}
     >
+      {photoPreview ? (
+        <SectionPhotoPreview
+          title={photoPreview.title}
+          href={photoPreview.href}
+          images={photoPreview.images}
+        />
+      ) : null}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         {children}
       </section>

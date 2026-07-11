@@ -1,6 +1,7 @@
 import { Bell, BookOpen, BookMarked, GraduationCap } from "lucide-react";
 import { AboutContentSection } from "@/components/about/AboutContentSection";
 import { AcademicsPageShell } from "@/components/academics/AcademicsPageShell";
+import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 import {
   libraryBorrowingPolicy,
   libraryClassesNote,
@@ -8,10 +9,17 @@ import {
   libraryIntro,
   libraryReadingNote,
 } from "@/lib/library";
+import { getSectionPreview } from "@/lib/school-images";
 
 const icons = [BookOpen, GraduationCap, Bell, BookMarked] as const;
 
-export default function LibraryPage() {
+export default async function LibraryPage() {
+  const photoPreview = await getSectionPreview(
+    "academics/library",
+    "Library Photo Highlights",
+    "library",
+  );
+
   return (
     <AcademicsPageShell
       section="/academics/library"
@@ -24,6 +32,16 @@ export default function LibraryPage() {
             {libraryIntro}
           </p>
         </div>
+
+        {photoPreview ? (
+          <div className="mt-10 sm:mt-12">
+            <SectionPhotoPreview
+              title={photoPreview.title}
+              href={photoPreview.href}
+              images={photoPreview.images}
+            />
+          </div>
+        ) : null}
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4">
           {libraryHighlights.map((item, index) => {
