@@ -23,6 +23,8 @@ export type GalleryEvent = {
   description: string;
   coverImage: string;
   images: GalleryImage[];
+  /** Present on slim payloads so UI can show totals before full images load */
+  imageCount?: number;
 };
 
 export const galleryCategories: GalleryCategory[] = [

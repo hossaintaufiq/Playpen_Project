@@ -47,6 +47,7 @@ export function GalleryOverview({
             src={featured.src}
             alt={featured.alt}
             fill
+            unoptimized
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition duration-500 group-hover:scale-[1.03]"
             priority
@@ -73,6 +74,7 @@ export function GalleryOverview({
               src={photo.src}
               alt={photo.alt}
               fill
+              unoptimized
               sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition duration-500 group-hover:scale-[1.05]"
             />
@@ -131,6 +133,7 @@ export function GalleryPhotoList({
                   src={photo.src}
                   alt={photo.alt}
                   fill
+                  unoptimized
                   sizes="80px"
                   className="object-cover transition duration-300 group-hover:scale-105"
                 />

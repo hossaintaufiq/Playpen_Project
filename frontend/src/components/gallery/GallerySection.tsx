@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Calendar,
   ChevronLeft,
@@ -85,21 +86,60 @@ function matchesSearch(event: GalleryEvent, query: string) {
   );
 }
 
-export function GallerySection({
+function GallerySectionInner({
   initialEvents,
-  initialSearch = "",
-  initialCategory = "All",
 }: {
   initialEvents?: GalleryEvent[];
-  initialSearch?: string;
-  initialCategory?: GalleryCategory;
 }) {
-  const galleryEvents = initialEvents ?? staticGalleryEvents;
-  const [search, setSearch] = useState(initialSearch);
+  const searchParams = useSearchParams();
+  const paramSearch = searchParams.get("search") ?? "";
+  const paramCategory = searchParams.get("category") ?? "All";
+  const initialCategory: GalleryCategory = galleryCategories.includes(paramCategory as GalleryCategory)
+    ? (paramCategory as GalleryCategory)
+    : "All";
+
+  const [galleryEvents, setGalleryEvents] = useState<GalleryEvent[]>(
+    initialEvents?.length ? initialEvents : staticGalleryEvents,
+  );
+  const [fullEventsLoaded, setFullEventsLoaded] = useState(false);
+  const fullEventsRef = useRef<GalleryEvent[] | null>(null);
+  const [search, setSearch] = useState(paramSearch);
   const [category, setCategory] = useState<GalleryCategory>(initialCategory);
   const [view, setView] = useState<ViewMode>("events");
   const [selectedEvent, setSelectedEvent] = useState<GalleryEvent | null>(null);
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+
+  useEffect(() => {
+    setSearch(paramSearch);
+    setCategory(initialCategory);
+  }, [paramSearch, initialCategory]);
+
+  const ensureFullEvents = useCallback(async () => {
+    if (fullEventsRef.current) return fullEventsRef.current;
+
+    try {
+      const response = await fetch("/gallery-data.json", { cache: "force-cache" });
+      if (response.ok) {
+        const data = (await response.json()) as GalleryEvent[];
+        if (Array.isArray(data) && data.length) {
+          fullEventsRef.current = data;
+          setGalleryEvents(data);
+          setFullEventsLoaded(true);
+          return data;
+        }
+      }
+    } catch {
+      // Fall through to initial/slim events.
+    }
+
+    fullEventsRef.current = galleryEvents;
+    setFullEventsLoaded(true);
+    return galleryEvents;
+  }, [galleryEvents]);
+
+  useEffect(() => {
+    void ensureFullEvents();
+  }, [ensureFullEvents]);
 
   const filteredEvents = useMemo(() => {
     return galleryEvents.filter((event) => {
@@ -136,7 +176,7 @@ export function GallerySection({
         photo.date.toLowerCase().includes(q)
       );
     });
-  }, [search]);
+  }, [search, galleryEvents]);
 
   const isAllCategory = category === "All";
 
@@ -144,7 +184,7 @@ export function GallerySection({
     (images: GalleryImage[], index: number, eventTitle?: string) => {
       setLightbox({ images, index, eventTitle });
     },
-    []
+    [],
   );
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
@@ -181,19 +221,27 @@ export function GallerySection({
     };
   }, [lightbox, selectedEvent, closeLightbox, goLightbox]);
 
-  const openEventPhotos = useCallback((event: GalleryEvent) => {
-    setSelectedEvent(event);
-  }, []);
+  const openEventPhotos = useCallback(
+    async (event: GalleryEvent) => {
+      const full = await ensureFullEvents();
+      const matched = full.find((item) => item.id === event.id) ?? event;
+      setSelectedEvent(matched);
+    },
+    [ensureFullEvents],
+  );
 
-  const openEventFromOverview = useCallback((eventId: string) => {
-    const event = galleryEvents.find((item) => item.id === eventId);
-    if (event) setSelectedEvent(event);
-  }, []);
+  const openEventFromOverview = useCallback(
+    async (eventId: string) => {
+      const full = await ensureFullEvents();
+      const event = full.find((item) => item.id === eventId);
+      if (event) setSelectedEvent(event);
+    },
+    [ensureFullEvents],
+  );
 
   return (
     <>
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
-        {/* Search & controls */}
         <div className="rounded-2xl border border-border/60 bg-white p-4 shadow-sm sm:rounded-3xl sm:p-5 md:p-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative flex-1">
@@ -222,7 +270,10 @@ export function GallerySection({
               </button>
               <button
                 type="button"
-                onClick={() => setView("photos")}
+                onClick={() => {
+                  setView("photos");
+                  void ensureFullEvents();
+                }}
                 className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition sm:text-sm ${
                   view === "photos"
                     ? "bg-primary text-white shadow-sm"
@@ -267,34 +318,44 @@ export function GallerySection({
               : view === "events"
                 ? `${filteredEvents.length} event${filteredEvents.length === 1 ? "" : "s"} found`
                 : `${filteredPhotos.length} photo${filteredPhotos.length === 1 ? "" : "s"} in list`}
+            {!fullEventsLoaded ? " · loading photos…" : ""}
           </p>
         </div>
 
-        {/* All — highlight overview */}
         {isAllCategory && overviewPhotos.length > 0 && (
           <GalleryOverview
             photos={overviewPhotos}
             onPhotoClick={(index) => {
               const photo = overviewPhotos[index];
-              if (photo.eventId) openEventFromOverview(photo.eventId);
+              if (photo.eventId) void openEventFromOverview(photo.eventId);
             }}
           />
         )}
 
-        {/* Category options — scrollable photo list */}
-        {!isAllCategory && view === "photos" && filteredPhotos.length > 0 && (
+        {!isAllCategory && view === "photos" && !fullEventsLoaded && (
+          <p className="mt-8 text-sm text-muted-foreground">Loading photo list…</p>
+        )}
+
+        {!isAllCategory && view === "photos" && fullEventsLoaded && filteredPhotos.length > 0 && (
           <GalleryPhotoList
             photos={filteredPhotos}
             categoryLabel={category}
             onPhotoClick={(index) => {
               const photo = filteredPhotos[index];
-              const event = galleryEvents.find((item) => item.id === photo.eventId);
-              if (event) openEventPhotos(event);
+              void openEventPhotos({
+                id: photo.eventId,
+                title: photo.eventTitle,
+                category: photo.category as GalleryEvent["category"],
+                date: photo.date,
+                year: photo.year,
+                description: "",
+                coverImage: photo.src,
+                images: [],
+              });
             }}
           />
         )}
 
-        {/* Events view */}
         {view === "events" && (
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {filteredEvents.map((event) => (
@@ -304,13 +365,14 @@ export function GallerySection({
               >
                 <button
                   type="button"
-                  onClick={() => openEventPhotos(event)}
+                  onClick={() => void openEventPhotos(event)}
                   className="relative block aspect-[4/3] w-full overflow-hidden"
                 >
                   <Image
                     src={event.coverImage}
                     alt={event.title}
                     fill
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
@@ -327,7 +389,7 @@ export function GallerySection({
                       {event.title}
                     </h3>
                     <p className="mt-1 text-xs text-white/75 sm:text-sm">
-                      {event.images.length} photos
+                      {event.imageCount ?? event.images.length} photos
                     </p>
                   </div>
                 </button>
@@ -339,7 +401,7 @@ export function GallerySection({
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openEventPhotos(event);
+                      void openEventPhotos(event);
                     }}
                     className="shrink-0 rounded-full bg-primary px-3 py-2 text-xs font-semibold text-white transition hover:bg-primary-dark sm:px-4 sm:text-sm"
                   >
@@ -357,7 +419,7 @@ export function GallerySection({
             : overviewPhotos.length === 0
           : view === "events"
             ? filteredEvents.length === 0
-            : filteredPhotos.length === 0) && (
+            : fullEventsLoaded && filteredPhotos.length === 0) && (
           <div className="mt-12 rounded-2xl border border-dashed border-border bg-muted/30 px-6 py-12 text-center sm:rounded-3xl">
             <Grid3X3 className="mx-auto h-10 w-10 text-primary/40" />
             <p className="mt-4 font-serif text-lg font-semibold text-foreground">
@@ -370,7 +432,6 @@ export function GallerySection({
         )}
       </section>
 
-      {/* Event detail — all photos */}
       {selectedEvent && !lightbox && (
         <div
           className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 sm:items-center sm:p-4"
@@ -385,6 +446,7 @@ export function GallerySection({
                 src={selectedEvent.coverImage}
                 alt={selectedEvent.title}
                 fill
+                unoptimized
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
               />
@@ -437,8 +499,10 @@ export function GallerySection({
                           src={image.src}
                           alt={image.alt}
                           fill
+                          unoptimized
                           sizes="(max-width: 768px) 50vw, 200px"
                           className="object-cover transition duration-300 group-hover:scale-[1.04]"
+                          loading="lazy"
                         />
                       </div>
                       {(image.caption || image.alt) && (
@@ -455,7 +519,6 @@ export function GallerySection({
         </div>
       )}
 
-      {/* Lightbox */}
       {lightbox && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/92 p-4">
           <button
@@ -490,6 +553,7 @@ export function GallerySection({
               src={lightbox.images[lightbox.index].src}
               alt={lightbox.images[lightbox.index].alt}
               fill
+              unoptimized
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-contain"
               priority
@@ -512,5 +576,17 @@ export function GallerySection({
         </div>
       )}
     </>
+  );
+}
+
+export function GallerySection({
+  initialEvents,
+}: {
+  initialEvents?: GalleryEvent[];
+}) {
+  return (
+    <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-16 text-sm text-muted-foreground">Loading gallery…</div>}>
+      <GallerySectionInner initialEvents={initialEvents} />
+    </Suspense>
   );
 }
