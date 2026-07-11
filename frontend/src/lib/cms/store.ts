@@ -3,6 +3,7 @@ import path from "path";
 import { defaultCMSData } from "./defaults";
 import type { CMSData } from "./types";
 import { getDataFilePath } from "@/lib/data-path";
+import seedCms from "../../../data/cms.json";
 
 const DATA_PATH = getDataFilePath("cms.json");
 
@@ -35,8 +36,10 @@ export async function getCMSData(): Promise<CMSData> {
     const raw = await fs.readFile(DATA_PATH, "utf-8");
     return normalizeCMSData(JSON.parse(raw) as Partial<CMSData>);
   } catch {
-    await saveCMSData(defaultCMSData);
-    return defaultCMSData;
+    const seeded = normalizeCMSData(seedCms as Partial<CMSData>);
+    // Best-effort copy into writable runtime dir (ignored on failure / read-only FS).
+    await saveCMSData(seeded).catch(() => undefined);
+    return seeded;
   }
 }
 

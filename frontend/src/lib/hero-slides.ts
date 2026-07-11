@@ -1,14 +1,29 @@
-import fs from "node:fs/promises";
-import path from "node:path";
 import type { HeroSlide } from "@/lib/cms/types";
 
 export type HomeHeroSlide = Pick<HeroSlide, "src" | "alt"> & {
   description?: string;
 };
 
-const HERO_DIR = path.join(process.cwd(), "public", "school-images", "site-wide", "hero-sliders");
 const PUBLIC_HERO_BASE = "/school-images/site-wide/hero-sliders";
-const ALLOWED_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
+
+/** Static list — avoids scanning public/ (which breaks Vercel NFT size limits). */
+const HERO_FILES = [
+  "Art competition .webp",
+  "Bangla new Year Celebration.webp",
+  "Class tour .webp",
+  "color Celebration .webp",
+  "CommonWealth Essay competitin.webp",
+  "Country Winner.webp",
+  "Dance.webp",
+  "Drama.webp",
+  "Education Fair.webp",
+  "Graduation Ceremony.webp",
+  "GrandParents Day.webp",
+  "Mental Awareness.webp",
+  "Novo Theater Tour.webp",
+  "teachers training.webp",
+  "University Fair.webp",
+] as const;
 
 function toReadableTitle(fileName: string) {
   const withoutExt = fileName.replace(/\.[^.]+$/, "");
@@ -41,23 +56,12 @@ function buildDescriptionFromTitle(title: string) {
 }
 
 export async function getHeroSlidesFromFolder(): Promise<HomeHeroSlide[]> {
-  try {
-    const entries = await fs.readdir(HERO_DIR, { withFileTypes: true });
-    const files = entries
-      .filter((entry) => entry.isFile())
-      .map((entry) => entry.name)
-      .filter((name) => ALLOWED_EXTENSIONS.has(path.extname(name).toLowerCase()))
-      .sort((a, b) => a.localeCompare(b));
-
-    return files.map((fileName) => {
-      const title = toReadableTitle(fileName);
-      return {
-        src: `${PUBLIC_HERO_BASE}/${fileName}`,
-        alt: title,
-        description: buildDescriptionFromTitle(title),
-      };
-    });
-  } catch {
-    return [];
-  }
+  return HERO_FILES.map((fileName) => {
+    const title = toReadableTitle(fileName);
+    return {
+      src: `${PUBLIC_HERO_BASE}/${encodeURIComponent(fileName)}`,
+      alt: title,
+      description: buildDescriptionFromTitle(title),
+    };
+  });
 }
