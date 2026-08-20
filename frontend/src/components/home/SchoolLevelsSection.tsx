@@ -144,11 +144,11 @@ export function SchoolLevelsSection() {
             {schools.map((school, index) => (
               <div
                 key={school.name}
-                className="school-slide pointer-events-none absolute inset-0 flex items-center justify-center px-4 py-4 sm:px-6 sm:py-6 lg:px-8"
+                className="school-slide pointer-events-none absolute inset-0 flex items-center justify-center px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8"
               >
-                <div className="flex h-full w-full max-w-7xl items-center justify-center [perspective:1200px]">
+                <div className="flex h-full w-full items-center justify-center [perspective:1200px]">
                   <article
-                    className={`school-card pointer-events-auto relative h-[min(78vh,740px)] w-full overflow-hidden rounded-2xl bg-primary shadow-[0_28px_56px_-22px_rgba(128,0,0,0.35)] ring-1 ring-primary/15 will-change-transform sm:rounded-3xl ${
+                    className={`school-card pointer-events-auto relative h-full w-full overflow-hidden rounded-2xl bg-primary shadow-[0_28px_56px_-22px_rgba(128,0,0,0.35)] ring-1 ring-primary/15 will-change-transform sm:rounded-3xl ${
                       index > 0 ? "invisible opacity-0" : ""
                     }`}
                   >
@@ -157,14 +157,14 @@ export function SchoolLevelsSection() {
                       alt={school.name}
                       fill
                       priority
-                      sizes="(max-width: 1280px) 100vw, 1280px"
+                      sizes="100vw"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/88 via-[#800000]/45 to-[#800000]/20" />
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.08),transparent_55%)]" />
 
-                    <div className="relative flex h-full flex-col justify-between p-6 sm:p-9 md:p-11">
-                      <div className="flex items-start justify-between gap-4">
+                    <div className="relative flex h-full flex-col justify-between py-10 lg:py-16">
+                      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-start justify-between gap-4">
                         <span className="inline-flex rounded-lg border border-white/25 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md sm:px-4 sm:text-xs">
                           Academic Pathways
                         </span>
@@ -173,7 +173,7 @@ export function SchoolLevelsSection() {
                         </span>
                       </div>
 
-                      <div>
+                      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                         <span className="inline-block rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm sm:text-xs">
                           {school.grades}
                         </span>
