@@ -1,6 +1,7 @@
 import { Navbar } from "./Navbar";
 import { NewsTicker } from "./NewsTicker";
 import { Footer } from "./Footer";
+import { Chatbot } from "./Chatbot";
 import { getCMSData, getPublishedCMS } from "@/lib/cms/store";
 
 export async function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -14,6 +15,7 @@ export async function SiteLayout({ children }: { children: React.ReactNode }) {
       </header>
       <main className="min-w-0 flex-1">{children}</main>
       <Footer />
+      <Chatbot />
     </>
   );
 }
