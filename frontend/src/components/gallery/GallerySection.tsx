@@ -108,11 +108,20 @@ function GallerySectionInner({
   const [view, setView] = useState<ViewMode>("events");
   const [selectedEvent, setSelectedEvent] = useState<GalleryEvent | null>(null);
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+  const [visiblePhotoCount, setVisiblePhotoCount] = useState(24);
 
   useEffect(() => {
-    setSearch(paramSearch);
-    setCategory(initialCategory);
+    setTimeout(() => {
+      setSearch(paramSearch);
+      setCategory(initialCategory);
+    }, 0);
   }, [paramSearch, initialCategory]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setVisiblePhotoCount(24);
+    }, 0);
+  }, [category, search]);
 
   const ensureFullEvents = useCallback(async () => {
     if (fullEventsRef.current) return fullEventsRef.current;
@@ -123,8 +132,10 @@ function GallerySectionInner({
         const data = (await response.json()) as GalleryEvent[];
         if (Array.isArray(data) && data.length) {
           fullEventsRef.current = data;
-          setGalleryEvents(data);
-          setFullEventsLoaded(true);
+          setTimeout(() => {
+            setGalleryEvents(data);
+            setFullEventsLoaded(true);
+          }, 0);
           return data;
         }
       }
@@ -133,7 +144,9 @@ function GallerySectionInner({
     }
 
     fullEventsRef.current = galleryEvents;
-    setFullEventsLoaded(true);
+    setTimeout(() => {
+      setFullEventsLoaded(true);
+    }, 0);
     return galleryEvents;
   }, [galleryEvents]);
 
@@ -337,23 +350,36 @@ function GallerySectionInner({
         )}
 
         {!isAllCategory && view === "photos" && fullEventsLoaded && filteredPhotos.length > 0 && (
-          <GalleryPhotoList
-            photos={filteredPhotos}
-            categoryLabel={category}
-            onPhotoClick={(index) => {
-              const photo = filteredPhotos[index];
-              void openEventPhotos({
-                id: photo.eventId,
-                title: photo.eventTitle,
-                category: photo.category as GalleryEvent["category"],
-                date: photo.date,
-                year: photo.year,
-                description: "",
-                coverImage: photo.src,
-                images: [],
-              });
-            }}
-          />
+          <div className="space-y-6">
+            <GalleryPhotoList
+              photos={filteredPhotos.slice(0, visiblePhotoCount)}
+              categoryLabel={category}
+              onPhotoClick={(index) => {
+                const photo = filteredPhotos[index];
+                void openEventPhotos({
+                  id: photo.eventId,
+                  title: photo.eventTitle,
+                  category: photo.category as GalleryEvent["category"],
+                  date: photo.date,
+                  year: photo.year,
+                  description: "",
+                  coverImage: photo.src,
+                  images: [],
+                });
+              }}
+            />
+            {filteredPhotos.length > visiblePhotoCount && (
+              <div className="flex justify-center pt-4">
+                <button
+                  type="button"
+                  onClick={() => setVisiblePhotoCount((prev) => prev + 24)}
+                  className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-primary-dark active:scale-95"
+                >
+                  Load More Photos
+                </button>
+              </div>
+            )}
+          </div>
         )}
 
         {view === "events" && (
@@ -372,7 +398,6 @@ function GallerySectionInner({
                     src={event.coverImage}
                     alt={event.title}
                     fill
-                    unoptimized
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
@@ -446,7 +471,6 @@ function GallerySectionInner({
                 src={selectedEvent.coverImage}
                 alt={selectedEvent.title}
                 fill
-                unoptimized
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
               />
@@ -499,7 +523,6 @@ function GallerySectionInner({
                           src={image.src}
                           alt={image.alt}
                           fill
-                          unoptimized
                           sizes="(max-width: 768px) 50vw, 200px"
                           className="object-cover transition duration-300 group-hover:scale-[1.04]"
                           loading="lazy"
@@ -553,7 +576,6 @@ function GallerySectionInner({
               src={lightbox.images[lightbox.index].src}
               alt={lightbox.images[lightbox.index].alt}
               fill
-              unoptimized
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-contain"
               priority
