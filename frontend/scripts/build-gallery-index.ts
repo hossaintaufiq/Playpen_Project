@@ -80,10 +80,11 @@ async function main() {
         );
         if (!imagePaths.length) return null;
 
+        const eventId = slugify(folderName) || `event-${folderName}`;
         const images = imagePaths.map((imagePath, index) => {
           const readable = titleFromName(path.basename(imagePath));
           return {
-            id: `${slugify(folderName)}-img-${index + 1}`,
+            id: `${eventId}-img-${index + 1}`,
             src: toPublicPath(imagePath),
             alt: readable || `Photo ${index + 1}`,
             caption: readable || undefined,
@@ -94,7 +95,7 @@ async function main() {
         const year = Number((folderName.match(/(20\d{2})/) ?? [new Date().getFullYear()])[0]);
 
         return {
-          id: slugify(folderName) || `event-${folderName}`,
+          id: eventId,
           title,
           category: inferCategory(folderName),
           date: year ? `Session ${year}` : "School Event",
