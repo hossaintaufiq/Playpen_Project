@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
@@ -47,7 +47,7 @@ const schools = [
 export function SchoolLevelsSection() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
@@ -69,12 +69,12 @@ export function SchoolLevelsSection() {
       });
 
       const tl = gsap.timeline({
-        defaults: { ease: "power2.inOut", force3D: true, overwrite: "auto" },
+        defaults: { ease: "none", force3D: true, overwrite: "auto" },
         scrollTrigger: {
           trigger: pinShell,
           start: `top ${HEADER_OFFSET}px`,
           end: `+=${Math.max(1, cards.length - 1) * 115}%`,
-          scrub: 1.85,
+          scrub: 0.75,
           pin: pinShell,
           anticipatePin: 1,
           fastScrollEnd: true,
@@ -95,7 +95,7 @@ export function SchoolLevelsSection() {
               yPercent: -4,
               scale: 0.97,
               duration: 1.35,
-              ease: "power2.inOut",
+              ease: "none",
             },
             label
           )
@@ -105,11 +105,11 @@ export function SchoolLevelsSection() {
               yPercent: 0,
               scale: 1,
               duration: 1.35,
-              ease: "power2.inOut",
+              ease: "none",
             },
             label
           )
-          .set(prev, { autoAlpha: 0, scale: 1 }, `${label}+=0.98`);
+          .set(prev, { autoAlpha: 0, scale: 1 }, `${label}+=1.35`);
       });
     }, root);
 
