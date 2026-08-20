@@ -159,16 +159,8 @@ export function Footer() {
             <p>© {new Date().getFullYear()} Playpen School. All rights reserved.</p>
             <div className="mx-auto my-4 h-px w-full max-w-xs bg-white/10" />
             <p className="text-white/45">
-              Website is developed by Neptune Software Solutions (
-              <a
-                href="https://hossain-ahmmed-taufiq-portfolio.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-white/70 transition hover:text-white hover:underline"
-              >
-                Epic Panda 22
-              </a>
-              )
+              Website is developed by{" "}
+              <span className="font-medium text-white/70">Softlligence</span>
             </p>
           </div>
         </div>

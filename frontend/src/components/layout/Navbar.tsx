@@ -7,13 +7,17 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronDown, GraduationCap, Menu, Shield, X } from "lucide-react";
 import { portalNavItems } from "@/lib/portal-nav";
 import { siteLogo } from "@/lib/brand";
+import { aboutNavItems } from "@/lib/about-nav";
+import { academicsNavItems } from "@/lib/academics-nav";
+import { admissionsNavItems } from "@/lib/admissions-nav";
+import { studentLifeNavItems } from "@/lib/student-life-nav";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Academics", href: "/academics" },
-  { label: "Admissions", href: "/admissions" },
-  { label: "Student Life", href: "/student-life" },
+  { label: "About", href: "/about", dropdownItems: aboutNavItems },
+  { label: "Academics", href: "/academics", dropdownItems: academicsNavItems },
+  { label: "Admissions", href: "/admissions", dropdownItems: admissionsNavItems },
+  { label: "Student Life", href: "/student-life", dropdownItems: studentLifeNavItems },
   { label: "Notices", href: "/notices" },
   { label: "Gallery", href: "/gallery" },
 ] as const;
@@ -22,6 +26,179 @@ function isNavActive(pathname: string, href: string) {
   return href === "/"
     ? pathname === "/"
     : pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function NavbarDropdown({
+  label,
+  rootHref,
+  items,
+  pathname,
+  onNavigate,
+  variant,
+}: {
+  label: string;
+  rootHref: string;
+  items: readonly { label: string; href: string; description: string }[];
+  pathname: string;
+  onNavigate?: () => void;
+  variant: "desktop" | "mobile";
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const active = isNavActive(pathname, rootHref);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const openMenu = () => {
+    clearCloseTimer();
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => setOpen(false), 220);
+  };
+
+  useEffect(() => {
+    return () => clearCloseTimer();
+  }, []);
+
+  useEffect(() => {
+    if (variant !== "desktop") return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [variant]);
+
+  if (variant === "mobile") {
+    return (
+      <div className="rounded-lg">
+        <button
+          type="button"
+          onClick={() => setOpen((value) => !value)}
+          className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium ${
+            active ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
+          }`}
+          aria-expanded={open}
+        >
+          {label}
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        {open && (
+          <div className="mt-1 space-y-1 border-l border-white/15 pl-3">
+            {items.map((item) => {
+              const itemActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onNavigate}
+                  className={`flex items-start gap-3 rounded-lg px-4 py-2.5 text-sm ${
+                    itemActive
+                      ? "bg-white/15 text-white"
+                      : "text-white/75 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <span className="min-w-0">
+                    <span className="block font-medium">{item.label}</span>
+                    <span className="block text-xs text-white/55">{item.description}</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  const isLarge = items.length > 6;
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={openMenu}
+      onMouseLeave={scheduleClose}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
+          active || open
+            ? "bg-white/15 text-white"
+            : "text-white/85 hover:bg-white/10 hover:text-white"
+        }`}
+        aria-expanded={open}
+        aria-haspopup="true"
+      >
+        {label}
+        <ChevronDown
+          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <div
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 transition-all duration-200 ease-out ${
+          open
+            ? "visible translate-y-0 opacity-100"
+            : "pointer-events-none invisible -translate-y-1 opacity-0"
+        }`}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        <div className={`overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_20px_50px_-16px_rgba(0,0,0,0.45)] ring-1 ring-black/5 ${
+          isLarge ? "w-[36rem]" : "w-[20rem]"
+        }`}>
+          <div className="border-b border-border/60 bg-muted/40 px-4 py-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/70">
+              {label} Sections
+            </p>
+          </div>
+
+          <div className={`p-1.5 ${isLarge ? "grid grid-cols-2 gap-1" : "space-y-0.5"}`}>
+            {items.map((item) => {
+              const itemActive = pathname === item.href || (item.href !== rootHref && pathname.startsWith(item.href));
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition ${
+                    itemActive
+                      ? "bg-primary/8 text-primary"
+                      : "text-foreground hover:bg-muted/60"
+                  }`}
+                >
+                  <span className="min-w-0 pt-0.5">
+                    <span className="block text-sm font-semibold leading-tight">{item.label}</span>
+                    <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
+                      {item.description}
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function PortalNavDropdown({
@@ -202,6 +379,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 
@@ -243,6 +421,18 @@ export function Navbar() {
 
           <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
             {navItems.map((item) => {
+              if ("dropdownItems" in item) {
+                return (
+                  <NavbarDropdown
+                    key={item.href}
+                    label={item.label}
+                    rootHref={item.href}
+                    items={item.dropdownItems}
+                    pathname={pathname}
+                    variant="desktop"
+                  />
+                );
+              }
               const active = isNavActive(pathname, item.href);
               return (
                 <Link
@@ -290,6 +480,19 @@ export function Navbar() {
             <nav className="playpen-bg-dark border-t border-white/10 px-4 py-3 sm:px-6">
               <div className="flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto">
                 {navItems.map((item) => {
+                  if ("dropdownItems" in item) {
+                    return (
+                      <NavbarDropdown
+                        key={item.href}
+                        label={item.label}
+                        rootHref={item.href}
+                        items={item.dropdownItems}
+                        pathname={pathname}
+                        variant="mobile"
+                        onNavigate={() => setOpen(false)}
+                      />
+                    );
+                  }
                   const active = isNavActive(pathname, item.href);
                   return (
                     <Link

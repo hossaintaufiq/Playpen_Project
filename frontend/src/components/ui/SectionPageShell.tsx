@@ -1,6 +1,6 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/ui/PageHero";
-import { SectionSubNav, type SectionSubNavItem } from "@/components/ui/SectionSubNav";
+import { type SectionSubNavItem } from "@/components/ui/SectionSubNav";
 
 type SectionPageShellProps = {
   section: string;
@@ -13,16 +13,8 @@ type SectionPageShellProps = {
   children: React.ReactNode;
 };
 
-export function SectionPageShell({
-  section,
-  title,
-  subtitle,
-  navItems,
-  rootHref,
-  ariaLabel,
-  heroImages,
-  children,
-}: SectionPageShellProps) {
+export function SectionPageShell(props: SectionPageShellProps) {
+  const { section, title, subtitle, heroImages, children } = props;
   return (
     <SiteLayout>
       <PageHero
@@ -31,7 +23,6 @@ export function SectionPageShell({
         image={heroImages[section]}
         imageAlt={title}
       />
-      <SectionSubNav items={navItems} ariaLabel={ariaLabel} rootHref={rootHref} />
       {children}
     </SiteLayout>
   );

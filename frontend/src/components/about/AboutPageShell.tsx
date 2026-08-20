@@ -1,6 +1,5 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/ui/PageHero";
-import { AboutSubNav } from "./AboutSubNav";
 import { aboutNavItems, type AboutNavHref } from "@/lib/about-nav";
 
 type AboutPageShellProps = {
@@ -21,7 +20,6 @@ export function AboutPageShell({ section, title, subtitle, children }: AboutPage
         image={navItem?.heroImage}
         imageAlt={title}
       />
-      <AboutSubNav />
       {children}
     </SiteLayout>
   );

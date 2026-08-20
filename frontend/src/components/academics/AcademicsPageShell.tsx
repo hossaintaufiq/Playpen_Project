@@ -1,6 +1,5 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/ui/PageHero";
-import { AcademicsSubNav } from "./AcademicsSubNav";
 import { academicsNavItems, type AcademicsNavHref } from "@/lib/academics-nav";
 
 type AcademicsPageShellProps = {
@@ -26,7 +25,6 @@ export function AcademicsPageShell({
         image={navItem?.heroImage}
         imageAlt={title}
       />
-      <AcademicsSubNav />
       {children}
     </SiteLayout>
   );
