@@ -93,7 +93,7 @@ export function MissionVideo({ className = "" }: MissionVideoProps) {
     <div ref={containerRef} className={`group relative w-full ${className}`}>
       <div className="relative overflow-hidden rounded-xl bg-foreground ring-1 ring-border/80 sm:rounded-2xl">
         <div className="absolute left-0 top-0 z-10 h-0.5 w-full bg-gradient-to-r from-primary via-primary-light to-accent" />
-        <div className="relative aspect-video w-full">
+        <div className="relative aspect-[4/3] sm:aspect-video w-full">
           <iframe
             ref={iframeRef}
             src={EMBED_URL}
