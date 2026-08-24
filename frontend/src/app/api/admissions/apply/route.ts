@@ -62,10 +62,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const record: ApplicationRecord = {
+  const record = {
     id: createId("application"),
     formType,
     values,
+    status: "pending" as const,
     createdAt: new Date().toISOString(),
   };
 

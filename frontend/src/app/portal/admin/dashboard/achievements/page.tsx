@@ -8,7 +8,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -73,7 +72,12 @@ export default function AdminAchievementsPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ studentAchievements: data.studentAchievements })}
+      />
 
       <div className="space-y-4">
         {sorted.length === 0 && (
@@ -171,16 +175,18 @@ export default function AdminAchievementsPage() {
                   onChange={(published) => updateAchievement(achievement.id, { published })}
                 />
               </div>
-              <AdminField label="Results" hint="Write one student result per line">
-                <textarea
-                  className={adminInputClass}
-                  rows={6}
-                  value={resultsToText(achievement.results)}
-                  onChange={(e) =>
-                    updateAchievement(achievement.id, { results: textToResults(e.target.value) })
-                  }
-                />
-              </AdminField>
+              <div className="md:col-span-2">
+                <AdminField label="Results" hint="Write one student result per line">
+                  <textarea
+                    className={adminInputClass}
+                    rows={6}
+                    value={resultsToText(achievement.results)}
+                    onChange={(e) =>
+                      updateAchievement(achievement.id, { results: textToResults(e.target.value) })
+                    }
+                  />
+                </AdminField>
+              </div>
             </div>
             <AdminDeleteButton
               onClick={() =>
@@ -200,13 +206,6 @@ export default function AdminAchievementsPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addAchievement}>Add achievement</AdminAddButton>
       </div>
-
-      <AdminSaveBar
-        saving={saving}
-        message={message}
-        error={error}
-        onSave={() => save({ studentAchievements: data.studentAchievements })}
-      />
     </div>
   );
 }

@@ -7,7 +7,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -39,7 +38,12 @@ export default function AdminTeachersPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ teachers: data.teachers })}
+      />
 
       <div className="space-y-4">
         {data.teachers.map((teacher) => (
@@ -85,8 +89,6 @@ export default function AdminTeachersPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addTeacher}>Add teacher</AdminAddButton>
       </div>
-
-      <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ teachers: data.teachers })} />
     </div>
   );
 }

@@ -8,7 +8,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -20,6 +19,8 @@ export default function AdminNoticesPage() {
   const { data, loading, saving, message, error, save, updateLocal } = useAdminCMS();
 
   if (loading || !data) return <AdminLoading />;
+
+  const ticker = data.newsTicker;
 
   function updateNotice(id: string, patch: Partial<Notice>) {
     updateLocal({
@@ -42,7 +43,12 @@ export default function AdminNoticesPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ notices: data.notices })}
+      />
 
       <div className="space-y-4">
         {data.notices.length === 0 && (
@@ -64,7 +70,7 @@ export default function AdminNoticesPage() {
               </AdminField>
               <AdminField label="Page link" hint="e.g. /notices, /admissions, or /about">
                 <input
-                  className={adminInputClass}
+                  className={notice.id.startsWith("notice_") ? adminInputClass : adminInputClass}
                   value={notice.href}
                   onChange={(e) => updateNotice(notice.id, { href: e.target.value })}
                 />
@@ -115,8 +121,6 @@ export default function AdminNoticesPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addNotice}>Add notice</AdminAddButton>
       </div>
-
-      <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ notices: data.notices })} />
     </div>
   );
 }

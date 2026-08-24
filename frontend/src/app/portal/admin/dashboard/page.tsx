@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,13 +11,13 @@ import {
   ImageIcon,
   Images,
   Megaphone,
-  Sparkles,
   Trophy,
   Users,
   AlertCircle,
-  FileCheck,
+  Sparkles,
+  BookOpen,
 } from "lucide-react";
-import { AdminCard, AdminHelpBox, AdminLoading, AdminPageHeader } from "@/components/admin/AdminUI";
+import { AdminCard, AdminLoading, AdminPageHeader } from "@/components/admin/AdminUI";
 import { useAdminCMS } from "@/hooks/useAdminCMS";
 import { adminManageItems } from "@/lib/admin-nav";
 import type { AdminNavIcon } from "@/lib/admin-nav";
@@ -32,10 +33,31 @@ const icons: Record<AdminNavIcon, typeof ImageIcon> = {
   briefcase: Briefcase,
   trophy: Trophy,
   graduation: GraduationCap,
+  book: BookOpen,
 };
 
 export default function AdminDashboardPage() {
   const { data, loading } = useAdminCMS();
+  const [pendingAdmissions, setPendingAdmissions] = useState(0);
+  const [loadingAdmissions, setLoadingAdmissions] = useState(true);
+
+  useEffect(() => {
+    async function fetchAdmissions() {
+      try {
+        const res = await fetch("/api/admin/admissions");
+        if (res.ok) {
+          const apps = await res.json();
+          const pending = apps.filter((app: any) => app.status === "pending").length;
+          setPendingAdmissions(pending);
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoadingAdmissions(false);
+      }
+    }
+    fetchAdmissions();
+  }, []);
 
   if (loading || !data) {
     return <AdminLoading />;
@@ -48,6 +70,11 @@ export default function AdminDashboardPage() {
   const activeEvents = data.schoolEvents.filter((event) => event.published).length;
 
   const highlights = [
+    pendingAdmissions > 0 && {
+      label: `${pendingAdmissions} admission application${pendingAdmissions === 1 ? "" : "s"} waiting for review`,
+      href: "/portal/admin/dashboard/admissions",
+      tone: "amber" as const,
+    },
     pendingAlumni > 0 && {
       label: `${pendingAlumni} alumni registration${pendingAlumni === 1 ? "" : "s"} waiting for review`,
       href: "/portal/admin/dashboard/alumni",
@@ -72,38 +99,38 @@ export default function AdminDashboardPage() {
     "/portal/admin/dashboard/events": activeEvents,
     "/portal/admin/dashboard/gallery": data.galleryEvents.length,
     "/portal/admin/dashboard/teachers": data.teachers.filter((teacher) => teacher.published).length,
+    "/portal/admin/dashboard/admissions": pendingAdmissions,
     "/portal/admin/dashboard/vacancies": publishedVacancies,
-    "/portal/admin/dashboard/achievements": data.studentAchievements.filter((item) => item.published)
-      .length,
+    "/portal/admin/dashboard/achievements": data.studentAchievements.filter((item) => item.published).length,
     "/portal/admin/dashboard/alumni": pendingAlumni,
   };
 
-  // Modern overview statistics logic
   const statsOverview = [
-    { label: "Active Notices", value: activeNotices, icon: Bell, color: "text-blue-600 bg-blue-50" },
-    { label: "Active Events", value: activeEvents, icon: Calendar, color: "text-emerald-600 bg-emerald-50" },
-    { label: "Pending Alumni", value: pendingAlumni, icon: GraduationCap, color: pendingAlumni > 0 ? "text-amber-600 bg-amber-50" : "text-slate-500 bg-slate-50" },
+    { label: "Active Notices", value: activeNotices, icon: Bell, color: "text-primary bg-primary/5" },
+    { label: "Active Events", value: activeEvents, icon: Calendar, color: "text-emerald-700 bg-emerald-50" },
+    { label: "Pending Alumni", value: pendingAlumni, icon: GraduationCap, color: pendingAlumni > 0 ? "text-amber-700 bg-amber-50" : "text-slate-500 bg-slate-50" },
+    { label: "Pending Admissions", value: pendingAdmissions, icon: BookOpen, color: pendingAdmissions > 0 ? "text-amber-700 bg-amber-50" : "text-slate-500 bg-slate-50" },
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <AdminPageHeader
-        title="Welcome to your website manager"
-        description="Everything you need to keep the Playpen website up to date is right here. Tap a section below, make your changes, and press Publish — it's that simple."
+        title="Website Manager"
+        description="Select a section below to update news, slides, notices, and details. Changes publish immediately."
       />
 
       {/* Metrics Bar */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {statsOverview.map((stat) => {
           const Icon = stat.icon;
           return (
-            <div key={stat.label} className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4.5 shadow-[0_2px_8px_rgba(0,0,0,0.01)]">
-              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${stat.color}`}>
-                <Icon className="h-5.5 w-5.5" />
+            <div key={stat.label} className="flex items-center gap-3 rounded-xl border border-slate-100 bg-white p-3 shadow-[0_1px_4px_rgba(0,0,0,0.005)]">
+              <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${stat.color}`}>
+                <Icon className="h-4.5 w-4.5" />
               </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{stat.label}</p>
-                <p className="mt-0.5 text-2xl font-bold tracking-tight text-foreground">{stat.value}</p>
+              <div className="min-w-0">
+                <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground truncate">{stat.label}</p>
+                <p className="text-lg font-bold leading-none mt-0.5 text-foreground">{stat.value}</p>
               </div>
             </div>
           );
@@ -111,93 +138,92 @@ export default function AdminDashboardPage() {
       </div>
 
       {highlights.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {highlights.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center justify-between gap-3 rounded-2xl border px-5 py-4 text-sm transition-all duration-300 sm:rounded-3xl ${
+              className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5 text-xs transition-all duration-300 ${
                 item.tone === "amber"
-                  ? "border-amber-200 bg-amber-50/70 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-50 hover:scale-[1.005]"
-                  : "border-slate-100 bg-white text-foreground hover:border-primary/10 hover:scale-[1.005]"
+                  ? "border-amber-200 bg-amber-50/50 text-amber-900 shadow-sm hover:border-amber-300 hover:bg-amber-50"
+                  : "border-slate-100 bg-white text-foreground hover:border-primary/10"
               }`}
             >
-              <span className="flex items-center gap-2.5 font-semibold">
-                <AlertCircle className={`h-4.5 w-4.5 shrink-0 ${item.tone === "amber" ? "text-amber-600" : "text-slate-400"}`} />
+              <span className="flex items-center gap-2 font-bold">
+                <AlertCircle className={`h-4 w-4 shrink-0 ${item.tone === "amber" ? "text-amber-600" : "text-slate-400"}`} />
                 {item.label}
               </span>
-              <ArrowRight className="h-4.5 w-4.5 shrink-0 opacity-60 transition-transform hover:translate-x-0.5" />
+              <ArrowRight className="h-4 w-4 shrink-0 opacity-60" />
             </Link>
           ))}
         </div>
       )}
 
-      {/* Admin Operations Grid */}
+      {/* Section Grid */}
       <div>
-        <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-muted-foreground/75">
+        <h3 className="mb-3 text-[9px] font-bold uppercase tracking-[0.15em] text-muted-foreground/75">
           Select Content Section
         </h3>
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {adminManageItems.map((item) => {
             const Icon = icons[item.icon];
             const count = counts[item.href] ?? 0;
             
-            // Styled count labels
             let countLabel = "";
-            let badgeStyle = "text-slate-600 bg-slate-100";
+            let badgeStyle = "text-slate-600 bg-slate-50";
             
-            if (item.href === "/portal/admin/dashboard/alumni") {
+            if (item.href === "/portal/admin/dashboard/alumni" || item.href === "/portal/admin/dashboard/admissions") {
               if (count > 0) {
                 countLabel = `${count} pending`;
-                badgeStyle = "text-amber-700 bg-amber-50 font-bold border border-amber-200/50";
+                badgeStyle = "text-amber-700 bg-amber-50/70 border border-amber-200/30";
               } else {
                 countLabel = "Reviewed";
-                badgeStyle = "text-emerald-700 bg-emerald-50 border border-emerald-200/50";
+                badgeStyle = "text-emerald-700 bg-emerald-50 border border-emerald-100/50";
               }
             } else if (item.href === "/portal/admin/dashboard/announcements") {
               if (count > 0) {
-                countLabel = "Live";
-                badgeStyle = "text-emerald-700 bg-emerald-50 font-bold border border-emerald-200/50";
+                countLabel = "Active";
+                badgeStyle = "text-emerald-700 bg-emerald-50 border border-emerald-100/50";
               } else {
-                countLabel = "Disabled";
-                badgeStyle = "text-slate-500 bg-slate-50";
+                countLabel = "Off";
+                badgeStyle = "text-slate-400 bg-slate-50";
               }
             } else {
               countLabel = count > 0 ? `${count} Live` : "No items";
-              badgeStyle = count > 0 ? "text-primary bg-primary/5 font-semibold border border-primary/10" : "text-slate-500 bg-slate-50";
+              badgeStyle = count > 0 ? "text-primary bg-primary/5 border border-primary/10" : "text-slate-400 bg-slate-50";
             }
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_8px_24px_rgba(128,0,0,0.04)] sm:rounded-3xl"
+                className="group relative flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-4.5 shadow-[0_1px_4px_rgba(0,0,0,0.005)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-[0_4px_16px_rgba(128,0,0,0.03)]"
               >
                 <div>
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(128,0,0,0.2)]">
-                      <Icon className="h-5 w-5" />
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/[0.04] text-primary transition-all duration-300 group-hover:scale-105 group-hover:bg-primary group-hover:text-white">
+                      <Icon className="h-4 w-4" />
                     </div>
-                    <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${badgeStyle}`}>
+                    <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${badgeStyle}`}>
                       {countLabel}
                     </span>
                   </div>
                   
-                  <h4 className="mt-5 font-serif text-lg font-bold text-foreground transition-colors group-hover:text-primary">
+                  <h4 className="mt-4 font-serif text-sm font-bold text-primary group-hover:underline">
                     {item.label}
                   </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground/80 font-medium">
+                  <p className="mt-1 text-xs leading-normal text-muted-foreground/80 font-medium">
                     {item.description}
                   </p>
                 </div>
                 
-                <div className="mt-5 pt-4 border-t border-slate-50 flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 group-hover:text-primary/70 transition-colors">
+                <div className="mt-4 pt-3 border-t border-slate-50 flex items-center justify-between">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground/50">
                     {item.whereOnSite}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-sm font-bold text-primary group-hover:underline">
+                  <span className="inline-flex items-center gap-0.5 text-xs font-bold text-primary">
                     Edit
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </Link>
@@ -206,53 +232,25 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* Guide Cards */}
-      <div className="grid gap-6 lg:grid-cols-2">
-        <AdminCard title="Administration Steps">
-          <ol className="space-y-4">
-            {[
-              "Pick a content area from the cards or sidebar navigation menu.",
-              "Adjust text content, upload links, or edit visual elements.",
-              "Click Publish changes at the bottom to update the live website immediately.",
-            ].map((step, index) => (
-              <li key={step} className="flex gap-4 text-sm leading-relaxed text-foreground/90 font-medium">
-                <span className="flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-serif text-xs font-bold">
-                  {index + 1}
-                </span>
-                <span className="pt-0.5">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </AdminCard>
-
-        <AdminCard title="Save status">
-          <div className="flex items-start gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-[#8a6f1a]">
-              <Sparkles className="h-5.5 w-5.5" />
+      {/* Simple Status & Footer Summary */}
+      <AdminCard>
+        <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-[#8a6f1a]">
+              <Sparkles className="h-4.5 w-4.5" />
             </div>
             <div>
-              <p className="text-sm font-bold text-foreground">
-                Last Updated
-              </p>
-              <p className="mt-1 text-sm font-medium text-muted-foreground">
+              <p className="text-xs font-bold text-foreground">Last Site Update</p>
+              <p className="text-xs font-semibold text-muted-foreground mt-0.5">
                 {new Date(data.updatedAt).toLocaleString()}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground/80 font-medium">
-                Whenever changes are published, Next.js rebuilds the public caches automatically. Updates are visible instantly to visitors.
               </p>
             </div>
           </div>
-        </AdminCard>
-      </div>
-
-      <AdminHelpBox
-        title="Admin Help Desk"
-        steps={[
-          "Each edit page contains step-by-step guidance indicators at the top.",
-          "Use the sidebar to navigate to specific sections instantly.",
-          "Select View live website from the navigation menu footer to preview changes.",
-        ]}
-      />
+          <p className="text-xs font-medium text-muted-foreground/85 max-w-md text-right sm:block hidden leading-normal">
+            Changes publish immediately. Next.js rebuilds static website pages on-demand.
+          </p>
+        </div>
+      </AdminCard>
     </div>
   );
 }

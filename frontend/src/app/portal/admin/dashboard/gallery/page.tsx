@@ -8,7 +8,6 @@ import {
   AdminEmptyState,
   AdminField,
   AdminLoading,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -78,7 +77,12 @@ export default function AdminGalleryPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ galleryEvents: data.galleryEvents })}
+      />
 
       <div className="space-y-4">
         {data.galleryEvents.length === 0 && (
@@ -96,10 +100,10 @@ export default function AdminGalleryPage() {
               className="mb-4 flex w-full items-center justify-between text-left"
             >
               <div>
-                <p className="font-semibold text-foreground">{event.title}</p>
-                <p className="text-xs text-muted-foreground">{event.category} · {event.images.length} photos</p>
+                <p className="font-semibold text-foreground text-sm">{event.title}</p>
+                <p className="text-[10px] font-medium text-muted-foreground">{event.category} · {event.images.length} photos</p>
               </div>
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                 {expandedId === event.id ? "Close" : "Open to edit"}
               </span>
             </button>
@@ -136,22 +140,22 @@ export default function AdminGalleryPage() {
                 </div>
 
                 <div>
-                  <p className="mb-3 text-sm font-semibold">Photos</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">Photos</p>
                   <div className="space-y-3">
                     {event.images.map((image) => (
-                      <div key={image.id} className="grid gap-3 rounded-xl border border-border/50 p-3 md:grid-cols-3">
+                      <div key={image.id} className="grid gap-3 rounded-xl border border-slate-100 p-3 md:grid-cols-3">
                         <input className={adminInputClass} value={image.src} placeholder="Image URL" onChange={(e) => updateImage(event.id, image.id, { src: e.target.value })} />
                         <input className={adminInputClass} value={image.alt} placeholder="Alt text" onChange={(e) => updateImage(event.id, image.id, { alt: e.target.value })} />
                         <div className="flex gap-2">
                           <input className={adminInputClass} value={image.caption ?? ""} placeholder="Caption" onChange={(e) => updateImage(event.id, image.id, { caption: e.target.value })} />
-                          <button type="button" onClick={() => updateEvent(event.id, { images: event.images.filter((img) => img.id !== image.id) })} className="text-red-600">
+                          <button type="button" onClick={() => updateEvent(event.id, { images: event.images.filter((img) => img.id !== image.id) })} className="text-red-650 shrink-0 p-1 hover:text-red-800 transition-colors">
                             <Trash2 className="h-4 w-4" />
                           </button>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <button type="button" onClick={() => addImage(event.id)} className="mt-3 text-sm font-semibold text-primary hover:underline">
+                  <button type="button" onClick={() => addImage(event.id)} className="mt-3 text-xs font-bold text-primary hover:underline">
                     + Add photo
                   </button>
                 </div>
@@ -170,8 +174,6 @@ export default function AdminGalleryPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addEvent}>Add photo album</AdminAddButton>
       </div>
-
-      <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ galleryEvents: data.galleryEvents })} />
     </div>
   );
 }

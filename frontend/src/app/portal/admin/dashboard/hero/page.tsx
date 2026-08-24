@@ -7,7 +7,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -41,7 +40,12 @@ export default function AdminHeroPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ heroSlides: data.heroSlides })}
+      />
 
       <div className="space-y-4">
         {data.heroSlides.map((slide) => (
@@ -90,13 +94,6 @@ export default function AdminHeroPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addSlide}>Add slide</AdminAddButton>
       </div>
-
-      <AdminSaveBar
-        saving={saving}
-        message={message}
-        error={error}
-        onSave={() => save({ heroSlides: data.heroSlides })}
-      />
     </div>
   );
 }

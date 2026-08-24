@@ -17,7 +17,8 @@ export type AdminNavIcon =
   | "users"
   | "briefcase"
   | "trophy"
-  | "graduation";
+  | "graduation"
+  | "book";
 
 export type AdminNavItem = {
   label: string;
@@ -130,6 +131,20 @@ export const adminNavItems: AdminNavItem[] = [
       "Fill in name, role, and photo path.",
       "Tick Published to show on the website.",
       "Press Save changes at the bottom.",
+    ],
+  },
+  {
+    label: "Admissions",
+    href: "/portal/admin/dashboard/admissions",
+    icon: "book",
+    group: "people",
+    description:
+      "Manage student applications submitted online, and upload downloadable admission PDF forms.",
+    whereOnSite: "Admissions → Apply Now & Forms",
+    steps: [
+      "Open Pending to review newly submitted applications.",
+      "Approve or Reject applications to update their status.",
+      "Upload PDF form files to replace the public downloadable PDFs.",
     ],
   },
   {

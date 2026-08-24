@@ -8,7 +8,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -40,7 +39,12 @@ export default function AdminEventsPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ schoolEvents: data.schoolEvents })}
+      />
 
       <div className="space-y-4">
         {data.schoolEvents.length === 0 && (
@@ -100,8 +104,6 @@ export default function AdminEventsPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addEvent}>Add event</AdminAddButton>
       </div>
-
-      <AdminSaveBar saving={saving} message={message} error={error} onSave={() => save({ schoolEvents: data.schoolEvents })} />
     </div>
   );
 }

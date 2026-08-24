@@ -8,12 +8,18 @@ export function AdminSectionHeader({
   title,
   description,
   whereOnSite,
-  steps,
+  saving,
+  message,
+  error,
+  onSave,
 }: {
   title?: string;
   description?: string;
   whereOnSite?: string;
-  steps?: string[];
+  saving?: boolean;
+  message?: string | null;
+  error?: string | null;
+  onSave?: () => void;
 }) {
   const pathname = usePathname();
   const meta = getAdminNavItem(pathname);
@@ -23,7 +29,10 @@ export function AdminSectionHeader({
       title={title ?? meta?.label ?? "Admin"}
       description={description ?? meta?.description ?? "Manage website content."}
       whereOnSite={whereOnSite ?? meta?.whereOnSite}
-      steps={steps ?? meta?.steps}
+      saving={saving}
+      message={message}
+      error={error}
+      onSave={onSave}
     />
   );
 }

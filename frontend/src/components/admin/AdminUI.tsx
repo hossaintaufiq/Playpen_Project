@@ -1,92 +1,83 @@
-import { CheckCircle2, CircleHelp, Lightbulb, Loader2, Plus, Trash2 } from "lucide-react";
+import { CheckCircle2, CircleHelp, Loader2, Plus, Trash2, Globe } from "lucide-react";
 
 export function AdminPageHeader({
   title,
   description,
   whereOnSite,
-  steps,
+  saving,
+  message,
+  error,
+  onSave,
 }: {
   title: string;
   description: string;
   whereOnSite?: string;
-  steps?: string[];
+  saving?: boolean;
+  message?: string | null;
+  error?: string | null;
+  onSave?: () => void;
 }) {
   return (
-    <header className="mb-6 sm:mb-8">
-      <div className="relative overflow-hidden rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.03] p-6 shadow-sm sm:rounded-3xl sm:p-8">
-        {/* Subtle Brand Watermark Background */}
-        <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/2 blur-2xl" />
-        <div className="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-accent/3 blur-2xl" />
-        
-        <div className="relative">
-          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">
-            Control Room
-          </p>
-          <h1 className="mt-2 font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-            {title}
-          </h1>
-          <p className="mt-3.5 max-w-4xl text-sm leading-relaxed text-muted-foreground/90 sm:text-base">
-            {description}
-          </p>
-          {whereOnSite && (
-            <div className="mt-4.5 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-sm">
-              <span className="text-primary/60 font-medium">Public link:</span>
-              <span className="tracking-wide">{whereOnSite}</span>
+    <header className="mb-5 sm:mb-6">
+      <div className="relative overflow-hidden rounded-xl border border-slate-100 bg-white p-5 shadow-sm sm:rounded-2xl sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="relative flex-1 min-w-0">
+            <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-primary">
+              CMS Editor
+            </p>
+            <h1 className="mt-1.5 text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
+              {title}
+            </h1>
+            <p className="mt-1.5 max-w-2xl text-xs leading-relaxed text-slate-500">
+              {description}
+            </p>
+            {whereOnSite && (
+              <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-slate-100 bg-slate-50 px-2.5 py-1 text-[9px] font-bold text-slate-600">
+                <Globe className="h-3 w-3 text-slate-400" />
+                <span>Live on:</span>
+                <span className="font-sans font-semibold tracking-wide text-slate-700">{whereOnSite}</span>
+              </div>
+            )}
+          </div>
+          
+          {/* Integrated Publish Actions */}
+          {onSave && (
+            <div className="flex flex-col items-stretch sm:items-end shrink-0 gap-2 min-w-[8rem]">
+              <button
+                type="button"
+                onClick={onSave}
+                disabled={saving}
+                className="w-full sm:w-auto rounded-lg bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all duration-300 hover:scale-[1.02] hover:bg-primary-light active:scale-[0.98] disabled:opacity-60"
+              >
+                {saving ? "Publishing..." : "Publish changes"}
+              </button>
+              {message && (
+                <p className="text-[10px] font-bold text-emerald-600 text-center sm:text-right flex items-center justify-center sm:justify-end gap-1">
+                  <CheckCircle2 className="h-3.5 w-3.5" />
+                  {message}
+                </p>
+              )}
+              {error && (
+                <p className="text-[10px] font-bold text-red-600 text-center sm:text-right">
+                  {error}
+                </p>
+              )}
             </div>
           )}
         </div>
       </div>
-
-      {steps && steps.length > 0 && (
-        <AdminHelpBox title="How to use this page" steps={steps} className="mt-4" />
-      )}
     </header>
-  );
-}
-
-export function AdminHelpBox({
-  title = "Quick guide",
-  steps,
-  className = "",
-}: {
-  title?: string;
-  steps: string[];
-  className?: string;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border border-accent/25 bg-accent/[0.04] p-5 shadow-sm sm:rounded-3xl sm:p-6 ${className}`}
-    >
-      <div className="flex items-start gap-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-[#8a6f1a]">
-          <Lightbulb className="h-5 w-5" strokeWidth={2} />
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-bold tracking-wide text-foreground">{title}</p>
-          <ol className="mt-3.5 space-y-2.5">
-            {steps.map((step, index) => (
-              <li key={step} className="flex gap-3 text-sm leading-relaxed text-foreground/80">
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
-                  {index + 1}
-                </span>
-                <span className="flex-1 font-medium">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </div>
   );
 }
 
 export function AdminLoading({ label = "Loading your content..." }: { label?: string }) {
   return (
-    <div className="flex min-h-[280px] flex-col items-center justify-center gap-4 rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
-      <div className="relative flex h-12 w-12 items-center justify-center">
+    <div className="flex min-h-[220px] flex-col items-center justify-center gap-3 rounded-xl border border-slate-100 bg-white p-6 shadow-sm">
+      <div className="relative flex h-10 w-10 items-center justify-center">
         <span className="absolute h-full w-full rounded-full border-4 border-primary/10" />
-        <Loader2 className="h-6 w-6 animate-spin text-primary relative z-10" />
+        <Loader2 className="h-5 w-5 animate-spin text-primary relative z-10" />
       </div>
-      <p className="text-sm font-medium text-muted-foreground">{label}</p>
+      <p className="text-xs font-semibold text-muted-foreground">{label}</p>
     </div>
   );
 }
@@ -102,14 +93,14 @@ export function AdminCard({
 }) {
   return (
     <section
-      className={`group rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.015)] transition-all duration-300 hover:border-primary/10 hover:shadow-[0_4px_20px_rgba(0,0,0,0.03)] sm:rounded-3xl sm:p-6 ${className}`}
+      className={`group rounded-xl border border-slate-100 bg-white p-4.5 shadow-[0_1px_4px_rgba(0,0,0,0.005)] transition-all duration-300 hover:border-primary/15 hover:shadow-[0_4px_16px_rgba(0,0,0,0.015)] sm:rounded-2xl sm:p-5.5 ${className}`}
     >
       {title && (
-        <h2 className="mb-5 border-b border-slate-100 pb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
+        <h2 className="mb-4 border-b border-slate-50 pb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-primary transition-colors">
           {title}
         </h2>
       )}
-      <div className="space-y-4">
+      <div className="space-y-3.5">
         {children}
       </div>
     </section>
@@ -126,10 +117,10 @@ export function AdminField({
   children: React.ReactNode;
 }) {
   return (
-    <div className="block space-y-2">
-      <span className="text-xs font-bold uppercase tracking-wider text-foreground">{label}</span>
-      {hint && <p className="text-xs leading-relaxed text-muted-foreground/75 font-medium">{hint}</p>}
-      <div className="relative rounded-xl">
+    <div className="block space-y-1.5">
+      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{label}</span>
+      {hint && <p className="text-[10px] leading-relaxed text-slate-400 font-medium">{hint}</p>}
+      <div className="relative rounded-lg">
         {children}
       </div>
     </div>
@@ -137,7 +128,7 @@ export function AdminField({
 }
 
 export const adminInputClass =
-  "w-full min-w-0 max-w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm outline-none transition-all placeholder:text-muted-foreground/50 focus:border-primary focus:ring-4 focus:ring-primary/[0.06] focus:shadow-sm";
+  "w-full min-w-0 max-w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 outline-none transition-all placeholder:text-muted-foreground/40 focus:border-primary focus:ring-4 focus:ring-primary/[0.04] focus:shadow-sm";
 
 export function AdminPublishToggle({
   checked,
@@ -151,23 +142,23 @@ export function AdminPublishToggle({
   hint?: string;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-100 bg-[#fdfcfc] p-4.5 transition-all hover:bg-slate-50">
+    <div className="flex items-center justify-between gap-4 rounded-lg border border-slate-50 bg-[#fdfcfc] p-3.5 transition-all hover:bg-slate-50">
       <div>
-        <p className="text-sm font-semibold text-foreground">{label}</p>
-        {hint && <p className="mt-1 text-xs leading-relaxed text-muted-foreground/75 font-medium">{hint}</p>}
+        <p className="text-xs font-bold text-slate-700">{label}</p>
+        {hint && <p className="mt-0.5 text-[10px] leading-relaxed text-slate-450 font-medium">{hint}</p>}
       </div>
       <button
         type="button"
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`relative h-7 w-12 shrink-0 rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary/[0.08] ${
-          checked ? "bg-primary shadow-[0_2px_8px_rgba(128,0,0,0.25)]" : "bg-slate-200"
+        className={`relative h-6 w-11 shrink-0 rounded-full transition-all duration-300 focus:outline-none ${
+          checked ? "bg-primary" : "bg-slate-200"
         }`}
       >
         <span
-          className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow-md transition-all duration-300 ${
-            checked ? "left-[22px]" : "left-0.5"
+          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all duration-300 ${
+            checked ? "left-[21px]" : "left-0.5"
           }`}
         />
       </button>
@@ -186,9 +177,9 @@ export function AdminAddButton({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center gap-2.5 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-[0_2px_10px_rgba(128,0,0,0.15)] transition-all duration-300 hover:scale-[1.02] hover:bg-primary-light hover:shadow-[0_4px_16px_rgba(128,0,0,0.25)] active:scale-[0.98]"
+      className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all duration-300 hover:scale-102 hover:bg-primary-light active:scale-[0.98]"
     >
-      <Plus className="h-4.5 w-4.5" />
+      <Plus className="h-4 w-4" />
       {children}
     </button>
   );
@@ -205,9 +196,9 @@ export function AdminDeleteButton({
     <button
       type="button"
       onClick={onClick}
-      className="mt-4 inline-flex items-center gap-2 rounded-xl border border-red-200 bg-red-50/50 px-4.5 py-2.5 text-sm font-semibold text-red-700 transition-all duration-300 hover:scale-[1.01] hover:bg-red-50 hover:text-red-800 active:scale-[0.99]"
+      className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50/50 px-3.5 py-2 text-xs font-bold text-red-700 transition-all duration-300 hover:bg-red-50 hover:text-red-800"
     >
-      <Trash2 className="h-4 w-4" />
+      <Trash2 className="h-3.5 w-3.5" />
       {children}
     </button>
   );
@@ -221,49 +212,10 @@ export function AdminEmptyState({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 p-10 text-center sm:rounded-3xl">
-      <CircleHelp className="mx-auto h-9 w-9 text-slate-300" />
-      <p className="mt-4 font-semibold text-foreground">{title}</p>
-      <p className="mt-1.5 text-sm text-muted-foreground/80 leading-relaxed max-w-sm mx-auto">{description}</p>
-    </div>
-  );
-}
-
-export function AdminSaveBar({
-  saving,
-  message,
-  error,
-  onSave,
-}: {
-  saving: boolean;
-  message: string | null;
-  error: string | null;
-  onSave: () => void;
-}) {
-  return (
-    <div className="sticky bottom-6 z-25 mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-[#120505]/95 px-5 py-4 text-white shadow-[0_10px_30px_-5px_rgba(0,0,0,0.3)] backdrop-blur-md sm:rounded-3xl sm:px-6">
-      <div className="text-sm max-w-md">
-        {message && (
-          <p className="flex items-center gap-2 text-emerald-400 font-semibold tracking-wide">
-            <CheckCircle2 className="h-4.5 w-4.5 shrink-0" />
-            {message}
-          </p>
-        )}
-        {error && <p className="text-red-400 font-semibold">{error}</p>}
-        {!message && !error && (
-          <p className="text-white/80 font-medium">
-            Finished making changes? Publish them instantly to visitors.
-          </p>
-        )}
-      </div>
-      <button
-        type="button"
-        onClick={onSave}
-        disabled={saving}
-        className="rounded-full bg-accent px-7 py-3 text-sm font-bold text-[#120505] shadow-[0_2px_12px_rgba(201,162,39,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_4px_20px_rgba(201,162,39,0.5)] active:scale-[0.98] disabled:opacity-60"
-      >
-        {saving ? "Publishing..." : "Publish changes"}
-      </button>
+    <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50/30 p-8 text-center sm:rounded-2xl">
+      <CircleHelp className="mx-auto h-8 w-8 text-slate-300" />
+      <p className="mt-3 text-xs font-bold text-slate-700">{title}</p>
+      <p className="mt-1 text-xs text-slate-450 leading-relaxed max-w-xs mx-auto">{description}</p>
     </div>
   );
 }

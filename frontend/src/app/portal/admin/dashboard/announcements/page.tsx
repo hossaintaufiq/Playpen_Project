@@ -5,7 +5,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -20,7 +19,12 @@ export default function AdminAnnouncementsPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ newsTicker: data.newsTicker })}
+      />
 
       <AdminCard>
         <div className="grid gap-4 md:grid-cols-2">
@@ -76,13 +80,6 @@ export default function AdminAnnouncementsPage() {
           </AdminField>
         </div>
       </AdminCard>
-
-      <AdminSaveBar
-        saving={saving}
-        message={message}
-        error={error}
-        onSave={() => save({ newsTicker: data.newsTicker })}
-      />
     </div>
   );
 }

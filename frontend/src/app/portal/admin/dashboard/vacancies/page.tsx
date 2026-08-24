@@ -8,7 +8,6 @@ import {
   AdminField,
   AdminLoading,
   AdminPublishToggle,
-  AdminSaveBar,
   adminInputClass,
 } from "@/components/admin/AdminUI";
 import { AdminSectionHeader } from "@/components/admin/AdminSectionHeader";
@@ -42,7 +41,12 @@ export default function AdminVacanciesPage() {
 
   return (
     <div>
-      <AdminSectionHeader />
+      <AdminSectionHeader
+        saving={saving}
+        message={message}
+        error={error}
+        onSave={() => save({ vacancies: data.vacancies })}
+      />
 
       <div className="space-y-4">
         {data.vacancies.length === 0 && (
@@ -91,13 +95,6 @@ export default function AdminVacanciesPage() {
       <div className="mt-4">
         <AdminAddButton onClick={addVacancy}>Add vacancy</AdminAddButton>
       </div>
-
-      <AdminSaveBar
-        saving={saving}
-        message={message}
-        error={error}
-        onSave={() => save({ vacancies: data.vacancies })}
-      />
     </div>
   );
 }
