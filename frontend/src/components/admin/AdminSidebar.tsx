@@ -12,6 +12,7 @@ import {
   Megaphone,
   Trophy,
   Users,
+  Shield,
 } from "lucide-react";
 import { adminNavGroups, adminNavItems } from "@/lib/admin-nav";
 import type { AdminNavIcon } from "@/lib/admin-nav";
@@ -41,24 +42,35 @@ function NavLink({
   return (
     <Link
       href={item.href}
-      className={`block rounded-xl px-3 py-3 transition ${
+      className={`group relative block rounded-xl px-3.5 py-3 transition-all duration-300 ${
         active
-          ? "bg-white text-primary shadow-sm"
-          : "text-white/80 hover:bg-white/10 hover:text-white"
+          ? "bg-white/[0.06] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]"
+          : "text-white/70 hover:bg-white/[0.03] hover:text-white"
       }`}
     >
+      {/* Active Left Indicator Bar */}
+      {active && (
+        <span className="absolute top-2 bottom-2 left-0 w-1 rounded-r-md bg-accent shadow-[0_0_8px_#c9a227]" />
+      )}
+      
       <span className="flex items-center gap-3">
         <span
-          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
-            active ? "bg-primary/10 text-primary" : "bg-white/10 text-white"
+          className={`flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ${
+            active 
+              ? "bg-primary/25 text-accent shadow-[0_0_12px_rgba(128,0,0,0.2)]" 
+              : "bg-white/[0.04] text-white/60 group-hover:bg-white/[0.08] group-hover:text-white group-hover:scale-105"
           }`}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-4.5 w-4.5" />
         </span>
-        <span className="min-w-0">
-          <span className="block text-sm font-semibold">{item.label}</span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-medium tracking-wide transition-colors group-hover:text-white">
+            {item.label}
+          </span>
           {item.group && (
-            <span className={`mt-0.5 block truncate text-[11px] ${active ? "text-primary/70" : "text-white/55"}`}>
+            <span className={`mt-0.5 block truncate text-[10px] tracking-wide transition-colors ${
+              active ? "text-accent/80 font-medium" : "text-white/40 group-hover:text-white/65"
+            }`}>
               {item.whereOnSite}
             </span>
           )}
@@ -76,22 +88,35 @@ export function AdminSidebar({ currentPath }: { currentPath: string }) {
   }));
 
   return (
-    <aside className="flex w-full flex-col bg-[#5a0000] lg:sticky lg:top-16 lg:h-full lg:w-72 lg:shrink-0">
-      <div className="px-5 py-5">
-        <p className="font-serif text-xl font-semibold text-white">Playpen Admin</p>
-        <p className="mt-1 text-xs leading-relaxed text-white/65">
-          Update the school website — simple steps, no coding needed.
-        </p>
+    <aside className="flex w-full flex-col bg-[#120505] border-b border-white/[0.06] lg:sticky lg:top-16 lg:h-full lg:w-72 lg:shrink-0 lg:border-b-0 lg:border-r lg:border-white/[0.06]">
+      {/* Brand Section */}
+      <div className="px-6 py-6 border-b border-white/[0.04]">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-light text-white shadow-[0_2px_10px_rgba(128,0,0,0.4)]">
+            <Shield className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="font-serif text-lg font-semibold tracking-wide text-white">Playpen Admin</p>
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+              </span>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-400">Connected</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <nav className="scrollbar-none flex-1 space-y-5 overflow-y-auto p-3">
+      {/* Navigation Section */}
+      <nav className="scrollbar-none flex-1 space-y-6 overflow-y-auto p-4">
         <div>
           <NavLink item={dashboardItem} active={currentPath === dashboardItem.href} />
         </div>
 
         {groupedItems.map((group) => (
-          <div key={group.id}>
-            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45">
+          <div key={group.id} className="space-y-1.5">
+            <p className="px-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
               {group.label}
             </p>
             <div className="space-y-1">
@@ -103,14 +128,15 @@ export function AdminSidebar({ currentPath }: { currentPath: string }) {
         ))}
       </nav>
 
-      <div className="p-3">
+      {/* Footer / Actions Section */}
+      <div className="p-4 border-t border-white/[0.04] bg-white/[0.01] space-y-1">
         <Link
           href="/"
           target="_blank"
-          className="mb-1 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+          className="group flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-white/60 transition-all hover:bg-white/[0.04] hover:text-white"
         >
-          <ExternalLink className="h-4 w-4" />
-          View live website
+          <ExternalLink className="h-4 w-4 text-white/40 group-hover:text-accent transition-colors" />
+          <span>View live website</span>
         </Link>
         <button
           type="button"
@@ -118,10 +144,10 @@ export function AdminSidebar({ currentPath }: { currentPath: string }) {
             await fetch("/api/admin/logout", { method: "POST" });
             window.location.href = "/portal/admin";
           }}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+          className="group flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium text-white/60 transition-all hover:bg-red-950/20 hover:text-red-300"
         >
-          <LogOut className="h-4 w-4" />
-          Sign out
+          <LogOut className="h-4 w-4 text-white/40 group-hover:text-red-400 transition-colors" />
+          <span>Sign out</span>
         </button>
       </div>
     </aside>
