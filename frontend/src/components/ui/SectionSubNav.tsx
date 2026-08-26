@@ -99,7 +99,7 @@ export function SectionSubNav({ items, ariaLabel, rootHref }: SectionSubNavProps
       aria-label={ariaLabel}
       className="border-b border-border/70 bg-white/95 backdrop-blur-sm"
     >
-      <div className="relative w-full">
+      <div className="relative mx-auto max-w-7xl">
         {isCompact && (
           <>
             <div

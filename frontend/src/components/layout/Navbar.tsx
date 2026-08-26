@@ -392,28 +392,28 @@ export function Navbar() {
 
   return (
     <div className="playpen-bg">
-      <div className="w-full">
+      <div className="mx-auto max-w-7xl">
         <div className="flex h-14 items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex min-w-0 shrink items-center gap-2 sm:gap-3"
             onClick={() => setOpen(false)}
           >
-            <div className="relative h-10 w-10 shrink-0 sm:h-11 sm:w-11">
+            <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14 transition-transform duration-300 hover:scale-105">
               <Image
                 src={siteLogo.src}
                 alt={siteLogo.alt}
                 fill
                 className="object-contain"
-                sizes="44px"
+                sizes="56px"
                 priority
               />
             </div>
             <div className="min-w-0">
-              <p className="truncate font-serif text-base font-bold leading-tight text-white sm:text-lg">
+              <p className="truncate font-serif text-lg font-bold leading-tight text-white sm:text-xl">
                 Playpen
               </p>
-              <p className="hidden truncate text-[10px] uppercase tracking-widest text-white/70 sm:block">
+              <p className="hidden truncate text-[11px] uppercase tracking-widest text-white/70 sm:block">
                 School of Excellence
               </p>
             </div>

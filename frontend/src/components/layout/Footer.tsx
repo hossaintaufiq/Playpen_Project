@@ -43,7 +43,7 @@ export function Footer() {
     <footer className="relative mt-auto w-full">
       <FooterWave />
       <div className="playpen-bg-dark w-full text-white">
-        <div className="w-full px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-6 lg:gap-8">
             <div>
               <p className="font-serif text-2xl font-bold sm:text-3xl">{schoolContact.name}</p>
@@ -157,11 +157,6 @@ export function Footer() {
 
           <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/50 sm:mt-10 sm:text-sm">
             <p>© {new Date().getFullYear()} Playpen School. All rights reserved.</p>
-            <div className="mx-auto my-4 h-px w-full max-w-xs bg-white/10" />
-            <p className="text-white/45">
-              Website is developed by{" "}
-              <span className="font-medium text-white/70">Softlligence</span>
-            </p>
           </div>
         </div>
       </div>
