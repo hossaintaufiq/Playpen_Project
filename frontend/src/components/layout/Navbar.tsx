@@ -392,7 +392,7 @@ export function Navbar() {
 
   return (
     <div className="playpen-bg">
-      <div className="mx-auto max-w-7xl">
+      <div className="w-full">
         <div className="flex h-14 items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
           <Link
             href="/"
