@@ -15,7 +15,7 @@
   --color-accent: #c9a227;
   --font-sans: "DM Sans", system-ui, sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
-  --max-width-7xl: 90rem;
+  --max-width-7xl: min(90%, 90rem);
 }
 
 :root {
