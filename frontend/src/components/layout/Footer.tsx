@@ -9,7 +9,8 @@ const links = [
   { label: "Student Life", href: "/student-life" },
   { label: "Notices", href: "/notices" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Portal", href: "/portal" },
+  { label: "Portal", href: "https://portal.playpen.edu.bd/" },
+  { label: "Admin Panel", href: "/portal/admin" },
 ];
 
 function FooterWave() {
@@ -62,12 +63,23 @@ export function Footer() {
               <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5 md:grid-cols-1">
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/80 transition hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith("http") ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white/80 transition hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-white/80 transition hover:text-white"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

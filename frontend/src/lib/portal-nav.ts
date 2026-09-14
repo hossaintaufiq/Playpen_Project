@@ -1,12 +1,12 @@
 export const portalNavItems = [
   {
+    label: "Portal",
+    href: "https://portal.playpen.edu.bd/",
+    description: "Official Playpen Portal",
+  },
+  {
     label: "Admin",
     href: "/portal/admin",
     description: "Staff & administration",
-  },
-  {
-    label: "Parent / Student",
-    href: "/portal/parent-student",
-    description: "Family portal access",
   },
 ] as const;

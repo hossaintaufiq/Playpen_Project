@@ -64,7 +64,7 @@ export function Chatbot() {
         case "alumni":
           return "Are you a former student? Join the community by submitting a registration form on the [Alumni Association](/about/playpen-alumni-association) portal page.";
         case "portal":
-          return "Access secure accounts for staff, parents, or students. Head over to our main [Portal Entrance](/portal) to sign in.";
+          return "Access the [Playpen Portal](https://portal.playpen.edu.bd/) for student/parent services, or log in to the [Admin Panel](/portal/admin).";
         default:
           break;
       }
