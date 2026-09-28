@@ -33,7 +33,7 @@ export function SchoolUniformContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -86,7 +86,7 @@ export function SchoolUniformContent() {
               key={branch.name}
               className="rounded-2xl border border-border/60 bg-white p-6 shadow-[0_4px_24px_-12px_rgba(128,0,0,0.1)] sm:rounded-3xl"
             >
-              <h3 className="font-serif text-xl font-semibold text-foreground">{branch.name}</h3>
+              <h3 className="font-heading text-xl font-bold text-foreground">{branch.name}</h3>
               <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 {branch.address}

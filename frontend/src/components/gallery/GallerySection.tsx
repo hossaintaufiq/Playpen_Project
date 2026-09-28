@@ -401,19 +401,19 @@ function GallerySectionInner({
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/85 via-[#800000]/25 to-transparent" />
-                  <div className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary sm:text-xs">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                  <div className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary sm:text-xs">
                     {event.category}
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-4 text-left sm:p-5">
-                    <p className="flex items-center gap-1.5 text-[11px] text-white/75">
-                      <Calendar className="h-3.5 w-3.5" />
+                    <p className="flex items-center gap-1.5 text-[11px] text-white/80">
+                      <Calendar className="h-3.5 w-3.5 text-accent" />
                       {event.date}
                     </p>
-                    <h3 className="mt-1 font-serif text-lg font-semibold text-white sm:text-xl">
+                    <h3 className="mt-1 font-extrabold text-lg text-white sm:text-xl">
                       {event.title}
                     </h3>
-                    <p className="mt-1 text-xs text-white/75 sm:text-sm">
+                    <p className="mt-1 text-xs text-white/80 sm:text-sm font-medium">
                       {event.imageCount ?? event.images.length} photos
                     </p>
                   </div>
@@ -447,7 +447,7 @@ function GallerySectionInner({
             : fullEventsLoaded && filteredPhotos.length === 0) && (
           <div className="mt-12 rounded-2xl border border-dashed border-border bg-muted/30 px-6 py-12 text-center sm:rounded-3xl">
             <Grid3X3 className="mx-auto h-10 w-10 text-primary/40" />
-            <p className="mt-4 font-serif text-lg font-semibold text-foreground">
+            <p className="mt-4 font-extrabold text-lg text-foreground">
               No results found
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -484,10 +484,10 @@ function GallerySectionInner({
                 <X className="h-5 w-5" />
               </button>
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                <p className="text-xs font-medium uppercase tracking-wider text-white/75">
+                <p className="text-xs font-bold uppercase tracking-wider text-accent">
                   {selectedEvent.category} · {selectedEvent.date}
                 </p>
-                <h3 className="mt-1 font-serif text-2xl font-semibold text-white sm:text-3xl">
+                <h3 className="mt-1 font-extrabold text-2xl text-white sm:text-3xl">
                   {selectedEvent.title}
                 </h3>
               </div>

@@ -59,7 +59,7 @@ function RoadCard({
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-accent">
             Stop {String(step).padStart(2, "0")}
           </p>
-          <h3 className="mt-1 font-serif text-lg font-semibold text-foreground sm:text-xl">
+          <h3 className="mt-1 font-heading text-lg font-bold text-foreground sm:text-xl">
             {item.title}
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -75,7 +75,7 @@ function RoadMilestone({ step }: { step: number }) {
   return (
     <div className="relative z-10 flex shrink-0 flex-col items-center">
       <div className="flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-accent bg-primary shadow-[0_0_0_6px_rgba(128,0,0,0.12)] sm:h-11 sm:w-11">
-        <span className="font-serif text-sm font-bold text-white sm:text-base">{step}</span>
+        <span className="font-heading text-sm font-bold text-white sm:text-base">{step}</span>
       </div>
     </div>
   );

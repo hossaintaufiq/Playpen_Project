@@ -36,7 +36,7 @@ export function WorkshopForStudentsContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -46,7 +46,7 @@ export function WorkshopForStudentsContent() {
       </div>
 
       <div className="mt-10 sm:mt-12">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
           Workshop Topics
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -60,7 +60,7 @@ export function WorkshopForStudentsContent() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+                <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                   {topic.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{topic.text}</p>
@@ -70,11 +70,11 @@ export function WorkshopForStudentsContent() {
         </div>
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/10 bg-[#5a0000] p-6 text-white sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/70">
+      <div className="mt-10 rounded-3xl border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
           Beyond the Classroom
         </p>
-        <p className="mt-4 font-serif text-xl font-semibold leading-relaxed sm:text-2xl">
+        <p className="mt-4 font-heading text-xl font-bold leading-relaxed sm:text-2xl">
           Playpen workshops equip students with digital responsibility, university readiness, and
           leadership skills for life after school.
         </p>

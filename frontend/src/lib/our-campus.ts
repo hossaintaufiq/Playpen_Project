@@ -30,21 +30,29 @@ export const schoolDivisions = [
   {
     name: "Elementary School",
     grades: "Playgroup – KG II",
+    summary: "Foundational literacy, numeracy, and social skills in a nurturing early-years setting.",
+    href: "/academics/school-structure",
     image: "/images/schools/elementary.webp",
   },
   {
     name: "Junior School",
     grades: "Class I – III",
+    summary: "Building core Cambridge competencies through engaging, age-appropriate learning.",
+    href: "/academics/school-structure",
     image: "/images/schools/junior.webp",
   },
   {
     name: "Middle School",
     grades: "Class IV – VII",
+    summary: "Developing independence, subject depth, and critical thinking across the curriculum.",
+    href: "/academics/school-structure",
     image: "/images/schools/middle.webp",
   },
   {
     name: "Senior School",
     grades: "Class VIII – XII",
+    summary: "Cambridge O and A Level preparation for university and global opportunities.",
+    href: "/academics/school-structure",
     image: "/images/schools/senior.webp",
   },
 ] as const;

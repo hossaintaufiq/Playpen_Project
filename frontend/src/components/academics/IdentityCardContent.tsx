@@ -32,8 +32,8 @@ function IdentityCardMock() {
                 />
               </div>
               <div>
-                <p className="font-serif text-lg font-semibold leading-tight">Playpen</p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/75">
+                <p className="font-heading text-lg font-bold leading-tight">Playpen</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
                   School of Excellence
                 </p>
               </div>
@@ -46,9 +46,9 @@ function IdentityCardMock() {
           <div className="flex aspect-[3/4] items-center justify-center rounded-2xl border border-dashed border-primary/20 bg-primary/[0.04]">
             <div className="text-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <span className="font-serif text-lg font-semibold">PP</span>
+                <span className="font-heading text-lg font-bold">PP</span>
               </div>
-              <p className="mt-2 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+              <p className="mt-2 text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
                 Photo
               </p>
             </div>
@@ -56,36 +56,36 @@ function IdentityCardMock() {
 
           <div className="space-y-3 text-sm">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/60">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
                 Student Name
               </p>
-              <p className="mt-1 font-serif text-lg font-semibold text-foreground">Student Name</p>
+              <p className="mt-1 font-heading text-lg font-bold text-foreground">Student Name</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/60">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
                   Class
                 </p>
-                <p className="mt-1 font-medium text-foreground">Class —</p>
+                <p className="mt-1 font-semibold text-foreground">Class —</p>
               </div>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/60">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
                   ID No.
                 </p>
-                <p className="mt-1 font-medium text-foreground">PP-0000</p>
+                <p className="mt-1 font-semibold text-foreground">PP-0000</p>
               </div>
             </div>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/60">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
                 Academic Year
               </p>
-              <p className="mt-1 font-medium text-foreground">2025 – 2026</p>
+              <p className="mt-1 font-semibold text-foreground">2025 – 2026</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border/50 bg-muted/30 px-5 py-3 sm:px-6">
-          <p className="text-center text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
             Official Student Identification
           </p>
         </div>
@@ -114,7 +114,7 @@ export function IdentityCardContent() {
                   <ShieldCheck className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-semibold text-foreground">Daily on campus</h3>
+                  <h3 className="font-heading text-lg font-bold text-foreground">Daily on campus</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {identityCardDailyWear}
                   </p>
@@ -122,13 +122,13 @@ export function IdentityCardContent() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:rounded-3xl sm:p-6">
+            <div className="rounded-2xl border border-amber-200/80 bg-amber-50/70 p-5 sm:rounded-3xl sm:p-6">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-600 text-white">
                   <RefreshCw className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-semibold text-foreground">
+                  <h3 className="font-heading text-lg font-bold text-amber-950">
                     Lost or damaged cards
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-amber-950/80">
@@ -161,10 +161,10 @@ export function IdentityCardContent() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary transition group-hover:bg-primary group-hover:text-white">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/60">
+                <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
                   Step {index + 1}
                 </p>
-                <h3 className="mt-2 font-serif text-xl font-semibold text-foreground">
+                <h3 className="mt-2 font-heading text-xl font-bold text-foreground">
                   {policy.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{policy.text}</p>

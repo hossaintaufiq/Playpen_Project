@@ -16,10 +16,10 @@ export function ChildProtectionPolicyContent() {
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white shadow-sm">
             <Shield className="h-7 w-7" strokeWidth={1.75} />
           </div>
-          <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary/70">
+          <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.25em] text-primary">
             Official Policy Statement
           </p>
-          <p className="mt-4 font-serif text-xl leading-relaxed text-foreground sm:text-2xl md:leading-relaxed">
+          <p className="mt-4 font-heading text-xl font-bold leading-relaxed text-foreground sm:text-2xl md:leading-relaxed">
             {childProtectionStatement}
           </p>
         </div>
@@ -36,12 +36,12 @@ export function ChildProtectionPolicyContent() {
           {protectionCommitments.map((item) => (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/60 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition hover:shadow-md sm:p-6"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <ShieldCheck className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{item.title}</h3>
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
             </article>
           ))}

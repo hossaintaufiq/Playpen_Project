@@ -12,7 +12,7 @@ const highlights = [
   {
     icon: Users,
     title: "Reconnect",
-    text: "Find old batch mates and relive the friendships that began at Playpen.",
+    text: "Find old batch mates and relive the friendships and memories that began at Playpen.",
   },
   {
     icon: Globe2,
@@ -21,20 +21,20 @@ const highlights = [
   },
   {
     icon: Heart,
-    title: "Shared Memories",
-    text: "Celebrate beautiful moments from Playpen and the journeys that followed.",
+    title: "Shared Heritage",
+    text: "Celebrate beautiful milestones from Playpen and support the next generation of students.",
   },
 ];
 
 export function AlumniAssociationContent() {
   return (
-    <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
-      <div className="overflow-hidden rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.08] via-white to-accent/[0.08] px-4 py-8 text-center sm:rounded-3xl sm:px-8 sm:py-10 md:px-10 md:py-12">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary/70">
-          {tagoreQuote.attributionEn}
-        </p>
-        <p className="mt-1 text-sm text-primary/80">{tagoreQuote.attribution}</p>
-        <blockquote className="font-bengali mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-foreground sm:text-2xl md:text-3xl md:leading-relaxed">
+    <section className="mx-auto w-full min-w-0 max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+      {/* Tagore Quote Banner */}
+      <div className="overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/[0.06] via-surface to-accent/[0.08] px-6 py-10 text-center sm:px-10 sm:py-14">
+        <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+          {tagoreQuote.attributionEn} · {tagoreQuote.attribution}
+        </span>
+        <blockquote className="font-bengali mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl md:text-3xl md:leading-relaxed font-semibold">
           {tagoreQuote.lines.map((line) => (
             <p key={line} className="mt-2 break-words first:mt-0">
               &ldquo;{line}&rdquo;
@@ -43,47 +43,47 @@ export function AlumniAssociationContent() {
         </blockquote>
       </div>
 
-      <div className="mx-auto mt-10 max-w-3xl space-y-4 text-center sm:mt-12">
+      <div className="mx-auto mt-12 max-w-3xl space-y-4 text-center">
         {alumniIntro.map((paragraph) => (
-          <p key={paragraph} className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p key={paragraph} className="text-base leading-relaxed text-muted-foreground">
             {paragraph}
           </p>
         ))}
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
         {highlights.map((item) => (
           <article
             key={item.title}
-            className="rounded-2xl border border-border/60 bg-white p-5 text-center shadow-sm sm:rounded-3xl sm:p-6"
+            className="rounded-3xl border border-border/80 bg-white p-7 text-center shadow-sm transition hover:shadow-md hover:border-primary/20"
           >
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white">
-              <item.icon className="h-5 w-5" strokeWidth={1.75} />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-md">
+              <item.icon className="h-6 w-6" strokeWidth={1.75} />
             </div>
-            <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{item.title}</h3>
+            <h3 className="mt-4 font-extrabold text-xl text-foreground">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
           </article>
         ))}
       </div>
 
-      <div className="mt-12 w-full min-w-0 sm:mt-14">
+      <div className="mt-16 w-full min-w-0">
         <SectionHeader
           eyebrow="Alumni Registration"
-          title="Join the Playpen Alumni Association"
+          title="Join the Official Playpen Alumni Network"
           description={alumniCallToAction}
         />
 
-        <div className="mx-auto mt-6 flex w-full max-w-2xl justify-center px-0">
+        <div className="mx-auto mt-6 flex w-full max-w-2xl justify-center">
           <a
             href={`mailto:${alumniEmail}`}
-            className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2.5 text-center text-sm font-semibold text-primary transition hover:bg-primary/10 sm:px-5"
+            className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-5 py-2.5 text-xs font-bold text-primary transition hover:bg-primary hover:text-white shadow-sm"
           >
             <Mail className="h-4 w-4 shrink-0" />
-            <span className="break-all">{alumniEmail}</span>
+            <span>{alumniEmail}</span>
           </a>
         </div>
 
-        <div className="mx-auto mt-8 w-full min-w-0 max-w-3xl">
+        <div className="mx-auto mt-10 w-full min-w-0 max-w-3xl">
           <AlumniRegistrationForm />
         </div>
       </div>

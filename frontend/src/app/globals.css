@@ -1,40 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
-/* Playpen brand — maroon #800000 */
+/* Playpen Modern Brand Design Tokens */
 @theme {
   --color-background: #ffffff;
-  --color-foreground: #1c1c1c;
-  --color-primary: #800000;
-  --color-primary-dark: #5a0000;
-  --color-primary-light: #9a1818;
+  --color-surface: #fbf9f7;
+  --color-surface-subtle: #f6f2ec;
+  --color-foreground: #191817;
+  --color-muted: #f4efe9;
+  --color-muted-foreground: #5a544f;
+  --color-border: #e9e2d9;
+  --color-border-subtle: #f0eae2;
+
+  /* Playpen Primary Maroon / Burgundy (Softened & Modernized) */
+  --color-primary: #7a0826;
+  --color-primary-dark: #520215;
+  --color-primary-light: #991636;
+  --color-primary-soft: #fcf1f3;
   --color-primary-foreground: #ffffff;
-  --color-muted: #f7f5f5;
-  --color-muted-foreground: #5c5c5c;
-  --color-border: #e8e0e0;
-  --color-accent: #c9a227;
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
-  --max-width-7xl: min(90%, 90rem);
+
+  /* Modern Warm & Playful Accents */
+  --color-accent: #f97316;
+  --color-accent-hover: #ea580c;
+  --color-accent-soft: #fff7ed;
+  --color-accent-gold: #f59e0b;
+  --color-accent-teal: #0d9488;
+  --color-accent-blue: #2563eb;
+
+  /* Modern Friendly Typography */
+  --font-sans: "Plus Jakarta Sans", "Manrope", "DM Sans", system-ui, sans-serif;
+  --font-heading: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-bengali: "Noto Sans Bengali", sans-serif;
+
+  --max-width-7xl: min(92%, 88rem);
 }
 
 :root {
-  --playpen-maroon: #800000;
-  --playpen-maroon-dark: #5a0000;
+  --playpen-maroon: #7a0826;
+  --playpen-maroon-dark: #520215;
+  --playpen-coral: #f97316;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16.5px;
+  }
 }
 
 body {
   background-color: #ffffff;
-  color: #1c1c1c;
-  font-family: "DM Sans", system-ui, sans-serif;
+  color: #191817;
+  font-family: "Plus Jakarta Sans", "Manrope", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 main {
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
   min-width: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 @layer base {
@@ -62,25 +98,50 @@ main {
   display: none;
 }
 
-.font-serif {
-  font-family: "Playfair Display", Georgia, serif;
-}
-
-/* Guaranteed brand backgrounds */
+/* Playpen Brand Colors */
 .playpen-bg {
-  background-color: #800000;
+  background-color: #7a0826;
 }
 
 .playpen-bg-dark {
-  background-color: #5a0000;
+  background-color: #520215;
 }
 
 .playpen-text {
-  color: #800000;
+  color: #7a0826;
+}
+
+.playpen-text-accent {
+  color: #f97316;
 }
 
 .font-bengali {
-  font-family: "Noto Serif Bengali", "Noto Sans Bengali", serif;
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+
+/* Modern Pill Badges & Gradients */
+.badge-playpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 @keyframes news-ticker {
@@ -93,8 +154,12 @@ main {
 }
 
 .news-ticker {
-  animation: news-ticker 55s linear infinite;
+  animation: news-ticker 50s linear infinite;
   will-change: transform;
+}
+
+.news-ticker:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -117,8 +182,12 @@ main {
 }
 
 .marquee-rtl {
-  animation: marquee-rtl 45s linear infinite;
+  animation: marquee-rtl 40s linear infinite;
   will-change: transform;
+}
+
+.marquee-rtl:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -131,3 +200,32 @@ main {
     padding: 0 1rem;
   }
 }
+
+@keyframes jubilee-progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-jubilee-progress {
+  animation: jubilee-progress 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+
+

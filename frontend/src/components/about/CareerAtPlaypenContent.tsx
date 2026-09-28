@@ -26,7 +26,7 @@ export function CareerAtPlaypenContent({ vacancies }: { vacancies: JobVacancy[] 
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{item.title}</h3>
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
             </article>
           );

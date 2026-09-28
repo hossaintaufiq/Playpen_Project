@@ -74,7 +74,7 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
       <div className="mt-5 overflow-hidden rounded-3xl border border-border/60 bg-muted/20 shadow-sm">
         <div className="border-b border-primary/15 bg-gradient-to-br from-primary via-primary to-primary-dark px-5 py-8 text-center text-white sm:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/75">Playpen</p>
-          <h2 className="mt-2 font-serif text-2xl font-semibold sm:text-3xl">Admission Form</h2>
+          <h2 className="mt-2 font-heading text-2xl font-bold sm:text-3xl">Admission Form</h2>
           <p className="mt-2 text-sm font-bold uppercase tracking-widest text-white/95">
             Playgroup – Class X
           </p>

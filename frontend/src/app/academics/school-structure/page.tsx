@@ -56,7 +56,7 @@ export default async function SchoolStructurePage() {
           {divisions.map((division) => (
             <article
               key={division.name}
-              className="overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm sm:rounded-3xl"
+              className="overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm transition hover:shadow-md sm:rounded-3xl"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                 <Image
@@ -64,14 +64,14 @@ export default async function SchoolStructurePage() {
                   alt={division.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition duration-500 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/75 via-transparent to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/75">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">
                     {division.grades}
                   </p>
-                  <h3 className="mt-1 font-serif text-xl font-semibold">{division.name}</h3>
+                  <h3 className="mt-1 font-heading text-xl font-bold">{division.name}</h3>
                 </div>
               </div>
               <p className="p-5 text-sm leading-relaxed text-muted-foreground sm:p-6">

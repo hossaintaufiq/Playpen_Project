@@ -77,7 +77,7 @@ export function CareerApplicationForm({ vacancies, selectedVacancyId, onVacancyC
   if (success) {
     return (
       <div className="rounded-2xl border border-green-200 bg-green-50 p-6 sm:rounded-3xl sm:p-8">
-        <h3 className="font-serif text-xl font-semibold text-foreground">Application received</h3>
+        <h3 className="font-heading text-xl font-bold text-foreground">Application received</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Thank you for applying to Playpen. We will contact you if your profile matches the role.
           You may also email{" "}
@@ -102,7 +102,7 @@ export function CareerApplicationForm({ vacancies, selectedVacancyId, onVacancyC
       onSubmit={handleSubmit}
       className="w-full min-w-0 max-w-full rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-4 sm:rounded-3xl sm:p-6 md:p-8"
     >
-      <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">Drop your CV</h3>
+      <h3 className="font-heading text-xl font-bold text-foreground sm:text-2xl">Drop your CV</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         Select a posted vacancy and upload your CV (MS Word or PDF) with a passport-sized JPEG photo.
       </p>

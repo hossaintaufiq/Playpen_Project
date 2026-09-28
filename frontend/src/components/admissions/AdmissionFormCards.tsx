@@ -60,10 +60,10 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
               />
               <div className={`absolute inset-0 bg-gradient-to-t ${meta.accent} opacity-80`} />
               <div className="absolute inset-0 flex flex-col justify-end p-5 text-white sm:p-6">
-                <span className="inline-flex w-fit rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-sm">
+                <span className="inline-flex w-fit rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
                   {meta.badge}
                 </span>
-                <h2 className="mt-3 font-serif text-2xl font-semibold sm:text-3xl">{form.title}</h2>
+                <h2 className="mt-3 font-heading text-2xl font-bold sm:text-3xl">{form.title}</h2>
                 <p className="mt-1 text-sm text-white/85">{form.subtitle}</p>
               </div>
             </div>

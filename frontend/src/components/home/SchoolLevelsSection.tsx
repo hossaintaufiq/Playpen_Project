@@ -1,208 +1,171 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { useEffect, useRef } from "react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { SectionDivider } from "@/components/ui/SectionDivider";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const HEADER_OFFSET = 100;
+import { ArrowRight, Sparkles, BookOpen, GraduationCap, Compass, Smile } from "lucide-react";
 
 const schools = [
   {
-    name: "Elementary School",
+    name: "Early Childhood",
+    tagline: "Foundation of Joy & Curiosity",
     grades: "Playgroup – KG II",
+    ages: "Ages 2.5 – 5 Years",
     description:
-      "From Elementary through Senior levels, Playpen follows the Cambridge Curriculum—building moral, mental, and physical growth from the earliest years. Functional English, fine motor skills, and social development are nurtured as teachers guide young learners with care and patience.",
+      "Play-based sensory learning, phonics, fine motor development, and social confidence in a warm, patient, and stimulating setting.",
     image: "/images/schools/elementary.webp",
+    href: "/academics/early-childhood",
+    badge: "bg-amber-100 text-amber-900 border border-amber-200",
+    icon: Smile,
   },
   {
     name: "Junior School",
+    tagline: "Building Core Skills & Discovery",
     grades: "Class I – III",
+    ages: "Ages 6 – 8 Years",
     description:
-      "The Junior Curriculum lets students learn at their own pace—building good behaviour, communication skills, and social etiquette without pressure. A strong English foundation supports Mathematics, Science, Bangla, and more, equipping pupils for the stages ahead.",
+      "Nurturing strong literacy, numeracy, science, and bilingual communication through joyful interactive lessons and group activities.",
     image: "/images/schools/junior.webp",
+    href: "/academics/junior-school",
+    badge: "bg-blue-100 text-blue-900 border border-blue-200",
+    icon: BookOpen,
   },
   {
     name: "Middle School",
+    tagline: "Critical Thinking & Exploration",
     grades: "Class IV – VII",
+    ages: "Ages 9 – 12 Years",
     description:
-      "In Classes IV–VII, pupils explore core subjects through dynamic lessons, technology, and hands-on learning. Qualified teachers tailor curriculum to each student—encouraging individual learning styles, creative thinking, and a zest for academics.",
+      "Broadening scientific inquiry, ICT skills, creative arts, and independent problem-solving as students discover their passions.",
     image: "/images/schools/middle.webp",
+    href: "/academics/middle-school",
+    badge: "bg-teal-100 text-teal-900 border border-teal-200",
+    icon: Compass,
   },
   {
     name: "Senior School",
-    grades: "Class VIII – XII · O & A Level",
+    tagline: "Cambridge O & A Level Excellence",
+    grades: "Class VIII – XII",
+    ages: "Ages 13 – 18 Years",
     description:
-      "Senior School prepares students for Cambridge O, AS, and A Level examinations—internationally recognised qualifications that open doors to leading universities worldwide. Playpen balances knowledge, understanding, and skills to build curiosity, passion for learning, and a strong foundation for higher education.",
+      "Rigorous Cambridge curriculum, specialized laboratory experiments, leadership roles, and global university placement mentorship.",
     image: "/images/schools/senior.webp",
+    href: "/academics/senior-school",
+    badge: "bg-rose-100 text-rose-900 border border-rose-200 font-bold",
+    icon: GraduationCap,
   },
 ] as const;
 
 export function SchoolLevelsSection() {
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const ctx = gsap.context(() => {
-      const pinShell = root.querySelector<HTMLElement>(".schools-pin-shell");
-      if (!pinShell) return;
-
-      const cards = Array.from(root.querySelectorAll<HTMLElement>(".school-card"));
-      if (!cards.length) return;
-
-      cards.forEach((card, i) => {
-        gsap.set(card, {
-          autoAlpha: i === 0 ? 1 : 0,
-          yPercent: i === 0 ? 0 : 100,
-          scale: 1,
-          zIndex: i + 1,
-          force3D: true,
-        });
-      });
-
-      const tl = gsap.timeline({
-        defaults: { ease: "none", force3D: true, overwrite: "auto" },
-        scrollTrigger: {
-          trigger: pinShell,
-          start: `top ${HEADER_OFFSET}px`,
-          end: `+=${Math.max(1, cards.length - 1) * 115}%`,
-          scrub: 0.75,
-          pin: pinShell,
-          anticipatePin: 1,
-          fastScrollEnd: true,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      cards.forEach((card, i) => {
-        if (i === 0) return;
-
-        const label = `step-${i}`;
-        const prev = cards[i - 1];
-
-        tl.set(card, { autoAlpha: 1 }, label)
-          .to(
-            prev,
-            {
-              yPercent: -4,
-              scale: 0.97,
-              duration: 1.35,
-              ease: "none",
-            },
-            label
-          )
-          .to(
-            card,
-            {
-              yPercent: 0,
-              scale: 1,
-              duration: 1.35,
-              ease: "none",
-            },
-            label
-          )
-          .set(prev, { autoAlpha: 0, scale: 1 }, `${label}+=1.35`);
-      });
-    }, root);
-
-    const refresh = () => ScrollTrigger.refresh();
-    refresh();
-    window.addEventListener("load", refresh);
-    const t = window.setTimeout(refresh, 100);
-
-    return () => {
-      window.clearTimeout(t);
-      window.removeEventListener("load", refresh);
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <section className="relative bg-background">
-      <div className="mx-auto max-w-7xl px-4 pb-10 pt-4 sm:px-6 sm:pb-12 md:pb-14">
-        <SectionHeader
-          eyebrow="Academic Pathways"
-          title="A journey through every stage of learning"
-          description="From first steps in playgroup to Cambridge O and A Levels — each division is designed to meet children where they are, and gently guide them forward."
-        />
-      </div>
+    <section className="relative overflow-hidden bg-surface py-16 sm:py-24 lg:py-28 border-t border-border/60">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
+            <GraduationCap className="h-3.5 w-3.5 text-accent" />
+            <span>Academic Pathways</span>
+          </div>
 
-      <div ref={rootRef}>
-        <div
-          className="schools-pin-shell overflow-hidden"
-          style={{ height: `calc(100dvh - ${HEADER_OFFSET}px)` }}
-        >
-          <div className="relative h-full w-full">
-            {schools.map((school, index) => (
-              <div
+          <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
+            LEARNING DESIGNED <br className="hidden sm:inline" />
+            <span className="text-primary">FOR EVERY STAGE.</span>
+          </h2>
+
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+            A continuous Cambridge International journey tailored to each developmental milestone, ensuring confident progress from early childhood to global university entry.
+          </p>
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {schools.map((school) => {
+            const Icon = school.icon;
+            return (
+              <article
                 key={school.name}
-                className="school-slide pointer-events-none absolute inset-0 flex items-center justify-center px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8"
+                className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1.5"
               >
-                <div className="flex h-full w-full lg:w-[90%] items-center justify-center [perspective:1200px]">
-                  <article
-                    className={`school-card pointer-events-auto relative h-[90%] lg:h-full w-full overflow-hidden rounded-2xl bg-primary shadow-[0_28px_56px_-22px_rgba(128,0,0,0.35)] ring-1 ring-primary/15 will-change-transform sm:rounded-3xl ${
-                      index > 0 ? "invisible opacity-0" : ""
-                    }`}
-                  >
+                <div>
+                  {/* Card Image */}
+                  <div className="relative aspect-[16/11] w-full overflow-hidden bg-muted">
                     <Image
                       src={school.image}
                       alt={school.name}
                       fill
-                      priority
-                      sizes="100vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/88 via-[#800000]/45 to-[#800000]/20" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.08),transparent_55%)]" />
-
-                    <div className="relative flex h-full flex-col justify-between py-6 sm:py-10 lg:py-16">
-                      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex items-start justify-between gap-4">
-                        <span className="inline-flex rounded-lg border border-white/25 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md sm:px-4 sm:text-xs">
-                          Academic Pathways
-                        </span>
-                        <span className="font-serif text-5xl font-bold leading-none text-white/20 sm:text-6xl md:text-7xl">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-
-                      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <span className="inline-block rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm sm:text-xs">
-                          {school.grades}
-                        </span>
-                        <h3 className="mt-3 font-serif text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
-                          {school.name}
-                        </h3>
-                        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base md:text-lg">
-                          {school.description}
-                        </p>
-                        <Link
-                          href="/academics"
-                          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-primary transition hover:bg-white/90"
-                        >
-                          Learn More
-                          <span className="playpen-bg inline-flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white">
-                            <ArrowRight className="h-4 w-4" />
-                          </span>
-                        </Link>
-                      </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
+                    <div className="absolute top-3.5 left-3.5">
+                      <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${school.badge}`}>
+                        {school.grades}
+                      </span>
                     </div>
-                  </article>
+
+                    <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-white">
+                      <span className="text-xs font-semibold text-white/90">{school.ages}</span>
+                    </div>
+                  </div>
+
+                  {/* Card Body */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-primary mb-1">
+                      <Icon className="h-4 w-4 text-accent" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                        {school.tagline}
+                      </span>
+                    </div>
+
+                    <h3 className="font-extrabold text-xl sm:text-2xl text-foreground leading-tight group-hover:text-primary transition-colors">
+                      {school.name}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {school.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+
+                {/* Footer Link */}
+                <div className="px-6 pb-6 pt-2">
+                  <Link
+                    href={school.href}
+                    className="inline-flex w-full items-center justify-between rounded-xl bg-surface p-3 text-xs font-bold text-foreground transition group-hover:bg-primary group-hover:text-white"
+                  >
+                    <span>Explore Curriculum</span>
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Bottom Banner */}
+        <div className="mt-12 rounded-3xl border border-primary/15 bg-gradient-to-r from-primary/[0.05] via-accent/[0.05] to-primary/[0.03] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-md">
+              <Sparkles className="h-6 w-6 text-accent" />
+            </div>
+            <div>
+              <h4 className="font-extrabold text-lg sm:text-xl text-foreground">
+                Registered Cambridge International School
+              </h4>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                Official Cambridge assessment center preparing candidates for worldwide academic recognition.
+              </p>
+            </div>
           </div>
+
+          <Link
+            href="/academics"
+            className="shrink-0 rounded-full bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md transition hover:bg-primary-dark hover:shadow-lg"
+          >
+            View Academic Overview
+          </Link>
         </div>
       </div>
-
-      <SectionDivider variant="fade" />
     </section>
   );
 }

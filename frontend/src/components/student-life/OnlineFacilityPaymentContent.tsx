@@ -41,7 +41,7 @@ export function OnlineFacilityPaymentContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -56,7 +56,7 @@ export function OnlineFacilityPaymentContent() {
             <Monitor className="h-6 w-6" strokeWidth={1.75} />
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
               Parent Portal Access
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -69,7 +69,7 @@ export function OnlineFacilityPaymentContent() {
           {parentPortalFeatures.map((feature) => (
             <div
               key={feature}
-              className="flex items-center gap-2 rounded-xl border border-border/50 bg-white px-4 py-3 text-sm text-foreground/90 shadow-sm"
+              className="flex items-center gap-2 rounded-xl border border-border/50 bg-white px-4 py-3 text-sm font-medium text-foreground/90 shadow-sm"
             >
               <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
               {feature}
@@ -79,11 +79,11 @@ export function OnlineFacilityPaymentContent() {
       </div>
 
       <div className="mt-10 grid gap-5 lg:grid-cols-2">
-        <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl">
+        <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-3xl">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
             <CreditCard className="h-5 w-5" strokeWidth={1.75} />
           </div>
-          <h3 className="mt-4 font-serif text-xl font-semibold text-foreground">
+          <h3 className="mt-4 font-heading text-xl font-bold text-foreground">
             Online Tuition Fees
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -107,14 +107,14 @@ export function OnlineFacilityPaymentContent() {
           </div>
         </article>
 
-        <article className="rounded-2xl border border-amber-300 bg-amber-50 p-6 sm:rounded-3xl">
+        <article className="rounded-2xl border border-amber-300/80 bg-amber-50/70 p-6 sm:rounded-3xl">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-600 text-white">
             <CreditCard className="h-5 w-5" strokeWidth={1.75} />
           </div>
-          <h3 className="mt-4 font-serif text-xl font-semibold text-foreground">
+          <h3 className="mt-4 font-heading text-xl font-bold text-foreground">
             Mandatory Online Payment
           </h3>
-          <p className="mt-3 text-sm font-medium leading-relaxed text-amber-950/90 sm:text-base">
+          <p className="mt-3 text-sm font-semibold leading-relaxed text-amber-950/90 sm:text-base">
             {mandatoryOnlinePayment}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-amber-950/80">
@@ -130,7 +130,7 @@ export function OnlineFacilityPaymentContent() {
             <Bell className="h-5 w-5" strokeWidth={1.75} />
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
               Important Notifications
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">

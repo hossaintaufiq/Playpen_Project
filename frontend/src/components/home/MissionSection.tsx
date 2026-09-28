@@ -35,7 +35,7 @@ export function MissionSection() {
         />
 
         <blockquote className="mx-auto mt-10 max-w-3xl border-l-2 border-primary/25 pl-5 sm:mt-12 sm:pl-6">
-          <p className="font-serif text-lg font-medium leading-relaxed text-foreground/90 sm:text-xl md:text-2xl md:leading-relaxed">
+          <p className="font-heading text-lg font-bold leading-relaxed text-foreground/90 sm:text-xl md:text-2xl md:leading-relaxed">
             Playpen was born with{" "}
             <span className="playpen-text text-primary">this in mind</span> — shaping
             learners who think clearly, act responsibly, and lead with integrity.

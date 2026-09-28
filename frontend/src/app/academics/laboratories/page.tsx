@@ -52,7 +52,7 @@ export default async function LaboratoriesPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+                <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                   {lab.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{lab.text}</p>

@@ -162,7 +162,7 @@ export default function AdminAlumniPage() {
           <AdminCard key={request.id}>
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h3 className="font-serif text-xl font-bold tracking-tight text-foreground">{request.name}</h3>
+                <h3 className="font-heading text-xl font-bold tracking-tight text-foreground">{request.name}</h3>
                 <p className="mt-1 text-xs font-semibold text-muted-foreground/80">
                   Received {new Date(request.createdAt).toLocaleString()}
                 </p>

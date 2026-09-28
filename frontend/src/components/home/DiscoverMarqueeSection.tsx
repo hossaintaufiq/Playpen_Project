@@ -56,7 +56,7 @@ function MarqueeCard({ item }: { item: (typeof marqueeItems)[number] }) {
           <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/65 sm:text-[11px]">
             {item.subtitle}
           </p>
-          <h3 className="mt-1 font-serif text-lg font-semibold leading-tight text-white sm:text-xl">
+          <h3 className="mt-1 font-heading text-lg font-bold leading-tight text-white sm:text-xl">
             {item.title}
           </h3>
         </div>

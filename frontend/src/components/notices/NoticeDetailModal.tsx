@@ -43,25 +43,25 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
     >
       <button
         type="button"
-        className="absolute inset-0 bg-[#1c1c1c]/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
         aria-label="Close notice details"
       />
 
-      <div className="relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-primary/15 bg-white shadow-[0_24px_60px_-20px_rgba(128,0,0,0.35)] sm:rounded-3xl">
-        <div className="border-b border-primary/10 bg-gradient-to-br from-[#5a0000] via-primary to-primary-light px-5 py-5 text-white sm:px-6">
+      <div className="relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-border bg-white shadow-2xl sm:rounded-3xl">
+        <div className="border-b border-white/10 bg-gradient-to-br from-[#520215] to-[#7a0826] px-6 py-6 text-white">
           <div className="flex items-start justify-between gap-4">
-            <div className="flex min-w-0 items-start gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15">
+            <div className="flex min-w-0 items-start gap-3.5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-accent shadow-sm">
                 <Bell className="h-5 w-5" strokeWidth={1.75} />
               </span>
               <div className="min-w-0">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
                   {formatNoticeDate(notice.createdAt)}
-                </p>
+                </span>
                 <h2
                   id="notice-detail-title"
-                  className="mt-1 font-serif text-xl font-semibold leading-tight sm:text-2xl"
+                  className="mt-1 font-extrabold text-xl leading-tight sm:text-2xl text-white"
                 >
                   {notice.title}
                 </h2>
@@ -70,7 +70,7 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 transition hover:bg-white/20"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
@@ -78,15 +78,13 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
           </div>
         </div>
 
-        <div className="overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+        <div className="overflow-y-auto px-6 py-6 space-y-4">
           {paragraphs.length > 0 ? (
-            <div className="space-y-4">
-              {paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-foreground/90 sm:text-base">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            paragraphs.map((paragraph) => (
+              <p key={paragraph} className="text-sm sm:text-base leading-relaxed text-foreground/90 font-normal">
+                {paragraph}
+              </p>
+            ))
           ) : (
             <p className="text-sm leading-relaxed text-muted-foreground">
               No additional details are available for this notice.
@@ -94,20 +92,20 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
           )}
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-border/60 bg-muted/20 px-5 py-4 sm:flex-row sm:justify-end sm:px-6">
+        <div className="flex flex-col gap-3 border-t border-border/70 bg-surface px-6 py-4 sm:flex-row sm:justify-end">
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center justify-center rounded-full border border-border/70 bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40"
+            className="inline-flex items-center justify-center rounded-full border border-border bg-white px-6 py-2.5 text-xs font-bold text-foreground transition hover:bg-muted"
           >
             Close
           </button>
           {notice.href && (
             <Link
               href={notice.href}
-              className="playpen-bg inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-primary-dark"
             >
-              Related page
+              <span>Related Page</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
           )}

@@ -80,7 +80,7 @@ export function AlumniRegistrationForm() {
   if (success) {
     return (
       <div className="w-full min-w-0 rounded-2xl border border-green-200 bg-green-50 p-4 sm:rounded-3xl sm:p-8">
-        <h3 className="font-serif text-xl font-semibold text-foreground">Thank you for registering</h3>
+        <h3 className="font-extrabold text-xl text-foreground">Thank you for registering</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Your alumni registration has been received and is pending review by our administration
           team. We will contact you after your details have been approved. You may also email{" "}
@@ -108,7 +108,7 @@ export function AlumniRegistrationForm() {
       onSubmit={handleSubmit}
       className="w-full min-w-0 max-w-full rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-4 sm:rounded-3xl sm:p-6 md:p-8"
     >
-      <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
+      <h3 className="font-extrabold text-xl text-foreground sm:text-2xl">
         Alumni Registration
       </h3>
       <p className="mt-2 text-sm text-muted-foreground">Fields marked with * are required.</p>

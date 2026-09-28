@@ -11,56 +11,54 @@ import {
   Palette,
   Trophy,
   Users,
+  CheckCircle2,
+  Sparkles,
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { AchievementCategory, StudentAchievement } from "@/lib/cms/types";
 
 const categoryFilters: { value: "all" | AchievementCategory; label: string }[] = [
-  { value: "all", label: "All" },
-  { value: "academic", label: "Academic" },
+  { value: "all", label: "All Honors" },
+  { value: "academic", label: "Academic & Cambridge" },
   { value: "science", label: "Science & Tech" },
-  { value: "sports", label: "Sports" },
+  { value: "sports", label: "Sports & Athletics" },
   { value: "arts", label: "Arts & Culture" },
-  { value: "other", label: "Other" },
+  { value: "other", label: "Leadership & Other" },
 ];
 
 const categoryMeta: Record<
   AchievementCategory,
-  { label: string; icon: typeof Trophy; className: string }
+  { label: string; icon: typeof Trophy; badgeClass: string }
 > = {
   academic: {
     label: "Academic",
     icon: Award,
-    className: "bg-primary/10 text-primary",
+    badgeClass: "bg-primary/10 text-primary border border-primary/20",
   },
   science: {
     label: "Science & Tech",
     icon: Microscope,
-    className: "bg-blue-50 text-blue-700",
+    badgeClass: "bg-blue-50 text-blue-800 border border-blue-200",
   },
   sports: {
     label: "Sports",
     icon: Trophy,
-    className: "bg-amber-50 text-amber-800",
+    badgeClass: "bg-amber-50 text-amber-800 border border-amber-200",
   },
   arts: {
     label: "Arts & Culture",
     icon: Palette,
-    className: "bg-purple-50 text-purple-700",
+    badgeClass: "bg-purple-50 text-purple-800 border border-purple-200",
   },
   other: {
-    label: "Achievement",
+    label: "Honors",
     icon: Medal,
-    className: "bg-muted text-foreground",
+    badgeClass: "bg-muted text-foreground border border-border",
   },
 };
 
 function displayDate(achievement: StudentAchievement) {
   return achievement.date || achievement.year || "";
-}
-
-function isHighlightResult(text: string) {
-  return /1st|2nd|3rd|champion|runner|best|medal|position/i.test(text);
 }
 
 export function StudentAchievementsContent({
@@ -86,166 +84,135 @@ export function StudentAchievementsContent({
   }, [achievements]);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <SectionHeader
-        eyebrow="Student Excellence"
-        title="Celebrating achievement across academics, sports, and the arts"
-        description="Playpen students regularly excel in national and international competitions. Browse highlights from recent events and award ceremonies."
+        eyebrow="Hall of Achievement"
+        title="Celebrating Student Excellence Across Academics, Sports &amp; the Arts"
+        description="Playpen students regularly excel in Cambridge international rankings, national science olympiads, inter-school sports, and cultural festivals."
       />
 
-      <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:grid-cols-4 sm:gap-4">
+      {/* Metrics Banner */}
+      <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
         {[
-          { label: "Events", value: stats.events },
-          { label: "Awards & Results", value: stats.awards },
-          { label: "Academic & Science", value: stats.academic },
-          { label: "Sports", value: stats.sports },
+          { label: "Competition Events", value: `${stats.events}+` },
+          { label: "Individual Honors", value: `${stats.awards}+` },
+          { label: "Academic & Science Laurels", value: `${stats.academic}+` },
+          { label: "Sports Championships", value: `${stats.sports}+` },
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-2xl border border-primary/10 bg-white px-4 py-5 text-center shadow-sm sm:rounded-3xl"
+            className="rounded-3xl border border-border/80 bg-white p-6 text-center shadow-sm"
           >
-            <p className="font-serif text-2xl font-semibold text-primary sm:text-3xl">{stat.value}</p>
-            <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+            <p className="font-extrabold text-3xl sm:text-4xl text-primary">{stat.value}</p>
+            <p className="mt-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
               {stat.label}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap gap-2">
-        {categoryFilters.map((item) => {
-          const count =
-            item.value === "all"
-              ? achievements.length
-              : achievements.filter((achievement) => achievement.category === item.value).length;
-          const active = filter === item.value;
-          return (
-            <button
-              key={item.value}
-              type="button"
-              onClick={() => setFilter(item.value)}
-              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                active
-                  ? "border-primary bg-primary text-white"
-                  : "border-border/70 bg-white text-muted-foreground hover:border-primary/30 hover:text-foreground"
-              }`}
-            >
-              {item.label}
-              <span className="ml-1.5 opacity-80">({count})</span>
-            </button>
-          );
-        })}
+      {/* Filter Tabs */}
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        {categoryFilters.map((cat) => (
+          <button
+            key={cat.value}
+            type="button"
+            onClick={() => setFilter(cat.value)}
+            className={`rounded-full px-5 py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 ${
+              filter === cat.value
+                ? "bg-primary text-white shadow-md shadow-primary/20 scale-105"
+                : "bg-white text-muted-foreground border border-border hover:bg-surface hover:text-foreground"
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
       </div>
 
-      {filtered.length === 0 ? (
-        <div className="mt-10 rounded-2xl border border-border/60 bg-muted/30 p-10 text-center">
-          <p className="font-serif text-lg font-semibold text-foreground">No achievements to show</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Check back soon for the latest student awards and competition results.
-          </p>
-        </div>
-      ) : (
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {filtered.map((achievement) => {
-            const meta = categoryMeta[achievement.category];
-            const Icon = meta.icon;
-            const when = displayDate(achievement);
+      {/* Achievements Grid */}
+      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((achievement) => {
+          const meta = categoryMeta[achievement.category || "other"] ?? categoryMeta.other;
+          const Icon = meta.icon;
+          const dateStr = displayDate(achievement);
 
-            return (
-              <article
-                key={achievement.id}
-                className="overflow-hidden rounded-2xl border border-border/60 bg-white shadow-[0_4px_24px_-12px_rgba(128,0,0,0.12)] sm:rounded-3xl"
-              >
-                {achievement.image && (
-                  <div className="relative aspect-[21/9] overflow-hidden bg-muted">
+          return (
+            <article
+              key={achievement.id}
+              className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+            >
+              <div>
+                {/* Photo if available */}
+                {achievement.image ? (
+                  <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden bg-muted">
                     <Image
                       src={achievement.image}
                       alt={achievement.title}
                       fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#5a0000]/70 via-[#800000]/10 to-transparent" />
-                    <span
-                      className={`absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${meta.className}`}
-                    >
-                      <Icon className="h-3.5 w-3.5" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-3.5 left-3.5">
+                      <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${meta.badgeClass} bg-white/95 backdrop-blur-md`}>
+                        <Icon className="h-3 w-3" />
+                        {meta.label}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-4">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${meta.badgeClass}`}>
+                      <Icon className="h-3 w-3" />
                       {meta.label}
                     </span>
+                    {dateStr && (
+                      <span className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {dateStr}
+                      </span>
+                    )}
                   </div>
                 )}
 
-                <div className="p-5 sm:p-6">
-                  {!achievement.image && (
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${meta.className}`}
-                    >
-                      <Icon className="h-3.5 w-3.5" />
-                      {meta.label}
-                    </span>
-                  )}
+                <h3 className="font-extrabold text-xl text-foreground leading-snug group-hover:text-primary transition-colors">
+                  {achievement.title}
+                </h3>
 
-                  <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-foreground sm:text-2xl">
-                    {achievement.title}
-                  </h3>
+                {achievement.organizer && (
+                  <p className="mt-1.5 text-xs text-muted-foreground">
+                    Organized by: <span className="font-semibold text-foreground/80">{achievement.organizer}</span>
+                  </p>
+                )}
 
-                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                    {achievement.organizer && (
-                      <span className="inline-flex items-start gap-1.5">
-                        <Award className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
-                        {achievement.organizer}
-                      </span>
-                    )}
-                    {achievement.venue && (
-                      <span className="inline-flex items-start gap-1.5">
-                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
-                        {achievement.venue}
-                      </span>
-                    )}
-                    {when && (
-                      <span className="inline-flex items-start gap-1.5">
-                        <Calendar className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
-                        {when}
-                      </span>
-                    )}
-                    {achievement.participatedBy && (
-                      <span className="inline-flex items-start gap-1.5">
-                        <Users className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
-                        {achievement.participatedBy}
-                      </span>
-                    )}
-                  </div>
+                {achievement.venue && (
+                  <p className="mt-0.5 text-xs text-muted-foreground flex items-center gap-1">
+                    <MapPin className="h-3 w-3 text-accent" />
+                    <span>{achievement.venue}</span>
+                  </p>
+                )}
 
-                  <div className="mt-5 rounded-2xl border border-border/50 bg-muted/20 p-4 sm:p-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary/70">
-                      Results
-                    </p>
-                    <ul className="mt-3 space-y-2.5">
-                      {achievement.results.map((result) => (
-                        <li
-                          key={result}
-                          className={`flex items-start gap-2.5 text-sm leading-relaxed ${
-                            isHighlightResult(result)
-                              ? "font-medium text-foreground"
-                              : "text-muted-foreground"
-                          }`}
-                        >
-                          <Medal
-                            className={`mt-0.5 h-4 w-4 shrink-0 ${
-                              isHighlightResult(result) ? "text-accent" : "text-primary/40"
-                            }`}
-                          />
-                          {result}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* Results List */}
+                <div className="mt-4 space-y-2">
+                  {achievement.results.map((res, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs sm:text-[13px] text-foreground/85 leading-relaxed">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-accent mt-0.5" />
+                      <span>{res}</span>
+                    </div>
+                  ))}
                 </div>
-              </article>
-            );
-          })}
-        </div>
-      )}
+              </div>
+
+              {achievement.participatedBy && (
+                <div className="mt-6 pt-3 border-t border-border/60 text-xs text-muted-foreground font-medium flex items-center gap-1.5">
+                  <Users className="h-3.5 w-3.5 text-primary" />
+                  <span>{achievement.participatedBy}</span>
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }

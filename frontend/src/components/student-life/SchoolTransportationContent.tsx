@@ -42,7 +42,7 @@ export function SchoolTransportationContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -87,11 +87,11 @@ export function SchoolTransportationContent() {
       </div>
 
       <div className="mt-10 grid gap-5 lg:grid-cols-2 sm:mt-12">
-        <article className="relative overflow-hidden rounded-3xl border border-primary/20 bg-[#5a0000] p-6 text-white shadow-lg sm:p-8">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(201,162,39,0.18),transparent_55%)]" />
+        <article className="relative overflow-hidden rounded-3xl border border-primary/20 bg-primary p-6 text-white shadow-lg sm:p-8">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.18),transparent_55%)]" />
           <div className="relative">
             <Bus className="h-10 w-10 text-accent" strokeWidth={1.5} />
-            <h3 className="mt-5 font-serif text-2xl font-semibold">How to Apply</h3>
+            <h3 className="mt-5 font-heading text-2xl font-bold">How to Apply</h3>
             <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
               {transportationApplyNote}
             </p>
@@ -103,7 +103,7 @@ export function SchoolTransportationContent() {
         </article>
 
         <article className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
             Transport Enquiries
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

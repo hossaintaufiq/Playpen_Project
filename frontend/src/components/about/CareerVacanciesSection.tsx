@@ -17,14 +17,14 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
       <div className="mt-12 sm:mt-14">
         <div className="mb-6 flex items-center gap-2">
           <Briefcase className="h-5 w-5 text-primary" />
-          <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+          <h2 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
             See All Vacancies
           </h2>
         </div>
 
         {vacancies.length === 0 ? (
           <div className="rounded-2xl border border-border/60 bg-muted/30 p-8 text-center">
-            <p className="font-serif text-lg font-semibold text-foreground">No open positions right now</p>
+            <p className="font-heading text-lg font-bold text-foreground">No open positions right now</p>
             <p className="mt-2 text-sm text-muted-foreground">
               Please check back later or email{" "}
               <a href={`mailto:${careerEmail}`} className="break-all font-semibold text-primary hover:underline">
@@ -46,7 +46,7 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
                       : "border-border/60 hover:border-primary/20"
                   }`}
                 >
-                  <h3 className="font-serif text-lg font-semibold text-foreground">{vacancy.title}</h3>
+                  <h3 className="font-heading text-lg font-bold text-foreground">{vacancy.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{vacancy.description}</p>
                   <button
                     type="button"

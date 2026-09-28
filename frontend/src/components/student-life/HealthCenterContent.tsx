@@ -42,7 +42,7 @@ export function HealthCenterContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -53,7 +53,7 @@ export function HealthCenterContent() {
 
       <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2">
         <article className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-6 sm:rounded-3xl sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
             During the School Day
           </p>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -64,14 +64,14 @@ export function HealthCenterContent() {
           </p>
         </article>
 
-        <article className="rounded-2xl border border-amber-200 bg-amber-50 p-6 sm:rounded-3xl sm:p-8">
+        <article className="rounded-2xl border border-amber-200/80 bg-amber-50/70 p-6 sm:rounded-3xl sm:p-8">
           <div className="flex items-start gap-3">
             <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-800/80">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-amber-800">
                 Serious Cases
               </p>
-              <p className="mt-3 text-sm font-medium leading-relaxed text-amber-950/90 sm:text-base">
+              <p className="mt-3 text-sm font-semibold leading-relaxed text-amber-950/90 sm:text-base">
                 {healthCenterSeriousCasesNote}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-amber-950/80">
@@ -83,7 +83,7 @@ export function HealthCenterContent() {
       </div>
 
       <div className="mt-10 rounded-3xl border border-border/60 bg-white p-6 shadow-sm sm:mt-12 sm:rounded-3xl sm:p-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
           What the Health Center Provides
         </p>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -101,7 +101,7 @@ export function HealthCenterContent() {
 
       <div className="mt-10 grid gap-5 lg:grid-cols-2">
         <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
             For Parents
           </p>
           <ul className="mt-4 space-y-2.5">
@@ -117,8 +117,8 @@ export function HealthCenterContent() {
           </ul>
         </article>
 
-        <article className="rounded-2xl border border-primary/10 bg-[#5a0000] p-6 text-white sm:rounded-3xl sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/70">
+        <article className="rounded-2xl border border-primary/10 bg-primary p-6 text-white sm:rounded-3xl sm:p-8">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
             Contact the School
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/85">

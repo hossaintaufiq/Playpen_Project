@@ -102,7 +102,7 @@ export function AdminSidebar({ currentPath }: { currentPath: string }) {
             />
           </div>
           <div>
-            <p className="font-serif text-sm font-semibold tracking-wide text-white">Playpen Admin</p>
+            <p className="font-heading text-sm font-bold tracking-wide text-white">Playpen Admin</p>
             <div className="flex items-center gap-1 mt-0.5">
               <span className="relative flex h-1 w-1">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

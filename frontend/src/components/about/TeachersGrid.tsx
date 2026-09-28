@@ -6,7 +6,7 @@ export function TeachersGrid({ teachers }: { teachers: Teacher[] }) {
 
   return (
     <div className="mt-10 sm:mt-12">
-      <h2 className="text-center font-serif text-2xl font-semibold text-foreground sm:text-3xl">
+      <h2 className="text-center font-heading text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         Faculty & Staff
       </h2>
       <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-muted-foreground">
@@ -17,7 +17,7 @@ export function TeachersGrid({ teachers }: { teachers: Teacher[] }) {
         {teachers.map((teacher) => (
           <article
             key={teacher.id}
-            className="overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm sm:rounded-3xl"
+            className="overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm transition hover:shadow-md sm:rounded-3xl"
           >
             {teacher.image ? (
               <div className="relative aspect-[4/3] bg-muted">
@@ -31,16 +31,16 @@ export function TeachersGrid({ teachers }: { teachers: Teacher[] }) {
               </div>
             ) : (
               <div className="flex aspect-[4/3] items-center justify-center bg-primary/5">
-                <span className="font-serif text-3xl font-semibold text-primary/40">
+                <span className="font-heading text-3xl font-bold text-primary/40">
                   {teacher.name.charAt(0)}
                 </span>
               </div>
             )}
             <div className="p-6">
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary/60">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
                 {teacher.role}
               </p>
-              <h3 className="mt-2 font-serif text-xl font-semibold text-foreground">
+              <h3 className="mt-2 font-heading text-xl font-bold text-foreground">
                 {teacher.name}
               </h3>
               <p className="mt-1 text-xs font-medium text-muted-foreground">{teacher.department}</p>

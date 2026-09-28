@@ -55,13 +55,13 @@ function CounsellorCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <p
-              className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${
-                isMaroon ? "text-white/70" : "text-primary/60"
+              className={`text-[11px] font-bold uppercase tracking-[0.22em] ${
+                isMaroon ? "text-accent" : "text-primary"
               }`}
             >
               {eyebrow}
             </p>
-            <h3 className="mt-3 font-serif text-2xl font-semibold sm:text-3xl">{title}</h3>
+            <h3 className="mt-3 font-heading text-2xl font-bold sm:text-3xl">{title}</h3>
           </div>
           <div
             className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${
@@ -82,8 +82,8 @@ function CounsellorCard({
 
         <div className="mt-6">
           <p
-            className={`text-[11px] font-semibold uppercase tracking-[0.2em] ${
-              isMaroon ? "text-white/65" : "text-primary/60"
+            className={`text-[11px] font-bold uppercase tracking-[0.2em] ${
+              isMaroon ? "text-white/75" : "text-primary"
             }`}
           >
             How we support students
@@ -164,7 +164,7 @@ export function CounsellorContent() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
               <item.icon className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">{item.title}</h3>
+            <h3 className="mt-4 font-heading text-lg font-bold text-foreground">{item.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
           </article>
         ))}
@@ -172,7 +172,7 @@ export function CounsellorContent() {
 
       <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-6 sm:mt-12 sm:p-8 md:flex md:items-center md:justify-between md:gap-8">
         <div className="md:max-w-2xl">
-          <h3 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
+          <h3 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
             Speak with a counsellor
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

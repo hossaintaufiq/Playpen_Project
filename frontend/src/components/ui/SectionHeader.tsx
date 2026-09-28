@@ -20,16 +20,19 @@ export function SectionHeader({
       className={`max-w-3xl ${isCenter ? "mx-auto text-center" : ""} ${className}`.trim()}
     >
       {eyebrow && (
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-primary/60 sm:text-xs">
-          {eyebrow}
-        </p>
+        <div className={`flex items-center gap-2 mb-3 ${isCenter ? "justify-center" : ""}`}>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/[0.08] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-primary sm:text-xs">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            {eyebrow}
+          </span>
+        </div>
       )}
-      <h2 className="mt-3 font-serif text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-3xl md:text-4xl">
+      <h2 className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.18] tracking-tight text-foreground">
         {title}
       </h2>
       {description && (
         <p
-          className={`mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base sm:leading-relaxed ${
+          className={`mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground ${
             isCenter ? "mx-auto max-w-2xl" : ""
           }`.trim()}
         >

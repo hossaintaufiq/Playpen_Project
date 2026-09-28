@@ -1,21 +1,23 @@
 import { Navbar } from "./Navbar";
-import { NewsTicker } from "./NewsTicker";
+import { TopBar } from "./TopBar";
 import { Footer } from "./Footer";
 import { Chatbot } from "./Chatbot";
-import { getCMSData, getPublishedCMS } from "@/lib/cms/store";
 
 export async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const cms = getPublishedCMS(await getCMSData());
-
   return (
     <>
+      {/* Upper part of nav (hides on scroll) */}
+      <TopBar />
+
+      {/* Main sticky navigation */}
       <header className="sticky top-0 z-50 w-full shadow-md">
         <Navbar />
-        {cms.newsTicker.enabled && <NewsTicker ticker={cms.newsTicker} />}
       </header>
+
       <main className="min-w-0 flex-1">{children}</main>
       <Footer />
       <Chatbot />
     </>
   );
 }
+

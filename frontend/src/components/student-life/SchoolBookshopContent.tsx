@@ -26,10 +26,10 @@ export function SchoolBookshopContent() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-accent">
               <Clock className="h-6 w-6" strokeWidth={1.75} />
             </div>
-            <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/70">
+            <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
               {bookshopHours.label}
             </p>
-            <p className="mt-2 font-serif text-3xl font-semibold">{bookshopHours.time}</p>
+            <p className="mt-2 font-heading text-3xl font-bold">{bookshopHours.time}</p>
             <p className="mt-4 text-sm leading-relaxed text-white/85">{bookshopHours.note}</p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export function SchoolBookshopContent() {
               <ShoppingBag className="h-6 w-6" strokeWidth={1.75} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
                 Start of Every Session
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -53,7 +53,7 @@ export function SchoolBookshopContent() {
             {bookshopOfferings.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2 rounded-xl border border-border/50 bg-muted/20 px-4 py-3 text-sm text-foreground/90"
+                className="flex items-start gap-2 rounded-xl border border-border/50 bg-muted/20 px-4 py-3 text-sm font-medium text-foreground/90"
               >
                 <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 {item}
@@ -74,7 +74,7 @@ export function SchoolBookshopContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -85,7 +85,7 @@ export function SchoolBookshopContent() {
 
       <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.05] p-6 text-center sm:mt-12 sm:p-10">
         <Store className="mx-auto h-10 w-10 text-primary" strokeWidth={1.5} />
-        <p className="mx-auto mt-4 max-w-2xl font-serif text-xl font-semibold text-foreground sm:text-2xl">
+        <p className="mx-auto mt-4 max-w-2xl font-heading text-xl font-bold text-foreground sm:text-2xl">
           One stop for books, copies, and supplies — right here on the Playpen campus.
         </p>
       </div>

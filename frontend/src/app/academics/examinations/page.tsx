@@ -48,10 +48,10 @@ export default async function ExaminationsPage() {
               key={semester.title}
               className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm sm:rounded-3xl"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
                 Examination {index + 1}
               </p>
-              <h3 className="mt-2 font-serif text-xl font-semibold text-foreground sm:text-2xl">
+              <h3 className="mt-2 font-heading text-xl font-bold text-foreground sm:text-2xl">
                 {semester.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{semester.text}</p>
@@ -70,7 +70,7 @@ export default async function ExaminationsPage() {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+                <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>

@@ -19,11 +19,11 @@ export function NoticesList({ notices }: NoticesListProps) {
 
   if (sortedNotices.length === 0) {
     return (
-      <div className="mt-8 rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center sm:rounded-3xl sm:p-10">
-        <Bell className="mx-auto h-8 w-8 text-primary/50" />
-        <p className="mt-3 font-serif text-lg font-semibold text-foreground">No notices right now</p>
+      <div className="mt-8 rounded-3xl border border-dashed border-border bg-surface p-10 text-center">
+        <Bell className="mx-auto h-10 w-10 text-primary/40" />
+        <p className="mt-3 font-extrabold text-xl text-foreground">No active notices</p>
         <p className="mt-2 text-sm text-muted-foreground">
-          New notices will appear here when published from the admin dashboard.
+          New circulars and announcements will appear here when published.
         </p>
       </div>
     );
@@ -35,7 +35,7 @@ export function NoticesList({ notices }: NoticesListProps) {
         {sortedNotices.map((notice) => (
           <article
             key={notice.id}
-            className="group rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-3xl sm:p-6"
+            className="group rounded-3xl border border-border/80 bg-white p-6 shadow-sm transition hover:border-primary/30 hover:shadow-md"
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex min-w-0 flex-1 gap-4">
@@ -43,10 +43,10 @@ export function NoticesList({ notices }: NoticesListProps) {
                   <Bell className="h-5 w-5" strokeWidth={1.75} />
                 </span>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
                     {formatNoticeDate(notice.createdAt)}
-                  </p>
-                  <h3 className="mt-1 font-serif text-lg font-semibold text-foreground sm:text-xl">
+                  </span>
+                  <h3 className="mt-1 font-extrabold text-xl text-foreground group-hover:text-primary transition-colors">
                     {notice.title}
                   </h3>
                   {notice.description && (
@@ -60,10 +60,10 @@ export function NoticesList({ notices }: NoticesListProps) {
               <button
                 type="button"
                 onClick={() => setActiveNotice(notice)}
-                className="inline-flex shrink-0 items-center justify-center gap-1.5 self-start rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10 sm:mt-1"
+                className="inline-flex shrink-0 items-center justify-center gap-1.5 self-start rounded-full border border-primary/20 bg-primary/8 px-4.5 py-2 text-xs font-bold text-primary transition hover:bg-primary hover:text-white sm:mt-1 shadow-sm"
               >
-                Read more
-                <ArrowRight className="h-4 w-4" />
+                <span>Read Circular</span>
+                <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
           </article>

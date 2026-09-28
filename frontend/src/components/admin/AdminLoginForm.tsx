@@ -41,7 +41,7 @@ export function AdminLoginForm() {
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15">
             <Lock className="h-6 w-6" />
           </div>
-          <h1 className="font-serif text-2xl font-semibold">Website Manager</h1>
+          <h1 className="font-heading text-2xl font-bold">Website Manager</h1>
           <p className="mt-2 text-sm text-white/80">
             Sign in to update notices, photos, events, and more.
           </p>

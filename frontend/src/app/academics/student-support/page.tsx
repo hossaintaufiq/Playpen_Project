@@ -50,7 +50,7 @@ export default async function StudentSupportPage() {
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
                   <Icon className="h-6 w-6" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-5 font-serif text-lg font-semibold uppercase tracking-wide text-foreground sm:text-xl">
+                <h3 className="mt-5 font-heading text-lg font-bold uppercase tracking-wide text-foreground sm:text-xl">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>

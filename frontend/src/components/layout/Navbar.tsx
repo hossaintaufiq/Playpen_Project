@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { siteLogo } from "@/lib/brand";
 import { aboutNavItems } from "@/lib/about-nav";
 import { academicsNavItems } from "@/lib/academics-nav";
@@ -12,13 +12,13 @@ import { admissionsNavItems } from "@/lib/admissions-nav";
 import { studentLifeNavItems } from "@/lib/student-life-nav";
 
 const navItems = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about", dropdownItems: aboutNavItems },
   { label: "Academics", href: "/academics", dropdownItems: academicsNavItems },
-  { label: "Admissions", href: "/admissions", dropdownItems: admissionsNavItems },
+  { label: "Campus", href: "/about/our-campus" },
+  { label: "Achievements", href: "/academics/student-achievements" },
   { label: "Student Life", href: "/student-life", dropdownItems: studentLifeNavItems },
   { label: "Notices", href: "/notices" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Admissions", href: "/admissions", dropdownItems: admissionsNavItems },
 ] as const;
 
 function isNavActive(pathname: string, href: string) {
@@ -61,7 +61,7 @@ function NavbarDropdown({
 
   const scheduleClose = () => {
     clearCloseTimer();
-    closeTimerRef.current = setTimeout(() => setOpen(false), 220);
+    closeTimerRef.current = setTimeout(() => setOpen(false), 200);
   };
 
   useEffect(() => {
@@ -83,22 +83,22 @@ function NavbarDropdown({
 
   if (variant === "mobile") {
     return (
-      <div className="rounded-lg">
+      <div className="rounded-xl overflow-hidden">
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium ${
-            active ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
+          className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition ${
+            active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted/60"
           }`}
           aria-expanded={open}
         >
-          {label}
+          <span>{label}</span>
           <ChevronDown
-            className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+            className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           />
         </button>
         {open && (
-          <div className="mt-1 space-y-1 border-l border-white/15 pl-3">
+          <div className="my-1 space-y-1 border-l-2 border-primary/20 pl-3 ml-3">
             {items.map((item) => {
               const itemActive = pathname === item.href;
               return (
@@ -106,15 +106,15 @@ function NavbarDropdown({
                   key={item.href}
                   href={item.href}
                   onClick={onNavigate}
-                  className={`flex items-start gap-3 rounded-lg px-4 py-2.5 text-sm ${
+                  className={`flex flex-col rounded-lg px-3 py-2 text-sm transition ${
                     itemActive
-                      ? "bg-white/15 text-white"
-                      : "text-white/75 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary text-white font-semibold shadow-sm"
+                      : "text-foreground/80 hover:bg-muted/60 hover:text-primary font-medium"
                   }`}
                 >
-                  <span className="min-w-0">
-                    <span className="block font-medium">{item.label}</span>
-                    <span className="block text-xs text-white/55">{item.description}</span>
+                  <span className="font-semibold">{item.label}</span>
+                  <span className={`text-xs line-clamp-1 ${itemActive ? "text-white/80" : "text-muted-foreground"}`}>
+                    {item.description}
                   </span>
                 </Link>
               );
@@ -125,7 +125,7 @@ function NavbarDropdown({
     );
   }
 
-  const isLarge = items.length > 6;
+  const isLarge = items.length > 5;
 
   return (
     <div
@@ -137,39 +137,40 @@ function NavbarDropdown({
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
+        className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
           active || open
-            ? "bg-white/15 text-white"
-            : "text-white/85 hover:bg-white/10 hover:text-white"
+            ? "bg-primary/10 text-primary"
+            : "text-foreground/85 hover:text-primary hover:bg-muted/50"
         }`}
         aria-expanded={open}
         aria-haspopup="true"
       >
-        {label}
+        <span>{label}</span>
         <ChevronDown
-          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`h-3.5 w-3.5 text-muted-foreground/80 transition-transform duration-200 ${open ? "rotate-180 text-primary" : ""}`}
         />
       </button>
 
       <div
-        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2 transition-all duration-200 ease-out ${
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2.5 transition-all duration-200 ease-out ${
           open
             ? "visible translate-y-0 opacity-100"
-            : "pointer-events-none invisible -translate-y-1 opacity-0"
+            : "pointer-events-none invisible -translate-y-2 opacity-0"
         }`}
         onMouseEnter={openMenu}
         onMouseLeave={scheduleClose}
       >
-        <div className={`overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_20px_50px_-16px_rgba(0,0,0,0.45)] ring-1 ring-black/5 ${
-          isLarge ? "w-[36rem]" : "w-[20rem]"
+        <div className={`overflow-hidden rounded-2xl border border-border bg-white/95 backdrop-blur-xl p-2 shadow-2xl ring-1 ring-black/5 ${
+          isLarge ? "w-[34rem]" : "w-[21rem]"
         }`}>
-          <div className="border-b border-border/60 bg-muted/40 px-4 py-3">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary/70">
-              {label} Sections
+          <div className="border-b border-border/60 bg-muted/40 px-4 py-2.5 rounded-xl mb-1 flex items-center justify-between">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+              {label}
             </p>
+            <span className="text-[11px] text-muted-foreground font-medium">Explore Overview</span>
           </div>
 
-          <div className={`p-1.5 ${isLarge ? "grid grid-cols-2 gap-1" : "space-y-0.5"}`}>
+          <div className={`${isLarge ? "grid grid-cols-2 gap-1.5" : "space-y-1"}`}>
             {items.map((item) => {
               const itemActive = pathname === item.href || (item.href !== rootHref && pathname.startsWith(item.href));
 
@@ -178,18 +179,22 @@ function NavbarDropdown({
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`flex items-start gap-2.5 rounded-xl px-3 py-2.5 transition ${
+                  className={`group flex items-start gap-2.5 rounded-xl p-2.5 transition-all duration-200 ${
                     itemActive
-                      ? "bg-primary/8 text-primary"
-                      : "text-foreground hover:bg-muted/60"
+                      ? "bg-primary text-white shadow-sm"
+                      : "text-foreground hover:bg-primary-soft hover:text-primary"
                   }`}
                 >
-                  <span className="min-w-0 pt-0.5">
-                    <span className="block text-sm font-semibold leading-tight">{item.label}</span>
-                    <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
+                  <div className="min-w-0">
+                    <span className="block text-[13.5px] font-bold leading-tight group-hover:text-primary transition-colors">
+                      {item.label}
+                    </span>
+                    <span className={`mt-0.5 block text-xs leading-snug line-clamp-1 ${
+                      itemActive ? "text-white/80" : "text-muted-foreground"
+                    }`}>
                       {item.description}
                     </span>
-                  </span>
+                  </div>
                 </Link>
               );
             })}
@@ -205,7 +210,6 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 
@@ -217,35 +221,40 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <div className="playpen-bg">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex h-14 items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-6 lg:px-8">
+    <div className="w-full bg-white/95 backdrop-blur-md border-b border-border/70 transition-all duration-300">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-[76px] sm:h-[84px] items-center justify-between gap-3 sm:gap-6">
+          {/* BIG SCHOOL BRANDING */}
           <Link
             href="/"
-            className="flex min-w-0 shrink items-center gap-2 sm:gap-3"
+            className="group flex min-w-0 shrink-0 items-center gap-3 sm:gap-3.5"
             onClick={() => setOpen(false)}
           >
-            <div className="relative h-12 w-12 shrink-0 sm:h-14 sm:w-14 transition-transform duration-300 hover:scale-105">
+            <div className="relative h-13 w-13 shrink-0 sm:h-15 sm:w-15 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src={siteLogo.src}
                 alt={siteLogo.alt}
                 fill
-                className="object-contain"
-                sizes="56px"
+                className="object-contain drop-shadow-sm"
+                sizes="(min-width: 640px) 60px, 52px"
                 priority
               />
             </div>
-            <div className="min-w-0">
-              <p className="truncate font-serif text-lg font-bold leading-tight text-white sm:text-xl">
-                Playpen
-              </p>
-              <p className="hidden truncate text-[11px] uppercase tracking-widest text-white/70 sm:block">
+            <div className="min-w-0 flex flex-col justify-center">
+              <div className="flex items-center gap-1.5">
+                <span className="font-extrabold text-2xl sm:text-[1.7rem] leading-none tracking-tight text-primary transition-colors">
+                  Playpen
+                </span>
+                <span className="inline-block h-2 w-2 rounded-full bg-accent animate-pulse" />
+              </div>
+              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground sm:text-[12px] mt-0.5">
                 School of Excellence
-              </p>
+              </span>
             </div>
           </Link>
 
-          <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden items-center justify-center gap-1 xl:flex">
             {navItems.map((item) => {
               if ("dropdownItems" in item) {
                 return (
@@ -264,64 +273,51 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
+                  className={`whitespace-nowrap rounded-full px-3.5 py-2 text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
                     active
-                      ? "bg-white/15 text-white"
-                      : "text-white/85 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground/85 hover:text-primary hover:bg-muted/50"
                   }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <a
-              href="https://portal.playpen.edu.bd/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white lg:px-3"
-            >
-              Portal
-            </a>
-            <Link
-              href="/portal/admin"
-              className={`whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-medium transition-colors lg:px-3 ${
-                isNavActive(pathname, "/portal/admin")
-                  ? "bg-white/15 text-white"
-                  : "text-white/85 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              Admin
-            </Link>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2">
+          {/* Action CTAs */}
+          <div className="flex shrink-0 items-center gap-2.5 sm:gap-3">
             <Link
               href="/admissions/apply"
-              className="playpen-text hidden rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-white/90 sm:inline-flex sm:px-4 sm:py-2 sm:text-sm"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-light px-4.5 py-2.5 text-[13.5px] font-bold text-white shadow-md shadow-primary/20 transition-all duration-300 hover:from-primary-dark hover:to-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
             >
-              Apply Now
+              <Sparkles className="h-4 w-4 text-accent animate-spin-slow" />
+              <span>Apply Now</span>
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
 
+            {/* Mobile Hamburger Toggle */}
             <button
               type="button"
-              className="inline-flex rounded-lg p-2 text-white transition hover:bg-white/10 xl:hidden"
+              className="inline-flex rounded-xl p-2.5 text-foreground hover:bg-muted transition xl:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={open}
             >
-              {open ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+              {open ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
+        {/* Mobile Navigation Drawer */}
         <div
           className={`grid overflow-hidden transition-all duration-300 ease-in-out xl:hidden ${
             open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
           }`}
         >
           <div className="min-h-0">
-            <nav className="playpen-bg-dark border-t border-white/10 px-4 py-3 sm:px-6">
-              <div className="flex max-h-[min(70vh,28rem)] flex-col gap-1 overflow-y-auto">
+            <nav className="border-t border-border/70 py-4 px-2 bg-surface rounded-b-2xl shadow-xl my-2">
+              <div className="flex max-h-[70vh] flex-col gap-1.5 overflow-y-auto pr-1">
                 {navItems.map((item) => {
                   if ("dropdownItems" in item) {
                     return (
@@ -342,41 +338,35 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className={`rounded-lg px-4 py-3 text-sm font-medium ${
-                        active ? "bg-white/15 text-white" : "text-white/85 hover:bg-white/10"
+                      className={`rounded-xl px-4 py-3 text-base font-semibold transition ${
+                        active
+                          ? "bg-primary text-white shadow-sm"
+                          : "text-foreground hover:bg-muted/60"
                       }`}
                     >
                       {item.label}
                     </Link>
                   );
                 })}
-                <a
-                  href="https://portal.playpen.edu.bd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-4 py-3 text-sm font-medium text-white/85 hover:bg-white/10"
-                >
-                  Portal
-                </a>
-                <Link
-                  href="/portal/admin"
-                  onClick={() => setOpen(false)}
-                  className={`rounded-lg px-4 py-3 text-sm font-medium ${
-                    isNavActive(pathname, "/portal/admin")
-                      ? "bg-white/15 text-white"
-                      : "text-white/85 hover:bg-white/10"
-                  }`}
-                >
-                  Admin
-                </Link>
-                <Link
-                  href="/admissions/apply"
-                  onClick={() => setOpen(false)}
-                  className="playpen-text mt-1 rounded-lg bg-white px-4 py-3 text-center text-sm font-semibold text-primary sm:hidden"
-                >
-                  Apply Now
-                </Link>
+
+                <div className="mt-3 pt-3 border-t border-border/80 flex flex-col gap-2">
+                  <a
+                    href="https://portal.playpen.edu.bd/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-bold text-foreground hover:bg-muted"
+                  >
+                    Student Portal Login
+                  </a>
+                  <Link
+                    href="/portal/admin"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-bold text-foreground hover:bg-muted"
+                  >
+                    Admin Portal
+                  </Link>
+                </div>
               </div>
             </nav>
           </div>

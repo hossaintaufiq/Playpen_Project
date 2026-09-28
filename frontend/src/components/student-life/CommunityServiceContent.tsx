@@ -30,7 +30,7 @@ export function CommunityServiceContent() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-foreground">
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -40,7 +40,7 @@ export function CommunityServiceContent() {
       </div>
 
       <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.05] p-6 sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
           How Students Serve
         </p>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -53,23 +53,23 @@ export function CommunityServiceContent() {
             return (
               <div
                 key={activity}
-                className="flex items-start gap-3 rounded-2xl border border-border/50 bg-white p-4 shadow-sm"
+                className="flex items-start gap-3 rounded-2xl border border-border/50 bg-white p-4 shadow-sm transition hover:shadow-md"
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
                   <Icon className="h-4 w-4" strokeWidth={1.75} />
                 </div>
-                <p className="text-sm leading-relaxed text-foreground/90">{activity}</p>
+                <p className="text-sm font-medium leading-relaxed text-foreground/90">{activity}</p>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/10 bg-[#5a0000] p-6 text-white sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/70">
+      <div className="mt-10 rounded-3xl border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
           A Playpen Tradition
         </p>
-        <p className="mt-4 font-serif text-xl font-semibold leading-relaxed sm:text-2xl">
+        <p className="mt-4 font-heading text-xl font-bold leading-relaxed sm:text-2xl">
           Learning empathy, civic duty, and the power of collective action — one community at a
           time.
         </p>

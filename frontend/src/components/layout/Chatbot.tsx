@@ -193,7 +193,7 @@ export function Chatbot() {
                 <GraduationCap className="h-5 w-5 text-accent" strokeWidth={2} />
               </div>
               <div>
-                <p className="font-serif text-sm font-bold tracking-wide">Playpen Navigator</p>
+                <p className="font-heading text-sm font-bold tracking-wide">Playpen Navigator</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
                   <span className="text-[10px] text-white/80 font-medium uppercase tracking-wider">Assistant Online</span>

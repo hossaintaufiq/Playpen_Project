@@ -15,7 +15,7 @@ export function FormSection({
   return (
     <section className={`overflow-hidden rounded-2xl border border-border/70 bg-white ${className}`}>
       <div className="border-b border-primary/15 bg-gradient-to-r from-primary/[0.08] via-primary/[0.04] to-accent/[0.06] px-4 py-3 sm:px-5">
-        <h3 className="font-serif text-base font-semibold text-primary sm:text-lg">{title}</h3>
+        <h3 className="font-heading text-base font-bold text-primary sm:text-lg">{title}</h3>
       </div>
       <div className="p-4 sm:p-5">{children}</div>
     </section>

@@ -209,7 +209,7 @@ export default function AdminDashboardPage() {
                     </span>
                   </div>
                   
-                  <h4 className="mt-4 font-serif text-sm font-bold text-primary group-hover:underline">
+                  <h4 className="mt-4 font-heading text-sm font-bold text-primary group-hover:underline">
                     {item.label}
                   </h4>
                   <p className="mt-1 text-xs leading-normal text-muted-foreground/80 font-medium">
