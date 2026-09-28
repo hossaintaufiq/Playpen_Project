@@ -13,7 +13,7 @@ export default async function AboutPage() {
     <AboutPageShell
       section="/about"
       title="About Playpen"
-      subtitle="48 years of excellence in education — shaping future leaders since 1977."
+      subtitle="49 years of excellence in education — shaping future leaders since 1977."
     >
       <AboutOverviewContent photoPreview={photoPreview} />
     </AboutPageShell>

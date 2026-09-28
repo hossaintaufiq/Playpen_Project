@@ -14,7 +14,7 @@ import { careerIntro } from "@/lib/career-at-playpen";
 
 export const aboutStats = [
   { value: "1977", label: "Year founded" },
-  { value: "48+", label: "Years of excellence" },
+  { value: "49 Years", label: "Years of excellence" },
   { value: "PG – XII", label: "Cambridge pathway" },
   { value: "4", label: "School divisions" },
 ] as const;
