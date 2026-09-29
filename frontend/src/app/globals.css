@@ -227,5 +227,73 @@ h1, h2, h3, h4, h5, h6 {
   animation: float-subtle 4s ease-in-out infinite;
 }
 
+@keyframes word-slide {
+  0% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+  22% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  78% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+}
+
+.animate-word-slide {
+  animation: word-slide 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes logo-reveal {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-logo-reveal {
+  animation: logo-reveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes text-reveal {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes divider-scale {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-divider-scale {
+  animation: divider-scale 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 
 

@@ -84,7 +84,7 @@ export function IntroductionSection() {
           <div className="lg:col-span-6 relative">
             <div className="relative mx-auto aspect-[4/3] sm:aspect-[14/11] w-full max-w-lg overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-black/10">
               <Image
-                src="/school-images/about/our-campus/DSC01243.webp"
+                src="/school-images/gallery/campus/Gemini_Generated_Image_1aj5a31aj5a31aj5.jpg"
                 alt="Playpen School Campus Building and Community"
                 fill
                 className="object-cover"

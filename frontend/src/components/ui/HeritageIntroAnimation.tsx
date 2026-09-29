@@ -1,121 +1,232 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { siteLogo } from "@/lib/brand";
 
-export function HeritageIntroAnimation() {
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const [isFadingOut, setIsFadingOut] = useState(false);
+// Session flag: runs on first load and full page refresh (resets on F5)
+let hasPlayedIntroInSession = false;
+
+const DEFAULT_WORDS = [
+  { text: "Academic Excellence." },
+  { text: "Holistic Development." },
+  { text: "Safe Environment." },
+  { text: "Lasting Community." },
+];
+
+export interface HeritageIntroAnimationProps {
+  onComplete?: () => void;
+  duration?: number;
+  words?: { text: string }[];
+}
+
+export function HeritageIntroAnimation({
+  onComplete,
+  duration = 1250,
+  words = DEFAULT_WORDS,
+}: HeritageIntroAnimationProps) {
+  const [shouldRender, setShouldRender] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const [unmounted, setUnmounted] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  const onCompleteRef = useRef(onComplete);
 
   useEffect(() => {
-    setMounted(true);
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
-    // Clean 2.6s descriptive presentation then smooth fade out
-    const fadeTimer = setTimeout(() => {
-      setIsFadingOut(true);
-    }, 2600);
-
-    const closeTimer = setTimeout(() => {
-      setVisible(false);
-    }, 3200);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(closeTimer);
-    };
+  /*
+   * Check session on mount — only run on 1st time load / refresh
+   */
+  useEffect(() => {
+    if (hasPlayedIntroInSession) {
+      setUnmounted(true);
+      return;
+    }
+    hasPlayedIntroInSession = true;
+    setShouldRender(true);
   }, []);
 
-  const handleSkip = () => {
-    setIsFadingOut(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 300);
-  };
+  /*
+   * Reduced motion preference
+   */
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
 
-  if (!mounted || !visible) return null;
+    const handler = (e: MediaQueryListEvent) => {
+      setReducedMotion(e.matches);
+    };
+
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  /*
+   * Lock body scroll smoothly while preloader is active without causing layout shifts
+   */
+  useEffect(() => {
+    if (!shouldRender || finished || unmounted) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [shouldRender, finished, unmounted]);
+
+  useEffect(() => {
+    if (!shouldRender) return;
+
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    let rafId: number | null = null;
+    let currentIdx = 0;
+    const wordCount = words.length;
+
+    const timeout = (callback: () => void, delay: number) => {
+      const id = setTimeout(() => {
+        if (!cancelled) callback();
+      }, delay);
+      timers.push(id);
+      return id;
+    };
+
+    const finish = () => {
+      if (cancelled) return;
+      timeout(() => {
+        if (cancelled) return;
+        setFinished(true);
+      }, reducedMotion ? 0 : 2200);
+    };
+
+    const cycleNext = () => {
+      if (cancelled) return;
+      currentIdx += 1;
+      setIndex(currentIdx);
+
+      if (currentIdx < wordCount) {
+        rafId = requestAnimationFrame(() => {
+          if (cancelled) return;
+          timeout(cycleNext, duration);
+        });
+        return;
+      }
+      finish();
+    };
+
+    timeout(cycleNext, duration);
+
+    return () => {
+      cancelled = true;
+      timers.forEach((timer) => clearTimeout(timer));
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
+  }, [shouldRender, duration, reducedMotion, words.length]);
+
+  useEffect(() => {
+    if (!finished) return;
+
+    if (reducedMotion) {
+      setUnmounted(true);
+      onCompleteRef.current?.();
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setUnmounted(true);
+      onCompleteRef.current?.();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [finished, reducedMotion]);
+
+  if (!shouldRender || unmounted) return null;
 
   return (
     <div
-      role="dialog"
-      aria-label="Playpen School 49 Years Intro"
-      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-white text-slate-900 px-4 transition-all duration-700 ease-out select-none ${
-        isFadingOut ? "opacity-0 pointer-events-none scale-105" : "opacity-100 scale-100"
-      }`}
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center gap-3 bg-[#f5f1e9] text-[#191817] will-change-transform ${
+        reducedMotion
+          ? ""
+          : "transition-transform duration-1000 ease-[cubic-bezier(0.76,0,0.24,1)]"
+      } ${finished ? "-translate-y-full pointer-events-none" : "translate-y-0"}`}
+      aria-hidden="true"
     >
-      {/* Pure, Minimalist White Radial Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff_0%,#faf9f6_70%,#f5f2eb_100%)]" />
+      {/* Light Warm Shade Vignette & Ambient Radial Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#ffffff_15%,#f7f3eb_60%,#ede4d4_100%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full bg-amber-500/8 blur-[120px] pointer-events-none" />
 
-      {/* Subtle Warm Amber Center Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-[480px] h-80 sm:h-[480px] rounded-full bg-amber-400/10 blur-3xl pointer-events-none" />
-
-      {/* Minimal Skip Button */}
-      <button
-        onClick={handleSkip}
-        type="button"
-        className="absolute top-5 right-5 sm:top-7 sm:right-7 z-30 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-600 border border-slate-200 transition-all duration-200 flex items-center gap-1.5 shadow-sm cursor-pointer"
-      >
-        <span>Skip Intro</span>
-        <span className="text-slate-400 text-xs">✕</span>
-      </button>
-
-      {/* Centered Descriptive Content Flow */}
-      <div className="relative z-20 flex flex-col items-center text-center max-w-lg mx-auto">
-        {/* Jubilee Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200/90 shadow-xs mb-4">
-          <span className="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-          <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-amber-800">
-            1977 &ndash; 2026 &middot; 49th Anniversary
+      {/* Main Cycling Container */}
+      <div className="relative z-10 overflow-hidden h-24 sm:h-32 md:h-40 flex items-center justify-center w-full px-4 sm:px-6">
+        {index < words.length ? (
+          <span
+            key={reducedMotion ? "static" : index}
+            className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight select-none whitespace-nowrap font-heading text-slate-900 drop-shadow-xs ${
+              reducedMotion ? "" : "animate-word-slide"
+            }`}
+          >
+            {words[index]?.text ?? ""}
           </span>
-        </div>
+        ) : (
+          <div className="flex items-center justify-center h-20 sm:h-28 md:h-36 gap-3 sm:gap-6">
+            {/* Playpen School Crest Logo */}
+            <div className="overflow-hidden flex items-center justify-end pr-2 sm:pr-4 h-full">
+              <Image
+                key="playpen-logo"
+                src={siteLogo.src}
+                alt="Playpen School Logo"
+                width={200}
+                height={200}
+                priority
+                className={`h-14 sm:h-20 md:h-28 w-auto object-contain shrink-0 drop-shadow-md ${
+                  reducedMotion ? "" : "animate-logo-reveal"
+                }`}
+              />
+            </div>
 
-        {/* Centered Official 49 Years Celebration Emblem */}
-        <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 my-1 drop-shadow-[0_12px_30px_rgba(245,158,11,0.3)] animate-float-subtle">
-          <Image
-            src="/school-images/gallery/Logo/48,49,-50-year-celebration-logo-copy.webp"
-            alt="Playpen School 49 Years Celebration Emblem"
-            fill
-            sizes="(max-width: 640px) 144px, 192px"
-            className="object-contain"
-            priority
-          />
-        </div>
+            {/* Vertical Divider */}
+            <div
+              className={`w-[3px] md:w-[4px] h-[65%] bg-primary shrink-0 rounded-full shadow-xs ${
+                reducedMotion ? "" : "animate-divider-scale"
+              }`}
+            />
 
-        {/* School Name & Headline */}
-        <div className="mt-2 space-y-1.5">
-          <p className="text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase text-primary">
-            Playpen School
-          </p>
-          <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-snug">
-            49 Years of the Glorious Journey
-          </h1>
-        </div>
-
-        {/* Descriptive Summary */}
-        <p className="mt-3 text-xs sm:text-sm md:text-base text-slate-600 font-medium max-w-md mx-auto leading-relaxed">
-          Nurturing young minds, inspiring global leaders, and empowering curious learners through Cambridge International education since 1977.
-        </p>
-
-        {/* Campus & Curriculum Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-[11px] font-semibold text-slate-500">
-          <span className="px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200">
-            Playgroup to A-Level
-          </span>
-          <span className="text-slate-300">&bull;</span>
-          <span className="px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200">
-            Cambridge Pathway
-          </span>
-          <span className="text-slate-300">&bull;</span>
-          <span className="px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200">
-            Bashundhara R/A Campus
-          </span>
-        </div>
-
-        {/* Centered Smooth Progress Line */}
-        <div className="w-48 h-1 bg-slate-100 rounded-full mt-6 overflow-hidden relative border border-slate-200/60">
-          <div className="h-full bg-gradient-to-r from-primary via-amber-500 to-amber-400 rounded-full animate-jubilee-progress" />
-        </div>
+            {/* 49 Years Logo & Brand Text */}
+            <div className="overflow-hidden flex items-center justify-start pl-2 sm:pl-4 h-full gap-3 sm:gap-4">
+              <Image
+                key="celebration-logo"
+                src="/school-images/gallery/Logo/48,49,-50-year-celebration-logo-copy.webp"
+                alt="49 Years Celebration"
+                width={200}
+                height={200}
+                priority
+                className={`h-14 sm:h-20 md:h-28 w-auto object-contain shrink-0 drop-shadow-md ${
+                  reducedMotion ? "" : "animate-text-reveal"
+                }`}
+              />
+              <div
+                className={`flex flex-col justify-center text-left ${
+                  reducedMotion ? "" : "animate-text-reveal"
+                }`}
+              >
+                <p className="font-heading font-black text-xl sm:text-3xl md:text-4xl tracking-tight text-primary leading-none">
+                  Playpen
+                </p>
+                <span className="text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.22em] text-amber-800 mt-1 sm:mt-1.5">
+                  49 Years of Excellence
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
+
+export default HeritageIntroAnimation;

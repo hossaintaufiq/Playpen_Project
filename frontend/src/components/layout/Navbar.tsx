@@ -15,8 +15,9 @@ const navItems = [
   { label: "About", href: "/about", dropdownItems: aboutNavItems },
   { label: "Academics", href: "/academics", dropdownItems: academicsNavItems },
   { label: "Campus", href: "/about/our-campus" },
-  { label: "Achievements", href: "/academics/student-achievements" },
   { label: "Student Life", href: "/student-life", dropdownItems: studentLifeNavItems },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Achievements", href: "/academics/student-achievements" },
   { label: "Notices", href: "/notices" },
   { label: "Admissions", href: "/admissions", dropdownItems: admissionsNavItems },
 ] as const;
@@ -137,7 +138,7 @@ function NavbarDropdown({
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
+        className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[13.5px] 2xl:px-3.5 2xl:py-2 2xl:text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
           active || open
             ? "bg-primary/10 text-primary"
             : "text-foreground/85 hover:text-primary hover:bg-muted/50"
@@ -273,7 +274,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`whitespace-nowrap rounded-full px-3.5 py-2 text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
+                  className={`whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13.5px] 2xl:px-3.5 2xl:py-2 2xl:text-[14.5px] font-bold tracking-tight transition-all duration-200 ${
                     active
                       ? "bg-primary/10 text-primary"
                       : "text-foreground/85 hover:text-primary hover:bg-muted/50"
