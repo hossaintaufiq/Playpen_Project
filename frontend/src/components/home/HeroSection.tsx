@@ -19,16 +19,21 @@ export function HeroSection({
 
   return (
     <section className="relative h-[85vh] sm:h-[90vh] min-h-[560px] max-h-[960px] w-full overflow-hidden bg-black text-white flex flex-col justify-end">
-      {/* 01 — Background Image (Testing) */}
+      {/* 01 — Autoplay Background Video */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none bg-black">
-        <Image
-          src="/school-images/gallery/campus/Gemini_Generated_Image_1aj5a31aj5a31aj5.jpg"
-          alt="Playpen School Campus"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover object-center"
+        >
+          <source
+            src="/school-images/videos/gemini_generated_video_340f5d52.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
 
       {/* 02 — Top Header Subtle Vignette */}
