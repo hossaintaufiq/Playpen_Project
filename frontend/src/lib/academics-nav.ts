@@ -12,6 +12,30 @@ export const academicsNavItems = [
     heroImage: "/images/schools/junior.webp",
   },
   {
+    label: "Early Childhood",
+    href: "/academics/early-childhood",
+    description: "Playgroup to KG II foundation",
+    heroImage: "/images/schools/elementary.webp",
+  },
+  {
+    label: "Junior School",
+    href: "/academics/junior-school",
+    description: "Class I to III core skills",
+    heroImage: "/images/schools/junior.webp",
+  },
+  {
+    label: "Middle School",
+    href: "/academics/middle-school",
+    description: "Class IV to VII discovery",
+    heroImage: "/images/schools/middle.webp",
+  },
+  {
+    label: "Senior School",
+    href: "/academics/senior-school",
+    description: "Cambridge O & A Level pathways",
+    heroImage: "/images/schools/senior.webp",
+  },
+  {
     label: "Library",
     href: "/academics/library",
     description: "Resources for reading and research",
