@@ -274,8 +274,8 @@ function DonutChart({
                 fill="none"
                 stroke={slice.color}
                 strokeWidth={isHovered ? strokeWidth + 4 : strokeWidth}
-                strokeDasharray={`${dashLength} ${spaceLength}`}
-                strokeDashoffset={strokeDashoffset}
+                strokeDasharray={`${Number(dashLength.toFixed(2))} ${Number(spaceLength.toFixed(2))}`}
+                strokeDashoffset={Number(strokeDashoffset.toFixed(2))}
                 strokeLinecap="butt"
                 className="cursor-pointer transition-all duration-200 ease-out"
                 style={{
@@ -300,8 +300,8 @@ function DonutChart({
             const angleRad = (angleDeg * Math.PI) / 180;
             const labelRadius = radius;
 
-            const x = center + labelRadius * Math.cos(angleRad);
-            const y = center + labelRadius * Math.sin(angleRad);
+            const x = Number((center + labelRadius * Math.cos(angleRad)).toFixed(2));
+            const y = Number((center + labelRadius * Math.sin(angleRad)).toFixed(2));
 
             const isTiny = slice.percentage < 6;
             const isMedium = slice.percentage >= 6 && slice.percentage < 12;
@@ -310,7 +310,7 @@ function DonutChart({
               <g key={`label-${slice.grade}`} className="pointer-events-none">
                 <text
                   x={x}
-                  y={isTiny ? y : y - 5}
+                  y={isTiny ? y : Number((y - 5).toFixed(2))}
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="#ffffff"
@@ -325,7 +325,7 @@ function DonutChart({
                 {!isTiny && (
                   <text
                     x={x}
-                    y={y + 8}
+                    y={Number((y + 8).toFixed(2))}
                     textAnchor="middle"
                     dominantBaseline="central"
                     fill="#ffffff"
