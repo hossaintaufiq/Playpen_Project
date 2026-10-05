@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Award, Trophy, Medal, Star, ArrowRight, GraduationCap, CheckCircle2 } from "lucide-react";
 import type { StudentAchievement } from "@/lib/cms/types";
 import { defaultStudentAchievements } from "@/lib/student-achievements-defaults";
+import { CambridgeResultsShowcase } from "./CambridgeResultsShowcase";
 
 const stats = [
   { value: "49 Years", label: "Legacy of Excellence", sub: "Established in 1977" },
@@ -55,6 +56,11 @@ export function AchievementsSection({
           <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
             From world-topping Cambridge examination results to national Olympiads and sports championships, our students consistently excel on every stage.
           </p>
+        </div>
+
+        {/* Cambridge Official Examination Results Showcase */}
+        <div className="mt-12 sm:mt-16">
+          <CambridgeResultsShowcase />
         </div>
 
         {/* Large Statistical Metrics Bar */}
