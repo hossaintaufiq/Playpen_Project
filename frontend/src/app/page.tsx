@@ -2,9 +2,10 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { IntroductionSection } from "@/components/home/IntroductionSection";
 import { AchievementsSection } from "@/components/home/AchievementsSection";
-import { CampusSection } from "@/components/home/CampusSection";
 import { SchoolLevelsSection } from "@/components/home/SchoolLevelsSection";
 import { StudentLifeSection } from "@/components/home/StudentLifeSection";
+import { CampusSection } from "@/components/home/CampusSection";
+import { GovernanceHighlightSection } from "@/components/home/GovernanceHighlightSection";
 import { CommunityHubSection } from "@/components/home/CommunityHubSection";
 import { AdmissionsCTASection } from "@/components/home/AdmissionsCTASection";
 import { HeritageIntroAnimation } from "@/components/ui/HeritageIntroAnimation";
@@ -21,30 +22,32 @@ export default async function Home() {
       {/* 49-Year Anniversary Intro Splash */}
       <HeritageIntroAnimation />
 
-      {/* 01 — HERO */}
+      {/* 01 — HERO SECTION */}
       <HeroSection slides={heroSlides} />
 
-      {/* 02 — SCHOOL INTRODUCTION: MORE THAN A SCHOOL */}
+      {/* 02 — WELCOME TO PLAYPEN SECTION */}
       <IntroductionSection />
 
-      {/* 03 — ACHIEVEMENTS: PROUD OF WHAT WE'VE ACHIEVED / A RECORD OF EXCELLENCE */}
+      {/* 03 — RECORD OF EXCELLENCE (ACHIEVEMENTS, STATS & SLIDER) */}
       <AchievementsSection achievements={cms.studentAchievements} />
 
-      {/* 04 — CAMPUS: SPACE TO LEARN. SPACE TO DREAM. */}
-      <CampusSection />
-
-      {/* 05 — ACADEMICS: EARLY CHILDHOOD TO SENIOR SCHOOL */}
+      {/* 04 — ACADEMIC JOURNEY: EARLY CHILDHOOD TO SENIOR SCHOOL */}
       <SchoolLevelsSection />
 
-      {/* 06 — STUDENT LIFE: SPORTS, ARTS, CLUBS & LEADERSHIP */}
+      {/* 05 — STUDENT LIFE: SPORTS, ARTS, SCIENCE & LEADERSHIP */}
       <StudentLifeSection />
 
-      {/* 07 — NOTICES & UPCOMING EVENTS */}
+      {/* 06 — CAMPUS: SPACE TO LEARN. SPACE TO DREAM. */}
+      <CampusSection />
+
+      {/* 07 — SCHOOL GOVERNANCE & LEADERSHIP HIGHLIGHT */}
+      <GovernanceHighlightSection />
+
+      {/* 08 — COMMUNITY PULSE (NOTICES & UPCOMING EVENTS) */}
       <CommunityHubSection notices={cms.notices} events={cms.schoolEvents} />
 
-      {/* 08 — ADMISSIONS: READY TO JOIN THE PLAYPEN COMMUNITY? */}
+      {/* 09 — ADMISSIONS CALL TO ACTION */}
       <AdmissionsCTASection />
     </SiteLayout>
   );
 }
-

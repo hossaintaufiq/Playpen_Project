@@ -6,16 +6,19 @@ export const schoolManagement = [
     role: "Chairman",
     name: "Mr. A. Mannan Khan",
     highlight: true,
+    image: "/school-images/Admintration-main/A Mannan Khan.jpg",
   },
   {
     role: "Managing Director",
     name: "Mr. Mir Masud Kabir",
     highlight: true,
+    image: "/school-images/Admintration-main/Masud Kabir.jpg",
   },
   {
     role: "Principal",
     name: "Mrs. Sorabon Tohura",
     highlight: true,
+    image: "/school-images/about/school-administration/Principal Madam/Principal Madam.webp",
   },
 ] as const;
 
