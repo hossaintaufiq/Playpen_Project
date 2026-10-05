@@ -30,7 +30,7 @@ export function HeroSection({
           className="h-full w-full object-cover object-center"
         >
           <source
-            src="/school-images/videos/gemini_generated_video_340f5d52.mp4"
+            src="/school-images/videos/hero-video2.mp4"
             type="video/mp4"
           />
         </video>
