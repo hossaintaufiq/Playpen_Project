@@ -132,7 +132,7 @@ export function CommunityHubSection({
               {featuredNotice && (
                 <div className="relative overflow-hidden rounded-3xl bg-linear-to-br from-primary to-primary-dark p-6 sm:p-7 text-white shadow-md mb-4 transition-all duration-300 hover:shadow-xl">
                   <div className="pointer-events-none absolute -right-6 -bottom-6 h-36 w-36 rounded-full bg-white/10 blur-xl" />
-                  
+
                   <div className="relative flex items-center justify-between gap-3 mb-3">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-xs px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-amber-300 border border-white/15">
                       <Radio className="h-3 w-3 animate-pulse" />

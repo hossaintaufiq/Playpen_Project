@@ -96,7 +96,7 @@ export function SchoolLevelsSection() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    
+
                     <div className="absolute top-3.5 left-3.5">
                       <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${school.badge}`}>
                         {school.grades}

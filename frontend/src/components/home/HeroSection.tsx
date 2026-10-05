@@ -2,21 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Compass } from "lucide-react";
+import { ArrowRight, Trophy } from "lucide-react";
 import type { HeroSlide } from "@/lib/cms/types";
-
-const DEFAULT_YOUTUBE_ID = "Z1nMZWILMvo";
 
 type HeroSectionProps = {
   slides?: (Pick<HeroSlide, "src" | "alt"> & { description?: string })[];
-  youtubeVideoId?: string;
 };
 
-export function HeroSection({
-  youtubeVideoId = DEFAULT_YOUTUBE_ID,
-}: HeroSectionProps) {
-  const embedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3`;
-
+export function HeroSection({}: HeroSectionProps = {}) {
   return (
     <section className="relative h-[85vh] sm:h-[90vh] min-h-[560px] max-h-[960px] w-full overflow-hidden bg-black text-white flex flex-col justify-end">
       {/* 01 — Autoplay Background Video */}
@@ -64,27 +57,32 @@ export function HeroSection({
             </div>
           </div>
 
+          {/* Main Headline */}
+          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] tracking-tight text-white drop-shadow-md">
+            Shaping Tomorrow&apos;s Leaders.
+          </h1>
+
           {/* Supporting Text */}
-          <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white/95 font-medium leading-relaxed drop-shadow">
-            Cambridge International Curriculum &bull; Playgroup to A-Level &bull; Purpose-Built 10-Storey Campus in Bashundhara R/A, Dhaka.
+          <p className="mt-3 max-w-2xl text-sm sm:text-base md:text-lg text-white/95 font-medium leading-relaxed drop-shadow">
+            Cambridge International Curriculum &bull; Playgroup to A-Level &bull; Bashundhara R/A, Dhaka
           </p>
 
           {/* Action CTAs */}
           <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+            <a
+              href="#achievements"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-primary/30 transition-all duration-300 hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Trophy className="h-4 w-4 text-amber-300" />
+              <span>Explore Our Achievements</span>
+            </a>
+
             <Link
               href="/admissions/apply"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-primary/30 transition-all duration-300 hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-black/40 backdrop-blur-md px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Apply for Admission</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Link>
-
-            <Link
-              href="/about/our-campus"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-black/40 backdrop-blur-md px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Compass className="h-4 w-4 text-amber-300" />
-              <span>Explore Campus</span>
             </Link>
           </div>
         </div>
