@@ -36,21 +36,21 @@ export function HeroSection({}: HeroSectionProps = {}) {
       <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
 
       {/* 04 — Bottom Overlay Content */}
-      <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-8 sm:px-6 sm:pb-12 lg:px-8">
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 sm:pb-10 lg:px-8 lg:pb-12">
         <div className="max-w-3xl">
           {/* 49-Year Celebration Badge */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-amber-400/40 bg-black/50 backdrop-blur-md pl-2 pr-4 py-1.5 shadow-lg mb-3">
-            <div className="relative h-6 w-6 shrink-0 drop-shadow">
+          <div className="inline-flex max-w-full items-center gap-2 sm:gap-2.5 rounded-full border border-amber-400/40 bg-black/60 backdrop-blur-md px-2.5 sm:px-3.5 py-1 sm:py-1.5 shadow-lg mb-2.5 sm:mb-4">
+            <div className="relative h-5 w-5 sm:h-6 sm:w-6 shrink-0 drop-shadow">
               <Image
                 src="/school-images/gallery/Logo/48,49,-50-year-celebration-logo-copy.webp"
                 alt="49 Years of Excellence"
-                fill
-                sizes="24px"
-                className="object-contain"
+                width={24}
+                height={24}
+                className="h-full w-full object-contain"
                 priority
               />
             </div>
-            <div className="flex items-center gap-2 text-xs font-bold tracking-wide">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10.5px] sm:text-xs font-bold tracking-wide">
               <span className="text-amber-300 uppercase">49 Years of Excellence</span>
               <span className="text-white/40">&bull;</span>
               <span className="text-white/80 font-medium">Est. 1977</span>
@@ -58,31 +58,31 @@ export function HeroSection({}: HeroSectionProps = {}) {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] tracking-tight text-white drop-shadow-md">
+          <h1 className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] leading-[1.12] tracking-tight text-white drop-shadow-md">
             Shaping Tomorrow&apos;s Leaders.
           </h1>
 
           {/* Supporting Text */}
-          <p className="mt-3 max-w-2xl text-sm sm:text-base md:text-lg text-white/95 font-medium leading-relaxed drop-shadow">
+          <p className="mt-2.5 sm:mt-3 max-w-2xl text-xs sm:text-sm md:text-base lg:text-lg text-white/95 font-medium leading-relaxed drop-shadow">
             Cambridge International Curriculum &bull; Playgroup to A-Level &bull; Bashundhara R/A, Dhaka
           </p>
 
           {/* Action CTAs */}
-          <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+          <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto">
             <a
               href="#achievements"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-primary/30 transition-all duration-300 hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-primary/30 transition-all duration-300 hover:bg-primary-dark hover:scale-[1.02] active:scale-[0.98]"
             >
-              <Trophy className="h-4 w-4 text-amber-300" />
+              <Trophy className="h-4 w-4 text-amber-300 shrink-0" />
               <span>Explore Our Achievements</span>
             </a>
 
             <Link
               href="/admissions/apply"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-black/40 backdrop-blur-md px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-black/40 backdrop-blur-md px-5 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Apply for Admission</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

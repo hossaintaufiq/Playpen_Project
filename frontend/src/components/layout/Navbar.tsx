@@ -228,27 +228,28 @@ export function Navbar() {
           {/* BIG SCHOOL BRANDING */}
           <Link
             href="/"
-            className="group flex min-w-0 shrink-0 items-center gap-3 sm:gap-3.5"
+            className="group flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3.5"
             onClick={() => setOpen(false)}
           >
-            <div className="relative h-13 w-13 shrink-0 sm:h-15 sm:w-15 transition-transform duration-300 group-hover:scale-105">
+            <div className="relative h-11 w-11 sm:h-13 sm:w-13 md:h-14 md:w-14 shrink-0 transition-transform duration-300 group-hover:scale-105">
               <Image
                 src={siteLogo.src}
                 alt={siteLogo.alt}
-                fill
-                className="object-contain drop-shadow-sm"
-                sizes="(min-width: 640px) 60px, 52px"
+                width={56}
+                height={56}
+                className="h-full w-full object-contain drop-shadow-xs"
                 priority
               />
             </div>
-            <div className="min-w-0 flex flex-col justify-center">
+            {/* Brand text shown only on tablet and desktop */}
+            <div className="hidden sm:flex min-w-0 flex-col justify-center">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-2xl sm:text-[1.7rem] leading-none tracking-tight text-primary transition-colors">
+                <span className="font-extrabold text-xl sm:text-2xl md:text-[1.65rem] leading-none tracking-tight text-primary transition-colors">
                   Playpen
                 </span>
-                <span className="inline-block h-2 w-2 rounded-full bg-accent animate-pulse" />
+                <span className="inline-block h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent animate-pulse" />
               </div>
-              <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground sm:text-[12px] mt-0.5">
+              <span className="text-[10px] sm:text-[11px] md:text-[11.5px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-muted-foreground mt-0.5 whitespace-nowrap">
                 School of Excellence
               </span>
             </div>
