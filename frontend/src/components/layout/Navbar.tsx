@@ -223,8 +223,8 @@ export function Navbar() {
 
   return (
     <div className="w-full bg-white/95 backdrop-blur-md border-b border-border/70 transition-all duration-300">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[76px] sm:h-[84px] items-center justify-between gap-3 sm:gap-6">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8">
+        <div className="flex h-[66px] sm:h-[76px] lg:h-[84px] items-center justify-between gap-2.5 sm:gap-6">
           {/* BIG SCHOOL BRANDING */}
           <Link
             href="/"

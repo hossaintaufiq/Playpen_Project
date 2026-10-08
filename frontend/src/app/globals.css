@@ -32,7 +32,7 @@
   --font-heading: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
   --font-bengali: "Noto Sans Bengali", sans-serif;
 
-  --max-width-7xl: min(92%, 88rem);
+  --max-width-7xl: 80rem;
 }
 
 :root {

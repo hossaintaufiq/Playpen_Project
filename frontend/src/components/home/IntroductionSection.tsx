@@ -31,7 +31,7 @@ export function IntroductionSection() {
             </h2>
 
             <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg leading-relaxed text-muted-foreground">
-              Founded with a commitment to holistic education, Playpen provides a warm, stimulating environment where academic curiosity is matched by compassion, creativity, and moral character.
+              Since 1977, Playpen has forged generations of thinkers, leaders, and pioneers—combining Cambridge academic rigor with deep-rooted moral values, creative courage, and global vision.
             </p>
 
             {/* Value Pillars Mini-Grid — Premium Minimalist Cards */}
