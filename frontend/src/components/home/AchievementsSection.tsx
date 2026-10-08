@@ -21,6 +21,7 @@ import {
 import type { StudentAchievement } from "@/lib/cms/types";
 import { defaultStudentAchievements } from "@/lib/student-achievements-defaults";
 import { CambridgeResultsShowcase } from "./CambridgeResultsShowcase";
+import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 const stats = [
   { value: "49 Years", label: "Legacy of Excellence", sub: "Established in 1977" },
@@ -144,9 +145,16 @@ export function AchievementsSection({
             <span>Record of Excellence</span>
           </div>
 
-          <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
+          <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.14] tracking-tight text-foreground">
             PROUD OF WHAT <br className="hidden sm:inline" />
-            <span className="text-primary">WE&apos;VE ACHIEVED.</span>
+            <span className="text-primary">
+              WE&apos;VE{" "}
+              <span className="relative inline-block">
+                ACHIEVED
+                <HandDrawnUnderline className="text-primary" />
+              </span>
+              .
+            </span>
           </h2>
 
           <p className="mt-4 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">

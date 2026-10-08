@@ -17,9 +17,9 @@ interface ExamLevelData {
   title: string;
   cohort: string;
   session: string;
-  keyHighlight: {
+  centerHighlight: {
     stat: string;
-    description: string;
+    label: string;
   };
   slices: GradeSlice[];
   subjects: string[];
@@ -31,9 +31,9 @@ const examResultsData: ExamLevelData[] = [
     title: "O LEVEL RESULTS",
     cohort: "Class X Candidates",
     session: "May – June 2026 Examination Session",
-    keyHighlight: {
+    centerHighlight: {
       stat: "67%",
-      description: "Achieved Distinction A* & A Grades",
+      label: "A* & A",
     },
     slices: [
       {
@@ -97,9 +97,9 @@ const examResultsData: ExamLevelData[] = [
     title: "AS LEVEL RESULTS",
     cohort: "Class XI Candidates",
     session: "May – June 2026 Examination Session",
-    keyHighlight: {
-      stat: "46%",
-      description: "Scored Top 'a' Grade (64% a & b)",
+    centerHighlight: {
+      stat: "64%",
+      label: "a & b",
     },
     slices: [
       {
@@ -154,9 +154,9 @@ const examResultsData: ExamLevelData[] = [
     title: "A LEVEL RESULTS",
     cohort: "Class XII Candidates",
     session: "May – June 2026 Examination Session",
-    keyHighlight: {
+    centerHighlight: {
       stat: "42%",
-      description: "Achieved A* & A Grades (61% A*–B)",
+      label: "A* & A",
     },
     slices: [
       {
@@ -223,10 +223,12 @@ function DonutChart({
   slices,
   hoveredGrade,
   onHoverGrade,
+  centerHighlight,
 }: {
   slices: GradeSlice[];
   hoveredGrade: string | null;
   onHoverGrade: (grade: string | null) => void;
+  centerHighlight: { stat: string; label: string };
 }) {
   const size = 240;
   const strokeWidth = 44;
@@ -345,8 +347,15 @@ function DonutChart({
         })()}
       </svg>
 
-      {/* Clean, open center hole */}
-      <div className="absolute h-[110px] w-[110px] sm:h-[130px] sm:w-[130px] rounded-full bg-white shadow-xs pointer-events-none" />
+      {/* Seamless Center Text with direct stat and label */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-2 text-center">
+        <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-primary leading-none">
+          {centerHighlight.stat}
+        </span>
+        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1.5 leading-tight">
+          {centerHighlight.label}
+        </span>
+      </div>
     </div>
   );
 }
@@ -372,7 +381,7 @@ export function CambridgeResultsShowcase() {
             >
               <div>
                 {/* Header */}
-                <div className="flex items-start justify-between gap-2 pb-4 mb-4 border-b border-border/50">
+                <div className="flex items-start justify-between gap-2 pb-4 mb-3 border-b border-border/50">
                   <div>
                     <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-accent-hover bg-accent-soft px-2.5 py-0.5 rounded-md mb-1.5">
                       {data.cohort}
@@ -389,25 +398,13 @@ export function CambridgeResultsShowcase() {
                   </div>
                 </div>
 
-                {/* Key Benchmark Stat Pill */}
-                <div className="mb-5 flex items-center justify-between rounded-2xl bg-surface-subtle p-3 border border-border/70">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-primary shrink-0" />
-                    <span className="text-xs font-semibold text-foreground">
-                      {data.keyHighlight.description}
-                    </span>
-                  </div>
-                  <span className="rounded-lg bg-primary px-2.5 py-0.5 text-xs font-extrabold text-white shrink-0">
-                    {data.keyHighlight.stat}
-                  </span>
-                </div>
-
-                {/* Donut Chart with clean empty center */}
-                <div className="py-2 flex justify-center">
+                {/* Donut Chart with square center stat */}
+                <div className="py-3 sm:py-4 flex justify-center">
                   <DonutChart
                     slices={data.slices}
                     hoveredGrade={activeGrade}
                     onHoverGrade={(grade) => setCardHoveredGrade(data.id, grade)}
+                    centerHighlight={data.centerHighlight}
                   />
                 </div>
 
