@@ -1,21 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin, Building2, Shield, Laptop, BookOpen, Dumbbell, Stethoscope } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 export function CampusSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28 border-t border-border/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 sm:pb-16">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
-              <Building2 className="h-3.5 w-3.5" />
+              <Building2 className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
               <span>Modern Infrastructure</span>
             </div>
             <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
-              SPACE TO LEARN. <br />
-              <span className="text-primary">SPACE TO DREAM.</span>
+              SPACE TO LEARN. <br className="hidden sm:inline" />
+              <span className="relative inline-block text-primary">
+                SPACE TO DREAM.
+                <HandDrawnUnderline variant="broken" />
+              </span>
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               Our purpose-built campus in Bashundhara R/A is designed from the ground up to give students room to breathe, collaborate, and explore safely.
@@ -25,10 +29,10 @@ export function CampusSection() {
           <div className="shrink-0">
             <Link
               href="/about/our-campus"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-bold text-white transition hover:bg-primary"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-md transition-all duration-200 hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
             >
               <span>Explore All Facilities</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={1.75} />
             </Link>
           </div>
         </div>

@@ -72,7 +72,7 @@ export function SchoolLevelsSection() {
             FOR{" "}
             <span className="relative inline-block text-primary">
               EVERY STAGE.
-              <HandDrawnUnderline className="text-amber-500" variant="broken" />
+              <HandDrawnUnderline variant="broken" />
             </span>
           </h2>
 
