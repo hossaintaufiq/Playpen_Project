@@ -32,7 +32,8 @@
   --font-heading: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
   --font-bengali: "Noto Sans Bengali", sans-serif;
 
-  --max-width-7xl: 80rem;
+  --max-width-7xl: 90rem;
+  --max-width-8xl: 90rem;
 }
 
 :root {

@@ -5,7 +5,7 @@ import { schoolContact } from "@/lib/contact";
 export function TopBar() {
   return (
     <div className="bg-surface border-b border-border/70 text-foreground/80 text-xs hidden md:block">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-6">
         <div className="flex h-10 items-center justify-between gap-4 font-medium">
           {/* Left: Location & Hours */}
           <div className="flex items-center gap-5 text-muted-foreground text-[12px] lg:text-[12.5px]">

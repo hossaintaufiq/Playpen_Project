@@ -9,7 +9,7 @@ export function IntroductionSection() {
       {/* Background Decorative Pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#e9e2d9_1px,transparent_1px)] [background-size:20px_20px] sm:[background-size:24px_24px] opacity-40" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
         <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           {/* Left Column: Big Headline & Storytelling */}
           <div className="flex flex-col items-start lg:col-span-6 xl:col-span-6">

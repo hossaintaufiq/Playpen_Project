@@ -73,7 +73,7 @@ export function HeroSection({}: HeroSectionProps = {}) {
       <div className="absolute inset-x-0 bottom-0 h-[48%] bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none z-10" />
 
       {/* 04 — Bottom Overlay Content (Tight, Cohesive Spacing) */}
-      <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 sm:pb-10 lg:px-8 lg:pb-14">
+      <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 sm:pb-10 lg:px-6 lg:pb-14">
         <div className="max-w-3xl">
           {/* Luxury 49-Year Heritage Badge */}
           <div className="inline-flex max-w-full items-center gap-2.5 sm:gap-3 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 via-black/70 to-black/50 backdrop-blur-xl px-3.5 sm:px-4 py-1.5 shadow-[0_4px_24px_rgba(245,158,11,0.2)] mb-2 sm:mb-2.5 ring-1 ring-white/15">

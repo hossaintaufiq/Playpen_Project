@@ -84,7 +84,7 @@ export function CommunityHubSection({
       <div className="pointer-events-none absolute top-0 right-1/4 h-96 w-96 rounded-full bg-primary/[0.03] blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 left-1/4 h-96 w-96 rounded-full bg-accent/[0.04] blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center pb-10 sm:pb-12">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">

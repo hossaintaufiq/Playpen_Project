@@ -5,7 +5,7 @@ import { schoolContact } from "@/lib/contact";
 export function AdmissionsCTASection() {
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
         <div className="relative overflow-hidden rounded-3xl sm:rounded-[3rem] bg-gradient-to-br from-[#520215] via-[#7a0826] to-[#991636] p-8 sm:p-12 lg:p-16 text-white shadow-2xl">
           {/* Ambient Lighting Circles */}
           <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/25 blur-3xl" />
