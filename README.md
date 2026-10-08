@@ -48,6 +48,31 @@ This project is built to demonstrate production-grade full-stack architecture, f
 
 ---
 
+## 📐 Layout, Container Widths & Responsive Grid Specifications
+
+The public website and layout containers adhere to an ultra-modern, high-fidelity responsive design system configured via Tailwind CSS 4 tokens (`globals.css`):
+
+### 1. Viewport & Container Width Specifications
+| Component / Layout Area | Container Width Token | Exact Width | Behavior |
+| :--- | :--- | :--- | :--- |
+| **Page Outer Wrappers** | `w-full` | `100vw` | Full-width screen background, gradients, and backdrop surfaces |
+| **Desktop Max Width Container** | `max-w-8xl` / `max-w-7xl` | **`90rem` (1,440px)** | Centered content boundary (`mx-auto`) across desktop displays |
+| **Navbar & TopBar Header** | `max-w-7xl` (`90rem`) | **`1,440px`** | Centered navigation items, brand logo, and portal buttons |
+| **Hero & Content Sections** | `max-w-7xl` (`90rem`) | **`1,440px`** | Content grids, bento cards, and editorial showcases |
+| **Footer Container** | `max-w-7xl` (`90rem`) | **`1,440px`** | Centered 4-column desktop & 2-column mobile footer grid |
+
+### 2. Side Padding (Gutters) Across Breakpoints
+* **Mobile Viewports (`< 640px`)**: `px-3` to `px-4` (**12px – 16px** side gutters) for optimal screen space usage.
+* **Tablet Viewports (`640px – 1024px`)**: `sm:px-6` (**24px** side gutters) for balanced content containment.
+* **Desktop Viewports (`≥ 1024px`)**: `lg:px-6` (**24px** side gutters) allowing layout elements to expand seamlessly up to **1,440px** (`8xl`).
+
+### 3. Component Dimensions & Heights
+* **TopBar**: `38px` (Mobile) / `42px` (Desktop).
+* **Main Navbar**: `66px` (Mobile) / `76px` (Tablet) / `84px` (Desktop) with fixed/sticky backdrop blur.
+* **Hero Section**: Dynamic responsive viewport height with hardware-accelerated background video & dynamic headline rotator.
+
+---
+
 ## 📁 Repository Directory Structure
 
 ```text
