@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Heart, Sparkles, Target, Users, BookOpen } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 export function IntroductionSection() {
   return (
@@ -19,7 +20,14 @@ export function IntroductionSection() {
 
             <h2 className="mt-4 font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
               MORE THAN A SCHOOL.
-              <span className="block text-primary mt-1">A COMMUNITY TO GROW.</span>
+              <span className="block text-primary mt-1">
+                A{" "}
+                <span className="relative inline-block">
+                  COMMUNITY
+                  <HandDrawnUnderline className="text-primary" />
+                </span>{" "}
+                TO GROW.
+              </span>
             </h2>
 
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
@@ -94,9 +102,15 @@ export function IntroductionSection() {
 
               {/* Floating Quote Badge */}
               <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-white/95 backdrop-blur-md p-4 sm:p-5 shadow-lg border border-white/40">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white font-extrabold text-sm">
-                    PS
+                <div className="flex items-center gap-3.5">
+                  <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white p-1 shadow-sm border border-border/80 overflow-hidden">
+                    <Image
+                      src="/frontend-images/logo/Playpen logo-01.webp"
+                      alt="Playpen School Logo"
+                      width={44}
+                      height={44}
+                      className="h-full w-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-bold text-foreground leading-snug">
