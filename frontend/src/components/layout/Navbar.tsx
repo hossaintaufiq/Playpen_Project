@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { siteLogo } from "@/lib/brand";
 import { aboutNavItems } from "@/lib/about-nav";
 import { academicsNavItems } from "@/lib/academics-nav";
@@ -287,20 +287,18 @@ export function Navbar() {
           </nav>
 
           {/* Action CTAs */}
-          <div className="flex shrink-0 items-center gap-2.5 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <Link
               href="/admissions/apply"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-light px-4.5 py-2.5 text-[13.5px] font-bold text-white shadow-md shadow-primary/20 transition-all duration-300 hover:from-primary-dark hover:to-primary hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center rounded-full bg-primary px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-[13px] font-bold uppercase tracking-wider text-white shadow-xs transition-all duration-200 hover:bg-primary-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
             >
-              <Sparkles className="h-4 w-4 text-accent animate-spin-slow" />
-              <span>Apply Now</span>
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              Apply Now
             </Link>
 
             {/* Mobile Hamburger Toggle */}
             <button
               type="button"
-              className="inline-flex rounded-xl p-2.5 text-foreground hover:bg-muted transition xl:hidden"
+              className="inline-flex rounded-xl p-2 sm:p-2.5 text-foreground hover:bg-muted transition xl:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={open}
@@ -356,14 +354,14 @@ export function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-bold text-foreground hover:bg-muted"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-primary/20 bg-primary/8 py-3 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-colors"
                   >
                     Student Portal Login
                   </a>
                   <Link
                     href="/portal/admin"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-bold text-foreground hover:bg-muted"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-border/80 bg-white py-3 text-sm font-bold text-foreground/85 hover:border-primary/40 hover:text-primary transition-colors"
                   >
                     Admin Portal
                   </Link>
