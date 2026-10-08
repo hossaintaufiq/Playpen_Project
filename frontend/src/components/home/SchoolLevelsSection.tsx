@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Sparkles, BookOpen, GraduationCap, Compass, Smile } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap, Compass, Smile, ShieldCheck, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 const schools = [
   {
-    name: "Early Childhood",
+    name: "Elementary",
     tagline: "Foundation of Joy & Curiosity",
     grades: "Playgroup – KG II",
     ages: "Ages 2.5 – 5 Years",
@@ -62,17 +63,21 @@ export function SchoolLevelsSection() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
-            <GraduationCap className="h-3.5 w-3.5 text-accent" />
+            <GraduationCap className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
             <span>Academic Pathways</span>
           </div>
 
           <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
             LEARNING DESIGNED <br className="hidden sm:inline" />
-            <span className="text-primary">FOR EVERY STAGE.</span>
+            FOR{" "}
+            <span className="relative inline-block text-primary">
+              EVERY STAGE.
+              <HandDrawnUnderline className="text-amber-500" variant="broken" />
+            </span>
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            A continuous Cambridge International journey tailored to each developmental milestone, ensuring confident progress from early childhood to global university entry.
+            A continuous Cambridge International journey tailored to each developmental milestone, ensuring confident progress from elementary to global university entry.
           </p>
         </div>
 
@@ -83,7 +88,7 @@ export function SchoolLevelsSection() {
             return (
               <article
                 key={school.name}
-                className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1.5"
+                className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white shadow-xs transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1.5"
               >
                 <div>
                   {/* Card Image */}
@@ -111,7 +116,7 @@ export function SchoolLevelsSection() {
                   {/* Card Body */}
                   <div className="p-6">
                     <div className="flex items-center gap-2 text-primary mb-1">
-                      <Icon className="h-4 w-4 text-accent" />
+                      <Icon className="h-4 w-4 text-accent" strokeWidth={1.5} />
                       <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         {school.tagline}
                       </span>
@@ -134,7 +139,7 @@ export function SchoolLevelsSection() {
                     className="inline-flex w-full items-center justify-between rounded-xl bg-surface p-3 text-xs font-bold text-foreground transition group-hover:bg-primary group-hover:text-white"
                   >
                     <span>Explore Curriculum</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={1.75} />
                   </Link>
                 </div>
               </article>
@@ -142,30 +147,62 @@ export function SchoolLevelsSection() {
           })}
         </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-12 rounded-3xl border border-primary/15 bg-gradient-to-r from-primary/[0.05] via-accent/[0.05] to-primary/[0.03] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white shadow-md">
-              <Sparkles className="h-6 w-6 text-accent" />
-            </div>
-            <div>
-              <h4 className="font-extrabold text-lg sm:text-xl text-foreground">
-                Registered Cambridge International School
-              </h4>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                Official Cambridge assessment center preparing candidates for worldwide academic recognition.
+        {/* High-End Institutional Academic Overview Banner */}
+        <div className="mt-12 sm:mt-16 overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-white via-white to-primary/[0.02] p-6 sm:p-8 lg:p-10 shadow-sm transition-all hover:border-primary/30">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            {/* Left Col: Accreditation & Description */}
+            <div className="max-w-2xl">
+              <div className="flex flex-wrap items-center gap-2.5 mb-3">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-2.5 py-1 text-[11px] font-extrabold tracking-wider uppercase text-primary border border-primary/15">
+                  <ShieldCheck className="h-3.5 w-3.5 text-primary" strokeWidth={1.75} />
+                  Centre BD019
+                </span>
+                <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/10 px-2.5 py-1 text-[11px] font-bold tracking-wide uppercase text-amber-800 border border-amber-500/20">
+                  Cambridge International
+                </span>
+                <span className="text-xs font-semibold text-muted-foreground hidden sm:inline">
+                  • 49 Years of Rigorous Pedagogy
+                </span>
+              </div>
+
+              <h3 className="font-extrabold text-xl sm:text-2xl lg:text-3xl text-foreground tracking-tight">
+                Complete Academic Continuum & Global Qualifications
+              </h3>
+              <p className="mt-2.5 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                Discover our comprehensive subject frameworks, laboratory syllabi, language programs, and university counselling system from foundation years to senior graduation.
               </p>
+
+              {/* Feature Highlights */}
+              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-foreground/80">
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" strokeWidth={1.75} />
+                  Direct O & A Level Progression
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" strokeWidth={1.75} />
+                  STEM & Humanities Dual Tracks
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" strokeWidth={1.75} />
+                  Worldwide University Placement
+                </span>
+              </div>
+            </div>
+
+            {/* Right Col: High-End Flagship CTA Button */}
+            <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <Link
+                href="/academics"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-md transition-all duration-200 hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span>Explore Academic Overview</span>
+                <ArrowUpRight className="h-4 w-4 text-white/90 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+              </Link>
             </div>
           </div>
-
-          <Link
-            href="/academics"
-            className="shrink-0 rounded-full bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md transition hover:bg-primary-dark hover:shadow-lg"
-          >
-            View Academic Overview
-          </Link>
         </div>
       </div>
     </section>
   );
 }
+
