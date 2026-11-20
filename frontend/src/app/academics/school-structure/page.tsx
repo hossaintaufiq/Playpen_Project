@@ -61,7 +61,7 @@ export default async function SchoolStructurePage() {
           {divisions.map((division) => (
             <article
               key={division.name}
-              className="flex flex-col justify-between overflow-hidden rounded-2xl border border-border/50 bg-white shadow-sm transition hover:shadow-md sm:rounded-3xl"
+              className="flex flex-col justify-between overflow-hidden rounded-lg border border-border/50 bg-white shadow-sm transition hover:shadow-md sm:rounded-lg"
             >
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden bg-muted">
@@ -74,7 +74,7 @@ export default async function SchoolStructurePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent">
+                    <p className="text-[11px] font-bold text-primary">
                       {division.grades}
                     </p>
                     <h3 className="mt-1 font-heading text-xl font-bold">{division.name}</h3>
@@ -88,7 +88,7 @@ export default async function SchoolStructurePage() {
               <div className="p-5 sm:p-6 pt-0">
                 <Link
                   href={division.href}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-bold text-primary transition hover:bg-primary hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-bold text-primary transition hover:bg-primary hover:text-white"
                 >
                   <span>Explore Curriculum</span>
                   <span aria-hidden="true">&rarr;</span>

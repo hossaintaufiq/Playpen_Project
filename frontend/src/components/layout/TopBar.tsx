@@ -42,13 +42,13 @@ export function TopBar() {
                 href="https://portal.playpen.edu.bd/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full bg-primary/10 px-3.5 py-1.5 font-semibold text-primary hover:bg-primary hover:text-white transition-all text-xs"
+                className="inline-flex items-center rounded-md bg-primary/10 px-3.5 py-1.5 font-semibold text-primary hover:bg-primary hover:text-white transition-all text-xs"
               >
                 Student Portal
               </a>
               <Link
                 href="/portal/admin"
-                className="inline-flex items-center rounded-full border border-border/80 bg-white px-3.5 py-1.5 font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all text-xs shadow-2xs"
+                className="inline-flex items-center rounded-md border border-border/80 bg-white px-3.5 py-1.5 font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all text-xs shadow-2xs"
               >
                 Admin Portal
               </Link>

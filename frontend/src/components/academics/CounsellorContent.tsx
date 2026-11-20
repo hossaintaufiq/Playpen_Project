@@ -38,9 +38,9 @@ function CounsellorCard({
 
   return (
     <article
-      className={`relative overflow-hidden rounded-3xl border shadow-[0_16px_48px_-20px_rgba(128,0,0,0.2)] ${
+      className={`relative overflow-hidden rounded-lg border shadow-sm ${
         isMaroon
-          ? "border-primary/20 bg-gradient-to-br from-[#5a0000] via-primary to-[#5a0000] text-white"
+          ? "border-primary/20 bg-primary-dark text-white"
           : "border-border/60 bg-white"
       }`}
     >
@@ -55,7 +55,7 @@ function CounsellorCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <p
-              className={`text-[11px] font-bold uppercase tracking-[0.22em] ${
+              className={`text-[11px] font-bold ${
                 isMaroon ? "text-accent" : "text-primary"
               }`}
             >
@@ -64,7 +64,7 @@ function CounsellorCard({
             <h3 className="mt-3 font-heading text-2xl font-bold sm:text-3xl">{title}</h3>
           </div>
           <div
-            className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${
+            className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg ${
               isMaroon ? "bg-white/10 text-accent" : "bg-primary/[0.08] text-primary"
             }`}
           >
@@ -82,7 +82,7 @@ function CounsellorCard({
 
         <div className="mt-6">
           <p
-            className={`text-[11px] font-bold uppercase tracking-[0.2em] ${
+            className={`text-[11px] font-bold ${
               isMaroon ? "text-white/75" : "text-primary"
             }`}
           >
@@ -159,9 +159,9 @@ export function CounsellorContent() {
         ].map((item) => (
           <article
             key={item.title}
-            className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:rounded-3xl sm:p-6"
+            className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:rounded-lg sm:p-6"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
               <item.icon className="h-5 w-5" strokeWidth={1.75} />
             </div>
             <h3 className="mt-4 font-heading text-lg font-bold text-foreground">{item.title}</h3>
@@ -170,7 +170,7 @@ export function CounsellorContent() {
         ))}
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-6 sm:mt-12 sm:p-8 md:flex md:items-center md:justify-between md:gap-8">
+      <div className="mt-10 rounded-lg border border-primary/15 bg-surface p-6 sm:mt-12 sm:p-8 md:flex md:items-center md:justify-between md:gap-8">
         <div className="md:max-w-2xl">
           <h3 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
             Speak with a counsellor
@@ -182,7 +182,7 @@ export function CounsellorContent() {
         </div>
         <Link
           href={schoolContact.emailHref}
-          className="playpen-bg mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark md:mt-0 md:w-auto"
+          className="playpen-bg mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark md:mt-0 md:w-auto"
         >
           Contact School
           <ArrowRight className="h-4 w-4" />

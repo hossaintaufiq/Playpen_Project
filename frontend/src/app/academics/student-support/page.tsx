@@ -45,12 +45,12 @@ export default async function StudentSupportPage() {
             return (
               <article
                 key={item.title}
-                className="rounded-2xl border border-border/50 bg-white p-6 text-center shadow-sm sm:rounded-3xl"
+                className="rounded-lg border border-border/50 bg-white p-6 text-center shadow-sm sm:rounded-lg"
               >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/[0.08] text-primary">
                   <Icon className="h-6 w-6" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-5 font-heading text-lg font-bold uppercase tracking-wide text-foreground sm:text-xl">
+                <h3 className="mt-5 font-heading text-lg font-bold tracking-wide text-foreground sm:text-xl">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>

@@ -22,7 +22,7 @@ export default async function LaboratoriesPage() {
     <AcademicsPageShell
       section="/academics/laboratories"
       title="Laboratories"
-      subtitle="State-of-the-art science and computer facilities approved by Cambridge and The British Council."
+      subtitle="Science and computer laboratories approved by Cambridge and the British Council."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
@@ -47,9 +47,9 @@ export default async function LaboratoriesPage() {
             return (
               <article
                 key={lab.title}
-                className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+                className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-foreground">

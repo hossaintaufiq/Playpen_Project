@@ -23,7 +23,7 @@ export default async function ExaminationsPage() {
     <AcademicsPageShell
       section="/academics/examinations"
       title="Examinations"
-      subtitle="Two-semester formal assessments with clear promotion standards for Junior and Senior students."
+      subtitle="Two-semester formal assessments with clear promotion standards for junior and senior students."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
@@ -46,9 +46,9 @@ export default async function ExaminationsPage() {
           {examinationSemesters.map((semester, index) => (
             <article
               key={semester.title}
-              className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm sm:rounded-3xl"
+              className="rounded-lg border border-border/50 bg-white p-6 shadow-sm sm:rounded-lg"
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+              <p className="text-[11px] font-bold text-primary">
                 Examination {index + 1}
               </p>
               <h3 className="mt-2 font-heading text-xl font-bold text-foreground sm:text-2xl">
@@ -65,9 +65,9 @@ export default async function ExaminationsPage() {
             return (
               <article
                 key={item.title}
-                className="rounded-2xl border border-primary/10 bg-primary/[0.03] p-5 sm:p-6"
+                className="rounded-lg border border-primary/10 bg-primary/[0.03] p-5 sm:p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-foreground">

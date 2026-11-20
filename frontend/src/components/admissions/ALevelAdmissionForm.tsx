@@ -49,7 +49,7 @@ function ParentColumn({
 
   return (
     <div className="space-y-4">
-      <p className="border-b border-border/60 pb-2 text-center text-sm font-bold uppercase tracking-wider text-primary">
+      <p className="border-b border-border/60 pb-2 text-center text-sm font-bold text-primary">
         {title}
       </p>
       {fields.map((field) => {
@@ -148,16 +148,16 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
         Back to form selection
       </button>
 
-      <div className="mt-5 overflow-hidden rounded-3xl border border-border/60 bg-muted/20 shadow-sm">
-        <div className="border-b border-primary/15 bg-gradient-to-br from-primary via-primary to-primary-dark px-5 py-8 text-center text-white sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/75">Playpen</p>
+      <div className="mt-5 overflow-hidden rounded-lg border border-border/60 bg-muted/20 shadow-sm">
+        <div className="border-b border-primary/15 bg-primary-dark px-5 py-8 text-center text-white sm:px-8">
+          <p className="text-xs font-semibold text-white/75">Playpen</p>
           <h2 className="mt-2 font-heading text-2xl font-bold sm:text-3xl">
             Advanced Subsidiary (AS) Level
           </h2>
-          <p className="mt-1 text-sm font-medium uppercase tracking-widest text-white/90">
+          <p className="mt-1 text-sm font-medium text-white/90">
             Admission Form
           </p>
-          <p className="mt-3 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide">
+          <p className="mt-3 inline-flex rounded-md border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide">
             Session: {A_LEVEL_SESSION}
           </p>
           <p className="mx-auto mt-5 max-w-3xl text-xs leading-relaxed text-white/80 sm:text-sm">
@@ -168,7 +168,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
           <a
             href={config.pdfPath}
             download={config.pdfFileName}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-white/90"
+            className="mt-5 inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-white/90"
           >
             <Download className="h-4 w-4" />
             Download printable PDF
@@ -353,7 +353,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
               </div>
             </FormGrid>
 
-            <div className="mt-5 overflow-x-auto rounded-xl border border-border/70">
+            <div className="mt-5 overflow-x-auto rounded-md border border-border/70">
               <table className="min-w-full text-sm">
                 <thead className="bg-muted/50">
                   <tr>
@@ -420,7 +420,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
 
             <div className="mt-3 grid gap-4 lg:grid-cols-2">
               {[1, 2].map((column) => (
-                <div key={column} className="overflow-hidden rounded-xl border border-border/70">
+                <div key={column} className="overflow-hidden rounded-md border border-border/70">
                   <table className="min-w-full text-sm">
                     <thead className="bg-primary/5">
                       <tr>
@@ -459,7 +459,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
             </div>
           </FormSection>
 
-          <FormSection title="Subject Choice for A' Levels at Playpen">
+          <FormSection title="Subject choice for A' Levels at Playpen">
             <p className="text-sm font-medium text-foreground">
               Tick your choice of subjects (minimum 3):
             </p>
@@ -469,7 +469,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
                 return (
                   <label
                     key={subject.id}
-                    className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3 transition ${
+                    className={`flex cursor-pointer items-start gap-3 rounded-md border p-3 transition ${
                       checked
                         ? "border-primary/40 bg-primary/5"
                         : "border-border/70 hover:border-primary/20"
@@ -487,8 +487,8 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
               })}
             </div>
 
-            <div className="mt-4 rounded-xl border border-amber-200/80 bg-amber-50/80 p-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-amber-900">N.B.</p>
+            <div className="mt-4 rounded-md border border-amber-200/80 bg-amber-50/80 p-4">
+              <p className="text-xs font-bold tracking-wide text-amber-900">N.B.</p>
               <ul className="mt-2 space-y-1.5 text-xs leading-relaxed text-amber-950/90">
                 {A_LEVEL_SUBJECT_NOTES.map((note) => (
                   <li key={note}>• {note}</li>
@@ -565,12 +565,12 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
           </FormSection>
 
           {error && (
-            <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
               {error}
             </p>
           )}
 
-          <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 rounded-lg border border-border/60 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
             <a
               href={config.pdfPath}
               download={config.pdfFileName}
@@ -582,7 +582,7 @@ export function ALevelAdmissionForm({ onBack, onSuccess }: Props) {
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60"
             >
               {submitting ? "Submitting..." : "Submit application"}
               <ArrowRight className="h-4 w-4" />

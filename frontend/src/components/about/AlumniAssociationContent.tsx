@@ -33,12 +33,10 @@ export function AlumniAssociationContent() {
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20 w-full min-w-0">
       <div className="space-y-14 sm:space-y-18">
         {/* 01 — Tagore Heritage Plaque Quote */}
-        <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/[0.08] via-surface to-accent/[0.08] px-6 py-10 sm:px-12 sm:py-16 text-center shadow-md">
-          <div className="pointer-events-none absolute -left-12 -top-12 h-48 w-48 rounded-full bg-primary/5 blur-2xl" />
-          <div className="pointer-events-none absolute -right-12 -bottom-12 h-48 w-48 rounded-full bg-accent/10 blur-2xl" />
+        <div className="relative overflow-hidden rounded-lg border border-primary/25 bg-surface px-6 py-10 sm:px-12 sm:py-16 text-center shadow-md">
 
           <div className="relative z-10 max-w-4xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 backdrop-blur-md px-4 py-1 text-xs font-black uppercase tracking-[0.25em] text-primary border border-primary/15 shadow-xs mb-6">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-white/80 backdrop-blur-md px-4 py-1 text-xs font-bold text-primary border border-primary/15 shadow-xs mb-6">
               <Sparkles className="h-3.5 w-3.5 text-accent" />
               <span>{tagoreQuote.attributionEn} &bull; {tagoreQuote.attribution}</span>
             </span>
@@ -55,11 +53,11 @@ export function AlumniAssociationContent() {
 
         {/* 02 — Introduction Narratives */}
         <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <div className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-accent mb-1">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-accent mb-1">
             <GraduationCap className="h-4 w-4" />
             <span>Playpen Alumni Community</span>
           </div>
-          <h2 className="font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight">
+          <h2 className="font-bold text-3xl sm:text-4xl text-foreground tracking-tight">
             A Lifelong Bond Beyond the Classroom
           </h2>
           {alumniIntro.map((paragraph, i) => (
@@ -74,13 +72,13 @@ export function AlumniAssociationContent() {
           {highlights.map((item) => (
             <article
               key={item.title}
-              className="group rounded-3xl border border-border/80 bg-white p-7 text-center shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:-translate-y-1.5 flex flex-col justify-between"
+              className="group rounded-lg border border-border/80 bg-white p-7 text-center shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/30 flex flex-col justify-between"
             >
               <div>
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white shadow-md transition-transform duration-300 group-hover:scale-110 mb-5">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg bg-primary text-white shadow-md transition-transform duration-300 mb-5">
                   <item.icon className="h-6 w-6" strokeWidth={2} />
                 </div>
-                <h3 className="font-extrabold text-xl text-foreground group-hover:text-primary transition-colors">
+                <h3 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
                 <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">
@@ -100,14 +98,14 @@ export function AlumniAssociationContent() {
         <div className="w-full min-w-0 pt-6">
           <SectionHeader
             eyebrow="Alumni Registration"
-            title="Join the Official Playpen Alumni Network"
+            title="Join the official Playpen alumni network"
             description={alumniCallToAction}
           />
 
           <div className="mx-auto mt-6 flex w-full max-w-2xl justify-center">
             <a
               href={`mailto:${alumniEmail}`}
-              className="inline-flex max-w-full items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-6 py-3 text-xs sm:text-sm font-bold text-primary transition hover:bg-primary hover:text-white shadow-sm"
+              className="inline-flex max-w-full items-center gap-2 rounded-md border border-primary/20 bg-primary/8 px-6 py-3 text-xs sm:text-sm font-bold text-primary transition hover:bg-primary hover:text-white shadow-sm"
             >
               <Mail className="h-4 w-4 shrink-0" />
               <span>{alumniEmail}</span>

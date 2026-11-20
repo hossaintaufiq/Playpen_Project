@@ -16,10 +16,10 @@ function IdentityCardMock() {
     <div className="relative mx-auto w-full max-w-sm">
       <div
         aria-hidden
-        className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary/20 via-accent/10 to-primary/10 blur-xl"
+        className="absolute -inset-3 rounded-lg bg-surface blur-xl"
       />
-      <article className="relative overflow-hidden rounded-3xl border border-white/20 bg-white shadow-[0_24px_60px_-20px_rgba(128,0,0,0.35)]">
-        <div className="bg-gradient-to-r from-[#5a0000] via-primary to-[#5a0000] px-6 py-5 text-white">
+      <article className="relative overflow-hidden rounded-lg border border-white/20 bg-white shadow-sm">
+        <div className="bg-primary-dark px-6 py-5 text-white">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="relative h-11 w-11 overflow-hidden rounded-full bg-white p-1">
@@ -33,7 +33,7 @@ function IdentityCardMock() {
               </div>
               <div>
                 <p className="font-heading text-lg font-bold leading-tight">Playpen</p>
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                <p className="text-[10px] font-bold text-primary">
                   School of Excellence
                 </p>
               </div>
@@ -43,12 +43,12 @@ function IdentityCardMock() {
         </div>
 
         <div className="grid grid-cols-[96px_1fr] gap-4 p-5 sm:p-6">
-          <div className="flex aspect-[3/4] items-center justify-center rounded-2xl border border-dashed border-primary/20 bg-primary/[0.04]">
+          <div className="flex aspect-[3/4] items-center justify-center rounded-lg border border-dashed border-primary/20 bg-primary/[0.04]">
             <div className="text-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <span className="font-heading text-lg font-bold">PP</span>
               </div>
-              <p className="mt-2 text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
+              <p className="mt-2 text-[10px] font-bold tracking-wide text-muted-foreground">
                 Photo
               </p>
             </div>
@@ -56,27 +56,27 @@ function IdentityCardMock() {
 
           <div className="space-y-3 text-sm">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+              <p className="text-[10px] font-bold text-primary">
                 Student Name
               </p>
               <p className="mt-1 font-heading text-lg font-bold text-foreground">Student Name</p>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                <p className="text-[10px] font-bold text-primary">
                   Class
                 </p>
                 <p className="mt-1 font-semibold text-foreground">Class —</p>
               </div>
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                <p className="text-[10px] font-bold text-primary">
                   ID No.
                 </p>
                 <p className="mt-1 font-semibold text-foreground">PP-0000</p>
               </div>
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+              <p className="text-[10px] font-bold text-primary">
                 Academic Year
               </p>
               <p className="mt-1 font-semibold text-foreground">2025 – 2026</p>
@@ -85,7 +85,7 @@ function IdentityCardMock() {
         </div>
 
         <div className="border-t border-border/50 bg-muted/30 px-5 py-3 sm:px-6">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="text-center text-[10px] font-bold text-muted-foreground">
             Official Student Identification
           </p>
         </div>
@@ -102,15 +102,15 @@ export function IdentityCardContent() {
           <SectionHeader
             align="left"
             eyebrow="Student Identification"
-            title="Your Playpen ID Card — issued, worn, and protected"
+            title="Your Playpen ID card — issued, worn, and protected"
             description={identityCardIntro}
             className="max-w-xl"
           />
 
           <div className="mt-8 space-y-4">
-            <div className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-5 sm:rounded-3xl sm:p-6">
+            <div className="rounded-lg border border-primary/15 bg-primary/[0.04] p-5 sm:rounded-lg sm:p-6">
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary text-white">
                   <ShieldCheck className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <div>
@@ -122,9 +122,9 @@ export function IdentityCardContent() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-amber-200/80 bg-amber-50/70 p-5 sm:rounded-3xl sm:p-6">
+            <div className="rounded-lg border border-amber-200/80 bg-amber-50/70 p-5 sm:rounded-lg sm:p-6">
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-600 text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-amber-600 text-white">
                   <RefreshCw className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <div>
@@ -156,12 +156,12 @@ export function IdentityCardContent() {
             return (
               <article
                 key={policy.title}
-                className="group rounded-2xl border border-border/60 bg-white p-6 shadow-[0_4px_24px_-12px_rgba(128,0,0,0.1)] transition hover:border-primary/20 hover:shadow-[0_12px_32px_-14px_rgba(128,0,0,0.15)] sm:rounded-3xl"
+                className="group rounded-lg border border-border/60 bg-white p-6 shadow-sm transition hover:border-primary/20 hover:shadow-sm sm:rounded-lg"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary transition group-hover:bg-primary group-hover:text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/[0.08] text-primary transition group-hover:bg-primary group-hover:text-white">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
-                <p className="mt-5 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+                <p className="mt-5 text-[11px] font-bold text-primary">
                   Step {index + 1}
                 </p>
                 <h3 className="mt-2 font-heading text-xl font-bold text-foreground">

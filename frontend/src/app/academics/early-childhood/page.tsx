@@ -29,25 +29,25 @@ const pillars = [
     icon: Sparkles,
     title: "Foundational Numeracy",
     desc: "Concrete sensory manipulatives, counting games, spatial awareness, shape recognition, and playful early logic.",
-    color: "bg-rose-50 text-rose-700 border-rose-200",
+    color: "bg-primary-soft text-primary border-primary/20",
   },
   {
     icon: Palette,
     title: "Creative Arts & Music",
     desc: "Sensory painting, clay sculpting, rhythm exploration, and musical expression that cultivate imagination and fine motor control.",
-    color: "bg-purple-50 text-purple-700 border-purple-200",
+    color: "bg-primary-soft text-primary border-primary/20",
   },
   {
     icon: Activity,
     title: "Gross & Fine Motor Skills",
     desc: "Safe indoor and outdoor play spaces designed to build balance, hand-eye coordination, agility, and physical confidence.",
-    color: "bg-teal-50 text-teal-700 border-teal-200",
+    color: "bg-primary-soft text-primary border-primary/20",
   },
   {
     icon: Heart,
     title: "Social & Emotional Growth",
     desc: "Sharing, active listening, empathy, following daily routines, and building friendships in a nurturing, caring environment.",
-    color: "bg-blue-50 text-blue-700 border-blue-200",
+    color: "bg-primary-soft text-primary border-primary/20",
   },
   {
     icon: Smile,
@@ -95,13 +95,13 @@ export default async function EarlyChildhoodPage() {
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         {/* Intro Overview Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-3xl border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-lg border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full bg-amber-100/80 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-900 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-md bg-amber-100/80 px-3.5 py-1 text-xs font-bold text-amber-900 mb-4">
               <Smile className="h-3.5 w-3.5" />
               <span>Foundation Years (Playgroup – KG II)</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               Where Curiosity, Play &amp; Joyful Learning Begin
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -126,12 +126,12 @@ export default async function EarlyChildhoodPage() {
                 <Clock className="h-5 w-5 text-accent" />
                 <div>
                   <span className="block text-xs font-bold text-foreground">Morning &amp; Day Sessions</span>
-                  <span className="text-[11px] text-muted-foreground">Age-Tailored Timetables</span>
+                  <span className="text-[11px] text-muted-foreground">Age-appropriate timetables</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-muted">
+          <div className="lg:col-span-5 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md bg-muted">
             <Image
               src="/images/schools/elementary.webp"
               alt="Playpen Early Childhood Classroom"
@@ -145,7 +145,7 @@ export default async function EarlyChildhoodPage() {
         {/* 6 Curriculum Pillars */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Core Curriculum Pillars
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -159,10 +159,10 @@ export default async function EarlyChildhoodPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="flex flex-col justify-between rounded-2xl border border-border/80 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-primary/30"
+                  className="flex flex-col justify-between rounded-lg border border-border/80 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-primary/30"
                 >
                   <div>
-                    <div className={`inline-flex p-3 rounded-2xl border ${pillar.color} mb-4`}>
+                    <div className={`inline-flex p-3 rounded-lg border ${pillar.color} mb-4`}>
                       <Icon className="h-6 w-6" />
                     </div>
                     <h4 className="font-heading text-lg font-bold text-foreground">
@@ -181,7 +181,7 @@ export default async function EarlyChildhoodPage() {
         {/* Grade Levels Breakdown */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center mb-10">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Progression Across Early Years
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -193,9 +193,9 @@ export default async function EarlyChildhoodPage() {
             {gradeLevels.map((lvl, idx) => (
               <div
                 key={lvl.grade}
-                className="relative rounded-2xl border border-border/80 bg-white p-6 shadow-sm"
+                className="relative rounded-lg border border-border/80 bg-white p-6 shadow-sm"
               >
-                <span className="text-xs font-extrabold text-primary uppercase tracking-wider">
+                <span className="text-xs font-bold text-primary">
                   Stage 0{idx + 1}
                 </span>
                 <h4 className="mt-1 font-heading text-xl font-bold text-foreground">
@@ -224,9 +224,9 @@ export default async function EarlyChildhoodPage() {
         ) : null}
 
         {/* Next Stage Navigation */}
-        <div className="mt-16 rounded-3xl border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 rounded-lg border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            <span className="text-xs font-bold text-muted-foreground">
               Next Academic Stage
             </span>
             <h4 className="font-heading text-xl font-bold text-foreground mt-0.5">
@@ -239,7 +239,7 @@ export default async function EarlyChildhoodPage() {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/academics/junior-school"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
             >
               <span>Explore Junior School</span>
               <ArrowRight className="h-4 w-4" />

@@ -12,7 +12,7 @@ export default async function NoticesPage() {
         title="Notices & Announcements"
         subtitle="Official school updates, reminders, and important communications for Playpen families."
         image="/images/marquee/student-services.jpg"
-        imageAlt="Playpen school notices and announcements"
+        imageAlt="Playpen School notices and announcements"
       />
       <NoticesAnnouncementsContent notices={cms.notices} newsTicker={cms.newsTicker} />
     </SiteLayout>

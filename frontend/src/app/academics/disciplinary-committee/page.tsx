@@ -49,9 +49,9 @@ export default async function DisciplinaryCommitteePage() {
             return (
               <article
                 key={item.title}
-                className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+                className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -64,7 +64,7 @@ export default async function DisciplinaryCommitteePage() {
         </div>
 
         <div className="mt-10 space-y-6 sm:mt-12">
-          <AboutContentSection title="Suspension & Expulsion Policy">
+          <AboutContentSection title="Suspension & expulsion policy">
             <ul className="list-disc space-y-2 pl-5">
               {disciplinaryExpulsionRules.map((rule) => (
                 <li key={rule}>{rule}</li>
@@ -76,7 +76,7 @@ export default async function DisciplinaryCommitteePage() {
             <p>{disciplinaryCommitteeNote}</p>
           </AboutContentSection>
 
-          <AboutContentSection title="A Note for Parents">
+          <AboutContentSection title="A note for parents">
             <p>{disciplinaryParentNote}</p>
           </AboutContentSection>
         </div>

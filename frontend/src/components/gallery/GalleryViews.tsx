@@ -25,10 +25,10 @@ export function GalleryOverview({
     <div className="mt-10">
       <div className="mb-6 flex items-end justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-accent">
+          <span className="text-xs font-bold text-accent">
             Curated Moments
           </span>
-          <h2 className="mt-1 font-extrabold text-2xl sm:text-3xl text-foreground">
+          <h2 className="mt-1 font-bold text-2xl sm:text-3xl text-foreground">
             Highlights from Campus Life
           </h2>
         </div>
@@ -41,7 +41,7 @@ export function GalleryOverview({
         <button
           type="button"
           onClick={() => onPhotoClick(0)}
-          className="group relative aspect-[4/3] overflow-hidden rounded-3xl bg-muted md:col-span-2 md:row-span-2 md:aspect-auto md:min-h-[360px] shadow-sm transition hover:shadow-xl text-left"
+          className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-muted md:col-span-2 md:row-span-2 md:aspect-auto md:min-h-[360px] shadow-sm transition hover:shadow-md text-left"
         >
           <Image
             src={featured.src}
@@ -53,10 +53,10 @@ export function GalleryOverview({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-accent mb-1">
+            <span className="inline-block text-[11px] font-bold text-primary mb-1">
               {featured.category}
             </span>
-            <p className="font-extrabold text-xl sm:text-2xl leading-tight">
+            <p className="font-bold text-xl sm:text-2xl leading-tight">
               {featured.caption ?? featured.eventTitle}
             </p>
           </div>
@@ -67,7 +67,7 @@ export function GalleryOverview({
             key={photo.id}
             type="button"
             onClick={() => onPhotoClick(index + 1)}
-            className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted md:aspect-auto md:min-h-[160px] shadow-sm transition hover:shadow-lg text-left"
+            className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-muted md:aspect-auto md:min-h-[160px] shadow-sm transition hover:shadow-md text-left"
           >
             <Image
               src={photo.src}
@@ -107,10 +107,10 @@ export function GalleryPhotoList({
   return (
     <div className="mt-10">
       <div className="mb-6">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">
+        <span className="text-xs font-bold text-primary">
           {categoryLabel} Collection
         </span>
-        <h2 className="mt-1 font-extrabold text-2xl sm:text-3xl text-foreground">
+        <h2 className="mt-1 font-bold text-2xl sm:text-3xl text-foreground">
           Photo Gallery
         </h2>
         <p className="mt-1 text-xs sm:text-sm text-muted-foreground">
@@ -118,7 +118,7 @@ export function GalleryPhotoList({
         </p>
       </div>
 
-      <ul className="divide-y divide-border/60 overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm">
+      <ul className="divide-y divide-border/60 overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm">
         {photos.map((photo, index) => (
           <li key={photo.id}>
             <button
@@ -126,7 +126,7 @@ export function GalleryPhotoList({
               onClick={() => onPhotoClick(index)}
               className="group flex w-full items-center gap-4 p-4 text-left transition hover:bg-surface sm:gap-6 sm:p-5"
             >
-              <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-2xl bg-muted sm:h-22 sm:w-22 shadow-sm">
+              <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-lg bg-muted sm:h-22 sm:w-22 shadow-sm">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
@@ -137,10 +137,10 @@ export function GalleryPhotoList({
               </div>
 
               <div className="min-w-0 flex-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
+                <span className="text-[11px] font-bold text-primary">
                   {photo.category}
                 </span>
-                <p className="mt-0.5 truncate font-extrabold text-base text-foreground group-hover:text-primary transition-colors">
+                <p className="mt-0.5 truncate font-bold text-base text-foreground group-hover:text-primary transition-colors">
                   {photo.caption ?? photo.alt}
                 </p>
                 <p className="mt-0.5 truncate text-xs text-muted-foreground">

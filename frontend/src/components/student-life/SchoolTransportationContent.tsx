@@ -37,9 +37,9 @@ export function SchoolTransportationContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -51,7 +51,7 @@ export function SchoolTransportationContent() {
         })}
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.05] p-6 sm:mt-12 sm:p-8">
+      <div className="mt-10 rounded-lg border border-primary/15 bg-surface p-6 sm:mt-12 sm:p-8">
         <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
           {transportationSafetyNote}
         </p>
@@ -72,9 +72,9 @@ export function SchoolTransportationContent() {
             return (
               <article
                 key={rule}
-                className="flex items-start gap-4 rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-3xl"
+                className="flex items-start gap-4 rounded-lg border border-border/60 bg-white p-5 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-lg"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <p className="pt-1.5 text-sm leading-relaxed text-foreground/90 sm:text-base">
@@ -87,7 +87,7 @@ export function SchoolTransportationContent() {
       </div>
 
       <div className="mt-10 grid gap-5 lg:grid-cols-2 sm:mt-12">
-        <article className="relative overflow-hidden rounded-3xl border border-primary/20 bg-primary p-6 text-white shadow-lg sm:p-8">
+        <article className="relative overflow-hidden rounded-lg border border-primary/20 bg-primary p-6 text-white shadow-md sm:p-8">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(249,115,22,0.18),transparent_55%)]" />
           <div className="relative">
             <Bus className="h-10 w-10 text-accent" strokeWidth={1.5} />
@@ -102,8 +102,8 @@ export function SchoolTransportationContent() {
           </div>
         </article>
 
-        <article className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm sm:p-8">
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+        <article className="rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:p-8">
+          <p className="text-[11px] font-bold text-primary">
             Transport Enquiries
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

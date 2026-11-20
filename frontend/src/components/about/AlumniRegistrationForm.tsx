@@ -6,11 +6,11 @@ import { FormFileUpload } from "@/components/ui/FormFileUpload";
 import { alumniEmail } from "@/lib/alumni-association";
 
 const inputClass =
-  "w-full min-w-0 max-w-full rounded-xl border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
+  "w-full min-w-0 max-w-full rounded-md border border-border/70 bg-white px-3 py-2.5 text-sm outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10";
 
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
   return (
-    <span className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
+    <span className="text-xs font-semibold tracking-wide text-foreground/80">
       {children}
       {required ? " *" : ""}
     </span>
@@ -79,8 +79,8 @@ export function AlumniRegistrationForm() {
 
   if (success) {
     return (
-      <div className="w-full min-w-0 rounded-2xl border border-green-200 bg-green-50 p-4 sm:rounded-3xl sm:p-8">
-        <h3 className="font-extrabold text-xl text-foreground">Thank you for registering</h3>
+      <div className="w-full min-w-0 rounded-lg border border-green-200 bg-green-50 p-4 sm:rounded-lg sm:p-8">
+        <h3 className="font-bold text-xl text-foreground">Thank you for registering</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Your alumni registration has been received and is pending review by our administration
           team. We will contact you after your details have been approved. You may also email{" "}
@@ -106,9 +106,9 @@ export function AlumniRegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full min-w-0 max-w-full rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.06] p-4 sm:rounded-3xl sm:p-6 md:p-8"
+      className="w-full min-w-0 max-w-full rounded-lg border border-primary/15 bg-surface p-4 sm:rounded-lg sm:p-6 md:p-8"
     >
-      <h3 className="font-extrabold text-xl text-foreground sm:text-2xl">
+      <h3 className="font-bold text-xl text-foreground sm:text-2xl">
         Alumni Registration
       </h3>
       <p className="mt-2 text-sm text-muted-foreground">Fields marked with * are required.</p>
@@ -220,7 +220,7 @@ export function AlumniRegistrationForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="playpen-bg mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60 sm:w-auto"
+        className="playpen-bg mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60 sm:w-auto"
       >
         {submitting ? "Submitting..." : "Submit Registration"}
         <ArrowRight className="h-4 w-4" />

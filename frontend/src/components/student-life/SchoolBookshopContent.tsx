@@ -20,13 +20,13 @@ export function SchoolBookshopContent() {
       />
 
       <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-3 sm:mt-12">
-        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-[#5a0000] via-primary to-[#5a0000] p-6 text-white shadow-lg sm:p-8 lg:col-span-1">
+        <div className="relative overflow-hidden rounded-lg border border-primary/20 bg-primary-dark p-6 text-white shadow-md sm:p-8 lg:col-span-1">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,162,39,0.2),transparent_55%)]" />
           <div className="relative">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-accent">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 text-accent">
               <Clock className="h-6 w-6" strokeWidth={1.75} />
             </div>
-            <p className="mt-6 text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
+            <p className="mt-6 text-[11px] font-bold text-primary">
               {bookshopHours.label}
             </p>
             <p className="mt-2 font-heading text-3xl font-bold">{bookshopHours.time}</p>
@@ -34,13 +34,13 @@ export function SchoolBookshopContent() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm sm:p-8 lg:col-span-2">
+        <div className="rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:p-8 lg:col-span-2">
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/[0.08] text-primary">
               <ShoppingBag className="h-6 w-6" strokeWidth={1.75} />
             </div>
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+              <p className="text-[11px] font-bold text-primary">
                 Start of Every Session
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -53,7 +53,7 @@ export function SchoolBookshopContent() {
             {bookshopOfferings.map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-2 rounded-xl border border-border/50 bg-muted/20 px-4 py-3 text-sm font-medium text-foreground/90"
+                className="flex items-start gap-2 rounded-md border border-border/50 bg-muted/20 px-4 py-3 text-sm font-medium text-foreground/90"
               >
                 <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 {item}
@@ -69,9 +69,9 @@ export function SchoolBookshopContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm transition hover:border-primary/15 hover:shadow-md sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm transition hover:border-primary/15 hover:shadow-md sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -83,7 +83,7 @@ export function SchoolBookshopContent() {
         })}
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.05] p-6 text-center sm:mt-12 sm:p-10">
+      <div className="mt-10 rounded-lg border border-primary/15 bg-surface p-6 text-center sm:mt-12 sm:p-10">
         <Store className="mx-auto h-10 w-10 text-primary" strokeWidth={1.5} />
         <p className="mx-auto mt-4 max-w-2xl font-heading text-xl font-bold text-foreground sm:text-2xl">
           One stop for books, copies, and supplies — right here on the Playpen campus.

@@ -16,25 +16,25 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
     <div className="space-y-12">
       <div>
         <div className="mb-6 flex items-center gap-2.5 border-b border-border/70 pb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <Briefcase className="h-5 w-5" />
           </div>
           <div>
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-accent block">
+            <span className="text-[11px] font-bold text-primary block">
               Opportunities
             </span>
-            <h3 className="font-extrabold text-2xl sm:text-3xl text-foreground">
+            <h3 className="font-bold text-2xl sm:text-3xl text-foreground">
               Current Open Vacancies ({vacancies.length})
             </h3>
           </div>
         </div>
 
         {vacancies.length === 0 ? (
-          <div className="rounded-3xl border border-border/70 bg-surface/50 p-8 sm:p-12 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-3">
+          <div className="rounded-lg border border-border/70 bg-surface/50 p-8 sm:p-12 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-3">
               <Sparkles className="h-6 w-6" />
             </div>
-            <h4 className="font-extrabold text-xl text-foreground">No open positions right now</h4>
+            <h4 className="font-bold text-xl text-foreground">No open positions right now</h4>
             <p className="mt-2 text-xs sm:text-sm text-muted-foreground max-w-md mx-auto">
               Please check back later or email your resume directly to{" "}
               <a href={`mailto:${careerEmail}`} className="font-bold text-primary hover:underline">
@@ -50,7 +50,7 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
               return (
                 <article
                   key={vacancy.id}
-                  className={`flex flex-col justify-between rounded-3xl border p-6 sm:p-7 shadow-xs transition-all duration-300 ${
+                  className={`flex flex-col justify-between rounded-lg border p-6 sm:p-7 shadow-xs transition-all duration-300 ${
                     selected
                       ? "border-primary/50 bg-white ring-2 ring-primary/20 shadow-md"
                       : "border-border/80 bg-white hover:border-primary/30 hover:shadow-md"
@@ -58,7 +58,7 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="inline-block rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-accent-hover">
+                      <span className="inline-block rounded-md bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent-hover">
                         Active Opening
                       </span>
                       {selected && (
@@ -68,7 +68,7 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
                         </span>
                       )}
                     </div>
-                    <h4 className="font-extrabold text-xl text-foreground">{vacancy.title}</h4>
+                    <h4 className="font-bold text-xl text-foreground">{vacancy.title}</h4>
                     <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{vacancy.description}</p>
                   </div>
 
@@ -97,17 +97,17 @@ export function CareerVacanciesSection({ vacancies }: { vacancies: JobVacancy[] 
       </div>
 
       {vacancies.length > 0 && (
-        <div id="apply" className="scroll-mt-24 rounded-3xl border border-border/80 bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
+        <div id="apply" className="scroll-mt-24 rounded-lg border border-border/80 bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
           <SectionHeader
             align="left"
             eyebrow="Apply Now"
-            title="Submit Your Curriculum Vitae (CV)"
+            title="Submit your curriculum vitae (CV)"
             description={careerApplyNote}
             className="max-w-3xl"
           />
 
           {selectedVacancy && (
-            <div className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-primary/8 px-4 py-2 text-xs font-bold text-primary border border-primary/15">
+            <div className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary/8 px-4 py-2 text-xs font-bold text-primary border border-primary/15">
               <CheckCircle2 className="h-4 w-4 text-accent" />
               <span>Selected Position: {selectedVacancy.title}</span>
             </div>

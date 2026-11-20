@@ -7,7 +7,7 @@ export function SectionDivider({ variant = "line" }: SectionDividerProps) {
     return (
       <div
         aria-hidden
-        className="h-16 bg-gradient-to-b from-background to-muted/40 sm:h-20 md:h-24"
+        className="h-16 bg-surface sm:h-20 md:h-24"
       />
     );
   }

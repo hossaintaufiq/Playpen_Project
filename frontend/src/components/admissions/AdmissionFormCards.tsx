@@ -48,7 +48,7 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
         return (
           <article
             key={form.id}
-            className="group relative overflow-hidden rounded-3xl border border-border/60 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+            className="group relative overflow-hidden rounded-lg border border-border/60 bg-white shadow-sm transition duration-300 hover:border-primary/20 hover:shadow-md"
           >
             <div className="relative h-36 overflow-hidden sm:h-40">
               <Image
@@ -60,7 +60,7 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
               />
               <div className={`absolute inset-0 bg-gradient-to-t ${meta.accent} opacity-80`} />
               <div className="absolute inset-0 flex flex-col justify-end p-5 text-white sm:p-6">
-                <span className="inline-flex w-fit rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                <span className="inline-flex w-fit rounded-md border border-white/25 bg-white/10 px-3 py-1 text-[10px] font-bold backdrop-blur-sm">
                   {meta.badge}
                 </span>
                 <h2 className="mt-3 font-heading text-2xl font-bold sm:text-3xl">{form.title}</h2>
@@ -70,7 +70,7 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
 
             <div className="p-5 sm:p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <Icon className="h-6 w-6" strokeWidth={1.75} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -90,7 +90,7 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
                 <button
                   type="button"
                   onClick={() => onSelect(form.id)}
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark"
                 >
                   <FileText className="h-4 w-4" />
                   Open online form
@@ -100,7 +100,7 @@ export function AdmissionFormCards({ onSelect }: { onSelect: (type: AdmissionFor
                   href={form.pdfPath}
                   download={form.pdfFileName}
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-primary/20 bg-primary/5 px-5 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
                 >
                   <Download className="h-4 w-4" />
                   Download PDF

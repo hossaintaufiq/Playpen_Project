@@ -5,7 +5,7 @@ type AboutContentSectionProps = {
 
 export function AboutContentSection({ title, children }: AboutContentSectionProps) {
   return (
-    <section className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-3xl sm:p-8">
+    <section className="rounded-lg border border-border/50 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-lg sm:p-8">
       <h2 className="font-heading text-xl font-bold tracking-tight text-foreground sm:text-2xl">{title}</h2>
       <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
         {children}

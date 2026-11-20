@@ -84,11 +84,11 @@ function NavbarDropdown({
 
   if (variant === "mobile") {
     return (
-      <div className="rounded-xl overflow-hidden">
+      <div className="rounded-md overflow-hidden">
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition ${
+          className={`flex w-full items-center justify-between rounded-md px-4 py-3 text-base font-semibold transition ${
             active ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted/60"
           }`}
           aria-expanded={open}
@@ -161,11 +161,11 @@ function NavbarDropdown({
         onMouseEnter={openMenu}
         onMouseLeave={scheduleClose}
       >
-        <div className={`overflow-hidden rounded-2xl border border-border bg-white/95 backdrop-blur-xl p-2 shadow-2xl ring-1 ring-black/5 ${
+        <div className={`overflow-hidden rounded-lg border border-border bg-white/95 backdrop-blur-xl p-2 shadow-md ring-1 ring-black/5 ${
           isLarge ? "w-[34rem]" : "w-[21rem]"
         }`}>
-          <div className="border-b border-border/60 bg-muted/40 px-4 py-2.5 rounded-xl mb-1 flex items-center justify-between">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+          <div className="border-b border-border/60 bg-muted/40 px-4 py-2.5 rounded-md mb-1 flex items-center justify-between">
+            <p className="text-[11px] font-bold text-primary">
               {label}
             </p>
             <span className="text-[11px] text-muted-foreground font-medium">Explore Overview</span>
@@ -180,7 +180,7 @@ function NavbarDropdown({
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={`group flex items-start gap-2.5 rounded-xl p-2.5 transition-all duration-200 ${
+                  className={`group flex items-start gap-2.5 rounded-md p-2.5 transition-all duration-200 ${
                     itemActive
                       ? "bg-primary text-white shadow-sm"
                       : "text-foreground hover:bg-primary-soft hover:text-primary"
@@ -244,12 +244,12 @@ export function Navbar() {
             {/* Brand text shown only on tablet and desktop */}
             <div className="hidden sm:flex min-w-0 flex-col justify-center">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-xl sm:text-2xl md:text-[1.65rem] leading-none tracking-tight text-primary transition-colors">
+                <span className="font-bold text-xl sm:text-2xl md:text-[1.65rem] leading-none tracking-tight text-primary transition-colors">
                   Playpen
                 </span>
-                <span className="inline-block h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent animate-pulse" />
+                <span className="inline-block h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent" />
               </div>
-              <span className="text-[10px] sm:text-[11px] md:text-[11.5px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-muted-foreground mt-0.5 whitespace-nowrap">
+              <span className="text-[10px] sm:text-[11px] md:text-[11.5px] font-bold sm:tracking-[0.22em] text-muted-foreground mt-0.5 whitespace-nowrap">
                 School of Excellence
               </span>
             </div>
@@ -291,7 +291,7 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <Link
               href="/admissions/apply"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-[13px] font-bold uppercase tracking-wider text-white shadow-xs transition-all duration-200 hover:bg-primary-dark hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-3.5 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-[13px] font-bold text-white shadow-xs transition-all duration-200 hover:bg-primary-dark hover:shadow-md"
             >
               Apply Now
             </Link>
@@ -299,7 +299,7 @@ export function Navbar() {
             {/* Mobile Hamburger Toggle */}
             <button
               type="button"
-              className="inline-flex rounded-xl p-2 sm:p-2.5 text-foreground hover:bg-muted transition xl:hidden"
+              className="inline-flex rounded-md p-2 sm:p-2.5 text-foreground hover:bg-muted transition xl:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={open}
@@ -316,7 +316,7 @@ export function Navbar() {
           }`}
         >
           <div className="min-h-0">
-            <nav className="border-t border-border/70 py-4 px-2 bg-surface rounded-b-2xl shadow-xl my-2">
+            <nav className="border-t border-border/70 py-4 px-2 bg-surface rounded-b-2xl shadow-md my-2">
               <div className="flex max-h-[70vh] flex-col gap-1.5 overflow-y-auto pr-1">
                 {navItems.map((item) => {
                   if ("dropdownItems" in item) {
@@ -338,7 +338,7 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className={`rounded-xl px-4 py-3 text-base font-semibold transition ${
+                      className={`rounded-md px-4 py-3 text-base font-semibold transition ${
                         active
                           ? "bg-primary text-white shadow-sm"
                           : "text-foreground hover:bg-muted/60"
@@ -355,14 +355,14 @@ export function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-primary/20 bg-primary/8 py-3 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-md border border-primary/20 bg-primary/8 py-3 text-sm font-bold text-primary hover:bg-primary hover:text-white transition-colors"
                   >
                     Student Portal Login
                   </a>
                   <Link
                     href="/portal/admin"
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-border/80 bg-white py-3 text-sm font-bold text-foreground/85 hover:border-primary/40 hover:text-primary transition-colors"
+                    className="flex items-center justify-center gap-2 rounded-md border border-border/80 bg-white py-3 text-sm font-bold text-foreground/85 hover:border-primary/40 hover:text-primary transition-colors"
                   >
                     Admin Portal
                   </Link>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /* Playpen Modern Brand Design Tokens */
@@ -28,7 +28,7 @@
   --color-accent-blue: #2563eb;
 
   /* Modern Friendly Typography */
-  --font-sans: "Plus Jakarta Sans", "Manrope", "DM Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Manrope", system-ui, sans-serif;
   --font-heading: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
   --font-bengali: "Noto Sans Bengali", sans-serif;
 
@@ -71,7 +71,23 @@ main {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+::selection {
+  background-color: rgb(122 8 38 / 0.15);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 @layer base {
@@ -215,19 +231,6 @@ h1, h2, h3, h4, h5, h6 {
   animation: jubilee-progress 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes float-subtle {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.02);
-  }
-}
-
-.animate-float-subtle {
-  animation: float-subtle 4s ease-in-out infinite;
-}
-
 @keyframes word-slide {
   0% {
     transform: translateY(120%);
@@ -298,3 +301,17 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

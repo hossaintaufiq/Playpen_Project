@@ -48,20 +48,20 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
         aria-label="Close notice details"
       />
 
-      <div className="relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-border bg-white shadow-2xl sm:rounded-3xl">
-        <div className="border-b border-white/10 bg-gradient-to-br from-[#520215] to-[#7a0826] px-6 py-6 text-white">
+      <div className="relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl border border-border bg-white shadow-md sm:rounded-lg">
+        <div className="border-b border-white/10 bg-primary-dark px-6 py-6 text-white">
           <div className="flex items-start justify-between gap-4">
             <div className="flex min-w-0 items-start gap-3.5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 text-accent shadow-sm">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/15 text-accent shadow-sm">
                 <Bell className="h-5 w-5" strokeWidth={1.75} />
               </span>
               <div className="min-w-0">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-accent">
+                <span className="text-[11px] font-bold text-primary">
                   {formatNoticeDate(notice.createdAt)}
                 </span>
                 <h2
                   id="notice-detail-title"
-                  className="mt-1 font-extrabold text-xl leading-tight sm:text-2xl text-white"
+                  className="mt-1 font-bold text-xl leading-tight sm:text-2xl text-white"
                 >
                   {notice.title}
                 </h2>
@@ -96,14 +96,14 @@ export function NoticeDetailModal({ notice, onClose }: NoticeDetailModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center justify-center rounded-full border border-border bg-white px-6 py-2.5 text-xs font-bold text-foreground transition hover:bg-muted"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-white px-6 py-2.5 text-xs font-bold text-foreground transition hover:bg-muted"
           >
             Close
           </button>
           {notice.href && (
             <Link
               href={notice.href}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-primary-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-primary-dark"
             >
               <span>Related Page</span>
               <ArrowRight className="h-4 w-4" />

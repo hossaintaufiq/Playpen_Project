@@ -15,7 +15,7 @@ export default async function StudentAchievementsPage() {
   return (
     <AcademicsPageShell
       section="/academics/student-achievements"
-      title="Achievements of Playpen Students"
+      title="Achievements of Playpen students"
       subtitle="Celebrating excellence in competitions, sports, academics, and the arts."
     >
       {photoPreview ? (
