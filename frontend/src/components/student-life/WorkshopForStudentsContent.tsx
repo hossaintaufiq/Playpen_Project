@@ -31,9 +31,9 @@ export function WorkshopForStudentsContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -46,7 +46,7 @@ export function WorkshopForStudentsContent() {
       </div>
 
       <div className="mt-10 sm:mt-12">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+        <p className="text-[11px] font-bold text-primary">
           Workshop Topics
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -55,9 +55,9 @@ export function WorkshopForStudentsContent() {
             return (
               <article
                 key={topic.title}
-                className="rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-3xl sm:p-6"
+                className="rounded-lg border border-border/60 bg-white p-5 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-lg sm:p-6"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                   <Icon className="h-5 w-5" strokeWidth={1.75} />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -70,8 +70,8 @@ export function WorkshopForStudentsContent() {
         </div>
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
+      <div className="mt-10 rounded-lg border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold text-primary">
           Beyond the Classroom
         </p>
         <p className="mt-4 font-heading text-xl font-bold leading-relaxed sm:text-2xl">

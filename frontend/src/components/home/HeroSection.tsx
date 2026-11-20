@@ -76,8 +76,8 @@ export function HeroSection({}: HeroSectionProps = {}) {
       <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 sm:pb-10 lg:px-6 lg:pb-14">
         <div className="max-w-3xl">
           {/* Luxury 49-Year Heritage Badge */}
-          <div className="inline-flex max-w-full items-center gap-2.5 sm:gap-3 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 via-black/70 to-black/50 backdrop-blur-xl px-3.5 sm:px-4 py-1.5 shadow-[0_4px_24px_rgba(245,158,11,0.2)] mb-2 sm:mb-2.5 ring-1 ring-white/15">
-            <div className="relative h-5 w-5 sm:h-5.5 sm:w-5.5 shrink-0 drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]">
+          <div className="inline-flex max-w-full items-center gap-2.5 sm:gap-3 rounded-md border border-white/25 bg-black/55 backdrop-blur-sm px-3.5 sm:px-4 py-1.5 shadow-sm mb-2 sm:mb-2.5 ring-1 ring-white/15">
+            <div className="relative h-5 w-5 sm:h-5.5 sm:w-5.5 shrink-0 drop-shadow-sm">
               <Image
                 src="/school-images/gallery/Logo/48,49,-50-year-celebration-logo-copy.webp"
                 alt="49 Years of Heritage"
@@ -87,7 +87,7 @@ export function HeroSection({}: HeroSectionProps = {}) {
                 priority
               />
             </div>
-            <div className="flex items-center gap-2 text-[10.5px] sm:text-xs font-bold tracking-[0.16em] uppercase text-amber-200">
+            <div className="flex items-center gap-2 text-[10.5px] sm:text-xs font-bold text-amber-200">
               <span>49 Years of Heritage</span>
               <span className="text-amber-400/40">&bull;</span>
               <span className="text-white/85 normal-case font-semibold tracking-normal">Est. 1977</span>
@@ -97,14 +97,13 @@ export function HeroSection({}: HeroSectionProps = {}) {
           {/* Dynamic Rotating 2-Word Headline */}
           <div className="h-[2.8rem] sm:h-[3.6rem] md:h-[4.2rem] lg:h-[4.8rem] overflow-hidden flex items-center">
             <h1
-              className={`font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-white leading-none drop-shadow-md transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-white leading-none drop-shadow-md transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isFading
                   ? "-translate-y-6 opacity-0 blur-[2px]"
                   : "translate-y-0 opacity-100 blur-0"
               }`}
             >
               <span>{current.first} {current.second}</span>
-              <span className="text-[#e23a63]">.</span>
             </h1>
           </div>
 
@@ -112,14 +111,14 @@ export function HeroSection({}: HeroSectionProps = {}) {
           <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto">
             <a
               href="#achievements"
-              className="inline-flex items-center justify-center rounded-full bg-primary px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-[13px] font-bold tracking-wider uppercase text-white shadow-[0_4px_20px_rgba(122,8,38,0.4)] transition-all duration-200 hover:bg-primary-dark hover:shadow-[0_6px_28px_rgba(122,8,38,0.6)] hover:-translate-y-0.5 active:translate-y-0 ring-1 ring-white/15"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-[13px] font-bold text-white shadow-sm transition-all duration-200 hover:bg-primary-dark hover:shadow-sm ring-1 ring-white/15"
             >
               Explore Achievements
             </a>
 
             <Link
               href="/admissions/apply"
-              className="inline-flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/30 px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-[13px] font-bold tracking-wider uppercase text-white transition-all duration-200 hover:bg-white hover:text-foreground hover:border-white hover:-translate-y-0.5 active:translate-y-0 shadow-sm"
+              className="inline-flex items-center justify-center rounded-md bg-white/10 backdrop-blur-md border border-white/30 px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-[13px] font-bold text-white transition-all duration-200 hover:bg-white hover:text-foreground hover:border-white shadow-sm"
             >
               Apply for Admission
             </Link>

@@ -36,10 +36,10 @@ function StatStrip({ achievementCount }: { achievementCount?: number }) {
       {displayStats.map((stat) => (
         <div
           key={stat.label}
-          className="rounded-2xl border border-border/80 bg-white/95 px-4 py-5 text-center shadow-md backdrop-blur-md sm:rounded-3xl sm:px-5 sm:py-6"
+          className="rounded-lg border border-border/80 bg-white/95 px-4 py-5 text-center shadow-md backdrop-blur-md sm:rounded-lg sm:px-5 sm:py-6"
         >
-          <p className="font-extrabold text-2xl sm:text-3xl text-primary">{stat.value}</p>
-          <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+          <p className="font-bold text-2xl sm:text-3xl text-primary">{stat.value}</p>
+          <p className="mt-1 text-[11px] font-bold text-muted-foreground">
             {stat.label}
           </p>
         </div>
@@ -60,7 +60,7 @@ function SectionPreviewCard({
   return (
     <Link
       href={section.href}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md ${
         large ? "lg:flex-row" : ""
       }`}
     >
@@ -77,17 +77,17 @@ function SectionPreviewCard({
           className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/95 text-primary shadow-md">
+        <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-white/95 text-primary shadow-md">
           <Icon className="h-5 w-5" strokeWidth={1.75} />
         </div>
       </div>
 
       <div className={`flex flex-1 flex-col p-6 sm:p-7 ${large ? "lg:p-8" : ""}`}>
-        <p className="text-xs font-bold uppercase tracking-wider text-accent">
+        <p className="text-xs font-bold text-accent">
           {section.description}
         </p>
         <h3
-          className={`mt-1 font-extrabold text-foreground group-hover:text-primary transition-colors ${
+          className={`mt-1 font-bold text-foreground group-hover:text-primary transition-colors ${
             large ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
           }`}
         >
@@ -131,25 +131,27 @@ export function AcademicsOverviewContent({
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
+              <div className="inline-flex items-center gap-2 rounded-md bg-primary/8 px-4 py-1.5 text-xs font-bold text-primary mb-3">
                 <GraduationCap className="h-3.5 w-3.5 text-accent" />
                 <span>{academicsMission.eyebrow}</span>
               </div>
-              <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.12] tracking-tight text-foreground">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.12] tracking-tight text-foreground">
                 {academicsMission.title}
               </h2>
               <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
                 {academicsMission.description}
               </p>
-              <div className="mt-6 rounded-2xl bg-surface border-l-4 border-primary p-5 sm:p-6 shadow-sm">
-                <p className="text-sm sm:text-base font-semibold text-foreground/90 leading-relaxed">
-                  {academicsSummary}
-                </p>
+              <div className="mt-6 rounded-lg bg-surface border-l-4 border-primary p-5 sm:p-6 shadow-sm">
+                <ul className="space-y-2 text-sm text-foreground/90 leading-relaxed">
+                  {academicsSummary.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </div>
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl ring-1 ring-black/10">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-md ring-1 ring-black/10">
                 <Image
                   src="/images/schools/senior.webp"
                   alt="Playpen Cambridge students in classroom"
@@ -160,10 +162,10 @@ export function AcademicsOverviewContent({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent mb-1">
+                  <span className="inline-block text-xs font-bold text-accent mb-1">
                     Registered Centre
                   </span>
-                  <p className="font-extrabold text-xl sm:text-2xl">
+                  <p className="font-bold text-xl sm:text-2xl">
                     Cambridge Assessment International Education
                   </p>
                 </div>
@@ -189,7 +191,7 @@ export function AcademicsOverviewContent({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Academic Progression"
-            title="A Continuous Journey of Learning &amp; Discovery"
+            title="A continuous journey of learning &amp; discovery"
             description="Our four school divisions offer developmentally tailored learning pathways, guiding pupils with patience, structure, and academic ambition."
           />
 
@@ -197,7 +199,7 @@ export function AcademicsOverviewContent({
             {schoolDivisions.map((division) => (
               <article
                 key={division.name}
-                className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1.5"
+                className="group flex flex-col justify-between overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md"
               >
                 <div>
                   <div className="relative aspect-[16/11] overflow-hidden bg-muted">
@@ -210,14 +212,14 @@ export function AcademicsOverviewContent({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute top-3.5 left-3.5">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary shadow-sm">
+                      <span className="inline-flex items-center gap-1 rounded-md bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-bold text-primary shadow-sm">
                         {division.grades}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="font-extrabold text-xl text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">
                       {division.name}
                     </h3>
                     <p className="mt-2.5 text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
@@ -229,7 +231,7 @@ export function AcademicsOverviewContent({
                 <div className="p-6 pt-0">
                   <Link
                     href={division.href}
-                    className="inline-flex w-full items-center justify-between rounded-xl bg-surface p-3 text-xs font-bold text-foreground transition group-hover:bg-primary group-hover:text-white"
+                    className="inline-flex w-full items-center justify-between rounded-md bg-surface p-3 text-xs font-bold text-foreground transition group-hover:bg-primary group-hover:text-white"
                   >
                     <span>Division Details</span>
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -245,20 +247,17 @@ export function AcademicsOverviewContent({
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <SectionHeader
           eyebrow="Pedagogical Strengths"
-          title="What Makes Playpen Academics Exceptional"
+          title="What makes Playpen academics exceptional"
           description="We combine rigorous international benchmarks with individual mentorship to bring out the best in every learner."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {academicsPillars.map((pillar, index) => (
+          {academicsPillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="rounded-3xl border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+              className="rounded-lg border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary font-extrabold text-sm mb-4">
-                0{index + 1}
-              </div>
-              <h3 className="font-extrabold text-xl text-foreground">{pillar.title}</h3>
+              <h3 className="font-bold text-xl text-foreground">{pillar.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.text}</p>
             </article>
           ))}
@@ -270,7 +269,7 @@ export function AcademicsOverviewContent({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Academic Resources"
-            title="Explore Specialized Departments &amp; Facilities"
+            title="Explore specialized departments &amp; facilities"
             description="From high-tech science laboratories and resource libraries to college counseling and examination guidelines."
           />
 

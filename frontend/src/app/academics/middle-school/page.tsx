@@ -22,7 +22,7 @@ import { SectionPhotoPreview } from "@/components/ui/SectionPhotoPreview";
 const subjectCategories = [
   {
     category: "Sciences & Mathematics",
-    color: "bg-teal-50 border-teal-200 text-teal-800",
+    color: "bg-primary-soft border-primary/20 text-primary",
     icon: FlaskConical,
     subjects: [
       { name: "General Science (Physics, Chemistry, Biology)", desc: "Lab-based experiments, hypothesis testing, and foundational theory." },
@@ -31,7 +31,7 @@ const subjectCategories = [
   },
   {
     category: "Computing & Digital Innovation",
-    color: "bg-blue-50 border-blue-200 text-blue-800",
+    color: "bg-primary-soft border-primary/20 text-primary",
     icon: Binary,
     subjects: [
       { name: "Computer Science & ICT", desc: "Block-based coding, Python basics, web principles, logic, and digital safety." },
@@ -50,7 +50,7 @@ const subjectCategories = [
   },
   {
     category: "Creative Arts & Co-Curriculars",
-    color: "bg-purple-50 border-purple-200 text-purple-800",
+    color: "bg-primary-soft border-primary/20 text-primary",
     icon: Palette,
     subjects: [
       { name: "Visual Art & Design", desc: "Fine arts, multi-medium crafting, graphic appreciation, and exhibitions." },
@@ -70,17 +70,17 @@ export default async function MiddleSchoolPage() {
     <AcademicsPageShell
       section="/academics/middle-school"
       title="Middle School Division"
-      subtitle="Class IV to VII (Ages 9 – 12) — Fostering Critical Thinking, Laboratory Discovery & Leadership."
+      subtitle="Class IV to VII (Ages 9 – 12) — fostering critical thinking, laboratory discovery & leadership."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         {/* Intro Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-3xl border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-lg border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full bg-teal-100/80 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-teal-900 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary mb-4">
               <Compass className="h-3.5 w-3.5" />
               <span>Cambridge Lower Secondary Stage (Class IV – VII)</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               Expanding Intellectual Horizons &amp; Scientific Curiosity
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -88,7 +88,7 @@ export default async function MiddleSchoolPage() {
             </p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6 border-t border-border/60 text-xs sm:text-sm font-semibold text-foreground/90">
               <div className="flex items-center gap-2">
-                <FlaskConical className="h-4 w-4 text-teal-600 shrink-0" />
+                <FlaskConical className="h-4 w-4 text-primary shrink-0" />
                 <span>Modern Science &amp; Computer Labs</span>
               </div>
               <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ export default async function MiddleSchoolPage() {
               </div>
             </div>
           </div>
-          <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-muted">
+          <div className="lg:col-span-5 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md bg-muted">
             <Image
               src="/images/schools/middle.webp"
               alt="Playpen Middle School Lab and Students"
@@ -119,7 +119,7 @@ export default async function MiddleSchoolPage() {
         {/* Subjects & Disciplines */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center mb-10">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Academic Curriculum Structure
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -133,10 +133,10 @@ export default async function MiddleSchoolPage() {
               return (
                 <div
                   key={group.category}
-                  className="rounded-3xl border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
+                  className="rounded-lg border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
                 >
                   <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border/60">
-                    <div className={`p-2.5 rounded-2xl border ${group.color}`}>
+                    <div className={`p-2.5 rounded-lg border ${group.color}`}>
                       <Icon className="h-5 w-5" />
                     </div>
                     <h4 className="font-heading text-lg font-bold text-foreground">
@@ -146,7 +146,7 @@ export default async function MiddleSchoolPage() {
 
                   <div className="space-y-4">
                     {group.subjects.map((sub, i) => (
-                      <div key={i} className="rounded-xl bg-surface/70 p-3.5 border border-border/60">
+                      <div key={i} className="rounded-md bg-surface/70 p-3.5 border border-border/60">
                         <h5 className="font-bold text-sm text-foreground">
                           {sub.name}
                         </h5>
@@ -174,9 +174,9 @@ export default async function MiddleSchoolPage() {
         ) : null}
 
         {/* Next Stage Navigation */}
-        <div className="mt-16 rounded-3xl border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 rounded-lg border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            <span className="text-xs font-bold text-muted-foreground">
               Next Academic Stage
             </span>
             <h4 className="font-heading text-xl font-bold text-foreground mt-0.5">
@@ -189,7 +189,7 @@ export default async function MiddleSchoolPage() {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/academics/senior-school"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
             >
               <span>Explore Senior School</span>
               <ArrowRight className="h-4 w-4" />

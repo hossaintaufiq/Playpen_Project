@@ -43,17 +43,17 @@ export function Footer() {
                   />
                 </div>
                 <div>
-                  <span className="font-extrabold text-2xl tracking-tight text-primary">
+                  <span className="font-bold text-2xl tracking-tight text-primary">
                     Playpen
                   </span>
-                  <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                  <p className="text-[10px] sm:text-[11px] font-bold text-muted-foreground">
                     School of Excellence
                   </p>
                 </div>
               </Link>
 
               <p className="mt-4 text-xs sm:text-sm leading-relaxed text-muted-foreground max-w-sm">
-                A premier English-medium Cambridge International institution in Bashundhara R/A, Dhaka. Nurturing future leaders to think critically, act responsibly, and lead with moral integrity since 1977.
+                An English-medium Cambridge International institution in Bashundhara R/A, Dhaka. Nurturing future leaders to think critically, act responsibly, and lead with moral integrity since 1977.
               </p>
 
               {/* Badges / Accreditation Strip */}
@@ -74,7 +74,7 @@ export function Footer() {
           <div className="lg:col-span-5 grid grid-cols-2 gap-6 sm:gap-8">
             {/* Column 1: About School */}
             <div>
-              <h3 className="text-xs font-black uppercase tracking-wider text-primary">
+              <h3 className="text-xs font-bold text-primary">
                 About School
               </h3>
               <ul className="mt-3.5 sm:mt-4 space-y-2.5">
@@ -93,7 +93,7 @@ export function Footer() {
 
             {/* Column 2: Academics */}
             <div>
-              <h3 className="text-xs font-black uppercase tracking-wider text-primary">
+              <h3 className="text-xs font-bold text-primary">
                 Academics
               </h3>
               <ul className="mt-3.5 sm:mt-4 space-y-2.5">
@@ -113,7 +113,7 @@ export function Footer() {
 
           {/* Admissions & Contact Column (3 cols on lg) */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs font-black uppercase tracking-wider text-primary">
+            <h3 className="text-xs font-bold text-primary">
               Contact &amp; Admissions
             </h3>
             <ul className="mt-3.5 sm:mt-4 space-y-3 text-xs sm:text-sm">
@@ -156,10 +156,10 @@ export function Footer() {
             <div className="mt-5 pt-4 border-t border-border/60">
               <Link
                 href="/admissions/apply"
-                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold tracking-wider uppercase text-white shadow-xs hover:bg-primary-dark transition-all duration-200"
+                className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-primary-dark transition-all duration-200"
               >
                 <span>Online Admission Portal</span>
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" strokeWidth={2} />
               </Link>
             </div>
           </div>

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Trophy, Palette, Rocket, Users, Compass } from "lucide-react";
-import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 const activities = [
   {
@@ -51,17 +50,9 @@ export function StudentLifeSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 sm:pb-16">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
-              <Compass className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
-              <span>Beyond the Classroom</span>
-            </div>
-            <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.12] tracking-tight text-foreground">
-              VIBRANT STUDENT LIFE. <br className="hidden sm:inline" />
-              <span className="relative inline-block text-primary">
-                PASSION IN ACTION.
-                <HandDrawnUnderline variant="broken" />
-              </span>
-            </h2>
+            <h2 className="font-bold text-3xl sm:text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.12] tracking-tight text-foreground text-balance">
+            Vibrant student life. Passion in action.
+          </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
               From athletic championships and science symposiums to cultural stage performances, Playpen students explore diverse passions that build lifelong character and confidence.
             </p>
@@ -70,7 +61,7 @@ export function StudentLifeSection() {
           <div className="shrink-0">
             <Link
               href="/student-life"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-md transition-all duration-200 hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              className="group inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 text-xs sm:text-sm font-bold text-white shadow-md transition-all duration-200 hover:bg-primary-dark hover:shadow-md"
             >
               <span>Explore All Activities</span>
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={1.75} />
@@ -86,7 +77,7 @@ export function StudentLifeSection() {
               <Link
                 key={act.title}
                 href={act.href}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white shadow-xs transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-1.5"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-border/80 bg-white shadow-xs transition-all duration-300 hover:border-primary/40 hover:shadow-md"
               >
                 <div>
                   {/* Image Container with floating Category & Glass Icon */}
@@ -102,10 +93,10 @@ export function StudentLifeSection() {
 
                     {/* Top Floating Tag & Icon */}
                     <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 rounded-md bg-white/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wider text-primary shadow-xs">
+                      <span className="inline-flex items-center gap-1.5 rounded-md bg-white/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-primary shadow-xs">
                         {act.tag}
                       </span>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white/90 border border-white/20 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:border-primary">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white/90 border border-white/20 transition-all duration-300 group-hover:bg-primary group-hover:border-primary">
                         <Icon className="h-4 w-4" strokeWidth={1.75} />
                       </div>
                     </div>
@@ -113,7 +104,7 @@ export function StudentLifeSection() {
 
                   {/* Body Content */}
                   <div className="p-5 sm:p-6">
-                    <h3 className="font-extrabold text-lg sm:text-xl text-foreground leading-snug group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-lg sm:text-xl text-foreground leading-snug group-hover:text-primary transition-colors">
                       {act.title}
                     </h3>
                     <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">

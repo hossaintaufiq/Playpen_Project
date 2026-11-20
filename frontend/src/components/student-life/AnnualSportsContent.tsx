@@ -31,9 +31,9 @@ export function AnnualSportsContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -45,15 +45,15 @@ export function AnnualSportsContent() {
         })}
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.05] p-6 sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+      <div className="mt-10 rounded-lg border border-primary/15 bg-surface p-6 sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold text-primary">
           Sports & Games Facilities
         </p>
         <div className="mt-5 flex flex-wrap gap-2.5">
           {annualSportsFacilities.map((sport) => (
             <span
               key={sport}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/30"
+              className="inline-flex items-center gap-2 rounded-md border border-primary/15 bg-white px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/30"
             >
               <Target className="h-3.5 w-3.5 text-primary" />
               {sport}
@@ -63,8 +63,8 @@ export function AnnualSportsContent() {
       </div>
 
       <div className="mt-8 grid gap-5 lg:grid-cols-2">
-        <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-3xl">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+        <article className="rounded-lg border border-border/60 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
             <Trophy className="h-5 w-5" strokeWidth={1.75} />
           </div>
           <h3 className="mt-4 font-heading text-xl font-bold text-foreground">Tournaments</h3>
@@ -73,8 +73,8 @@ export function AnnualSportsContent() {
           </p>
         </article>
 
-        <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-3xl">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+        <article className="rounded-lg border border-border/60 bg-white p-6 shadow-sm transition hover:shadow-md sm:rounded-lg">
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
             <Users className="h-5 w-5" strokeWidth={1.75} />
           </div>
           <h3 className="mt-4 font-heading text-xl font-bold text-foreground">School Teams</h3>

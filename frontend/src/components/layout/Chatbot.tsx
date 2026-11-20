@@ -13,12 +13,12 @@ type Message = {
 };
 
 const QUICK_CHIPS = [
-  { label: "📅 Admission Procedure", action: "admissions" },
-  { label: "🏫 Our Campus", action: "campus" },
-  { label: "📝 Latest Notices", action: "notices" },
-  { label: "💼 Career Openings", action: "careers" },
-  { label: "🎓 Alumni Request", action: "alumni" },
-  { label: "🔑 Access Portal", action: "portal" },
+  { label: "Admission Procedure", action: "admissions" },
+  { label: "Our Campus", action: "campus" },
+  { label: "Latest Notices", action: "notices" },
+  { label: "Career Openings", action: "careers" },
+  { label: "Alumni Request", action: "alumni" },
+  { label: "Access Portal", action: "portal" },
 ] as const;
 
 export function Chatbot() {
@@ -177,7 +177,7 @@ export function Chatbot() {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_8px_30px_rgba(128,0,0,0.35)] transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-primary-dark border border-white/10"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-primary-dark border border-white/10"
         aria-label="Toggle assistant chat"
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -185,18 +185,18 @@ export function Chatbot() {
 
       {/* Chat Popover Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 flex h-[550px] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-8rem)] flex-col overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.25)] ring-1 ring-black/5 transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in sm:h-[600px] sm:w-[400px]">
+        <div className="fixed bottom-24 right-6 z-50 flex h-[550px] w-[380px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-8rem)] flex-col overflow-hidden rounded-lg border border-white/20 bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in sm:h-[600px] sm:w-[400px]">
           {/* Header */}
           <div className="flex items-center justify-between bg-primary px-4 py-4 text-white shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-white/10 backdrop-blur-sm border border-white/20">
                 <GraduationCap className="h-5 w-5 text-accent" strokeWidth={2} />
               </div>
               <div>
                 <p className="font-heading text-sm font-bold tracking-wide">Playpen Navigator</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-[10px] text-white/80 font-medium uppercase tracking-wider">Assistant Online</span>
+                  <span className="text-[10px] text-white/80 font-medium">Assistant Online</span>
                 </div>
               </div>
             </div>
@@ -223,7 +223,7 @@ export function Chatbot() {
                 </div>
 
                 <div className="space-y-2 max-w-[80%]">
-                  <div className={`rounded-2xl px-4 py-3 text-sm shadow-sm ${
+                  <div className={`rounded-lg px-4 py-3 text-sm shadow-sm ${
                     msg.sender === "bot"
                       ? "bg-white text-foreground rounded-tl-sm border border-border/50"
                       : "playpen-bg text-white rounded-tr-sm"
@@ -239,7 +239,7 @@ export function Chatbot() {
                           key={chip.action}
                           type="button"
                           onClick={() => handleSend(chip.label, chip.action)}
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/30 hover:bg-primary/5 hover:text-primary active:scale-95"
+                          className="inline-flex items-center gap-1 rounded-md border border-border bg-white px-3 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-primary/30 hover:bg-primary/5 hover:text-primary active:scale-95"
                         >
                           {chip.label}
                         </button>
@@ -256,7 +256,7 @@ export function Chatbot() {
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary border border-primary/10">
                   <GraduationCap className="h-4 w-4" />
                 </div>
-                <div className="rounded-2xl bg-white px-4 py-3 text-sm shadow-sm rounded-tl-sm border border-border/50 flex items-center gap-1">
+                <div className="rounded-lg bg-white px-4 py-3 text-sm shadow-sm rounded-tl-sm border border-border/50 flex items-center gap-1">
                   <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 animate-bounce [animation-delay:-0.3s]" />
                   <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 animate-bounce [animation-delay:-0.15s]" />
                   <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/60 animate-bounce" />
@@ -280,12 +280,12 @@ export function Chatbot() {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Ask me something..."
-              className="flex-1 rounded-xl border border-border/70 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 placeholder:text-muted-foreground/60"
+              className="flex-1 rounded-md border border-border/70 px-4 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/30 placeholder:text-muted-foreground/60"
             />
             <button
               type="submit"
               disabled={!inputText.trim()}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white transition hover:bg-primary-dark disabled:bg-muted disabled:text-muted-foreground/45 border border-white/5 active:scale-95"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary text-white transition hover:bg-primary-dark disabled:bg-muted disabled:text-muted-foreground/45 border border-white/5 active:scale-95"
             >
               <ArrowUp className="h-4 w-4" />
             </button>

@@ -33,14 +33,14 @@ export function CodeOfConductContent() {
       <div className="mt-10 space-y-6 sm:mt-12">
         <article
           id="discipline"
-          className="scroll-mt-24 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] via-white to-accent/[0.04] p-6 sm:p-8"
+          className="scroll-mt-24 rounded-lg border border-primary/15 bg-surface p-6 sm:p-8"
         >
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-white">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
               <Scale className="h-6 w-6" strokeWidth={1.75} />
             </div>
             <div className="flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+              <p className="text-[11px] font-semibold text-primary/70">
                 Discipline and Behaviour
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -57,7 +57,7 @@ export function CodeOfConductContent() {
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {disciplinaryCommitteeNote}
               </p>
-              <p className="mt-4 rounded-2xl border border-primary/10 bg-white/80 p-4 text-sm leading-relaxed text-foreground/90">
+              <p className="mt-4 rounded-lg border border-primary/10 bg-white/80 p-4 text-sm leading-relaxed text-foreground/90">
                 {parentsDisciplineNote}
               </p>
             </div>
@@ -66,14 +66,14 @@ export function CodeOfConductContent() {
 
         <article
           id="prohibited"
-          className="scroll-mt-24 rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8"
+          className="scroll-mt-24 rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg sm:p-8"
         >
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-700">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-50 text-red-700">
               <Ban className="h-5 w-5" strokeWidth={1.75} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+              <p className="text-[11px] font-semibold text-primary/70">
                 Prohibited in School
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -89,12 +89,12 @@ export function CodeOfConductContent() {
         <div className="grid gap-6 lg:grid-cols-2">
           <article
             id="mobile"
-            className="scroll-mt-24 rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl"
+            className="scroll-mt-24 rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
               <PhoneOff className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+            <p className="mt-4 text-[11px] font-semibold text-primary/70">
               Mobile Phones
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -104,12 +104,12 @@ export function CodeOfConductContent() {
 
           <article
             id="attendance"
-            className="scroll-mt-24 rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl"
+            className="scroll-mt-24 rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
               <ClipboardCheck className="h-5 w-5" strokeWidth={1.75} />
             </div>
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+            <p className="mt-4 text-[11px] font-semibold text-primary/70">
               School Attendance and Absence
             </p>
             <ul className="mt-3 space-y-2">
@@ -125,14 +125,14 @@ export function CodeOfConductContent() {
 
         <article
           id="security"
-          className="scroll-mt-24 rounded-2xl border border-amber-200 bg-amber-50 p-6 sm:rounded-3xl sm:p-8"
+          className="scroll-mt-24 rounded-lg border border-amber-200 bg-amber-50 p-6 sm:rounded-lg sm:p-8"
         >
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-600 text-white">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-amber-600 text-white">
               <Car className="h-5 w-5" strokeWidth={1.75} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-800/80">
+              <p className="text-[11px] font-semibold text-amber-800/80">
                 School Security, Traffic and Parking
               </p>
               <ul className="mt-3 space-y-3">
@@ -148,14 +148,14 @@ export function CodeOfConductContent() {
 
         <article
           id="contact"
-          className="scroll-mt-24 rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8"
+          className="scroll-mt-24 rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg sm:p-8"
         >
           <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
               <UserCheck className="h-5 w-5" strokeWidth={1.75} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+              <p className="text-[11px] font-semibold text-primary/70">
                 Change of Address / Contact Numbers
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">

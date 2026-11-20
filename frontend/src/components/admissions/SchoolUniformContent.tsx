@@ -28,9 +28,9 @@ export function SchoolUniformContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -43,8 +43,8 @@ export function SchoolUniformContent() {
       </div>
 
       <div className="mt-10 space-y-5 sm:mt-12">
-        <div className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <div className="rounded-lg border border-border/50 bg-white p-6 shadow-sm sm:rounded-lg sm:p-8">
+          <p className="text-[11px] font-semibold text-primary/70">
             Early Years
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -52,8 +52,8 @@ export function SchoolUniformContent() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-6 sm:rounded-3xl sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <div className="rounded-lg border border-primary/15 bg-primary/[0.04] p-6 sm:rounded-lg sm:p-8">
+          <p className="text-[11px] font-semibold text-primary/70">
             KG I Onwards
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -61,8 +61,8 @@ export function SchoolUniformContent() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <div className="rounded-lg border border-border/50 bg-white p-6 shadow-sm sm:rounded-lg sm:p-8">
+          <p className="text-[11px] font-semibold text-primary/70">
             Class IV Onwards
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -84,7 +84,7 @@ export function SchoolUniformContent() {
           {tailoringBranches.map((branch) => (
             <article
               key={branch.name}
-              className="rounded-2xl border border-border/60 bg-white p-6 shadow-[0_4px_24px_-12px_rgba(128,0,0,0.1)] sm:rounded-3xl"
+              className="rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg"
             >
               <h3 className="font-heading text-xl font-bold text-foreground">{branch.name}</h3>
               <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
@@ -109,8 +109,8 @@ export function SchoolUniformContent() {
       </div>
 
       <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2">
-        <article className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm sm:rounded-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary/70">
+        <article className="rounded-lg border border-border/60 bg-white p-6 shadow-sm sm:rounded-lg">
+          <p className="text-[11px] font-semibold text-primary/70">
             Footwear
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -118,8 +118,8 @@ export function SchoolUniformContent() {
           </p>
         </article>
 
-        <article className="rounded-2xl border border-amber-200 bg-amber-50 p-6 sm:rounded-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-800/70">
+        <article className="rounded-lg border border-amber-200 bg-amber-50 p-6 sm:rounded-lg">
+          <p className="text-[11px] font-semibold text-amber-800/70">
             Winter Season
           </p>
           <p className="mt-3 text-sm leading-relaxed text-amber-950/85 sm:text-base">

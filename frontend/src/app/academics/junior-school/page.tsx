@@ -76,17 +76,17 @@ export default async function JuniorSchoolPage() {
     <AcademicsPageShell
       section="/academics/junior-school"
       title="Junior School Division"
-      subtitle="Class I to III (Ages 6 – 8) — Cultivating Core Competencies, Curiosity & Character."
+      subtitle="Class I to III (Ages 6 – 8) — cultivating core competencies, curiosity & character."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         {/* Intro Overview Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-3xl border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-lg border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-100/80 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-blue-900 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary mb-4">
               <BookOpen className="h-3.5 w-3.5" />
               <span>Primary Stage (Class I – III)</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               Building Strong Foundations in Literacy, Numeracy &amp; Inquiry
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -95,13 +95,13 @@ export default async function JuniorSchoolPage() {
             <div className="mt-6 space-y-2.5 pt-6 border-t border-border/60">
               {juniorHighlights.slice(0, 3).map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/90">
-                  <CheckCircle2 className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-muted">
+          <div className="lg:col-span-5 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md bg-muted">
             <Image
               src="/images/schools/junior.webp"
               alt="Playpen Junior School Classroom"
@@ -115,7 +115,7 @@ export default async function JuniorSchoolPage() {
         {/* Core Subject Breakdown */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center mb-10">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Academic Curriculum &amp; Subjects
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -129,14 +129,14 @@ export default async function JuniorSchoolPage() {
               return (
                 <div
                   key={subject.title}
-                  className="flex flex-col justify-between rounded-2xl border border-border/80 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-primary/30"
+                  className="flex flex-col justify-between rounded-lg border border-border/80 bg-white p-6 shadow-sm transition hover:shadow-md hover:border-primary/30"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700 border border-blue-100">
+                      <div className="p-2.5 rounded-md bg-primary-soft text-primary border border-primary/20">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground bg-surface px-2.5 py-1 rounded-md border border-border/60">
+                      <span className="text-[11px] font-bold text-muted-foreground bg-surface px-2.5 py-1 rounded-md border border-border/60">
                         {subject.badge}
                       </span>
                     </div>
@@ -154,7 +154,7 @@ export default async function JuniorSchoolPage() {
         </div>
 
         {/* Pedagogical Approach */}
-        <div className="mt-16 rounded-3xl bg-linear-to-br from-surface to-muted/40 p-8 sm:p-10 border border-border/80">
+        <div className="mt-16 rounded-lg bg-linear-to-br from-surface to-muted/40 p-8 sm:p-10 border border-border/80">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4">
               <Sparkles className="h-7 w-7 text-accent mb-3" />
@@ -171,10 +171,10 @@ export default async function JuniorSchoolPage() {
               </p>
             </div>
             <div className="p-4">
-              <Layers className="h-7 w-7 text-blue-600 mb-3" />
+              <Layers className="h-7 w-7 text-primary mb-3" />
               <h4 className="font-heading text-lg font-bold text-foreground">Smooth Transition</h4>
               <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Prepares students seamlessly for Middle School subject depth, independent homework management, and scientific labs.
+                Prepares students for Middle School subject depth, independent homework management, and scientific labs.
               </p>
             </div>
           </div>
@@ -192,9 +192,9 @@ export default async function JuniorSchoolPage() {
         ) : null}
 
         {/* Next Stage Navigation */}
-        <div className="mt-16 rounded-3xl border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-16 rounded-lg border border-border/80 bg-surface p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            <span className="text-xs font-bold text-muted-foreground">
               Next Academic Stage
             </span>
             <h4 className="font-heading text-xl font-bold text-foreground mt-0.5">
@@ -207,7 +207,7 @@ export default async function JuniorSchoolPage() {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/academics/middle-school"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition hover:bg-primary-dark"
             >
               <span>Explore Middle School</span>
               <ArrowRight className="h-4 w-4" />

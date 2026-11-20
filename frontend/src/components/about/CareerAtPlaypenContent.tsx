@@ -15,7 +15,7 @@ export function CareerAtPlaypenContent({ vacancies }: { vacancies: JobVacancy[] 
         {/* 01 — Section Header */}
         <SectionHeader
           eyebrow="Careers at Playpen"
-          title="Build an Inspiring, Lasting Career in Education"
+          title="Build an inspiring, lasting career in education"
           description={careerIntro}
         />
 
@@ -26,13 +26,13 @@ export function CareerAtPlaypenContent({ vacancies }: { vacancies: JobVacancy[] 
             return (
               <article
                 key={item.title}
-                className="group flex flex-col justify-between rounded-3xl border border-border/80 bg-white p-7 shadow-xs transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:-translate-y-1.5"
+                className="group flex flex-col justify-between rounded-lg border border-border/80 bg-white p-7 shadow-xs transition-all duration-300 hover:shadow-md hover:border-primary/30"
               >
                 <div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4 transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 transition-transform duration-300">
                     <Icon className="h-6 w-6" strokeWidth={2} />
                   </div>
-                  <h3 className="font-extrabold text-xl text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="font-bold text-xl text-foreground group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
                   <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-muted-foreground">

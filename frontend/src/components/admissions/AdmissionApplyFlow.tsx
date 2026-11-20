@@ -16,8 +16,8 @@ function SuccessMessage({
   onBack: () => void;
 }) {
   return (
-    <div className="mx-auto max-w-2xl rounded-2xl border border-green-200 bg-green-50 p-6 text-center sm:rounded-3xl sm:p-10">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100 text-green-700">
+    <div className="mx-auto max-w-2xl rounded-lg border border-green-200 bg-green-50 p-6 text-center sm:rounded-lg sm:p-10">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg bg-green-100 text-green-700">
         <BookOpen className="h-7 w-7" />
       </div>
       <h2 className="mt-5 font-heading text-2xl font-bold text-foreground">
@@ -31,13 +31,13 @@ function SuccessMessage({
         <button
           type="button"
           onClick={onBack}
-          className="rounded-full border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/5"
+          className="rounded-md border border-primary/25 px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/5"
         >
           Choose another form
         </button>
         <Link
           href="/admissions"
-          className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
+          className="rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
         >
           Back to admissions
         </Link>

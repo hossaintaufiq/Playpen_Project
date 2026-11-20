@@ -71,14 +71,14 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
         Back to form selection
       </button>
 
-      <div className="mt-5 overflow-hidden rounded-3xl border border-border/60 bg-muted/20 shadow-sm">
-        <div className="border-b border-primary/15 bg-gradient-to-br from-primary via-primary to-primary-dark px-5 py-8 text-center text-white sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/75">Playpen</p>
+      <div className="mt-5 overflow-hidden rounded-lg border border-border/60 bg-muted/20 shadow-sm">
+        <div className="border-b border-primary/15 bg-primary-dark px-5 py-8 text-center text-white sm:px-8">
+          <p className="text-xs font-semibold text-white/75">Playpen</p>
           <h2 className="mt-2 font-heading text-2xl font-bold sm:text-3xl">Admission Form</h2>
-          <p className="mt-2 text-sm font-bold uppercase tracking-widest text-white/95">
+          <p className="mt-2 text-sm font-bold text-white/95">
             Playgroup – Class X
           </p>
-          <p className="mt-3 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide">
+          <p className="mt-3 inline-flex rounded-md border border-white/25 bg-white/10 px-4 py-1 text-xs font-semibold tracking-wide">
             Academic Year: {PG_CLASS_SESSION}
           </p>
           <p className="mx-auto mt-5 max-w-3xl text-xs leading-relaxed text-white/80 sm:text-sm">
@@ -88,7 +88,7 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
           <a
             href={config.pdfPath}
             download={config.pdfFileName}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-white/90"
+            className="mt-5 inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-white/90"
           >
             <Download className="h-4 w-4" />
             Download printable PDF
@@ -176,7 +176,7 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
           <FormSection title="B. Family Details">
             <div className="space-y-5">
               <div>
-                <p className="mb-3 text-sm font-bold uppercase tracking-wide text-primary">Father</p>
+                <p className="mb-3 text-sm font-bold tracking-wide text-primary">Father</p>
                 <FormGrid>
                   <FormField label="Father's full name" required className="sm:col-span-2">
                     <input value={values.fatherName} onChange={(e) => setValue("fatherName", e.target.value)} className={formInputClass} />
@@ -203,7 +203,7 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
               </div>
 
               <div className="border-t border-border/60 pt-5">
-                <p className="mb-3 text-sm font-bold uppercase tracking-wide text-primary">Mother</p>
+                <p className="mb-3 text-sm font-bold tracking-wide text-primary">Mother</p>
                 <FormGrid>
                   <FormField label="Mother's full name" required className="sm:col-span-2">
                     <input value={values.motherName} onChange={(e) => setValue("motherName", e.target.value)} className={formInputClass} />
@@ -290,8 +290,8 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
               </div>
             </FormGrid>
 
-            <div className="mt-5 overflow-x-auto rounded-xl border border-border/70">
-              <p className="border-b border-border/60 bg-muted/40 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-foreground">
+            <div className="mt-5 overflow-x-auto rounded-md border border-border/70">
+              <p className="border-b border-border/60 bg-muted/40 px-3 py-2 text-xs font-semibold tracking-wide text-foreground">
                 H. Details of any sibling or cousin studying in Playpen
               </p>
               <table className="min-w-full text-sm">
@@ -327,20 +327,20 @@ export function PGClassAdmissionForm({ onBack, onSuccess }: Props) {
             </div>
           </FormSection>
 
-          <div className="rounded-2xl border border-amber-200/80 bg-amber-50/80 px-4 py-3 text-sm text-amber-950/90">
+          <div className="rounded-lg border border-amber-200/80 bg-amber-50/80 px-4 py-3 text-sm text-amber-950/90">
             * {PG_CLASS_SUBMISSION_NOTE}
           </div>
 
           {error && (
-            <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>
+            <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</p>
           )}
 
-          <div className="flex flex-col gap-3 rounded-2xl border border-border/60 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 rounded-lg border border-border/60 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
             <a href={config.pdfPath} download={config.pdfFileName} className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary hover:underline">
               <Download className="h-4 w-4" />
               Download blank PDF for printing
             </a>
-            <button type="submit" disabled={submitting} className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60">
+            <button type="submit" disabled={submitting} className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark disabled:opacity-60">
               {submitting ? "Submitting..." : "Submit application"}
               <ArrowRight className="h-4 w-4" />
             </button>

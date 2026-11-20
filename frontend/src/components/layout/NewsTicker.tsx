@@ -9,7 +9,7 @@ function formatPhoneHref(phone: string) {
 
 function TickerContent({ ticker }: { ticker: NewsTickerData }) {
   return (
-    <p className="inline-flex items-center gap-0 whitespace-nowrap text-[11px] font-medium uppercase tracking-wide text-white/95 sm:text-xs sm:tracking-wider">
+    <p className="inline-flex items-center gap-0 whitespace-nowrap text-[11px] font-medium tracking-wide text-white/95 sm:text-xs sm:tracking-wider">
       <span>
         PLAYPEN OFFERS ADMISSION FOR THE ACADEMIC YEAR ({ticker.academicYear}) FOR{" "}
         {ticker.level}. KINDLY CONTACT @{" "}
@@ -55,7 +55,7 @@ export function NewsTicker({ ticker = defaultCMSData.newsTicker }: { ticker?: Ne
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
           </span>
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent sm:text-[11px]">
+          <span className="text-[10px] font-bold text-primary sm:text-[11px]">
             News
           </span>
         </div>

@@ -31,10 +31,10 @@ function StatStrip() {
       {admissionsStats.map((stat) => (
         <div
           key={stat.label}
-          className="rounded-2xl border border-border/80 bg-white/95 px-4 py-5 text-center shadow-md backdrop-blur-md sm:rounded-3xl sm:px-5 sm:py-6"
+          className="rounded-lg border border-border/80 bg-white/95 px-4 py-5 text-center shadow-md backdrop-blur-md sm:rounded-lg sm:px-5 sm:py-6"
         >
-          <p className="font-extrabold text-2xl sm:text-3xl text-primary">{stat.value}</p>
-          <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+          <p className="font-bold text-2xl sm:text-3xl text-primary">{stat.value}</p>
+          <p className="mt-1 text-[11px] font-bold text-muted-foreground">
             {stat.label}
           </p>
         </div>
@@ -55,7 +55,7 @@ function SectionPreviewCard({
   return (
     <Link
       href={section.href}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-lg border border-border/80 bg-white shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md ${
         large ? "lg:flex-row" : ""
       }`}
     >
@@ -72,17 +72,17 @@ function SectionPreviewCard({
           className="object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/95 text-primary shadow-md">
+        <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-white/95 text-primary shadow-md">
           <Icon className="h-5 w-5" strokeWidth={1.75} />
         </div>
       </div>
 
       <div className={`flex flex-1 flex-col p-6 sm:p-7 ${large ? "lg:p-8" : ""}`}>
-        <p className="text-xs font-bold uppercase tracking-wider text-accent">
+        <p className="text-xs font-bold text-accent">
           {section.description}
         </p>
         <h3
-          className={`mt-1 font-extrabold text-foreground group-hover:text-primary transition-colors ${
+          className={`mt-1 font-bold text-foreground group-hover:text-primary transition-colors ${
             large ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"
           }`}
         >
@@ -124,26 +124,28 @@ export function AdmissionsOverviewContent({
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary/8 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary mb-3">
+              <div className="inline-flex items-center gap-2 rounded-md bg-primary/8 px-4 py-1.5 text-xs font-bold text-primary mb-3">
                 <Sparkles className="h-3.5 w-3.5 text-accent" />
                 <span>{admissionsMission.eyebrow}</span>
               </div>
-              <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.12] tracking-tight text-foreground">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.12] tracking-tight text-foreground">
                 {admissionsMission.title}
               </h2>
               <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
                 {admissionsMission.description}
               </p>
-              <div className="mt-6 rounded-2xl bg-surface border-l-4 border-primary p-5 sm:p-6 shadow-sm">
-                <p className="text-sm sm:text-base font-semibold text-foreground/90 leading-relaxed">
-                  {admissionsSummary}
-                </p>
+              <div className="mt-6 rounded-lg bg-surface border-l-4 border-primary p-5 sm:p-6 shadow-sm">
+                <ul className="space-y-2 text-sm text-foreground/90 leading-relaxed">
+                  {admissionsSummary.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/admissions/apply"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-primary-dark hover:shadow-lg"
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-primary-dark hover:shadow-md"
                 >
                   <span>Start Online Application</span>
                   <ArrowRight className="h-4 w-4" />
@@ -151,7 +153,7 @@ export function AdmissionsOverviewContent({
 
                 <Link
                   href="/admissions/admission-procedure"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-bold text-foreground shadow-sm transition hover:bg-surface"
+                  className="inline-flex items-center gap-2 rounded-md border border-border bg-white px-6 py-3.5 text-sm font-bold text-foreground shadow-sm transition hover:bg-surface"
                 >
                   <FileText className="h-4 w-4 text-primary" />
                   <span>Admission Guidelines</span>
@@ -160,7 +162,7 @@ export function AdmissionsOverviewContent({
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl ring-1 ring-black/10">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-md ring-1 ring-black/10">
                 <Image
                   src="/images/schools/elementary.webp"
                   alt="Playpen students joining the school family"
@@ -171,10 +173,10 @@ export function AdmissionsOverviewContent({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent mb-1">
+                  <span className="inline-block text-xs font-bold text-accent mb-1">
                     Join Our Community
                   </span>
-                  <p className="font-extrabold text-xl sm:text-2xl">
+                  <p className="font-bold text-xl sm:text-2xl">
                     Admissions Open for Playgroup through A-Level
                   </p>
                 </div>
@@ -200,7 +202,7 @@ export function AdmissionsOverviewContent({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Step-by-Step Pathway"
-            title="The Playpen Admissions Journey"
+            title="The Playpen admissions journey"
             description="Our admissions process is designed to be clear, transparent, and supportive for parents at every stage."
           />
 
@@ -208,13 +210,13 @@ export function AdmissionsOverviewContent({
             {admissionsJourneySteps.map((step, index) => (
               <article
                 key={step.title}
-                className="relative flex flex-col justify-between rounded-3xl border border-border/80 bg-white p-6 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+                className="relative flex flex-col justify-between rounded-lg border border-border/80 bg-white p-6 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md"
               >
                 <div>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-white font-extrabold text-sm mb-4 shadow-sm">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white font-bold text-sm mb-4 shadow-sm">
                     0{index + 1}
                   </div>
-                  <h3 className="font-extrabold text-lg text-foreground">{step.title}</h3>
+                  <h3 className="font-bold text-lg text-foreground">{step.title}</h3>
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{step.text}</p>
                 </div>
               </article>
@@ -227,20 +229,17 @@ export function AdmissionsOverviewContent({
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
         <SectionHeader
           eyebrow="Why Choose Playpen"
-          title="Nurturing Excellence in Every Learner"
+          title="Nurturing excellence in every learner"
           description="A balanced environment where character, creativity, and academic ambition go hand in hand."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {admissionsPillars.map((pillar, index) => (
+          {admissionsPillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="rounded-3xl border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+              className="rounded-lg border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition duration-300 hover:border-primary/30 hover:shadow-md"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary font-extrabold text-sm mb-4">
-                0{index + 1}
-              </div>
-              <h3 className="font-extrabold text-xl text-foreground">{pillar.title}</h3>
+              <h3 className="font-bold text-xl text-foreground">{pillar.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.text}</p>
             </article>
           ))}
@@ -252,7 +251,7 @@ export function AdmissionsOverviewContent({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Admissions Resources"
-            title="Explore Procedures, Uniform &amp; Code of Conduct"
+            title="Explore procedures, uniform &amp; code of conduct"
             description="Important information on age criteria, admission tests, required documents, fee schedules, and student guidelines."
           />
 

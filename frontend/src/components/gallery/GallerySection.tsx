@@ -255,7 +255,7 @@ function GallerySectionInner({
   return (
     <>
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
-        <div className="rounded-2xl border border-border/60 bg-white p-4 shadow-sm sm:rounded-3xl sm:p-5 md:p-6">
+        <div className="rounded-lg border border-border/60 bg-white p-4 shadow-sm sm:rounded-lg sm:p-5 md:p-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -373,7 +373,7 @@ function GallerySectionInner({
                 <button
                   type="button"
                   onClick={() => setVisiblePhotoCount((prev) => prev + 24)}
-                  className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-primary-dark active:scale-95"
+                  className="rounded-md bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-primary-dark active:scale-95"
                 >
                   Load More Photos
                 </button>
@@ -387,7 +387,7 @@ function GallerySectionInner({
             {filteredEvents.map((event) => (
               <article
                 key={event.id}
-                className="group overflow-hidden rounded-2xl border border-border/60 bg-white shadow-sm transition duration-300 hover:border-primary/20 hover:shadow-[0_12px_32px_-12px_rgba(128,0,0,0.15)] sm:rounded-3xl"
+                className="group overflow-hidden rounded-lg border border-border/60 bg-white shadow-sm transition duration-300 hover:border-primary/20 hover:shadow-sm sm:rounded-lg"
               >
                 <button
                   type="button"
@@ -402,7 +402,7 @@ function GallerySectionInner({
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
-                  <div className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-primary sm:text-xs">
+                  <div className="absolute left-3 top-3 rounded-md bg-white/90 px-2.5 py-1 text-[10px] font-bold text-primary sm:text-xs">
                     {event.category}
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-4 text-left sm:p-5">
@@ -410,7 +410,7 @@ function GallerySectionInner({
                       <Calendar className="h-3.5 w-3.5 text-accent" />
                       {event.date}
                     </p>
-                    <h3 className="mt-1 font-extrabold text-lg text-white sm:text-xl">
+                    <h3 className="mt-1 font-bold text-lg text-white sm:text-xl">
                       {event.title}
                     </h3>
                     <p className="mt-1 text-xs text-white/80 sm:text-sm font-medium">
@@ -428,7 +428,7 @@ function GallerySectionInner({
                       e.stopPropagation();
                       void openEventPhotos(event);
                     }}
-                    className="shrink-0 rounded-full bg-primary px-3 py-2 text-xs font-semibold text-white transition hover:bg-primary-dark sm:px-4 sm:text-sm"
+                    className="shrink-0 rounded-md bg-primary px-3 py-2 text-xs font-semibold text-white transition hover:bg-primary-dark sm:px-4 sm:text-sm"
                   >
                     View All
                   </button>
@@ -445,9 +445,9 @@ function GallerySectionInner({
           : view === "events"
             ? filteredEvents.length === 0
             : fullEventsLoaded && filteredPhotos.length === 0) && (
-          <div className="mt-12 rounded-2xl border border-dashed border-border bg-muted/30 px-6 py-12 text-center sm:rounded-3xl">
+          <div className="mt-12 rounded-lg border border-dashed border-border bg-muted/30 px-6 py-12 text-center sm:rounded-lg">
             <Grid3X3 className="mx-auto h-10 w-10 text-primary/40" />
-            <p className="mt-4 font-extrabold text-lg text-foreground">
+            <p className="mt-4 font-bold text-lg text-foreground">
               No results found
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -463,7 +463,7 @@ function GallerySectionInner({
           onClick={() => setSelectedEvent(null)}
         >
           <div
-            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-t-3xl bg-white sm:rounded-3xl"
+            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-t-3xl bg-white sm:rounded-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative aspect-[21/9] min-h-[180px] w-full overflow-hidden sm:min-h-[220px]">
@@ -484,10 +484,10 @@ function GallerySectionInner({
                 <X className="h-5 w-5" />
               </button>
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                <p className="text-xs font-bold uppercase tracking-wider text-accent">
+                <p className="text-xs font-bold text-accent">
                   {selectedEvent.category} · {selectedEvent.date}
                 </p>
-                <h3 className="mt-1 font-extrabold text-2xl text-white sm:text-3xl">
+                <h3 className="mt-1 font-bold text-2xl text-white sm:text-3xl">
                   {selectedEvent.title}
                 </h3>
               </div>
@@ -499,7 +499,7 @@ function GallerySectionInner({
               </p>
 
               <div className="mt-6 border-t border-border/60 pt-5 sm:pt-6">
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary/60">
+                <p className="text-[11px] font-medium text-primary/60">
                   All Photos
                 </p>
                 <p className="mt-1 text-sm text-muted-foreground">
@@ -516,7 +516,7 @@ function GallerySectionInner({
                       onClick={() =>
                         openLightbox(selectedEvent.images, index, selectedEvent.title)
                       }
-                      className="group overflow-hidden rounded-xl border border-border/50 bg-muted text-left transition hover:border-primary/25 hover:shadow-md sm:rounded-2xl"
+                      className="group overflow-hidden rounded-md border border-border/50 bg-muted text-left transition hover:border-primary/25 hover:shadow-md sm:rounded-lg"
                     >
                       <div className="relative aspect-square w-full overflow-hidden">
                         <Image
@@ -584,7 +584,7 @@ function GallerySectionInner({
 
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 pb-6 pt-16 text-center sm:px-6">
             {lightbox.eventTitle && (
-              <p className="text-xs font-medium uppercase tracking-wider text-white/65">
+              <p className="text-xs font-medium text-white/65">
                 {lightbox.eventTitle}
               </p>
             )}

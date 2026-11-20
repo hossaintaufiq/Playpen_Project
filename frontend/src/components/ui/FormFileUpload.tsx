@@ -19,7 +19,7 @@ export function FormFileUpload({
   selectedFileName,
 }: FormFileUploadProps) {
   return (
-    <div className="min-w-0 rounded-xl border border-dashed border-border/80 bg-white p-4">
+    <div className="min-w-0 rounded-md border border-dashed border-border/80 bg-white p-4">
       <div className="flex min-w-0 items-start gap-3 text-sm text-muted-foreground">
         <Upload className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
         <span className="min-w-0 break-words leading-relaxed">{hint}</span>

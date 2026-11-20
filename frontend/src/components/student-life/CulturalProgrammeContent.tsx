@@ -31,12 +31,12 @@ export function CulturalProgrammeContent() {
       />
 
       <div className="mt-8 grid gap-5 lg:grid-cols-2">
-        <div className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-6 sm:rounded-3xl">
+        <div className="rounded-lg border border-primary/15 bg-primary/[0.04] p-6 sm:rounded-lg">
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
             {culturalProgrammeMission}
           </p>
         </div>
-        <div className="rounded-2xl border border-border/50 bg-white p-6 shadow-sm sm:rounded-3xl">
+        <div className="rounded-lg border border-border/50 bg-white p-6 shadow-sm sm:rounded-lg">
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
             {culturalProgrammeExperience}
           </p>
@@ -49,9 +49,9 @@ export function CulturalProgrammeContent() {
           return (
             <article
               key={item.title}
-              className="rounded-2xl border border-border/50 bg-white p-5 shadow-sm sm:p-6"
+              className="rounded-lg border border-border/50 bg-white p-5 shadow-sm sm:p-6"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.08] text-primary">
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/[0.08] text-primary">
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </div>
               <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
@@ -78,10 +78,10 @@ export function CulturalProgrammeContent() {
             return (
               <article
                 key={category.title}
-                className="rounded-2xl border border-border/60 bg-white p-6 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-3xl"
+                className="rounded-lg border border-border/60 bg-white p-6 shadow-sm transition hover:border-primary/20 hover:shadow-md sm:rounded-lg"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/[0.08] text-primary">
                     <Icon className="h-5 w-5" strokeWidth={1.75} />
                   </div>
                   <div>
@@ -108,15 +108,15 @@ export function CulturalProgrammeContent() {
         </div>
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.06] via-white to-accent/[0.05] p-6 sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
+      <div className="mt-10 rounded-lg border border-primary/15 bg-surface p-6 sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold text-primary">
           All Yearly Activities
         </p>
         <div className="mt-5 flex flex-wrap gap-2.5">
           {yearlyActivities.map((activity) => (
             <span
               key={activity}
-              className="inline-flex rounded-full border border-primary/15 bg-white px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/30"
+              className="inline-flex rounded-md border border-primary/15 bg-white px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-primary/30"
             >
               {activity}
             </span>
@@ -124,8 +124,8 @@ export function CulturalProgrammeContent() {
         </div>
       </div>
 
-      <div className="mt-10 rounded-3xl border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
+      <div className="mt-10 rounded-lg border border-primary/10 bg-primary p-6 text-white sm:mt-12 sm:p-8">
+        <p className="text-[11px] font-bold text-primary">
           The Playpen Difference
         </p>
         <p className="mt-4 font-heading text-xl font-bold leading-relaxed sm:text-2xl">

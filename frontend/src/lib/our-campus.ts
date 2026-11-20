@@ -138,5 +138,5 @@ export const facultyNote =
 
 export const futureExpansion = {
   title: "Building for the Future",
-  text: "The second phase of the Playpen school building is in progress. With a growing student community, the management is planning additional laboratories, a larger cafeteria, an ultra-modern library, expanded students' gallery space, more indoor games, classrooms, and enhanced facilities in the near future.",
+  text: "The second phase of the Playpen School building is in progress. With a growing student community, the management is planning additional laboratories, a larger cafeteria, an ultra-modern library, expanded students' gallery space, more indoor games, classrooms, and enhanced facilities in the near future.",
 };

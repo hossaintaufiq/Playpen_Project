@@ -7,7 +7,7 @@ export const laboratoriesSafetyNote =
 export const laboratorySubjects = [
   {
     title: "Physics Laboratory",
-    text: "State-of-the-art facilities for practical experiments and scientific investigation.",
+    text: "Facilities for practical experiments and scientific investigation.",
   },
   {
     title: "Chemistry Laboratory",

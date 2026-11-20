@@ -21,7 +21,6 @@ import {
 import type { StudentAchievement } from "@/lib/cms/types";
 import { defaultStudentAchievements } from "@/lib/student-achievements-defaults";
 import { CambridgeResultsShowcase } from "./CambridgeResultsShowcase";
-import { HandDrawnUnderline } from "@/components/ui/HandDrawnUnderline";
 
 const stats = [
   { value: "49 Years", label: "Legacy of Excellence", sub: "Established in 1977" },
@@ -135,26 +134,13 @@ export function AchievementsSection({
   return (
     <section className="relative overflow-hidden bg-surface py-14 sm:py-20 lg:py-24 border-y border-border/60">
       {/* Ambient background glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/[0.03] blur-3xl rounded-full" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-hover mb-3">
-            <Trophy className="h-3.5 w-3.5" />
-            <span>Record of Excellence</span>
-          </div>
 
-          <h2 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.14] tracking-tight text-foreground">
-            PROUD OF WHAT <br className="hidden sm:inline" />
-            <span className="text-primary">
-              WE&apos;VE{" "}
-              <span className="relative inline-block">
-                ACHIEVED
-                <HandDrawnUnderline className="text-primary" />
-              </span>
-              .
-            </span>
+          <h2 className="font-bold text-3xl sm:text-3xl md:text-4xl lg:text-[2.5rem] leading-[1.14] tracking-tight text-foreground text-balance">
+            What our students have achieved.
           </h2>
 
           <p className="mt-4 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -172,11 +158,11 @@ export function AchievementsSection({
           {stats.map((stat, idx) => (
             <div
               key={stat.label}
-              className={`flex flex-col items-center justify-center rounded-2xl sm:rounded-3xl border border-border/80 bg-white p-4 sm:p-5 lg:p-6 text-center shadow-xs transition duration-300 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5 ${
+              className={`flex flex-col items-center justify-center rounded-lg sm:rounded-lg border border-border/80 bg-white p-4 sm:p-5 lg:p-6 text-center shadow-xs transition duration-300 hover:shadow-md hover:border-primary/30 ${
                 idx === 0 ? "col-span-2 sm:col-span-1" : ""
               }`}
             >
-              <span className="font-extrabold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-primary">
+              <span className="font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-primary">
                 {stat.value}
               </span>
               <span className="mt-1.5 text-xs sm:text-sm font-bold text-foreground leading-tight">
@@ -229,7 +215,7 @@ export function AchievementsSection({
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
-              className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[2.25rem] border border-border/80 bg-white shadow-lg lg:shadow-xl transition-shadow duration-300"
+              className="relative overflow-hidden rounded-lg sm:rounded-lg lg:rounded-lg border border-border/80 bg-white shadow-md lg:shadow-md transition-shadow duration-300"
             >
               {/* Responsive Fixed-Height Grid Container */}
               <div className="grid grid-cols-1 lg:grid-cols-12 h-auto lg:h-[500px] xl:h-[520px]">
@@ -256,7 +242,7 @@ export function AchievementsSection({
 
                   {/* Top Left: Category Pill */}
                   <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-10">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-primary shadow-sm border border-black/5">
+                    <span className="inline-flex items-center gap-1.5 rounded-md bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold text-primary shadow-sm border border-black/5">
                       <Award className="h-3.5 w-3.5 text-accent" />
                       <span>{currentItem.category ?? "Achievement"}</span>
                     </span>
@@ -283,7 +269,7 @@ export function AchievementsSection({
                         {currentItem.venue ? currentItem.venue : "Dhaka, Bangladesh"}
                       </span>
                     </div>
-                    <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-xs shrink-0">
+                    <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-bold text-white shadow-xs shrink-0">
                       {safeIndex + 1} / {totalItems}
                     </span>
                   </div>
@@ -298,7 +284,7 @@ export function AchievementsSection({
                     <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-border/60 text-xs shrink-0">
                       <div className="flex items-center gap-1.5">
                         <span className="h-2 w-2 rounded-full bg-primary shrink-0" />
-                        <span className="font-bold uppercase tracking-wider text-primary text-[11px] sm:text-xs">
+                        <span className="font-bold text-primary text-[11px] sm:text-xs">
                           Record of Excellence
                         </span>
                       </div>
@@ -312,7 +298,7 @@ export function AchievementsSection({
                     <div className="mt-3 shrink-0">
                       <h3
                         title={currentItem.title}
-                        className="font-extrabold text-lg sm:text-xl lg:text-[1.35rem] text-foreground leading-snug line-clamp-2"
+                        className="font-bold text-lg sm:text-xl lg:text-[1.35rem] text-foreground leading-snug line-clamp-2"
                       >
                         {currentItem.title}
                       </h3>
@@ -331,7 +317,7 @@ export function AchievementsSection({
 
                     {/* Distinction Checklist (Clean internal scroll for variable item counts so card never changes height) */}
                     <div className="mt-3 flex-1 min-h-0 flex flex-col">
-                      <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-muted-foreground block mb-2 shrink-0">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-muted-foreground block mb-2 shrink-0">
                         Key Honors &amp; Distinction Breakdown
                       </span>
                       
@@ -406,7 +392,7 @@ export function AchievementsSection({
             )}
           </div>
         ) : (
-          <div className="mt-8 text-center p-8 rounded-2xl bg-white border border-border/60">
+          <div className="mt-8 text-center p-8 rounded-lg bg-white border border-border/60">
             <p className="text-muted-foreground text-sm">
               No achievements found in this category.
             </p>
@@ -417,7 +403,7 @@ export function AchievementsSection({
         <div className="mt-10 sm:mt-12 text-center">
           <Link
             href="/academics/student-achievements"
-            className="group inline-flex items-center gap-2 rounded-full border-2 border-primary bg-white px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-primary shadow-xs transition-all duration-200 hover:bg-primary hover:text-white hover:shadow-md"
+            className="group inline-flex items-center gap-2 rounded-md border-2 border-primary bg-white px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-primary shadow-xs transition-all duration-200 hover:bg-primary hover:text-white hover:shadow-md"
           >
             <span>Explore All Student Achievements</span>
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />

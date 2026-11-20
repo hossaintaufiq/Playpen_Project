@@ -38,7 +38,7 @@ const categoryMeta: Record<
   science: {
     label: "Science & Tech",
     icon: Microscope,
-    badgeClass: "bg-blue-50 text-blue-800 border border-blue-200",
+    badgeClass: "bg-primary-soft text-primary border border-primary/20",
   },
   sports: {
     label: "Sports",
@@ -48,7 +48,7 @@ const categoryMeta: Record<
   arts: {
     label: "Arts & Culture",
     icon: Palette,
-    badgeClass: "bg-purple-50 text-purple-800 border border-purple-200",
+    badgeClass: "bg-primary-soft text-primary border border-primary/20",
   },
   other: {
     label: "Honors",
@@ -87,7 +87,7 @@ export function StudentAchievementsContent({
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <SectionHeader
         eyebrow="Hall of Achievement"
-        title="Celebrating Student Excellence Across Academics, Sports &amp; the Arts"
+        title="Celebrating student excellence across academics, sports &amp; the arts"
         description="Playpen students regularly excel in Cambridge international rankings, national science olympiads, inter-school sports, and cultural festivals."
       />
 
@@ -101,10 +101,10 @@ export function StudentAchievementsContent({
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-3xl border border-border/80 bg-white p-6 text-center shadow-sm"
+            className="rounded-lg border border-border/80 bg-white p-6 text-center shadow-sm"
           >
-            <p className="font-extrabold text-3xl sm:text-4xl text-primary">{stat.value}</p>
-            <p className="mt-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+            <p className="font-bold text-3xl sm:text-4xl text-primary">{stat.value}</p>
+            <p className="mt-2 text-xs font-bold text-muted-foreground">
               {stat.label}
             </p>
           </div>
@@ -139,7 +139,7 @@ export function StudentAchievementsContent({
           return (
             <article
               key={achievement.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1"
+              className="group flex flex-col justify-between overflow-hidden rounded-lg border border-border/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md"
             >
               <div>
                 {/* Photo if available */}
@@ -154,7 +154,7 @@ export function StudentAchievementsContent({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-3.5 left-3.5">
-                      <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${meta.badgeClass} bg-white/95 backdrop-blur-md`}>
+                      <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-bold ${meta.badgeClass} bg-white/95 backdrop-blur-md`}>
                         <Icon className="h-3 w-3" />
                         {meta.label}
                       </span>
@@ -162,7 +162,7 @@ export function StudentAchievementsContent({
                   </div>
                 ) : (
                   <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-4">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider ${meta.badgeClass}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold ${meta.badgeClass}`}>
                       <Icon className="h-3 w-3" />
                       {meta.label}
                     </span>
@@ -175,7 +175,7 @@ export function StudentAchievementsContent({
                   </div>
                 )}
 
-                <h3 className="font-extrabold text-xl text-foreground leading-snug group-hover:text-primary transition-colors">
+                <h3 className="font-bold text-xl text-foreground leading-snug group-hover:text-primary transition-colors">
                   {achievement.title}
                 </h3>
 

@@ -25,20 +25,19 @@ export function PageHero({ title, subtitle, image, imageAlt, badge }: PageHeroPr
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(82,2,21,0.5)_100%)]" />
         </>
       ) : (
-        <div className="playpen-bg-dark absolute inset-0 bg-gradient-to-br from-[#520215] via-[#7a0826] to-[#991636]" />
+        <div className="playpen-bg-dark absolute inset-0 bg-primary-dark" />
       )}
 
       {/* Decorative ambient subtle circle */}
-      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/15 blur-3xl rounded-full" />
 
       <div className="relative mx-auto max-w-4xl min-w-0">
         {badge && (
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md mb-4">
+          <div className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold text-white backdrop-blur-md mb-4">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             {badge}
           </div>
         )}
-        <h1 className="break-words font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
+        <h1 className="break-words font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
           {title}
         </h1>
         {subtitle && (

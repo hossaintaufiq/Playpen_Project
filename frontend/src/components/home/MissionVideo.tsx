@@ -91,13 +91,13 @@ export function MissionVideo({ className = "" }: MissionVideoProps) {
 
   return (
     <div ref={containerRef} className={`group relative w-full ${className}`}>
-      <div className="relative overflow-hidden rounded-xl bg-foreground ring-1 ring-border/80 sm:rounded-2xl">
-        <div className="absolute left-0 top-0 z-10 h-0.5 w-full bg-gradient-to-r from-primary via-primary-light to-accent" />
+      <div className="relative overflow-hidden rounded-md bg-foreground ring-1 ring-border/80 sm:rounded-lg">
+        <div className="absolute left-0 top-0 z-10 h-0.5 w-full bg-primary-dark" />
         <div className="relative aspect-[4/3] sm:aspect-video w-full">
           <iframe
             ref={iframeRef}
             src={EMBED_URL}
-            title="Playpen School — Our Story"
+            title="Playpen School — our story"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen

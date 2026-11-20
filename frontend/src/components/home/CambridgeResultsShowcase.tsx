@@ -55,23 +55,23 @@ const examResultsData: ExamLevelData[] = [
       {
         grade: "B",
         percentage: 19,
-        color: "#1d4ed8", // Classic Navy Blue
-        bgColor: "bg-blue-600/10",
-        textColor: "text-blue-700",
-        borderColor: "border-blue-600/30",
+        color: "#3f3a36", // Classic Navy Blue
+        bgColor: "bg-stone-500/10",
+        textColor: "text-stone-700",
+        borderColor: "border-stone-500/30",
       },
       {
         grade: "C",
         percentage: 10,
-        color: "#0284c7", // Sky Blue
-        bgColor: "bg-sky-500/10",
-        textColor: "text-sky-700",
-        borderColor: "border-sky-500/30",
+        color: "#a39a90", // Sky Blue
+        bgColor: "bg-stone-400/10",
+        textColor: "text-stone-600",
+        borderColor: "border-stone-400/30",
       },
       {
         grade: "Others",
         percentage: 4,
-        color: "#64748b", // Slate Gray
+        color: "#cfc6bb", // Slate Gray
         bgColor: "bg-slate-500/10",
         textColor: "text-slate-600",
         borderColor: "border-slate-500/30",
@@ -121,15 +121,15 @@ const examResultsData: ExamLevelData[] = [
       {
         grade: "c",
         percentage: 15,
-        color: "#1d4ed8", // Blue
-        bgColor: "bg-blue-600/10",
-        textColor: "text-blue-700",
-        borderColor: "border-blue-600/30",
+        color: "#3f3a36", // Blue
+        bgColor: "bg-stone-500/10",
+        textColor: "text-stone-700",
+        borderColor: "border-stone-500/30",
       },
       {
         grade: "Others",
         percentage: 21,
-        color: "#64748b", // Slate Gray
+        color: "#cfc6bb", // Slate Gray
         bgColor: "bg-slate-500/10",
         textColor: "text-slate-600",
         borderColor: "border-slate-500/30",
@@ -178,23 +178,23 @@ const examResultsData: ExamLevelData[] = [
       {
         grade: "B",
         percentage: 19,
-        color: "#1d4ed8", // Classic Navy Blue
-        bgColor: "bg-blue-600/10",
-        textColor: "text-blue-700",
-        borderColor: "border-blue-600/30",
+        color: "#3f3a36", // Classic Navy Blue
+        bgColor: "bg-stone-500/10",
+        textColor: "text-stone-700",
+        borderColor: "border-stone-500/30",
       },
       {
         grade: "C",
         percentage: 16,
-        color: "#0284c7", // Sky Blue
-        bgColor: "bg-sky-500/10",
-        textColor: "text-sky-700",
-        borderColor: "border-sky-500/30",
+        color: "#a39a90", // Sky Blue
+        bgColor: "bg-stone-400/10",
+        textColor: "text-stone-600",
+        borderColor: "border-stone-400/30",
       },
       {
         grade: "Others",
         percentage: 23,
-        color: "#64748b", // Slate Gray
+        color: "#cfc6bb", // Slate Gray
         bgColor: "bg-slate-500/10",
         textColor: "text-slate-600",
         borderColor: "border-slate-500/30",
@@ -316,7 +316,7 @@ function DonutChart({
                   textAnchor="middle"
                   dominantBaseline="central"
                   fill="#ffffff"
-                  className="font-black tracking-tight"
+                  className="font-bold tracking-tight"
                   style={{
                     fontSize: isTiny ? "9.5px" : isMedium ? "11.5px" : "13.5px",
                     filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
@@ -331,7 +331,7 @@ function DonutChart({
                     textAnchor="middle"
                     dominantBaseline="central"
                     fill="#ffffff"
-                    className="font-extrabold"
+                    className="font-bold"
                     style={{
                       fontSize: isMedium ? "10.5px" : "12px",
                       opacity: 0.98,
@@ -349,10 +349,10 @@ function DonutChart({
 
       {/* Seamless Center Text with direct stat and label */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-2 text-center">
-        <span className="font-extrabold text-2xl sm:text-3xl tracking-tight text-primary leading-none">
+        <span className="font-bold text-2xl sm:text-3xl tracking-tight text-primary leading-none">
           {centerHighlight.stat}
         </span>
-        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1.5 leading-tight">
+        <span className="text-[11px] sm:text-xs font-bold text-muted-foreground mt-1.5 leading-tight">
           {centerHighlight.label}
         </span>
       </div>
@@ -377,23 +377,23 @@ export function CambridgeResultsShowcase() {
           return (
             <div
               key={data.id}
-              className="flex flex-col justify-between overflow-hidden rounded-3xl border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:-translate-y-1"
+              className="flex flex-col justify-between overflow-hidden rounded-lg border border-border/80 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/30"
             >
               <div>
                 {/* Header */}
                 <div className="flex items-start justify-between gap-2 pb-4 mb-3 border-b border-border/50">
                   <div>
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-accent-hover bg-accent-soft px-2.5 py-0.5 rounded-md mb-1.5">
+                    <span className="inline-block text-[11px] font-bold text-accent-hover bg-accent-soft px-2.5 py-0.5 rounded-md mb-1.5">
                       {data.cohort}
                     </span>
-                    <h3 className="font-extrabold text-xl sm:text-2xl text-primary tracking-tight">
+                    <h3 className="font-bold text-xl sm:text-2xl text-primary tracking-tight">
                       {data.title}
                     </h3>
                     <p className="font-serif italic text-xs sm:text-[13px] text-amber-700/90 font-medium mt-0.5">
                       {data.session}
                     </p>
                   </div>
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/8 text-primary border border-primary/15">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/8 text-primary border border-primary/15">
                     <Award className="h-4 w-4" />
                   </div>
                 </div>
@@ -439,7 +439,7 @@ export function CambridgeResultsShowcase() {
                 <div className="border-t border-border/50 pt-4">
                   <div className="flex items-center gap-1.5 mb-2.5">
                     <BookOpen className="h-3.5 w-3.5 text-primary" />
-                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-primary">
+                    <h4 className="text-xs font-bold text-primary">
                       Subjects Offered ({data.subjects.length})
                     </h4>
                   </div>

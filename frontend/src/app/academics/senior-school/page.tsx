@@ -75,17 +75,17 @@ export default async function SeniorSchoolPage() {
     <AcademicsPageShell
       section="/academics/senior-school"
       title="Senior School Division"
-      subtitle="Class VIII to XII (Ages 13 – 18) — Cambridge O & A Level Excellence & Global University Pathways."
+      subtitle="Class VIII to XII (Ages 13 – 18) — Cambridge O & A Level excellence & global university pathways."
     >
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         {/* Intro Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-3xl border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center rounded-lg border border-border/80 bg-white p-6 sm:p-10 shadow-sm">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 rounded-full bg-rose-100/80 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-rose-950 mb-4">
+            <div className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary mb-4">
               <GraduationCap className="h-3.5 w-3.5 text-primary" />
               <span>Cambridge Upper Secondary &amp; Advanced (Class VIII – XII)</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
               A Proven Record of Cambridge Laurels &amp; World University Placements
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
@@ -100,7 +100,7 @@ export default async function SeniorSchoolPage() {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-muted">
+          <div className="lg:col-span-5 relative aspect-[4/3] rounded-lg overflow-hidden shadow-md bg-muted">
             <Image
               src="/images/schools/senior.webp"
               alt="Playpen Senior Cambridge Students"
@@ -114,7 +114,7 @@ export default async function SeniorSchoolPage() {
         {/* Cambridge Curriculum Breakdown */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center mb-10">
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Cambridge Academic Pathways &amp; Subject Streams
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -126,19 +126,19 @@ export default async function SeniorSchoolPage() {
             {pathways.map((path) => (
               <div
                 key={path.level}
-                className="flex flex-col justify-between rounded-3xl border border-border/80 bg-white p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
+                className="flex flex-col justify-between rounded-lg border border-border/80 bg-white p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
               >
                 <div>
                   <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/60">
                     <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-accent-hover bg-accent-soft px-2.5 py-0.5 rounded-md">
+                      <span className="text-[11px] font-bold text-accent-hover bg-accent-soft px-2.5 py-0.5 rounded-md">
                         {path.classes}
                       </span>
                       <h4 className="font-heading text-xl font-bold text-foreground mt-1.5">
                         {path.level}
                       </h4>
                     </div>
-                    <div className="h-10 w-10 flex items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
                       <BookOpen className="h-5 w-5" />
                     </div>
                   </div>
@@ -147,7 +147,7 @@ export default async function SeniorSchoolPage() {
                     {path.desc}
                   </p>
 
-                  <h5 className="text-xs font-bold uppercase tracking-wider text-primary mb-3">
+                  <h5 className="text-xs font-bold text-primary mb-3">
                     Subjects Offered ({path.subjects.length})
                   </h5>
                   <div className="flex flex-wrap gap-2">
@@ -169,11 +169,11 @@ export default async function SeniorSchoolPage() {
         {/* Cambridge Examination Results Section */}
         <div className="mt-16 sm:mt-20">
           <div className="mx-auto max-w-3xl text-center mb-10">
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-hover mb-3">
+            <div className="inline-flex items-center gap-2 rounded-md bg-accent/15 px-4 py-1.5 text-xs font-bold text-accent-hover mb-3">
               <Award className="h-3.5 w-3.5" />
               <span>Official Examination Performance</span>
             </div>
-            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
               Cambridge Examination Results Breakdown
             </h3>
             <p className="mt-2 text-sm text-muted-foreground sm:text-base">
@@ -196,10 +196,10 @@ export default async function SeniorSchoolPage() {
         ) : null}
 
         {/* University Placements Banner */}
-        <div className="mt-16 rounded-3xl bg-linear-to-r from-primary to-primary-dark p-8 sm:p-10 text-white shadow-xl">
+        <div className="mt-16 rounded-lg bg-linear-to-r from-primary to-primary-dark p-8 sm:p-10 text-white shadow-md">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-xs border border-white/20">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white/15 backdrop-blur-xs border border-white/20">
                 <Globe className="h-7 w-7 text-amber-300" />
               </div>
               <div>
@@ -213,7 +213,7 @@ export default async function SeniorSchoolPage() {
             </div>
             <Link
               href="/admissions"
-              className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs sm:text-sm font-bold text-primary shadow-sm transition hover:bg-surface"
+              className="shrink-0 inline-flex items-center gap-2 rounded-md bg-white px-6 py-3 text-xs sm:text-sm font-bold text-primary shadow-sm transition hover:bg-surface"
             >
               <span>Apply for Admissions</span>
               <ArrowRight className="h-4 w-4" />
